@@ -6,6 +6,7 @@ import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
 import 'game_on_model.dart';
 export 'game_on_model.dart';
 
@@ -13,9 +14,13 @@ class GameOnWidget extends StatefulWidget {
   const GameOnWidget({
     super.key,
     String? gameUrl,
+    required this.gamename,
+    required this.tournamentId,
   }) : this.gameUrl = gameUrl ?? 'https://eggcatcher.fulboost.fun';
 
   final String gameUrl;
+  final String? gamename;
+  final String? tournamentId;
 
   static String routeName = 'gameOn';
   static String routePath = '/gameOn';
@@ -44,6 +49,8 @@ class _GameOnWidgetState extends State<GameOnWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -51,7 +58,7 @@ class _GameOnWidgetState extends State<GameOnWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: Color(0xFF000B33),
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
@@ -65,7 +72,7 @@ class _GameOnWidgetState extends State<GameOnWidget> {
                         FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                   ),
                   color: Colors.white,
-                  fontSize: 22.0,
+                  fontSize: 22,
                   letterSpacing: 0.0,
                   fontWeight:
                       FlutterFlowTheme.of(context).headlineMedium.fontWeight,
@@ -75,7 +82,7 @@ class _GameOnWidgetState extends State<GameOnWidget> {
           ),
           actions: [],
           centerTitle: false,
-          elevation: 2.0,
+          elevation: 2,
         ),
         body: SafeArea(
           top: true,
@@ -83,12 +90,14 @@ class _GameOnWidgetState extends State<GameOnWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Container(
-                width: double.infinity,
-                height: 840.0,
+                width: 400,
+                height: 893,
                 child: custom_widgets.GameOn(
-                  width: double.infinity,
-                  height: 840.0,
+                  width: 400,
+                  height: 893,
                   gameUrl: widget!.gameUrl,
+                  gameName: widget!.gamename!,
+                  tournamentId: widget!.tournamentId!,
                 ),
               ),
             ],

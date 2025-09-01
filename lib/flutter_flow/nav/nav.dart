@@ -191,6 +191,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'gameUrl',
               ParamType.String,
             ),
+            gamename: params.getParam(
+                  'gamename',
+                  ParamType.String,
+                ) ??
+                'DefaultGame',
+            tournamentId: params.getParam(
+                  'tournamentId',
+                  ParamType.String,
+                ) ??
+                'DefaultGame', // fallback if param not passed
           ),
         ),
         FFRoute(
