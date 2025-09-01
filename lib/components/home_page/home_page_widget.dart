@@ -500,10 +500,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
                                         return Builder(
                                           builder: (context) {
-                                            final gam = getJsonField(
-                                              gridViewGamesResponse.jsonBody,
-                                              r'''$.data''',
-                                            ).toList();
+                                            final gam = functions
+                                                    .filterUnlimitedGames(
+                                                        getJsonField(
+                                                      gridViewGamesResponse
+                                                          .jsonBody,
+                                                      r'''$.data''',
+                                                    ))
+                                                    ?.toList() ??
+                                                [];
 
                                             return GridView.builder(
                                               padding: EdgeInsets.fromLTRB(

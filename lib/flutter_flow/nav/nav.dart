@@ -155,13 +155,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: ChallengePageWidget.routeName,
           path: ChallengePageWidget.routePath,
-          builder: (context, params) => ChallengePageWidget(
-            userName: params.getParam<String>(
-              'userName',
-              ParamType.String,
-              isList: true,
-            ),
-          ),
+          builder: (context, params) => ChallengePageWidget(),
         ),
         FFRoute(
           name: KycstatusSubmitWidget.routeName,

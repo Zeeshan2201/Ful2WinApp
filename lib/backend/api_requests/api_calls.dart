@@ -52,6 +52,43 @@ class StatusCall {
   }
 }
 
+class ChallengesCall {
+  static Future<ApiCallResponse> call({
+    String? gameId = '',
+    String? token = '',
+    String? challengedUserId = '',
+    String? message = '',
+  }) async {
+    final baseUrl = FulWinGroup.getBaseUrl(
+      token: token,
+    );
+    final FFApiRequestBody = '''
+{
+  "gameId": "${gameId}",
+  "challengedUserId": "${challengedUserId}",
+  "message": "${message}"
+}''';
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'challenges',
+      apiUrl: '${baseUrl}/challenges',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+      },
+      params: {},
+      body: FFApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class TournamentRegisterCall {
   Future<ApiCallResponse> call({
     String? tournamentId = '',
@@ -161,15 +198,11 @@ class GamesCall {
     );
   }
 
-  static List<String>? games(dynamic response) => (getJsonField(
-        response,
-        r'''$.data[0].displayName''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<String>(x))
-          .withoutNulls
-          .toList();
+  static List<String>? gameNames(dynamic response) {
+    return (getJsonField(response, r'$.games[:].name', true) as List?)
+        ?.map((e) => e.toString())
+        .toList();
+  }
 }
 
 class LogOutCall {
@@ -325,6 +358,12 @@ class AllUsersCall {
       alwaysAllowBody: false,
     );
   }
+
+  static List<String>? fullNames(dynamic response) {
+    return (getJsonField(response, r'$.users[:].fullName', true) as List?)
+        ?.map((e) => e.toString())
+        .toList();
+  }
 }
 
 class GameCall {
@@ -344,6 +383,12 @@ class GameCall {
       isStreamingApi: false,
       alwaysAllowBody: false,
     );
+  }
+
+  static List<String>? gameNames(dynamic response) {
+    return (getJsonField(response, r'$.games[:].displayName', true) as List?)
+        ?.map((e) => e.toString())
+        .toList();
   }
 }
 
