@@ -110,7 +110,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: TournamentLobbyWidget.routeName,
           path: TournamentLobbyWidget.routePath,
-          builder: (context, params) => TournamentLobbyWidget(),
+          builder: (context, params) => TournamentLobbyWidget(
+            gameId: params.getParam(
+              'gameId',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: ReferralspageWidget.routeName,
