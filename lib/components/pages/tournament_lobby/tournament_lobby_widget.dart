@@ -1153,7 +1153,9 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget> {
                                                             .viewInsetsOf(
                                                                 context),
                                                         child:
-                                                            HowtoPlaytournamentWidget(),
+                                                            HowtoPlaytournamentWidget(
+                                                              gameId: FFAppState().gameId,
+                                                            ),
                                                       ),
                                                     );
                                                   },
