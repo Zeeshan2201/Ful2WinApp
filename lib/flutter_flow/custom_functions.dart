@@ -16,8 +16,40 @@ bool? isRegister(
   return players.contains(userId);
 }
 
+String findgameId(
+  List<dynamic> games,
+  String gameName,
+) {
+  /// MODIFY CODE ONLY BELOW THIS LINE
+
+  final game =
+      games.firstWhere((g) => g['displayName'] == gameName, orElse: () => null);
+
+  return game != null ? game['_id'].toString() : '';
+}
+
+String challangeTo(
+  List<dynamic> users,
+  String opponentName,
+) {
+  /// MODIFY CODE ONLY BELOW THIS LINE
+
+  final user = users.firstWhere(
+    (u) => u['fullName'] == opponentName,
+    orElse: () => null,
+  );
+
+  return user != null ? user['_id'].toString() : '';
+
+  /// MODIFY CODE ONLY ABOVE THIS LINE
+}
+
 List<dynamic>? filterGames(List<dynamic>? allGames) {
   return allGames?.where((game) => game['type'] != 'Unlimited').toList();
+}
+
+List<dynamic>? filterUnlimitedGames(List<dynamic>? allGames) {
+  return allGames?.where((game) => game['type'] == 'Unlimited').toList();
 }
 
 String? getRemainingTime(DateTime targetDate) {

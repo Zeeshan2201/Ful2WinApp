@@ -1000,7 +1000,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget> {
                                                           getJsonField(
                                                             columnGameResponse
                                                                 .jsonBody,
-                                                            r'''$.data.assets.gameUrl''',
+                                                            r'''$.data.assets.gameUrl.baseUrl''',
                                                           ).toString(),
                                                           ParamType.String,
                                                         ),
@@ -1046,7 +1046,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget> {
                                                                   getJsonField(
                                                                 columnGameResponse
                                                                     .jsonBody,
-                                                                r'''$.data.assets.gameUrl''',
+                                                                r'''$.data.assets.gameUrl.baseUrl''',
                                                               ).toString(),
                                                             ),
                                                           ),
