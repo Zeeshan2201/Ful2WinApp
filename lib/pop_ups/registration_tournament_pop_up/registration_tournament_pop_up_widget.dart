@@ -1,12 +1,18 @@
 import '/backend/api_requests/api_calls.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:math';
 import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:provider/provider.dart';
+
 import 'registration_tournament_pop_up_model.dart';
 export 'registration_tournament_pop_up_model.dart';
 
@@ -15,10 +21,12 @@ class RegistrationTournamentPopUpWidget extends StatefulWidget {
     super.key,
     required this.tournamentId,
     required this.gameUrl,
+    required this.gamename,
   });
 
   final String? tournamentId;
   final String? gameUrl;
+  final String? gamename;
 
   @override
   State<RegistrationTournamentPopUpWidget> createState() =>
@@ -26,8 +34,11 @@ class RegistrationTournamentPopUpWidget extends StatefulWidget {
 }
 
 class _RegistrationTournamentPopUpWidgetState
-    extends State<RegistrationTournamentPopUpWidget> {
+    extends State<RegistrationTournamentPopUpWidget>
+    with TickerProviderStateMixin {
   late RegistrationTournamentPopUpModel _model;
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void setState(VoidCallback callback) {
@@ -39,6 +50,33 @@ class _RegistrationTournamentPopUpWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => RegistrationTournamentPopUpModel());
+
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeIn,
+            delay: 180.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'buttonOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ShimmerEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            color: Color(0x80FFFFFF),
+            angle: 0.524,
+          ),
+        ],
+      ),
+    });
   }
 
   @override
@@ -53,15 +91,15 @@ class _RegistrationTournamentPopUpWidgetState
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0, 0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
         child: Container(
-          width: 350.0,
-          height: 210.0,
+          width: 350,
+          height: 210,
           decoration: BoxDecoration(
             color: Color(0xFF0D1724),
-            borderRadius: BorderRadius.circular(10.0),
+            borderRadius: BorderRadius.circular(10),
             border: Border.all(
               color: Color(0xFFFFD700),
             ),
@@ -86,7 +124,7 @@ class _RegistrationTournamentPopUpWidgetState
                     ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 5.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 5),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -171,7 +209,7 @@ class _RegistrationTournamentPopUpWidgetState
                 ],
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -193,21 +231,27 @@ class _RegistrationTournamentPopUpWidgetState
                                 widget!.gameUrl,
                                 ParamType.String,
                               ),
+                              'gamename': serializeParam(
+                                widget!.gamename,
+                                ParamType.String,
+                              ),
+                              'tournamentId': serializeParam(
+                                widget!.tournamentId,
+                                ParamType.String,
+                              ),
                             }.withoutNulls,
                           );
                         } else {
-                          context.pushNamed(TournamentLobbyWidget.routeName);
+                          context.safePop();
                         }
 
                         safeSetState(() {});
                       },
                       text: 'Yes',
                       options: FFButtonOptions(
-                        height: 40.0,
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 0.0, 16.0, 0.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        height: 40,
+                        padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                        iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                         color: Color(0xFFFFCC00),
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
@@ -228,21 +272,37 @@ class _RegistrationTournamentPopUpWidgetState
                                       .titleSmall
                                       .fontStyle,
                                 ),
-                        elevation: 0.0,
-                        borderRadius: BorderRadius.circular(5.0),
+                        elevation: 0,
+                        borderRadius: BorderRadius.circular(5),
                       ),
-                    ),
+                    ).animateOnPageLoad(
+                        animationsMap['buttonOnPageLoadAnimation']!),
                     FFButtonWidget(
                       onPressed: () async {
-                        context.pushNamed(TournamentLobbyWidget.routeName);
+                        context.pushNamed(
+                          TournamentLobbyWidget.routeName,
+                          queryParameters: {
+                            'gameId': serializeParam(
+                              FFAppState().gameId,
+                              ParamType.String,
+                            ),
+                          }.withoutNulls,
+                        );
+
+                        _model.soundPlayer ??= AudioPlayer();
+                        if (_model.soundPlayer!.playing) {
+                          await _model.soundPlayer!.stop();
+                        }
+                        _model.soundPlayer!.setVolume(1);
+                        _model.soundPlayer!
+                            .setAsset('assets/audios/click.mp3')
+                            .then((_) => _model.soundPlayer!.play());
                       },
                       text: 'Cancel',
                       options: FFButtonOptions(
-                        height: 40.0,
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 0.0, 16.0, 0.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        height: 40,
+                        padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                        iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                         color: Color(0xFF333A46),
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
@@ -264,8 +324,8 @@ class _RegistrationTournamentPopUpWidgetState
                                       .titleSmall
                                       .fontStyle,
                                 ),
-                        elevation: 0.0,
-                        borderRadius: BorderRadius.circular(5.0),
+                        elevation: 0,
+                        borderRadius: BorderRadius.circular(5),
                       ),
                     ),
                   ],
@@ -273,7 +333,7 @@ class _RegistrationTournamentPopUpWidgetState
               ),
             ],
           ),
-        ),
+        ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!),
       ),
     );
   }
