@@ -16,7 +16,6 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:provider/provider.dart';
-import 'package:ful2_win/utils/share_util.dart';
 
 import 'tournament_lobby_model.dart';
 export 'tournament_lobby_model.dart';
@@ -203,21 +202,6 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                           .fontStyle,
                                     ),
                               ),
-                            ),
-                            Spacer(),
-                            IconButton(
-                              icon: Icon(
-                                Icons.share,
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                size: 22,
-                              ),
-                              onPressed: () async {
-                                // TODO: Replace with your actual referral code source
-                                const myReferralCode = 'YOUR_REFERRAL_CODE';
-                                await shareToPlatform('whatsapp', myReferralCode);
-                              },
-                              tooltip: 'Share',
                             ),
                           ],
                         ),
