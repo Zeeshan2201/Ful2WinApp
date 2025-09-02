@@ -24,6 +24,60 @@ class FulWinGroup {
       TournamentRegisterCall();
 }
 
+class MyRefferals {
+  Future<ApiCallResponse> call({
+    String? token = '',
+  }) async {
+    final baseUrl = FulWinGroup.getBaseUrl(
+      token: token,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'myrefferals',
+      apiUrl: '${baseUrl}/referrals/my-referrals',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+      },
+      params: {},
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class referalCode {
+  Future<ApiCallResponse> call({
+    String? token = '',
+  }) async {
+    final baseUrl = FulWinGroup.getBaseUrl(
+      token: token,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'referralCode',
+      apiUrl: '${baseUrl}/referrals/my-code',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+      },
+      params: {},
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class StatusCall {
   Future<ApiCallResponse> call({
     String? tournamentId = '',
@@ -391,6 +445,7 @@ class GameCall {
         .toList();
   }
 }
+
 
 class TournamentBygameCall {
   static Future<ApiCallResponse> call({
