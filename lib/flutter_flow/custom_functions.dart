@@ -44,6 +44,47 @@ String challangeTo(
   /// MODIFY CODE ONLY ABOVE THIS LINE
 }
 
+bool? isLike(
+  List<String> likes,
+  String userId,
+) {
+  return likes.contains(userId);
+}
+
+String timeAgo(String date) {
+  /// MODIFY CODE ONLY BELOW THIS LINE
+
+  print("Parsing date: $date");
+
+  DateTime parsedDate;
+  try {
+    parsedDate = DateTime.parse(date);
+  } catch (e) {
+    return 'invalid date';
+  }
+
+  final Duration diff = DateTime.now().difference(parsedDate);
+
+  if (diff.inSeconds < 60) {
+    return 'just now';
+  } else if (diff.inMinutes < 60) {
+    return '${diff.inMinutes}m ago';
+  } else if (diff.inHours < 24) {
+    return '${diff.inHours}h ago';
+  } else if (diff.inDays < 7) {
+    return '${diff.inDays}day ago';
+  } else if (diff.inDays < 30) {
+    final weeks = (diff.inDays / 7).floor();
+    return '${weeks}week ago';
+  } else if (diff.inDays < 365) {
+    final months = (diff.inDays / 30).floor();
+    return '${months}month ago';
+  } else {
+    final years = (diff.inDays / 365).floor();
+    return '${years}year ago';
+  }
+}
+
 List<dynamic>? filterGames(List<dynamic>? allGames) {
   return allGames?.where((game) => game['type'] != 'Unlimited').toList();
 }

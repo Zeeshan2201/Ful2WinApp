@@ -172,6 +172,73 @@ class TournamentRegisterCall {
   }
 }
 
+class LikeAndUnlikeCall {
+  static Future<ApiCallResponse> call({
+    String? postId = '',
+    String? isLike = '',
+    String? token = '',
+  }) async {
+    final baseUrl = FulWinGroup.getBaseUrl(
+      token: token,
+    );
+    final apiRequestBody = {'postId': postId};
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'likeAndUnlike',
+      apiUrl: '${baseUrl}/posts/${isLike}',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+      },
+      params: {},
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class CreatePostCall {
+  static Future<ApiCallResponse> call({
+    String? content = '',
+    FFUploadedFile? image,
+    String? token = '',
+  }) async {
+    final baseUrl = FulWinGroup.getBaseUrl(
+      token: token,
+    );
+    final apiRequestBody = '''
+{
+  "content": "${content}",
+  "image": "${image}"
+}''';
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'createPost',
+      apiUrl: '${baseUrl}/posts/',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+      },
+      params: {
+        'image': image,
+      },
+      body: apiRequestBody,
+      bodyType: BodyType.MULTIPART,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 /// End FulWin Group Code
 
 class LogInCall {
