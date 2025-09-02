@@ -79,7 +79,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
             ),
           ),
           child: FutureBuilder<ApiCallResponse>(
-            future: FulWinGroup.myRefferalsCall.call(
+            future: MyRefferals.call(
               token: FFAppState().token,
             ),
             builder: (context, snapshot) {

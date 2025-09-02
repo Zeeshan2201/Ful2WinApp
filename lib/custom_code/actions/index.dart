@@ -34,3 +34,13 @@ Future<void> shareToPlatform(String platform, String referralCode) async {
     throw 'Could not launch $shareUrl';
   }
 }
+
+Future<void> copyToClipboard(String text) async {
+  if (text.isEmpty) {
+    print('Nothing to copy');
+    return;
+  }
+
+  await Clipboard.setData(ClipboardData(text: text));
+  print('Copied to clipboard: $text');
+}
