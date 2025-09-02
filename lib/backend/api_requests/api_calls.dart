@@ -25,7 +25,7 @@ class FulWinGroup {
 }
 
 class MyRefferals {
-  Future<ApiCallResponse> call({
+  static Future<ApiCallResponse> call({
     String? token = '',
   }) async {
     final baseUrl = FulWinGroup.getBaseUrl(
