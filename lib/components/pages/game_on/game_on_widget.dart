@@ -16,7 +16,7 @@ class GameOnWidget extends StatefulWidget {
     String? gameUrl,
     required this.gamename,
     required this.tournamentId,
-  }) : this.gameUrl = gameUrl ?? 'https://eggcatcher.fulboost.fun';
+  }) : gameUrl = gameUrl ?? 'https://eggcatcher.fulboost.fun';
 
   final String gameUrl;
   final String? gamename;
@@ -58,7 +58,7 @@ class _GameOnWidgetState extends State<GameOnWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFF000B33),
+        backgroundColor: const Color(0xFF000B33),
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
@@ -80,7 +80,7 @@ class _GameOnWidgetState extends State<GameOnWidget> {
                       FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 2,
         ),
@@ -89,15 +89,15 @@ class _GameOnWidgetState extends State<GameOnWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Container(
+              SizedBox(
                 width: 400,
                 height: 893,
                 child: custom_widgets.GameOn(
                   width: 400,
                   height: 893,
-                  gameUrl: widget!.gameUrl,
-                  gameName: widget!.gamename!,
-                  tournamentId: widget!.tournamentId!,
+                  gameUrl: widget.gameUrl,
+                  gameName: widget.gamename!,
+                  tournamentId: widget.tournamentId!,
                 ),
               ),
             ],
