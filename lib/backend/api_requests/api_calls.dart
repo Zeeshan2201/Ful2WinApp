@@ -24,7 +24,7 @@ class FulWinGroup {
       TournamentRegisterCall();
 }
 
-class MyReferralsCall {
+class MyReferrals {
   static Future<ApiCallResponse> call({
     String? token = '',
   }) async {
@@ -33,8 +33,8 @@ class MyReferralsCall {
     );
 
     return ApiManager.instance.makeApiCall(
-      callName: 'myrefferals',
-      apiUrl: '${baseUrl}/referrals/my-referrals',
+      callName: 'myReferrals',
+      apiUrl: '${baseUrl}referrals/my-referrals',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
