@@ -24,7 +24,8 @@ class CommunityPageModel extends FlutterFlowModel<CommunityPageWidget> {
 
   bool postCreation = false;
 
-  bool showCommentBox = false;
+  // Holds the postId of the currently expanded comment box (null = none)
+  String? showCommentBox;
 
   ///  State fields for stateful widgets in this page.
 

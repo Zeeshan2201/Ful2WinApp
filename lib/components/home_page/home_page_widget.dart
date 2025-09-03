@@ -82,7 +82,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 80.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 80.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -141,7 +142,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           Color(0xFFD98D00)
                                         ],
                                         stops: const [0.0, 1.0],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
+                                        begin: const AlignmentDirectional(
+                                            0.0, -1.0),
                                         end: const AlignmentDirectional(0, 1.0),
                                       ),
                                       borderRadius: const BorderRadius.only(
@@ -155,9 +157,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  5.0, 0.0, 5.0, 0.0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(5.0, 0.0, 5.0, 0.0),
                                           child: FaIcon(
                                             FontAwesomeIcons.fire,
                                             color: FlutterFlowTheme.of(context)
@@ -202,7 +203,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           Color(0x35302B63)
                                         ],
                                         stops: [0.0, 0.5, 0.75],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
+                                        begin: const AlignmentDirectional(
+                                            0.0, -1.0),
                                         end: const AlignmentDirectional(0, 1.0),
                                       ),
                                       borderRadius: const BorderRadius.only(
@@ -248,14 +250,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 [];
 
                                             return GridView.builder(
-                                              padding: const EdgeInsets.fromLTRB(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
                                                 0,
                                                 0,
                                                 0,
                                                 16.0,
                                               ),
                                               gridDelegate:
-                                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                                  const SliverGridDelegateWithFixedCrossAxisCount(
                                                 crossAxisCount: 4,
                                                 crossAxisSpacing: 0.0,
                                                 mainAxisSpacing: 0.0,
@@ -269,8 +272,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 final gameItem =
                                                     game[gameIndex];
                                                 return Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(8.0, 8.0, 8.0, 8.0),
+                                                  padding:
+                                                      const EdgeInsetsDirectional
+                                                          .fromSTEB(
+                                                          8.0, 8.0, 8.0, 8.0),
                                                   child: InkWell(
                                                     splashColor:
                                                         Colors.transparent,
@@ -346,7 +351,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                           ).image,
                                                         ),
                                                         borderRadius:
-                                                            const BorderRadius.only(
+                                                            const BorderRadius
+                                                                .only(
                                                           bottomLeft:
                                                               Radius.circular(
                                                                   10.0),
@@ -403,7 +409,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           Color(0xFF013220)
                                         ],
                                         stops: const [0.0, 1.0],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
+                                        begin: const AlignmentDirectional(
+                                            0.0, -1.0),
                                         end: const AlignmentDirectional(0, 1.0),
                                       ),
                                       borderRadius: const BorderRadius.only(
@@ -417,9 +424,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  5.0, 0.0, 5.0, 0.0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(5.0, 0.0, 5.0, 0.0),
                                           child: FaIcon(
                                             FontAwesomeIcons.infinity,
                                             color: FlutterFlowTheme.of(context)
@@ -464,7 +470,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           Color(0x35302B63)
                                         ],
                                         stops: [0.0, 0.5, 0.75],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
+                                        begin: const AlignmentDirectional(
+                                            0.0, -1.0),
                                         end: const AlignmentDirectional(0, 1.0),
                                       ),
                                       borderRadius: const BorderRadius.only(
@@ -510,7 +517,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 [];
 
                                             return GridView.builder(
-                                              padding: const EdgeInsets.fromLTRB(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
                                                 0,
                                                 0,
                                                 0,
@@ -536,8 +544,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                             r'''$.type''',
                                                           ).toString(),
                                                   child: Padding(
-                                                    padding: const EdgeInsetsDirectional
-                                                        .fromSTEB(8.0, 8.0, 8.0, 8.0),
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                            8.0, 8.0, 8.0, 8.0),
                                                     child: Container(
                                                       width: 69.8,
                                                       height: 69.8,
@@ -555,7 +565,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                           ).image,
                                                         ),
                                                         borderRadius:
-                                                            const BorderRadius.only(
+                                                            const BorderRadius
+                                                                .only(
                                                           bottomLeft:
                                                               Radius.circular(
                                                                   10.0),
@@ -612,7 +623,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           Color(0xFF005BBA)
                                         ],
                                         stops: const [0.0, 1.0],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
+                                        begin: const AlignmentDirectional(
+                                            0.0, -1.0),
                                         end: const AlignmentDirectional(0, 1.0),
                                       ),
                                       borderRadius: const BorderRadius.only(
@@ -626,9 +638,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  5.0, 0.0, 5.0, 0.0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(5.0, 0.0, 5.0, 0.0),
                                           child: FaIcon(
                                             FontAwesomeIcons.gamepad,
                                             color: FlutterFlowTheme.of(context)
@@ -673,7 +684,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           Color(0x35302B63)
                                         ],
                                         stops: [0.0, 0.5, 0.75],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
+                                        begin: const AlignmentDirectional(
+                                            0.0, -1.0),
                                         end: const AlignmentDirectional(0, 1.0),
                                       ),
                                       borderRadius: const BorderRadius.only(
@@ -707,15 +719,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             width: 69.8,
                                             height: 69.8,
                                             decoration: BoxDecoration(
-                                              color: FlutterFlowTheme.of(context)
-                                                  .secondaryBackground,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
                                               image: DecorationImage(
                                                 fit: BoxFit.cover,
                                                 image: Image.asset(
                                                   'assets/images/snake-and-ladder.png',
                                                 ).image,
                                               ),
-                                              borderRadius: const BorderRadius.only(
+                                              borderRadius:
+                                                  const BorderRadius.only(
                                                 bottomLeft:
                                                     Radius.circular(10.0),
                                                 bottomRight:
@@ -737,15 +751,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             width: 69.8,
                                             height: 69.8,
                                             decoration: BoxDecoration(
-                                              color: FlutterFlowTheme.of(context)
-                                                  .secondaryBackground,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
                                               image: DecorationImage(
                                                 fit: BoxFit.cover,
                                                 image: Image.asset(
                                                   'assets/images/temple-run.png',
                                                 ).image,
                                               ),
-                                              borderRadius: const BorderRadius.only(
+                                              borderRadius:
+                                                  const BorderRadius.only(
                                                 bottomLeft:
                                                     Radius.circular(10.0),
                                                 bottomRight:
@@ -790,7 +806,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           Color(0xFF700A72)
                                         ],
                                         stops: const [0.0, 1.0],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
+                                        begin: const AlignmentDirectional(
+                                            0.0, -1.0),
                                         end: const AlignmentDirectional(0, 1.0),
                                       ),
                                       borderRadius: const BorderRadius.only(
@@ -804,9 +821,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  5.0, 0.0, 5.0, 0.0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(5.0, 0.0, 5.0, 0.0),
                                           child: FaIcon(
                                             FontAwesomeIcons.solidStar,
                                             color: FlutterFlowTheme.of(context)
@@ -851,7 +867,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           Color(0x35302B63)
                                         ],
                                         stops: [0.0, 0.5, 0.75],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
+                                        begin: const AlignmentDirectional(
+                                            0.0, -1.0),
                                         end: const AlignmentDirectional(0, 1.0),
                                       ),
                                       borderRadius: const BorderRadius.only(
@@ -881,8 +898,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         Stack(
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
+                                              padding:
+                                                  const EdgeInsetsDirectional
+                                                      .fromSTEB(
                                                       16.0, 16.0, 0.0, 0.0),
                                               child: Container(
                                                 width: 69.8,
@@ -920,11 +938,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               height: 50.0,
                                               decoration: BoxDecoration(),
                                               child: Align(
-                                                alignment: const AlignmentDirectional(
-                                                    -1.0, -1.0),
+                                                alignment:
+                                                    const AlignmentDirectional(
+                                                        -1.0, -1.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
+                                                  padding:
+                                                      const EdgeInsetsDirectional
+                                                          .fromSTEB(
                                                           10.0, 0.0, 0.0, 0.0),
                                                   child: Text(
                                                     '1 ',
@@ -967,8 +987,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         Stack(
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
+                                              padding:
+                                                  const EdgeInsetsDirectional
+                                                      .fromSTEB(
                                                       16.0, 16.0, 0.0, 0.0),
                                               child: Container(
                                                 width: 69.8,
@@ -1006,11 +1027,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               height: 50.0,
                                               decoration: BoxDecoration(),
                                               child: Align(
-                                                alignment: const AlignmentDirectional(
-                                                    -1.0, -1.0),
+                                                alignment:
+                                                    const AlignmentDirectional(
+                                                        -1.0, -1.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
+                                                  padding:
+                                                      const EdgeInsetsDirectional
+                                                          .fromSTEB(
                                                           10.0, 0.0, 0.0, 0.0),
                                                   child: Text(
                                                     '2 \n',
