@@ -65,7 +65,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ).image,
             ),
             gradient: LinearGradient(
-              colors: [FlutterFlowTheme.of(context).primary, Color(0xFF000B33)],
+              colors: [FlutterFlowTheme.of(context).primary, const Color(0xFF000B33)],
               stops: const [0.0, 1.0],
               begin: const AlignmentDirectional(0.0, -1.0),
               end: const AlignmentDirectional(0, 1.0),
@@ -78,7 +78,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 child: wrapWithModel(
                   model: _model.headerModel,
                   updateCallback: () => safeSetState(() {}),
-                  child: HeaderWidget(),
+                  child: const HeaderWidget(),
                 ),
               ),
               Padding(
@@ -126,7 +126,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 10.0, 32.0, 10.0, 0.0),
                             child: Container(
                               width: double.infinity,
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -134,17 +134,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   Container(
                                     width: 185.0,
                                     height: 28.0,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       gradient: LinearGradient(
-                                        colors: [
+                                        colors:  [
                                           Color(0xFFE0CA00),
                                           Color(0xFFD98D00)
                                         ],
-                                        stops: const [0.0, 1.0],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
+                                        stops: [0.0, 1.0],
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
                                       ),
-                                      borderRadius: const BorderRadius.only(
+                                      borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
                                         bottomRight: Radius.circular(0.0),
                                         topLeft: Radius.circular(0.0),
@@ -155,9 +155,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  5.0, 0.0, 5.0, 0.0),
+                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                              5.0, 0.0, 5.0, 0.0),
                                           child: FaIcon(
                                             FontAwesomeIcons.fire,
                                             color: FlutterFlowTheme.of(context)
@@ -194,18 +193,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ),
                                   Container(
                                     width: double.infinity,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
                                           Color(0xE1201C46),
                                           Color(0x9321254F),
                                           Color(0x35302B63)
                                         ],
-                                        stops: [0.0, 0.5, 0.75],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
+                                        stops:  [0.0, 0.5, 0.75],
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
                                       ),
-                                      borderRadius: const BorderRadius.only(
+                                      borderRadius:  BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
                                         bottomRight: Radius.circular(0.0),
                                         topLeft: Radius.circular(0.0),
@@ -254,7 +253,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 0,
                                                 16.0,
                                               ),
-                                              gridDelegate:
+                                              gridDelegate: const
                                                   SliverGridDelegateWithFixedCrossAxisCount(
                                                 crossAxisCount: 4,
                                                 crossAxisSpacing: 0.0,
@@ -270,7 +269,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                     game[gameIndex];
                                                 return Padding(
                                                   padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(8.0, 8.0, 8.0, 8.0),
+                                                      .fromSTEB(
+                                                          8.0, 8.0, 8.0, 8.0),
                                                   child: InkWell(
                                                     splashColor:
                                                         Colors.transparent,
@@ -333,9 +333,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       width: 69.8,
                                                       height: 69.8,
                                                       decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryBackground,
                                                         image: DecorationImage(
                                                           fit: BoxFit.cover,
                                                           image: Image.network(
@@ -388,7 +389,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 10.0, 32.0, 10.0, 0.0),
                             child: Container(
                               width: double.infinity,
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -396,17 +397,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   Container(
                                     width: 145.0,
                                     height: 28.0,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       gradient: LinearGradient(
-                                        colors: [
+                                        colors:  [
                                           Color(0xFF96D9C0),
                                           Color(0xFF013220)
                                         ],
-                                        stops: const [0.0, 1.0],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
+                                        stops: [0.0, 1.0],
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
                                       ),
-                                      borderRadius: const BorderRadius.only(
+                                      borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
                                         bottomRight: Radius.circular(0.0),
                                         topLeft: Radius.circular(0.0),
@@ -417,9 +418,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  5.0, 0.0, 5.0, 0.0),
+                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                              5.0, 0.0, 5.0, 0.0),
                                           child: FaIcon(
                                             FontAwesomeIcons.infinity,
                                             color: FlutterFlowTheme.of(context)
@@ -456,18 +456,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ),
                                   Container(
                                     width: double.infinity,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
-                                          Color(0xE1201C46),
+                                          Color.fromARGB(224, 43, 41, 59),
                                           Color(0x9321254F),
                                           Color(0x35302B63)
                                         ],
                                         stops: [0.0, 0.5, 0.75],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
+                                        begin:  AlignmentDirectional(0.0, -1.0),
+                                        end:  AlignmentDirectional(0, 1.0),
                                       ),
-                                      borderRadius: const BorderRadius.only(
+                                      borderRadius:  BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
                                         bottomRight: Radius.circular(0.0),
                                         topLeft: Radius.circular(0.0),
@@ -516,7 +516,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 0,
                                                 16.0,
                                               ),
-                                              gridDelegate:
+                                              gridDelegate: const
                                                   SliverGridDelegateWithFixedCrossAxisCount(
                                                 crossAxisCount: 4,
                                                 crossAxisSpacing: 0.0,
@@ -570,8 +570,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                   10.0),
                                                         ),
                                                         border: Border.all(
-                                                          color:
-                                                              Color(0xFFAECBF9),
+                                                          color: Color(0xFFAECBF9),
                                                           width: 2.0,
                                                         ),
                                                       ),
@@ -597,7 +596,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 10.0, 32.0, 10.0, 0.0),
                             child: Container(
                               width: double.infinity,
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -605,17 +604,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   Container(
                                     width: 205.0,
                                     height: 28.0,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
                                           Color(0xFF00C9FF),
                                           Color(0xFF005BBA)
                                         ],
-                                        stops: const [0.0, 1.0],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
+                                        stops: [0.0, 1.0],
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
                                       ),
-                                      borderRadius: const BorderRadius.only(
+                                      borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
                                         bottomRight: Radius.circular(0.0),
                                         topLeft: Radius.circular(0.0),
@@ -626,9 +625,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  5.0, 0.0, 5.0, 0.0),
+                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                              5.0, 0.0, 5.0, 0.0),
                                           child: FaIcon(
                                             FontAwesomeIcons.gamepad,
                                             color: FlutterFlowTheme.of(context)
@@ -665,7 +663,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ),
                                   Container(
                                     width: double.infinity,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
                                           Color(0xE1201C46),
@@ -673,13 +671,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           Color(0x35302B63)
                                         ],
                                         stops: [0.0, 0.5, 0.75],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
+                                        begin:  AlignmentDirectional(0.0, -1.0),
+                                        end:  AlignmentDirectional(0, 1.0),
                                       ),
-                                      borderRadius: const BorderRadius.only(
+                                      borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
                                         bottomRight: Radius.circular(0.0),
-                                        topLeft: Radius.circular(0.0),
+                                        topLeft:  Radius.circular(0.0),
                                         topRight: Radius.circular(20.0),
                                       ),
                                     ),
@@ -690,9 +688,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         0,
                                         16.0,
                                       ),
-                                      gridDelegate:
+                                      gridDelegate: const
                                           SliverGridDelegateWithFixedCrossAxisCount(
-                                        crossAxisCount: 4,
+                                        crossAxisCount:  4,
                                         crossAxisSpacing: 0.0,
                                         mainAxisSpacing: 0.0,
                                         childAspectRatio: 1.0,
@@ -701,14 +699,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       scrollDirection: Axis.vertical,
                                       children: [
                                         Padding(
-                                          padding: const EdgeInsetsDirectional
-                                              .fromSTEB(8.0, 8.0, 8.0, 8.0),
+                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                              8.0, 8.0, 8.0, 8.0),
                                           child: Container(
                                             width: 69.8,
                                             height: 69.8,
                                             decoration: BoxDecoration(
-                                              color: FlutterFlowTheme.of(context)
-                                                  .secondaryBackground,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
                                               image: DecorationImage(
                                                 fit: BoxFit.cover,
                                                 image: Image.asset(
@@ -731,14 +730,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           ),
                                         ),
                                         Padding(
-                                          padding: const EdgeInsetsDirectional
-                                              .fromSTEB(8.0, 8.0, 8.0, 8.0),
+                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                              8.0, 8.0, 8.0, 8.0),
                                           child: Container(
                                             width: 69.8,
                                             height: 69.8,
                                             decoration: BoxDecoration(
-                                              color: FlutterFlowTheme.of(context)
-                                                  .secondaryBackground,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
                                               image: DecorationImage(
                                                 fit: BoxFit.cover,
                                                 image: Image.asset(
@@ -775,7 +775,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 10.0, 32.0, 10.0, 0.0),
                             child: Container(
                               width: double.infinity,
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -783,17 +783,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   Container(
                                     width: 180.0,
                                     height: 28.0,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
                                           Color(0xFFB721FF),
                                           Color(0xFF700A72)
                                         ],
-                                        stops: const [0.0, 1.0],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
+                                        stops: [0.0, 1.0],
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
                                       ),
-                                      borderRadius: const BorderRadius.only(
+                                      borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
                                         bottomRight: Radius.circular(0.0),
                                         topLeft: Radius.circular(0.0),
@@ -804,9 +804,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  5.0, 0.0, 5.0, 0.0),
+                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                              5.0, 0.0, 5.0, 0.0),
                                           child: FaIcon(
                                             FontAwesomeIcons.solidStar,
                                             color: FlutterFlowTheme.of(context)
@@ -843,7 +842,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ),
                                   Container(
                                     width: double.infinity,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
                                           Color(0xE1201C46),
@@ -851,10 +850,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           Color(0x35302B63)
                                         ],
                                         stops: [0.0, 0.5, 0.75],
-                                        begin: const AlignmentDirectional(0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
                                       ),
-                                      borderRadius: const BorderRadius.only(
+                                      borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
                                         bottomRight: Radius.circular(0.0),
                                         topLeft: Radius.circular(0.0),
@@ -869,7 +868,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         16.0,
                                       ),
                                       gridDelegate:
-                                          SliverGridDelegateWithFixedCrossAxisCount(
+                                          const SliverGridDelegateWithFixedCrossAxisCount(
                                         crossAxisCount: 4,
                                         crossAxisSpacing: 0.0,
                                         mainAxisSpacing: 0.0,
@@ -879,15 +878,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       scrollDirection: Axis.vertical,
                                       children: [
                                         Stack(
-                                          children: [
+                                          children:  [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      16.0, 16.0, 0.0, 0.0),
+                                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 16.0, 0.0, 0.0),
                                               child: Container(
                                                 width: 69.8,
                                                 height: 69.8,
-                                                decoration: BoxDecoration(
+                                                decoration:  BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryBackground,
@@ -897,8 +895,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       'assets/images/poker.png',
                                                     ).image,
                                                   ),
-                                                  borderRadius:
-                                                      const BorderRadius.only(
+                                                  borderRadius: const
+                                                      BorderRadius.only(
                                                     bottomLeft:
                                                         Radius.circular(10.0),
                                                     bottomRight:
@@ -918,13 +916,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             Container(
                                               width: 50.0,
                                               height: 50.0,
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: Align(
                                                 alignment: const AlignmentDirectional(
                                                     -1.0, -1.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
+                                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                                           10.0, 0.0, 0.0, 0.0),
                                                   child: Text(
                                                     '1 ',
@@ -948,7 +945,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                           FontWeight.bold,
                                                       fontStyle:
                                                           FontStyle.italic,
-                                                      shadows: [
+                                                      shadows: const [
                                                         Shadow(
                                                           color:
                                                               Color(0x8BEAB308),
@@ -983,8 +980,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       'assets/images/ludo.png',
                                                     ).image,
                                                   ),
-                                                  borderRadius:
-                                                      const BorderRadius.only(
+                                                  borderRadius: const
+                                                      BorderRadius.only(
                                                     bottomLeft:
                                                         Radius.circular(10.0),
                                                     bottomRight:
@@ -1004,7 +1001,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             Container(
                                               width: 50.0,
                                               height: 50.0,
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: Align(
                                                 alignment: const AlignmentDirectional(
                                                     -1.0, -1.0),
@@ -1034,7 +1031,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                           FontWeight.bold,
                                                       fontStyle:
                                                           FontStyle.italic,
-                                                      shadows: [
+                                                      shadows: const [
                                                         Shadow(
                                                           color:
                                                               Color(0x76EAB308),
@@ -1068,7 +1065,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 child: wrapWithModel(
                   model: _model.navbarModel,
                   updateCallback: () => safeSetState(() {}),
-                  child: NavbarWidget(
+                  child: const NavbarWidget(
                     pageNav: 'HomePage',
                   ),
                 ),
