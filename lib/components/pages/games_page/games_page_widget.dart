@@ -492,12 +492,12 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
                             child: Container(
                               height: 30,
                               decoration: BoxDecoration(
-                                color: Color(0x7EEABBBB),
+                                color: const Color(0x7EEABBBB),
                                 borderRadius: BorderRadius.circular(20),
                               ),
-                              alignment: AlignmentDirectional(0, 0),
+                              alignment: const AlignmentDirectional(0, 0),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     10, 0, 10, 0),
                                 child: Text(
                                   'Games found',
@@ -533,7 +533,8 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
                     ),
                     Expanded(
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(10, 20, 10, 40),
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            10, 20, 10, 40),
                         child: FutureBuilder<ApiCallResponse>(
                           future: (_model.apiRequestCompleter ??=
                                   Completer<ApiCallResponse>()
@@ -619,7 +620,7 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
                                                   padding:
                                                       MediaQuery.viewInsetsOf(
                                                           context),
-                                                  child: Container(
+                                                  child: SizedBox(
                                                     height: double.infinity,
                                                     child: GamePageWidget(
                                                       gameId: getJsonField(
@@ -644,11 +645,11 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
                                           width: 100,
                                           height: 130,
                                           decoration: BoxDecoration(
-                                            color: Color(0x672A2A2A),
+                                            color: const Color(0x672A2A2A),
                                             borderRadius:
                                                 BorderRadius.circular(10),
                                             border: Border.all(
-                                              color: Color(0xFF00CFFF),
+                                              color: const Color(0xFF00CFFF),
                                             ),
                                           ),
                                           child: Column(
@@ -683,9 +684,9 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  0, 0, 0, 5),
+                                                              0, 0, 0, 5),
                                                       child: Text(
                                                         getJsonField(
                                                           eachGameItem,
@@ -747,7 +748,7 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
               wrapWithModel(
                 model: _model.navbarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: NavbarWidget(
+                child: const NavbarWidget(
                   pageNav: 'GamesPage',
                 ),
               ),
