@@ -6,12 +6,12 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pop_ups/game_page/game_page_widget.dart';
 import '/pop_ups/header/header_widget.dart';
 import '/pop_ups/navbar/navbar_widget.dart';
-import 'dart:math';
-import 'dart:ui';
+//import 'dart:math';
+//import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
+//import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -79,7 +79,7 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFF000B33),
+        backgroundColor: const Color(0xFF000B33),
         body: Container(
           width: double.infinity,
           height: double.infinity,
@@ -91,10 +91,13 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
               ).image,
             ),
             gradient: LinearGradient(
-              colors: [FlutterFlowTheme.of(context).primary, Color(0xFF000B33)],
-              stops: [0, 1],
-              begin: AlignmentDirectional(0, -1),
-              end: AlignmentDirectional(0, 1),
+              colors: [
+                FlutterFlowTheme.of(context).primary,
+                const Color(0xFF000B33)
+              ],
+              stops: const [0, 1],
+              begin: const AlignmentDirectional(0, -1),
+              end: const AlignmentDirectional(0, 1),
             ),
           ),
           child: Stack(
@@ -102,30 +105,31 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
               wrapWithModel(
                 model: _model.headerModel,
                 updateCallback: () => safeSetState(() {}),
-                child: HeaderWidget(),
+                child: const HeaderWidget(),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 80, 0, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 80, 0, 0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
                       child: Container(
                         width: double.infinity,
                         height: 50,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(
-                            color: Color(0x85FFFFFF),
+                            color: const Color(0x85FFFFFF),
                           ),
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  5, 0, 5, 0),
                               child: Icon(
                                 Icons.search_sharp,
                                 color: FlutterFlowTheme.of(context)
@@ -135,9 +139,9 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
                             ),
                             Expanded(
                               child: Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
-                                child: Container(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0, 0, 10, 0),
+                                child: SizedBox(
                                   width: 200,
                                   child: TextFormField(
                                     controller: _model.textController,
@@ -198,14 +202,14 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
                                                     .fontStyle,
                                           ),
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 1,
                                         ),
                                         borderRadius: BorderRadius.circular(8),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 1,
                                         ),
@@ -264,13 +268,14 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
                               ),
                             ),
                           ]
-                              .divide(SizedBox(width: 0))
-                              .around(SizedBox(width: 0)),
+                              .divide(const SizedBox(width: 0))
+                              .around(const SizedBox(width: 0)),
                         ),
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(10, 10, 0, 0),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(10, 10, 0, 0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -282,13 +287,13 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
                             text: 'All Games',
                             options: FFButtonOptions(
                               height: 35,
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-                              iconPadding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  16, 0, 16, 0),
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  0, 0, 0, 0),
                               color: _model.selectedCategory == 'All Games'
-                                  ? Color(0xFFFFD600)
-                                  : Color(0xFF191A47),
+                                  ? const Color(0xFFFFD600)
+                                  : const Color(0xFF191A47),
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
@@ -327,13 +332,13 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
                             text: 'Card',
                             options: FFButtonOptions(
                               height: 35,
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-                              iconPadding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  16, 0, 16, 0),
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  0, 0, 0, 0),
                               color: _model.selectedCategory == 'Card'
-                                  ? Color(0xFFFFD600)
-                                  : Color(0xFF191A47),
+                                  ? const Color(0xFFFFD600)
+                                  : const Color(0xFF191A47),
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
@@ -371,13 +376,13 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
                             text: 'Board',
                             options: FFButtonOptions(
                               height: 35,
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-                              iconPadding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  16, 0, 16, 0),
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  0, 0, 0, 0),
                               color: _model.selectedCategory == 'Board'
-                                  ? Color(0xFFFFD600)
-                                  : Color(0xFF191A47),
+                                  ? const Color(0xFFFFD600)
+                                  : const Color(0xFF191A47),
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
@@ -415,13 +420,13 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
                             text: 'Action',
                             options: FFButtonOptions(
                               height: 35,
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-                              iconPadding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  16, 0, 16, 0),
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  0, 0, 0, 0),
                               color: _model.selectedCategory == 'Action'
-                                  ? Color(0xFFFFD600)
-                                  : Color(0xFF191A47),
+                                  ? const Color(0xFFFFD600)
+                                  : const Color(0xFF191A47),
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
@@ -451,11 +456,12 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
                               borderRadius: BorderRadius.circular(10),
                             ),
                           ),
-                        ].divide(SizedBox(width: 2)),
+                        ].divide(const SizedBox(width: 2)),
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 0),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(10, 10, 10, 0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -482,7 +488,7 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
                                 ),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(0, 0),
+                            alignment: const AlignmentDirectional(0, 0),
                             child: Container(
                               height: 30,
                               decoration: BoxDecoration(

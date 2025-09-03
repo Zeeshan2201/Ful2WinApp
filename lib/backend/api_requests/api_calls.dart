@@ -1,13 +1,14 @@
-import 'dart:convert';
-import 'dart:typed_data';
-import 'package:flutter/foundation.dart';
+// import 'dart:convert';
+// import 'dart:typed_data';
+// import 'package:flutter/foundation.dart';
+// import 'package:flutter/material.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
 
-const _kPrivateApiFunctionName = 'ffPrivateApiCall';
+//const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
 /// Start FulWin Group Code
 
@@ -37,7 +38,7 @@ class MyReferrals {
       apiUrl: '${baseUrl}referrals/my-referrals',
       callType: ApiCallType.GET,
       headers: {
-        'Authorization': 'Bearer ${token}',
+        'Authorization': 'Bearer $token',
       },
       params: {},
       bodyType: BodyType.JSON,
@@ -51,7 +52,7 @@ class MyReferrals {
   }
 }
 
-class referalCode {
+class ReferralCode {
   Future<ApiCallResponse> call({
     String? token = '',
   }) async {
@@ -61,10 +62,10 @@ class referalCode {
 
     return ApiManager.instance.makeApiCall(
       callName: 'referralCode',
-      apiUrl: '${baseUrl}/referrals/my-code',
+      apiUrl: '$baseUrl/referrals/my-code',
       callType: ApiCallType.GET,
       headers: {
-        'Authorization': 'Bearer ${token}',
+        'Authorization': 'Bearer $token',
       },
       params: {},
       bodyType: BodyType.JSON,
@@ -89,10 +90,10 @@ class StatusCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'status',
-      apiUrl: '${baseUrl}tournaments/${tournamentId}/status',
+      apiUrl: '${baseUrl}tournaments/$tournamentId/status',
       callType: ApiCallType.PUT,
       headers: {
-        'Authorization': 'Bearer ${token}',
+        'Authorization': 'Bearer $token',
       },
       params: {},
       bodyType: BodyType.JSON,
@@ -116,11 +117,11 @@ class ChallengesCall {
     final baseUrl = FulWinGroup.getBaseUrl(
       token: token,
     );
-    final FFApiRequestBody = '''
+    final apiRequestBody = '''
 {
-  "gameId": "${gameId}",
-  "challengedUserId": "${challengedUserId}",
-  "message": "${message}"
+  "gameId": "$gameId",
+  "challengedUserId": "$challengedUserId",
+  "message": "$message"
 }''';
 
     return ApiManager.instance.makeApiCall(
@@ -128,10 +129,10 @@ class ChallengesCall {
       apiUrl: '${baseUrl}challenges',
       callType: ApiCallType.GET,
       headers: {
-        'Authorization': 'Bearer ${token}',
+        'Authorization': 'Bearer $token',
       },
       params: {},
-      body: FFApiRequestBody,
+      body: apiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
@@ -153,20 +154,20 @@ class TournamentRegisterCall {
       token: token,
     );
 
-    final ApiRequestBody = '''
+    final apiRequestBody = '''
 {
-  "playerId": "${userId}"
+  "playerId": "$userId"
 }''';
 
     return ApiManager.instance.makeApiCall(
       callName: 'tournamentRegister',
-      apiUrl: '${baseUrl}tournaments/${tournamentId}/register',
+      apiUrl: '${baseUrl}tournaments/$tournamentId/register',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${token}',
+        'Authorization': 'Bearer $token',
       },
       params: {},
-      body: ApiRequestBody,
+      body: apiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
@@ -187,16 +188,21 @@ class LikeAndUnlikeCall {
     final baseUrl = FulWinGroup.getBaseUrl(
       token: token,
     );
-    final apiRequestBody = {'postId': postId};
+    final apiRequestBody = '''
+{
+  "postId": "$postId",
+
+}''';
 
     return ApiManager.instance.makeApiCall(
       callName: 'likeAndUnlike',
-      apiUrl: '${baseUrl}posts/${isLike}',
+      apiUrl: '${baseUrl}posts/$isLike',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${token}',
+        'Authorization': 'Bearer $token',
       },
       params: {},
+      body: apiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
@@ -219,8 +225,8 @@ class CreatePostCall {
     );
     final apiRequestBody = '''
 {
-  "content": "${content}",
-  "image": "${image}"
+  "content": "$content",
+  "image": "$image"
 }''';
 
     return ApiManager.instance.makeApiCall(
@@ -228,7 +234,7 @@ class CreatePostCall {
       apiUrl: '${baseUrl}posts/',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer ${token}',
+        'Authorization': 'Bearer $token',
       },
       params: {
         'image': image,
@@ -254,7 +260,7 @@ class LogInCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "phoneNumber": ${phoneNumber},
+  "phoneNumber": $phoneNumber,
   "password": "${escapeStringForJson(password)}"
 }''';
     return ApiManager.instance.makeApiCall(
@@ -282,7 +288,7 @@ class RegisterCall {
     String? password = '',
     String? email = '',
   }) async {
-    final ffApiRequestBody = '''
+    const ffApiRequestBody = '''
 {
 "fullName":"sanskruti",
 "phoneNumber":9022975788,
@@ -342,7 +348,7 @@ class LogOutCall {
       apiUrl: 'http://api.fulboost.fun/api/users/logout',
       callType: ApiCallType.GET,
       headers: {
-        'Authorization': 'Bearer${token}',
+        'Authorization': 'Bearer$token',
       },
       params: {},
       returnBody: true,
@@ -380,10 +386,10 @@ class ProfileCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'profile',
-      apiUrl: 'https://api.fulboost.fun/api/users/profile/${userId}',
+      apiUrl: 'https://api.fulboost.fun/api/users/profile/$userId',
       callType: ApiCallType.GET,
       headers: {
-        'Authorization': 'Bearer ${token}',
+        'Authorization': 'Bearer $token',
       },
       params: {},
       returnBody: true,
@@ -403,10 +409,10 @@ class ProfilePictureCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'profilePicture',
-      apiUrl: 'https://api.fulboost.fun/api/users/profile-picture/${userId}',
+      apiUrl: 'https://api.fulboost.fun/api/users/profile-picture/$userId',
       callType: ApiCallType.GET,
       headers: {
-        'Authorization': 'Bearer ${token}',
+        'Authorization': 'Bearer $token',
       },
       params: {},
       returnBody: true,
@@ -428,7 +434,7 @@ class PostsCall {
       apiUrl: 'https://api.fulboost.fun/api/posts/',
       callType: ApiCallType.GET,
       headers: {
-        'Authorization': 'Bearer ${token}',
+        'Authorization': 'Bearer $token',
       },
       params: {},
       returnBody: true,
@@ -474,7 +480,7 @@ class AllUsersCall {
       apiUrl: 'https://api.fulboost.fun/api/users/all',
       callType: ApiCallType.GET,
       headers: {
-        'Authorization': 'Bearer ${token}',
+        'Authorization': 'Bearer $token',
       },
       params: {},
       returnBody: true,
@@ -499,7 +505,7 @@ class GameCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'game',
-      apiUrl: 'https://api.fulboost.fun/api/games/${gameId}',
+      apiUrl: 'https://api.fulboost.fun/api/games/$gameId',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
@@ -525,7 +531,7 @@ class TournamentBygameCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'TournamentBygame',
-      apiUrl: 'https://api.fulboost.fun/api/tournaments/game/${gameId}',
+      apiUrl: 'https://api.fulboost.fun/api/tournaments/game/$gameId',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
@@ -551,7 +557,7 @@ class SubmitScoreCall {
 {
   "userId": "${escapeStringForJson(userId)}",
   "userName": "${escapeStringForJson(userName)}",
-  "scaore": ${score},
+  "score": $score,
   "roomId": "${escapeStringForJson(roomId)}",
   "gameName": "${escapeStringForJson(gameName)}"
 }''';
@@ -585,7 +591,7 @@ class UpdateProfileCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'updateProfile',
-      apiUrl: 'https://api.fulboost.fun/api/users/profile/${userId}',
+      apiUrl: 'https://api.fulboost.fun/api/users/profile/$userId',
       callType: ApiCallType.PUT,
       headers: {},
       params: {},
@@ -625,7 +631,7 @@ class CommentCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'comment',
-      apiUrl: 'https://api.fulboost.fun/api/${postId}/comment',
+      apiUrl: 'https://api.fulboost.fun/api/$postId/comment',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -647,10 +653,10 @@ class NotificationsCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'notifications',
-      apiUrl: 'https://api.fulboost.fun/api/notifications/all/${userId}',
+      apiUrl: 'https://api.fulboost.fun/api/notifications/all/$userId',
       callType: ApiCallType.GET,
       headers: {
-        'Authorization': 'Bearer ${token}',
+        'Authorization': 'Bearer $token',
       },
       params: {},
       returnBody: true,
@@ -679,33 +685,33 @@ class ApiPagingParams {
       'PagingParams(nextPageNumber: $nextPageNumber, numItems: $numItems, lastResponse: $lastResponse,)';
 }
 
-String _toEncodable(dynamic item) {
-  return item;
-}
+// String _toEncodable(dynamic item) {
+//   return item;
+// }
 
-String _serializeList(List? list) {
-  list ??= <String>[];
-  try {
-    return json.encode(list, toEncodable: _toEncodable);
-  } catch (_) {
-    if (kDebugMode) {
-      print("List serialization failed. Returning empty list.");
-    }
-    return '[]';
-  }
-}
+// String _serializeList(List? list) {
+//   list ??= <String>[];
+//   try {
+//     return json.encode(list, toEncodable: _toEncodable);
+//   } catch (_) {
+//     if (kDebugMode) {
+//       print("List serialization failed. Returning empty list.");
+//     }
+//     return '[]';
+//   }
+// }
 
-String _serializeJson(dynamic jsonVar, [bool isList = false]) {
-  jsonVar ??= (isList ? [] : {});
-  try {
-    return json.encode(jsonVar, toEncodable: _toEncodable);
-  } catch (_) {
-    if (kDebugMode) {
-      print("Json serialization failed. Returning empty json.");
-    }
-    return isList ? '[]' : '{}';
-  }
-}
+// String _serializeJson(dynamic jsonVar, [bool isList = false]) {
+//   jsonVar ??= (isList ? [] : {});
+//   try {
+//     return json.encode(jsonVar, toEncodable: _toEncodable);
+//   } catch (_) {
+//     if (kDebugMode) {
+//       print("Json serialization failed. Returning empty json.");
+//     }
+//     return isList ? '[]' : '{}';
+//   }
+// }
 
 String? escapeStringForJson(String? input) {
   if (input == null) {

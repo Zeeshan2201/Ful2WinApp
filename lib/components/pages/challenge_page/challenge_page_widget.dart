@@ -7,12 +7,12 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pop_ups/header/header_widget.dart';
 import '/pop_ups/navbar/navbar_widget.dart';
-import 'dart:math';
-import 'dart:ui';
+//import 'dart:math';
+//import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
+//import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -67,10 +67,10 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
         loop: true,
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
-          ShimmerEffect(
+          const ShimmerEffect(
             curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 600.0.ms,
+            delay: Duration(milliseconds: 0),
+            duration: Duration(milliseconds: 600),
             color: Color(0x80FFFFFF),
             angle: 0.524,
           ),
