@@ -1,12 +1,18 @@
 import '/backend/api_requests/api_calls.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:math';
 import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:provider/provider.dart';
+
 import 'accountpage_model.dart';
 export 'accountpage_model.dart';
 
@@ -20,10 +26,13 @@ class AccountpageWidget extends StatefulWidget {
   State<AccountpageWidget> createState() => _AccountpageWidgetState();
 }
 
-class _AccountpageWidgetState extends State<AccountpageWidget> {
+class _AccountpageWidgetState extends State<AccountpageWidget>
+    with TickerProviderStateMixin {
   late AccountpageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -43,6 +52,33 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
     _model.textFieldFocusNode6 ??= FocusNode();
 
     _model.textFieldFocusNode7 ??= FocusNode();
+
+    animationsMap.addAll({
+      'stackOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeIn,
+            delay: 180.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'buttonOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ShimmerEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            color: Color(0x80FFFFFF),
+            angle: 0.524,
+          ),
+        ],
+      ),
+    });
   }
 
   @override
@@ -76,8 +112,8 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                 if (!snapshot.hasData) {
                   return Center(
                     child: SizedBox(
-                      width: 50.0,
-                      height: 50.0,
+                      width: 50,
+                      height: 50,
                       child: CircularProgressIndicator(
                         valueColor: AlwaysStoppedAnimation<Color>(
                           FlutterFlowTheme.of(context).primary,
@@ -103,9 +139,9 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                         FlutterFlowTheme.of(context).primary,
                         Color(0xFF000B33)
                       ],
-                      stops: [0.0, 1.0],
-                      begin: AlignmentDirectional(0.17, -1.0),
-                      end: AlignmentDirectional(-0.17, 1.0),
+                      stops: [0, 1],
+                      begin: AlignmentDirectional(0.17, -1),
+                      end: AlignmentDirectional(-0.17, 1),
                     ),
                   ),
                   child: SingleChildScrollView(
@@ -113,23 +149,62 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              15.0, 0.0, 0.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 35.0, 0.0, 0.0),
-                                child: Text(
-                                  'MY Profile',
+                        Align(
+                          alignment: AlignmentDirectional(1, -1),
+                          child: Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(15, 35, 15, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.safePop();
+                                    _model.soundPlayer1 ??= AudioPlayer();
+                                    if (_model.soundPlayer1!.playing) {
+                                      await _model.soundPlayer1!.stop();
+                                    }
+                                    _model.soundPlayer1!.setVolume(1);
+                                    _model.soundPlayer1!
+                                        .setAsset('assets/audios/click.mp3')
+                                        .then(
+                                            (_) => _model.soundPlayer1!.play());
+                                  },
+                                  child: Container(
+                                    width: 40,
+                                    height: 35,
+                                    decoration: BoxDecoration(
+                                      color: Color(0x33FFFFFF),
+                                      borderRadius: BorderRadius.circular(40),
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Icon(
+                                          Icons.chevron_left,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          size: 26,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  'My Profile',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        font: GoogleFonts.poppins(
-                                          fontWeight: FontWeight.bold,
+                                        font: GoogleFonts.inter(
+                                          fontWeight: FontWeight.w600,
                                           fontStyle:
                                               FlutterFlowTheme.of(context)
                                                   .bodyMedium
@@ -137,31 +212,47 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                         ),
                                         color: FlutterFlowTheme.of(context)
                                             .primaryBackground,
-                                        fontSize: 20.0,
+                                        fontSize: 24,
                                         letterSpacing: 0.0,
-                                        fontWeight: FontWeight.bold,
+                                        fontWeight: FontWeight.w600,
                                         fontStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .fontStyle,
                                       ),
                                 ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 35.0, 15.0, 0.0),
-                                child: FFButtonWidget(
+                                FFButtonWidget(
                                   onPressed: () async {
                                     context.pushNamed(
-                                        EditAccountpageWidget.routeName);
+                                      EditAccountpageWidget.routeName,
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.fade,
+                                          duration: Duration(milliseconds: 0),
+                                        ),
+                                      },
+                                    );
+
+                                    _model.soundPlayer2 ??= AudioPlayer();
+                                    if (_model.soundPlayer2!.playing) {
+                                      await _model.soundPlayer2!.stop();
+                                    }
+                                    _model.soundPlayer2!.setVolume(1);
+                                    _model.soundPlayer2!
+                                        .setAsset('assets/audios/click.mp3')
+                                        .then(
+                                            (_) => _model.soundPlayer2!.play());
                                   },
-                                  text: 'Edit Profile',
+                                  text: 'Edit Option',
                                   options: FFButtonOptions(
-                                    height: 40.0,
+                                    width: 110,
+                                    height: 40,
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 0.0, 16.0, 0.0),
+                                        16, 0, 16, 0),
                                     iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: Color(0xFFF4CD2A),
+                                        0, 0, 0, 0),
+                                    color: Color(0xFFCEA207),
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -175,7 +266,8 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                     .titleSmall
                                                     .fontStyle,
                                           ),
-                                          color: Color(0xFF000B33),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
                                           letterSpacing: 0.0,
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
@@ -186,37 +278,41 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                   .titleSmall
                                                   .fontStyle,
                                         ),
-                                    elevation: 0.0,
-                                    borderRadius: BorderRadius.circular(10.0),
+                                    elevation: 0,
+                                    borderRadius: BorderRadius.circular(8),
                                   ),
-                                ),
-                              ),
-                            ],
+                                ).animateOnPageLoad(animationsMap[
+                                    'buttonOnPageLoadAnimation']!),
+                              ],
+                            ),
                           ),
                         ),
                         Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             ClipRRect(
-                              borderRadius: BorderRadius.circular(0.0),
+                              borderRadius: BorderRadius.circular(0),
                               child: BackdropFilter(
                                 filter: ImageFilter.blur(
-                                  sigmaX: 5.0,
-                                  sigmaY: 2.0,
+                                  sigmaX: 5,
+                                  sigmaY: 2,
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 20.0, 10.0, 0.0),
+                                      10, 20, 10, 0),
                                   child: Container(
                                     width: double.infinity,
-                                    height: 680.0,
+                                    height: 680,
                                     decoration: BoxDecoration(
-                                      color: Color(0x33FFFFFF),
+                                      color: Color(0xBB08162C),
                                       borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(25.0),
-                                        bottomRight: Radius.circular(25.0),
-                                        topLeft: Radius.circular(25.0),
-                                        topRight: Radius.circular(25.0),
+                                        bottomLeft: Radius.circular(25),
+                                        bottomRight: Radius.circular(25),
+                                        topLeft: Radius.circular(25),
+                                        topRight: Radius.circular(25),
+                                      ),
+                                      border: Border.all(
+                                        color: Color(0xFF00CFFF),
                                       ),
                                     ),
                                     child: SingleChildScrollView(
@@ -227,11 +323,10 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                         children: [
                                           Align(
                                             alignment:
-                                                AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1, 0),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      22.0, 15.0, 0.0, 0.0),
+                                                  .fromSTEB(22, 15, 0, 0),
                                               child: Text(
                                                 'Username',
                                                 style: FlutterFlowTheme.of(
@@ -250,7 +345,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .primaryBackground,
-                                                      fontSize: 16.0,
+                                                      fontSize: 16,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w600,
@@ -269,25 +364,23 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                     350.0
                                                 ? 260.0
                                                 : 330.0,
-                                            height: 35.0,
+                                            height: 35,
                                             decoration: BoxDecoration(
                                               color: Color(0x33FFFFFF),
                                               borderRadius: BorderRadius.only(
-                                                bottomLeft:
-                                                    Radius.circular(10.0),
+                                                bottomLeft: Radius.circular(10),
                                                 bottomRight:
-                                                    Radius.circular(10.0),
-                                                topLeft: Radius.circular(10.0),
-                                                topRight: Radius.circular(10.0),
+                                                    Radius.circular(10),
+                                                topLeft: Radius.circular(10),
+                                                topRight: Radius.circular(10),
                                               ),
                                             ),
                                             child: Align(
-                                              alignment: AlignmentDirectional(
-                                                  -1.0, 0.0),
+                                              alignment:
+                                                  AlignmentDirectional(-1, 0),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        25.0, 0.0, 0.0, 0.0),
+                                                    .fromSTEB(25, 0, 0, 0),
                                                 child: Text(
                                                   valueOrDefault<String>(
                                                     getJsonField(
@@ -336,20 +429,20 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 10.0, 0.0, 0.0),
+                                                    0, 10, 0, 0),
                                             child: Container(
-                                              width: 160.0,
-                                              height: 160.0,
+                                              width: 160,
+                                              height: 160,
                                               decoration: BoxDecoration(
                                                 shape: BoxShape.circle,
                                                 border: Border.all(
                                                   color: Color(0xFFF4CD2A),
-                                                  width: 4.0,
+                                                  width: 4,
                                                 ),
                                               ),
                                               child: Container(
-                                                width: 150.0,
-                                                height: 150.0,
+                                                width: 150,
+                                                height: 150,
                                                 clipBehavior: Clip.antiAlias,
                                                 decoration: BoxDecoration(
                                                   shape: BoxShape.circle,
@@ -370,11 +463,10 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                           ),
                                           Align(
                                             alignment:
-                                                AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1, 0),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      30.0, 20.0, 0.0, 0.0),
+                                                  .fromSTEB(30, 20, 0, 0),
                                               child: Text(
                                                 'Full Name',
                                                 style: FlutterFlowTheme.of(
@@ -391,7 +483,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                                 .fontStyle,
                                                       ),
                                                       color: Color(0xFFD1D5DB),
-                                                      fontSize: 16.0,
+                                                      fontSize: 16,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w600,
@@ -406,10 +498,10 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                           ),
                                           Align(
                                             alignment:
-                                                AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0, 0),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 5.0, 0.0, 0.0),
+                                                  .fromSTEB(0, 5, 0, 0),
                                               child: Container(
                                                 width:
                                                     MediaQuery.sizeOf(context)
@@ -451,7 +543,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryBackground,
-                                                          fontSize: 18.0,
+                                                          fontSize: 18,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
@@ -499,22 +591,22 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                       borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     focusedBorder:
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     errorBorder:
                                                         OutlineInputBorder(
@@ -523,11 +615,11 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .error,
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     focusedErrorBorder:
                                                         OutlineInputBorder(
@@ -536,11 +628,11 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .error,
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     filled: true,
                                                     fillColor:
@@ -562,7 +654,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .primaryBackground,
-                                                        fontSize: 18.0,
+                                                        fontSize: 18,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w500,
@@ -587,11 +679,10 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                           ),
                                           Align(
                                             alignment:
-                                                AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1, 0),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      30.0, 20.0, 0.0, 0.0),
+                                                  .fromSTEB(30, 20, 0, 0),
                                               child: Text(
                                                 'Phone Number',
                                                 style: FlutterFlowTheme.of(
@@ -608,7 +699,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                                 .fontStyle,
                                                       ),
                                                       color: Color(0xFFD1D5DB),
-                                                      fontSize: 16.0,
+                                                      fontSize: 16,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w600,
@@ -623,13 +714,12 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                           ),
                                           Align(
                                             alignment:
-                                                AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1, 0),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      20.0, 5.0, 0.0, 0.0),
+                                                  .fromSTEB(20, 5, 0, 0),
                                               child: Container(
-                                                width: 200.0,
+                                                width: 200,
                                                 child: TextFormField(
                                                   controller:
                                                       _model.textController2 ??=
@@ -664,7 +754,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryBackground,
-                                                          fontSize: 18.0,
+                                                          fontSize: 18,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
@@ -709,22 +799,22 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                       borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     focusedBorder:
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     errorBorder:
                                                         OutlineInputBorder(
@@ -733,11 +823,11 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .error,
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     focusedErrorBorder:
                                                         OutlineInputBorder(
@@ -746,11 +836,11 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .error,
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     filled: true,
                                                     fillColor:
@@ -772,7 +862,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .primaryBackground,
-                                                        fontSize: 18.0,
+                                                        fontSize: 18,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w500,
@@ -797,11 +887,10 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                           ),
                                           Align(
                                             alignment:
-                                                AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1, 0),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      30.0, 20.0, 0.0, 0.0),
+                                                  .fromSTEB(30, 20, 0, 0),
                                               child: Text(
                                                 'Email',
                                                 style: FlutterFlowTheme.of(
@@ -818,7 +907,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                                 .fontStyle,
                                                       ),
                                                       color: Color(0xFFD1D5DB),
-                                                      fontSize: 16.0,
+                                                      fontSize: 16,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w600,
@@ -833,11 +922,10 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                           ),
                                           Align(
                                             alignment:
-                                                AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1, 0),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      20.0, 5.0, 0.0, 0.0),
+                                                  .fromSTEB(20, 5, 0, 0),
                                               child: Container(
                                                 width:
                                                     MediaQuery.sizeOf(context)
@@ -879,7 +967,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryBackground,
-                                                          fontSize: 18.0,
+                                                          fontSize: 18,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
@@ -924,22 +1012,22 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                       borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     focusedBorder:
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     errorBorder:
                                                         OutlineInputBorder(
@@ -948,11 +1036,11 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .error,
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     focusedErrorBorder:
                                                         OutlineInputBorder(
@@ -961,11 +1049,11 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .error,
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     filled: true,
                                                     fillColor:
@@ -987,7 +1075,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .primaryBackground,
-                                                        fontSize: 18.0,
+                                                        fontSize: 18,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w500,
@@ -1012,11 +1100,10 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                           ),
                                           Align(
                                             alignment:
-                                                AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1, 0),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      30.0, 20.0, 0.0, 0.0),
+                                                  .fromSTEB(30, 20, 0, 0),
                                               child: Text(
                                                 'Date of Birth',
                                                 style: FlutterFlowTheme.of(
@@ -1033,7 +1120,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                                 .fontStyle,
                                                       ),
                                                       color: Color(0xFFD1D5DB),
-                                                      fontSize: 16.0,
+                                                      fontSize: 16,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w600,
@@ -1048,11 +1135,10 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                           ),
                                           Align(
                                             alignment:
-                                                AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1, 0),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      20.0, 5.0, 0.0, 0.0),
+                                                  .fromSTEB(20, 5, 0, 0),
                                               child: Container(
                                                 width:
                                                     MediaQuery.sizeOf(context)
@@ -1098,7 +1184,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryBackground,
-                                                          fontSize: 18.0,
+                                                          fontSize: 18,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
@@ -1143,22 +1229,22 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                       borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     focusedBorder:
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     errorBorder:
                                                         OutlineInputBorder(
@@ -1167,11 +1253,11 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .error,
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     focusedErrorBorder:
                                                         OutlineInputBorder(
@@ -1180,11 +1266,11 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .error,
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     filled: true,
                                                     fillColor:
@@ -1206,7 +1292,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .primaryBackground,
-                                                        fontSize: 18.0,
+                                                        fontSize: 18,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w500,
@@ -1231,11 +1317,10 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                           ),
                                           Align(
                                             alignment:
-                                                AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1, 0),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      30.0, 20.0, 0.0, 0.0),
+                                                  .fromSTEB(30, 20, 0, 0),
                                               child: Text(
                                                 'Gender',
                                                 style: FlutterFlowTheme.of(
@@ -1252,7 +1337,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                                 .fontStyle,
                                                       ),
                                                       color: Color(0xFFD1D5DB),
-                                                      fontSize: 16.0,
+                                                      fontSize: 16,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w600,
@@ -1267,13 +1352,12 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                           ),
                                           Align(
                                             alignment:
-                                                AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1, 0),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      20.0, 5.0, 0.0, 0.0),
+                                                  .fromSTEB(20, 5, 0, 0),
                                               child: Container(
-                                                width: 200.0,
+                                                width: 200,
                                                 child: TextFormField(
                                                   controller:
                                                       _model.textController5 ??=
@@ -1312,7 +1396,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryBackground,
-                                                          fontSize: 18.0,
+                                                          fontSize: 18,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
@@ -1357,22 +1441,22 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                       borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     focusedBorder:
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     errorBorder:
                                                         OutlineInputBorder(
@@ -1381,11 +1465,11 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .error,
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     focusedErrorBorder:
                                                         OutlineInputBorder(
@@ -1394,11 +1478,11 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .error,
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     filled: true,
                                                     fillColor:
@@ -1420,7 +1504,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .primaryBackground,
-                                                        fontSize: 18.0,
+                                                        fontSize: 18,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w500,
@@ -1445,11 +1529,10 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                           ),
                                           Align(
                                             alignment:
-                                                AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1, 0),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      30.0, 20.0, 0.0, 0.0),
+                                                  .fromSTEB(30, 20, 0, 0),
                                               child: Text(
                                                 'Country',
                                                 style: FlutterFlowTheme.of(
@@ -1466,7 +1549,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                                 .fontStyle,
                                                       ),
                                                       color: Color(0xFFD1D5DB),
-                                                      fontSize: 16.0,
+                                                      fontSize: 16,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w600,
@@ -1481,13 +1564,12 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                           ),
                                           Align(
                                             alignment:
-                                                AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1, 0),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      20.0, 5.0, 0.0, 0.0),
+                                                  .fromSTEB(20, 5, 0, 0),
                                               child: Container(
-                                                width: 200.0,
+                                                width: 200,
                                                 child: TextFormField(
                                                   controller:
                                                       _model.textController6 ??=
@@ -1526,7 +1608,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryBackground,
-                                                          fontSize: 18.0,
+                                                          fontSize: 18,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
@@ -1571,22 +1653,22 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                       borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     focusedBorder:
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     errorBorder:
                                                         OutlineInputBorder(
@@ -1595,11 +1677,11 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .error,
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     focusedErrorBorder:
                                                         OutlineInputBorder(
@@ -1608,11 +1690,11 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .error,
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     filled: true,
                                                     fillColor:
@@ -1634,7 +1716,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .primaryBackground,
-                                                        fontSize: 18.0,
+                                                        fontSize: 18,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w500,
@@ -1659,11 +1741,10 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                           ),
                                           Align(
                                             alignment:
-                                                AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1, 0),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      30.0, 20.0, 0.0, 0.0),
+                                                  .fromSTEB(30, 20, 0, 0),
                                               child: Text(
                                                 'Bio',
                                                 style: FlutterFlowTheme.of(
@@ -1680,7 +1761,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                                 .fontStyle,
                                                       ),
                                                       color: Color(0xFFD1D5DB),
-                                                      fontSize: 16.0,
+                                                      fontSize: 16,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w600,
@@ -1695,13 +1776,12 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                           ),
                                           Align(
                                             alignment:
-                                                AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1, 0),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      20.0, 5.0, 0.0, 20.0),
+                                                  .fromSTEB(20, 5, 0, 20),
                                               child: Container(
-                                                width: 200.0,
+                                                width: 200,
                                                 child: TextFormField(
                                                   controller:
                                                       _model.textController7 ??=
@@ -1740,7 +1820,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryBackground,
-                                                          fontSize: 18.0,
+                                                          fontSize: 18,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
@@ -1768,7 +1848,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                                     .labelMedium
                                                                     .fontStyle,
                                                           ),
-                                                          fontSize: 14.0,
+                                                          fontSize: 14,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
@@ -1786,22 +1866,22 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                       borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     focusedBorder:
                                                         OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     errorBorder:
                                                         OutlineInputBorder(
@@ -1810,11 +1890,11 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .error,
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     focusedErrorBorder:
                                                         OutlineInputBorder(
@@ -1823,11 +1903,11 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .error,
-                                                        width: 1.0,
+                                                        width: 1,
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              8.0),
+                                                              8),
                                                     ),
                                                     filled: true,
                                                     fillColor:
@@ -1849,7 +1929,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .primaryBackground,
-                                                        fontSize: 18.0,
+                                                        fontSize: 18,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w500,
@@ -1888,7 +1968,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget> {
               },
             ),
           ],
-        ),
+        ).animateOnPageLoad(animationsMap['stackOnPageLoadAnimation']!),
       ),
     );
   }
