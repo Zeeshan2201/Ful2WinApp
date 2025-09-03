@@ -1,12 +1,12 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
+//import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pop_ups/gamehistorydetail/gamehistorydetail_widget.dart';
-import 'dart:ui';
+//import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
+//import 'package:provider/provider.dart';
 import 'history_model.dart';
 export 'history_model.dart';
 
@@ -60,9 +60,9 @@ class _HistoryWidgetState extends State<HistoryWidget> {
             ),
             gradient: LinearGradient(
               colors: [FlutterFlowTheme.of(context).primary, Color(0xFF000B33)],
-              stops: [0.0, 1.0],
-              begin: AlignmentDirectional(0.0, -1.0),
-              end: AlignmentDirectional(0, 1.0),
+              stops: const [0.0, 1.0],
+              begin: const AlignmentDirectional(0.0, -1.0),
+              end: const AlignmentDirectional(0, 1.0),
             ),
           ),
           child: Column(
@@ -70,7 +70,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -86,7 +86,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                             kTransitionInfoKey: TransitionInfo(
                               hasTransition: true,
                               transitionType: PageTransitionType.fade,
-                              duration: Duration(milliseconds: 0),
+                              duration: const Duration(milliseconds: 0),
                             ),
                           },
                         );
@@ -96,7 +96,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                         height: 40.0,
                         decoration: BoxDecoration(
                           color: Color(0x33FFFFFF),
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.circular(40.0),
                             bottomRight: Radius.circular(40.0),
                             topLeft: Radius.circular(40.0),
@@ -119,8 +119,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                       ),
                     ),
                     Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                       child: Text(
                         'History',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -347,8 +346,8 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                           ),
                         ),
                       ]
-                          .divide(SizedBox(height: 10.0))
-                          .around(SizedBox(height: 10.0)),
+                          .divide(const SizedBox(height: 10.0))
+                          .around(const SizedBox(height: 10.0)),
                     ),
                     Column(
                       mainAxisSize: MainAxisSize.max,
@@ -547,14 +546,14 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                           ),
                         ),
                       ]
-                          .divide(SizedBox(height: 10.0))
-                          .around(SizedBox(height: 10.0)),
+                          .divide(const SizedBox(height: 10.0))
+                          .around(const SizedBox(height: 10.0)),
                     ),
                   ],
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -596,7 +595,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                               elevation: 0,
                               insetPadding: EdgeInsets.zero,
                               backgroundColor: Colors.transparent,
-                              alignment: AlignmentDirectional(0.0, 0.0)
+                              alignment: const AlignmentDirectional(0.0, 0.0)
                                   .resolve(Directionality.of(context)),
                               child: GestureDetector(
                                 onTap: () {
@@ -623,7 +622,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   10.0, 0.0, 0.0, 0.0),
                               child: Container(
                                 width: 50.0,
@@ -639,7 +638,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 0.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -721,7 +720,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 0.0, 0.0),
                           child: Container(
                             width: 50.0,
@@ -737,7 +736,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -809,7 +808,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 0.0, 0.0),
                           child: Container(
                             width: 50.0,
@@ -825,7 +824,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -897,7 +896,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 0.0, 0.0),
                           child: Container(
                             width: 50.0,
@@ -913,7 +912,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -971,7 +970,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                       ],
                     ),
                   ),
-                ].divide(SizedBox(height: 10.0)).around(SizedBox(height: 10.0)),
+                ].divide(const SizedBox(height: 10.0)).around(const SizedBox(height: 10.0)),
               ),
             ],
           ),
