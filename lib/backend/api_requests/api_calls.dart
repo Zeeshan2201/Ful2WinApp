@@ -24,7 +24,7 @@ class FulWinGroup {
       TournamentRegisterCall();
 }
 
-class MyRefferals {
+class MyReferralsCall {
   static Future<ApiCallResponse> call({
     String? token = '',
   }) async {
@@ -89,7 +89,7 @@ class StatusCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'status',
-      apiUrl: '${baseUrl}/tournaments/${tournamentId}/status',
+      apiUrl: '${baseUrl}tournaments/${tournamentId}/status',
       callType: ApiCallType.PUT,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -125,7 +125,7 @@ class ChallengesCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'challenges',
-      apiUrl: '${baseUrl}/challenges',
+      apiUrl: '${baseUrl}challenges',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -153,14 +153,20 @@ class TournamentRegisterCall {
       token: token,
     );
 
+    final ApiRequestBody = '''
+{
+  "playerId": "${userId}"
+}''';
+
     return ApiManager.instance.makeApiCall(
       callName: 'tournamentRegister',
-      apiUrl: '${baseUrl}/tourrnaments/${tournamentId}/register',
+      apiUrl: '${baseUrl}tournaments/${tournamentId}/register',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
       },
       params: {},
+      body: ApiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
@@ -185,7 +191,7 @@ class LikeAndUnlikeCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'likeAndUnlike',
-      apiUrl: '${baseUrl}/posts/${isLike}',
+      apiUrl: '${baseUrl}posts/${isLike}',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -219,7 +225,7 @@ class CreatePostCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'createPost',
-      apiUrl: '${baseUrl}/posts/',
+      apiUrl: '${baseUrl}posts/',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -512,7 +518,6 @@ class GameCall {
         .toList();
   }
 }
-
 
 class TournamentBygameCall {
   static Future<ApiCallResponse> call({

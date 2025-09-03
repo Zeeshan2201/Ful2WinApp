@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:math';
 import 'dart:ui';
 import '/index.dart';
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -218,31 +219,36 @@ class _RegistrationTournamentPopUpWidgetState
                       onPressed: () async {
                         _model.ragister =
                             await FulWinGroup.tournamentRegisterCall.call(
-                          tournamentId: widget!.tournamentId,
+                          tournamentId: widget.tournamentId,
                           userId: FFAppState().userId,
                           token: FFAppState().token,
                         );
-
-                        if ((_model.ragister?.succeeded ?? true)) {
+                        print("Status: ${_model.ragister?.jsonBody}");
+                        if ((_model.ragister?.succeeded ?? false)) {
                           context.pushNamed(
                             GameOnWidget.routeName,
                             queryParameters: {
                               'gameUrl': serializeParam(
-                                widget!.gameUrl,
+                                widget.gameUrl,
                                 ParamType.String,
                               ),
                               'gamename': serializeParam(
-                                widget!.gamename,
+                                widget.gamename,
                                 ParamType.String,
                               ),
                               'tournamentId': serializeParam(
-                                widget!.tournamentId,
+                                widget.tournamentId,
                                 ParamType.String,
                               ),
                             }.withoutNulls,
                           );
                         } else {
                           context.safePop();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                                content:
+                                    Text("Tournament registration failed")),
+                          );
                         }
 
                         safeSetState(() {});
