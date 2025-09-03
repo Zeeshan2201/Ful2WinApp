@@ -6,12 +6,12 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pop_ups/header/header_widget.dart';
 import '/pop_ups/howto_playtournament/howto_playtournament_widget.dart';
 import '/pop_ups/registration_tournament_pop_up/registration_tournament_pop_up_widget.dart';
-import 'dart:math';
-import 'dart:ui';
+//import 'dart:math';
+//import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
+//import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
@@ -119,7 +119,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
             children: [
               FutureBuilder<ApiCallResponse>(
                 future: GameCall.call(
-                  gameId: widget!.gameId,
+                  gameId: widget.gameId,
                 ),
                 builder: (context, snapshot) {
                   // Customize what your widget looks like when it's loading.
@@ -719,7 +719,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                   padding: EdgeInsetsDirectional.fromSTEB(0, 280, 0, 10),
                   child: FutureBuilder<ApiCallResponse>(
                     future: GameCall.call(
-                      gameId: widget!.gameId,
+                      gameId: widget.gameId,
                     ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
@@ -1349,7 +1349,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                                       context),
                                                               child:
                                                                   HowtoPlaytournamentWidget(
-                                                                gameId: widget!
+                                                                gameId: widget
                                                                     .gameId!,
                                                               ),
                                                             ),
@@ -1465,7 +1465,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                           ),
                                                           'gameId':
                                                               serializeParam(
-                                                            widget!.gameId,
+                                                            widget.gameId,
                                                             ParamType.String,
                                                           ),
                                                         }.withoutNulls,

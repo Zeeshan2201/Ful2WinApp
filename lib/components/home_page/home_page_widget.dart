@@ -65,7 +65,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ).image,
             ),
             gradient: LinearGradient(
-              colors: [FlutterFlowTheme.of(context).primary, Color(0xFF000B33)],
+              colors: [
+                FlutterFlowTheme.of(context).primary,
+                const Color(0xFF000B33)
+              ],
               stops: const [0.0, 1.0],
               begin: const AlignmentDirectional(0.0, -1.0),
               end: const AlignmentDirectional(0, 1.0),
@@ -78,7 +81,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 child: wrapWithModel(
                   model: _model.headerModel,
                   updateCallback: () => safeSetState(() {}),
-                  child: HeaderWidget(),
+                  child: const HeaderWidget(),
                 ),
               ),
               Padding(
@@ -127,7 +130,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 10.0, 32.0, 10.0, 0.0),
                             child: Container(
                               width: double.infinity,
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -135,18 +138,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   Container(
                                     width: 185.0,
                                     height: 28.0,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
                                           Color(0xFFE0CA00),
                                           Color(0xFFD98D00)
                                         ],
-                                        stops: const [0.0, 1.0],
-                                        begin: const AlignmentDirectional(
-                                            0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
+                                        stops: [0.0, 1.0],
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
                                       ),
-                                      borderRadius: const BorderRadius.only(
+                                      borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
                                         bottomRight: Radius.circular(0.0),
                                         topLeft: Radius.circular(0.0),
@@ -195,7 +197,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ),
                                   Container(
                                     width: double.infinity,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
                                           Color(0xE1201C46),
@@ -203,11 +205,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           Color(0x35302B63)
                                         ],
                                         stops: [0.0, 0.5, 0.75],
-                                        begin: const AlignmentDirectional(
-                                            0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
                                       ),
-                                      borderRadius: const BorderRadius.only(
+                                      borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
                                         bottomRight: Radius.circular(0.0),
                                         topLeft: Radius.circular(0.0),
@@ -367,8 +368,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                   10.0),
                                                         ),
                                                         border: Border.all(
-                                                          color:
-                                                              Color(0xFFAECBF9),
+                                                          color: const Color(
+                                                              0xFFAECBF9),
                                                           width: 2.0,
                                                         ),
                                                       ),
@@ -394,7 +395,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 10.0, 32.0, 10.0, 0.0),
                             child: Container(
                               width: double.infinity,
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -402,18 +403,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   Container(
                                     width: 145.0,
                                     height: 28.0,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
                                           Color(0xFF96D9C0),
                                           Color(0xFF013220)
                                         ],
-                                        stops: const [0.0, 1.0],
-                                        begin: const AlignmentDirectional(
-                                            0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
+                                        stops: [0.0, 1.0],
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
                                       ),
-                                      borderRadius: const BorderRadius.only(
+                                      borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
                                         bottomRight: Radius.circular(0.0),
                                         topLeft: Radius.circular(0.0),
@@ -462,19 +462,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ),
                                   Container(
                                     width: double.infinity,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
-                                          Color(0xE1201C46),
+                                          Color.fromARGB(224, 43, 41, 59),
                                           Color(0x9321254F),
                                           Color(0x35302B63)
                                         ],
                                         stops: [0.0, 0.5, 0.75],
-                                        begin: const AlignmentDirectional(
-                                            0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
                                       ),
-                                      borderRadius: const BorderRadius.only(
+                                      borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
                                         bottomRight: Radius.circular(0.0),
                                         topLeft: Radius.circular(0.0),
@@ -525,7 +524,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 16.0,
                                               ),
                                               gridDelegate:
-                                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                                  const SliverGridDelegateWithFixedCrossAxisCount(
                                                 crossAxisCount: 4,
                                                 crossAxisSpacing: 0.0,
                                                 mainAxisSpacing: 0.0,
@@ -581,8 +580,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                   10.0),
                                                         ),
                                                         border: Border.all(
-                                                          color:
-                                                              Color(0xFFAECBF9),
+                                                          color: const Color(
+                                                              0xFFAECBF9),
                                                           width: 2.0,
                                                         ),
                                                       ),
@@ -608,7 +607,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 10.0, 32.0, 10.0, 0.0),
                             child: Container(
                               width: double.infinity,
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -616,18 +615,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   Container(
                                     width: 205.0,
                                     height: 28.0,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
                                           Color(0xFF00C9FF),
                                           Color(0xFF005BBA)
                                         ],
-                                        stops: const [0.0, 1.0],
-                                        begin: const AlignmentDirectional(
-                                            0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
+                                        stops: [0.0, 1.0],
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
                                       ),
-                                      borderRadius: const BorderRadius.only(
+                                      borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
                                         bottomRight: Radius.circular(0.0),
                                         topLeft: Radius.circular(0.0),
@@ -676,7 +674,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ),
                                   Container(
                                     width: double.infinity,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
                                           Color(0xE1201C46),
@@ -684,11 +682,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           Color(0x35302B63)
                                         ],
                                         stops: [0.0, 0.5, 0.75],
-                                        begin: const AlignmentDirectional(
-                                            0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
                                       ),
-                                      borderRadius: const BorderRadius.only(
+                                      borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
                                         bottomRight: Radius.circular(0.0),
                                         topLeft: Radius.circular(0.0),
@@ -703,7 +700,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         16.0,
                                       ),
                                       gridDelegate:
-                                          SliverGridDelegateWithFixedCrossAxisCount(
+                                          const SliverGridDelegateWithFixedCrossAxisCount(
                                         crossAxisCount: 4,
                                         crossAxisSpacing: 0.0,
                                         mainAxisSpacing: 0.0,
@@ -738,7 +735,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 topRight: Radius.circular(10.0),
                                               ),
                                               border: Border.all(
-                                                color: Color(0xFFAECBF9),
+                                                color: const Color(0xFFAECBF9),
                                                 width: 2.0,
                                               ),
                                             ),
@@ -770,7 +767,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 topRight: Radius.circular(10.0),
                                               ),
                                               border: Border.all(
-                                                color: Color(0xFFAECBF9),
+                                                color: const Color(0xFFAECBF9),
                                                 width: 2.0,
                                               ),
                                             ),
@@ -791,7 +788,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 10.0, 32.0, 10.0, 0.0),
                             child: Container(
                               width: double.infinity,
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -799,18 +796,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   Container(
                                     width: 180.0,
                                     height: 28.0,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
                                           Color(0xFFB721FF),
                                           Color(0xFF700A72)
                                         ],
-                                        stops: const [0.0, 1.0],
-                                        begin: const AlignmentDirectional(
-                                            0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
+                                        stops: [0.0, 1.0],
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
                                       ),
-                                      borderRadius: const BorderRadius.only(
+                                      borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
                                         bottomRight: Radius.circular(0.0),
                                         topLeft: Radius.circular(0.0),
@@ -859,7 +855,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ),
                                   Container(
                                     width: double.infinity,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
                                           Color(0xE1201C46),
@@ -867,11 +863,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           Color(0x35302B63)
                                         ],
                                         stops: [0.0, 0.5, 0.75],
-                                        begin: const AlignmentDirectional(
-                                            0.0, -1.0),
-                                        end: const AlignmentDirectional(0, 1.0),
+                                        begin: AlignmentDirectional(0.0, -1.0),
+                                        end: AlignmentDirectional(0, 1.0),
                                       ),
-                                      borderRadius: const BorderRadius.only(
+                                      borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
                                         bottomRight: Radius.circular(0.0),
                                         topLeft: Radius.circular(0.0),
@@ -886,7 +881,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         16.0,
                                       ),
                                       gridDelegate:
-                                          SliverGridDelegateWithFixedCrossAxisCount(
+                                          const SliverGridDelegateWithFixedCrossAxisCount(
                                         crossAxisCount: 4,
                                         crossAxisSpacing: 0.0,
                                         mainAxisSpacing: 0.0,
@@ -927,7 +922,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                         Radius.circular(10.0),
                                                   ),
                                                   border: Border.all(
-                                                    color: Color(0xFFAECBF9),
+                                                    color:
+                                                        const Color(0xFFAECBF9),
                                                     width: 2.0,
                                                   ),
                                                 ),
@@ -936,7 +932,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             Container(
                                               width: 50.0,
                                               height: 50.0,
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: Align(
                                                 alignment:
                                                     const AlignmentDirectional(
@@ -968,7 +964,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                           FontWeight.bold,
                                                       fontStyle:
                                                           FontStyle.italic,
-                                                      shadows: [
+                                                      shadows: const [
                                                         Shadow(
                                                           color:
                                                               Color(0x8BEAB308),
@@ -1016,7 +1012,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                         Radius.circular(10.0),
                                                   ),
                                                   border: Border.all(
-                                                    color: Color(0xFFAECBF9),
+                                                    color:
+                                                        const Color(0xFFAECBF9),
                                                     width: 2.0,
                                                   ),
                                                 ),
@@ -1025,7 +1022,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             Container(
                                               width: 50.0,
                                               height: 50.0,
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: Align(
                                                 alignment:
                                                     const AlignmentDirectional(
@@ -1057,7 +1054,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                           FontWeight.bold,
                                                       fontStyle:
                                                           FontStyle.italic,
-                                                      shadows: [
+                                                      shadows: const [
                                                         Shadow(
                                                           color:
                                                               Color(0x76EAB308),
@@ -1091,7 +1088,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 child: wrapWithModel(
                   model: _model.navbarModel,
                   updateCallback: () => safeSetState(() {}),
-                  child: NavbarWidget(
+                  child: const NavbarWidget(
                     pageNav: 'HomePage',
                   ),
                 ),
