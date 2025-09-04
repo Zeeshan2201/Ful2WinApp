@@ -45,6 +45,10 @@ class CommunityPageModel extends FlutterFlowModel<CommunityPageWidget> {
   ApiCallResponse? likes;
   // Stores action output result for [Backend Call - API (likeAndUnlike)] action in Icon widget.
   ApiCallResponse? liked;
+
+  // Local cache of per-post like states and counts to reflect optimistic UI updates.
+  final Map<String, bool> localLikeStates = <String, bool>{};
+  final Map<String, int> localLikeCounts = <String, int>{};
   // Model for Navbar component.
   late NavbarModel navbarModel;
 

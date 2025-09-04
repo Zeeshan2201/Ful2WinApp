@@ -850,26 +850,41 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                     FFButtonWidget(
                                                       onPressed: () async {
                                                         // Validate that either content or image is provided
-                                                        if (_model.textController.text.trim().isEmpty && 
-                                                            _model.uploadedLocalFile_images == null) {
+                                                        if (_model
+                                                                .textController
+                                                                .text
+                                                                .trim()
+                                                                .isEmpty &&
+                                                            _model.uploadedLocalFile_images ==
+                                                                null) {
                                                           // Show error message if neither content nor image is provided
-                                                          ScaffoldMessenger.of(context).showSnackBar(
+                                                          ScaffoldMessenger.of(
+                                                                  context)
+                                                              .showSnackBar(
                                                             SnackBar(
                                                               content: Text(
                                                                 'Please enter some text or select an image',
-                                                                style: GoogleFonts.roboto(
-                                                                  color: Colors.white,
+                                                                style:
+                                                                    GoogleFonts
+                                                                        .roboto(
+                                                                  color: Colors
+                                                                      .white,
                                                                   fontSize: 14,
                                                                 ),
                                                               ),
-                                                              backgroundColor: Colors.red,
-                                                              duration: const Duration(seconds: 2),
+                                                              backgroundColor:
+                                                                  Colors.red,
+                                                              duration:
+                                                                  const Duration(
+                                                                      seconds:
+                                                                          2),
                                                             ),
                                                           );
                                                           return;
                                                         }
 
                                                         try {
+<<<<<<< HEAD
                                                           final postContent = _model.textController.text.trim();
                                                           print('Sending post with content: "$postContent"');
                                                           
@@ -880,69 +895,135 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                           );
                                                           
                                                           print('API Response: ${_model.createPost?.jsonBody}');
+=======
+                                                          _model.createPost =
+                                                              await CreatePostCall
+                                                                  .call(
+                                                            content: _model
+                                                                .textController
+                                                                .text
+                                                                .trim(),
+                                                            image: _model
+                                                                .uploadedLocalFile_images,
+                                                            token: FFAppState()
+                                                                .token,
+                                                          );
+>>>>>>> b643c93d61f01442e3bd7016733620b8db1839a8
 
-                                                          if ((_model.createPost?.succeeded ?? false)) {
+                                                          print(_model
+                                                              .textController
+                                                              .text
+                                                              .trim());
+
+                                                          if ((_model.createPost
+                                                                  ?.succeeded ??
+                                                              false)) {
                                                             // Clear the form after successful post
-                                                            _model.textController?.clear();
+                                                            _model
+                                                                .textController
+                                                                ?.clear();
                                                             setState(() {
-                                                              _model.uploadedLocalFile_images = FFUploadedFile(
-                                                                bytes: Uint8List(0),
+                                                              _model.uploadedLocalFile_images =
+                                                                  FFUploadedFile(
+                                                                bytes:
+                                                                    Uint8List(
+                                                                        0),
                                                                 name: '',
                                                               );
                                                             });
                                                             safeSetState(() {});
-                                                            
+
                                                             // Show success message
-                                                            ScaffoldMessenger.of(context).showSnackBar(
+                                                            ScaffoldMessenger
+                                                                    .of(context)
+                                                                .showSnackBar(
                                                               SnackBar(
                                                                 content: Text(
                                                                   'Post created successfully!',
-                                                                  style: GoogleFonts.roboto(
-                                                                    color: Colors.white,
-                                                                    fontSize: 14,
+                                                                  style:
+                                                                      GoogleFonts
+                                                                          .roboto(
+                                                                    color: Colors
+                                                                        .white,
+                                                                    fontSize:
+                                                                        14,
                                                                   ),
                                                                 ),
-                                                                backgroundColor: Colors.green,
-                                                                duration: const Duration(seconds: 2),
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .green,
+                                                                duration:
+                                                                    const Duration(
+                                                                        seconds:
+                                                                            2),
                                                               ),
                                                             );
                                                           } else {
                                                             // Show error message from API
-                                                            final errorMessage = _model.createPost?.jsonBody != null 
-                                                                ? (getJsonField(_model.createPost!.jsonBody, r'$.message') ?? 'Unable to create post')
+                                                            final errorMessage = _model
+                                                                        .createPost
+                                                                        ?.jsonBody !=
+                                                                    null
+                                                                ? (getJsonField(
+                                                                        _model
+                                                                            .createPost!
+                                                                            .jsonBody,
+                                                                        r'$.message') ??
+                                                                    'Unable to create post')
                                                                 : 'Unable to create post';
-                                                            
-                                                            ScaffoldMessenger.of(context).showSnackBar(
+
+                                                            ScaffoldMessenger
+                                                                    .of(context)
+                                                                .showSnackBar(
                                                               SnackBar(
                                                                 content: Text(
-                                                                  errorMessage ?? 'Unable to create post',
-                                                                  style: GoogleFonts.roboto(
-                                                                    color: Colors.white,
-                                                                    fontSize: 14,
+                                                                  errorMessage ??
+                                                                      'Unable to create post',
+                                                                  style:
+                                                                      GoogleFonts
+                                                                          .roboto(
+                                                                    color: Colors
+                                                                        .white,
+                                                                    fontSize:
+                                                                        14,
                                                                   ),
                                                                 ),
-                                                                backgroundColor: Colors.red,
-                                                                duration: const Duration(seconds: 3),
+                                                                backgroundColor:
+                                                                    Colors.red,
+                                                                duration:
+                                                                    const Duration(
+                                                                        seconds:
+                                                                            3),
                                                               ),
                                                             );
                                                           }
                                                         } catch (e) {
                                                           // Handle any exceptions
-                                                          ScaffoldMessenger.of(context).showSnackBar(
+                                                          ScaffoldMessenger.of(
+                                                                  context)
+                                                              .showSnackBar(
                                                             SnackBar(
                                                               content: Text(
                                                                 'Error: ${e.toString()}',
-                                                                style: GoogleFonts.roboto(
-                                                                  color: Colors.white,
+                                                                style:
+                                                                    GoogleFonts
+                                                                        .roboto(
+                                                                  color: Colors
+                                                                      .white,
                                                                   fontSize: 14,
                                                                 ),
                                                               ),
-                                                              backgroundColor: Colors.red,
-                                                              duration: const Duration(seconds: 3),
+                                                              backgroundColor:
+                                                                  Colors.red,
+                                                              duration:
+                                                                  const Duration(
+                                                                      seconds:
+                                                                          3),
                                                             ),
                                                           );
                                                         } finally {
-                                                          _model.postCreation = false;
+                                                          _model.postCreation =
+                                                              false;
                                                           safeSetState(() {});
                                                         }
                                                       },
@@ -1201,9 +1282,22 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                       .map<String>((e) => e.toString())
                                       .toList()
                                       .cast<String>();
-
+                                  final String postId = getJsonField(
+                                    postDataItem,
+                                    r'''$._id''',
+                                  ).toString();
+                                  // Effective liked state and count using local overrides when available
                                   bool isLiked =
-                                      likes.contains(FFAppState().userId);
+                                      _model.localLikeStates[postId] ??
+                                          likes.contains(FFAppState().userId);
+                                  int likeCount =
+                                      _model.localLikeCounts[postId] ??
+                                          ((getJsonField(
+                                                postDataItem,
+                                                r'''$.likeCount''',
+                                              ) as num?)
+                                                  ?.toInt() ??
+                                              0);
                                   return Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
@@ -1551,39 +1645,39 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                       highlightColor:
                                                           Colors.transparent,
                                                       onTap: () async {
-                                                        if (isLiked) {
-                                                          isLiked = false;
-                                                        } else {
-                                                          isLiked = true;
-                                                          print(isLiked);
-                                                        }
+                                                        // Determine the current state before toggling
+                                                        final wasLiked =
+                                                            isLiked;
+                                                        // Optimistically toggle UI state and count
+                                                        isLiked = !wasLiked;
+                                                        _model.localLikeStates[
+                                                            postId] = isLiked;
+                                                        likeCount +=
+                                                            isLiked ? 1 : -1;
+                                                        if (likeCount < 0)
+                                                          likeCount = 0;
+                                                        _model.localLikeCounts[
+                                                            postId] = likeCount;
 
+                                                        // Call the correct endpoint based on previous state
                                                         _model.likes =
                                                             await LikeAndUnlikeCall
                                                                 .call(
-                                                          isLike: isLiked
-                                                              ? 'like'
-                                                              : 'unlike',
-                                                          postId: getJsonField(
-                                                            postDataItem,
-                                                            r'''$._id''',
-                                                          ).toString(),
+                                                          isLike: wasLiked
+                                                              ? 'unlike'
+                                                              : 'like',
+                                                          postId: postId,
                                                           token: FFAppState()
                                                               .token,
                                                         );
 
                                                         safeSetState(() {});
-                                                        print(_model
-                                                            .likes?.jsonBody);
                                                       },
                                                       child: Icon(
                                                         Icons.favorite_rounded,
                                                         color: isLiked
-                                                            ? Color.fromARGB(
-                                                                255, 52, 50, 50)
-                                                            : const Color
-                                                                .fromARGB(255,
-                                                                250, 25, 25),
+                                                            ? Colors.red
+                                                            : Colors.grey,
                                                       ),
                                                     ),
                                                     Padding(
@@ -1592,10 +1686,7 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                               .fromSTEB(
                                                                   5, 0, 0, 0),
                                                       child: Text(
-                                                        getJsonField(
-                                                          postDataItem,
-                                                          r'''$.likeCount''',
-                                                        ).toString(),
+                                                        likeCount.toString(),
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
