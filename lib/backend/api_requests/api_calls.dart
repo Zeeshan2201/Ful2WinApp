@@ -209,6 +209,41 @@ class ChatsCall {
   }
 }
 
+class SendChatCall {
+  static Future<ApiCallResponse> call({
+    String? content,
+    String? recipient,
+    String? token,
+  }) async {
+    final baseUrl = FulWinGroup.getBaseUrl(
+      token: token,
+    );
+    final apiRequestBody = '''
+{
+  "content": "$content",
+  "recipient": "$recipient"
+}''';
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'sendChat',
+      apiUrl: '${baseUrl}messages/',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer $token',
+      },
+      params: {},
+      body: apiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class LikeAndUnlikeCall {
   static Future<ApiCallResponse> call({
     String? postId = '',
