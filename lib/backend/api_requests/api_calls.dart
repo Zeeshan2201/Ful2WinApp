@@ -223,13 +223,20 @@ class CreatePostCall {
       token: token,
     );
 
+    // Create a map for the request parameters
+    final Map<String, dynamic> params = {};
     
-    final APIRequestBody = '''
-    {
-    "content": "$content"
-    }''';
-
-    print('Request body: $APIRequestBody');
+    // Add content as a form field if not empty
+    if (content != null && content.trim().isNotEmpty) {
+      params['content'] = content;
+    }
+    
+    // Add image to params if exists
+    if (image != null) {
+      params['image'] = image;
+    }
+    
+    print('Request params: $params');
     
     // Prepare the API call
     return ApiManager.instance.makeApiCall(
@@ -239,8 +246,7 @@ class CreatePostCall {
       headers: {
         'Authorization': 'Bearer $token',
       },
-      params: image != null ? {'image': image} : {},
-      body: APIRequestBody,
+      params: params,
       bodyType: BodyType.MULTIPART,
       returnBody: true,
       encodeBodyUtf8: false,

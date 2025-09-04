@@ -870,13 +870,16 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                         }
 
                                                         try {
+                                                          final postContent = _model.textController.text.trim();
+                                                          print('Sending post with content: "$postContent"');
+                                                          
                                                           _model.createPost = await CreatePostCall.call(
-                                                            content: _model.textController.text.trim(),
+                                                            content: postContent,
                                                             image: _model.uploadedLocalFile_images,
                                                             token: FFAppState().token,
                                                           );
                                                           
-                                                          print(_model.textController.text.trim());
+                                                          print('API Response: ${_model.createPost?.jsonBody}');
 
                                                           if ((_model.createPost?.succeeded ?? false)) {
                                                             // Clear the form after successful post
