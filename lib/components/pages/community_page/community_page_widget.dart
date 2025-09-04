@@ -1505,17 +1505,20 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                       onTap: () async {
                                                         if (isLiked) {
                                                           isLiked = false;
+                                                          print(
+                                                              'its if block: $isLiked');
                                                         } else {
                                                           isLiked = true;
-                                                          print(isLiked);
+                                                          print(
+                                                              'its else block: $isLiked');
                                                         }
 
                                                         _model.likes =
                                                             await LikeAndUnlikeCall
                                                                 .call(
                                                           isLike: isLiked
-                                                              ? 'like'
-                                                              : 'unlike',
+                                                              ? 'unlike'
+                                                              : 'like',
                                                           postId: getJsonField(
                                                             postDataItem,
                                                             r'''$._id''',
