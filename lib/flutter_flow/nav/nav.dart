@@ -170,7 +170,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: MessageWidget.routeName,
           path: MessageWidget.routePath,
-          builder: (context, params) => MessageWidget(),
+          builder: (context, params) => MessageWidget(
+            user2: params.getParam(
+              'user2',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: WithdrawPageWidget.routeName,

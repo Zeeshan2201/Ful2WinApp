@@ -283,7 +283,7 @@ class _MessageWidgetState extends State<MessageWidget>
                   child: Align(
                     alignment: AlignmentDirectional(-1, -1),
                     child: FutureBuilder<ApiCallResponse>(
-                      future: FulWinGroup.chatsCall.call(
+                      future: ChatsCall.call(
                         user1: FFAppState().userId,
                         user2: widget!.user2,
                         token: FFAppState().token,
@@ -433,7 +433,7 @@ class _MessageWidgetState extends State<MessageWidget>
                   child: Container(
                     width: double.infinity,
                     height: 90,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         colors: [Color(0xFF0A2472), Color(0xFF1565C0)],
                         stops: [0, 1],
