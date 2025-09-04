@@ -849,56 +849,170 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                     ),
                                                     FFButtonWidget(
                                                       onPressed: () async {
-                                                        _model.createPost =
-                                                            await CreatePostCall
-                                                                .call(
-                                                          content: _model
-                                                              .textController
-                                                              .text,
-                                                          image: _model
-                                                              .uploadedLocalFile_images,
-                                                          token: FFAppState()
-                                                              .token,
-                                                        );
-                                                        print(_model.createPost
-                                                            ?.jsonBody);
-
-                                                        if ((_model.createPost
-                                                                ?.succeeded ??
-                                                            true)) {
-                                                          safeSetState(() {});
-                                                        } else {
+                                                        // Validate that either content or image is provided
+                                                        if (_model
+                                                                .textController
+                                                                .text
+                                                                .trim()
+                                                                .isEmpty &&
+                                                            _model.uploadedLocalFile_images ==
+                                                                null) {
+                                                          // Show error message if neither content nor image is provided
                                                           ScaffoldMessenger.of(
                                                                   context)
                                                               .showSnackBar(
                                                             SnackBar(
                                                               content: Text(
-                                                                'Unable to Upload',
+                                                                'Please enter some text or select an image',
                                                                 style:
                                                                     GoogleFonts
                                                                         .roboto(
-                                                                  color: const Color(
-                                                                      0x00000000),
-                                                                  fontSize: 0,
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontSize: 14,
                                                                 ),
                                                               ),
+                                                              backgroundColor:
+                                                                  Colors.red,
                                                               duration:
                                                                   const Duration(
-                                                                      milliseconds:
-                                                                          4000),
-                                                              backgroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondary,
+                                                                      seconds:
+                                                                          2),
                                                             ),
                                                           );
+                                                          return;
                                                         }
 
-                                                        _model.postCreation =
-                                                            false;
-                                                        safeSetState(() {});
+                                                        try {
+                                                          _model.createPost =
+                                                              await CreatePostCall
+                                                                  .call(
+                                                            content: _model
+                                                                .textController
+                                                                .text
+                                                                .trim(),
+                                                            image: _model
+                                                                .uploadedLocalFile_images,
+                                                            token: FFAppState()
+                                                                .token,
+                                                          );
 
-                                                        safeSetState(() {});
+                                                          print(_model
+                                                              .textController
+                                                              .text
+                                                              .trim());
+
+                                                          if ((_model.createPost
+                                                                  ?.succeeded ??
+                                                              false)) {
+                                                            // Clear the form after successful post
+                                                            _model
+                                                                .textController
+                                                                ?.clear();
+                                                            setState(() {
+                                                              _model.uploadedLocalFile_images =
+                                                                  FFUploadedFile(
+                                                                bytes:
+                                                                    Uint8List(
+                                                                        0),
+                                                                name: '',
+                                                              );
+                                                            });
+                                                            safeSetState(() {});
+
+                                                            // Show success message
+                                                            ScaffoldMessenger
+                                                                    .of(context)
+                                                                .showSnackBar(
+                                                              SnackBar(
+                                                                content: Text(
+                                                                  'Post created successfully!',
+                                                                  style:
+                                                                      GoogleFonts
+                                                                          .roboto(
+                                                                    color: Colors
+                                                                        .white,
+                                                                    fontSize:
+                                                                        14,
+                                                                  ),
+                                                                ),
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .green,
+                                                                duration:
+                                                                    const Duration(
+                                                                        seconds:
+                                                                            2),
+                                                              ),
+                                                            );
+                                                          } else {
+                                                            // Show error message from API
+                                                            final errorMessage = _model
+                                                                        .createPost
+                                                                        ?.jsonBody !=
+                                                                    null
+                                                                ? (getJsonField(
+                                                                        _model
+                                                                            .createPost!
+                                                                            .jsonBody,
+                                                                        r'$.message') ??
+                                                                    'Unable to create post')
+                                                                : 'Unable to create post';
+
+                                                            ScaffoldMessenger
+                                                                    .of(context)
+                                                                .showSnackBar(
+                                                              SnackBar(
+                                                                content: Text(
+                                                                  errorMessage ??
+                                                                      'Unable to create post',
+                                                                  style:
+                                                                      GoogleFonts
+                                                                          .roboto(
+                                                                    color: Colors
+                                                                        .white,
+                                                                    fontSize:
+                                                                        14,
+                                                                  ),
+                                                                ),
+                                                                backgroundColor:
+                                                                    Colors.red,
+                                                                duration:
+                                                                    const Duration(
+                                                                        seconds:
+                                                                            3),
+                                                              ),
+                                                            );
+                                                          }
+                                                        } catch (e) {
+                                                          // Handle any exceptions
+                                                          ScaffoldMessenger.of(
+                                                                  context)
+                                                              .showSnackBar(
+                                                            SnackBar(
+                                                              content: Text(
+                                                                'Error: ${e.toString()}',
+                                                                style:
+                                                                    GoogleFonts
+                                                                        .roboto(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontSize: 14,
+                                                                ),
+                                                              ),
+                                                              backgroundColor:
+                                                                  Colors.red,
+                                                              duration:
+                                                                  const Duration(
+                                                                      seconds:
+                                                                          3),
+                                                            ),
+                                                          );
+                                                        } finally {
+                                                          _model.postCreation =
+                                                              false;
+                                                          safeSetState(() {});
+                                                        }
                                                       },
                                                       text: 'Post',
                                                       options: FFButtonOptions(

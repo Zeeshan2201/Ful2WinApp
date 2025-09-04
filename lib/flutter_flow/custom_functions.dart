@@ -54,8 +54,6 @@ bool? isLike(
 String timeAgo(String date) {
   /// MODIFY CODE ONLY BELOW THIS LINE
 
-  //print("Parsing date: $date");
-
   DateTime parsedDate;
   try {
     parsedDate = DateTime.parse(date);

@@ -215,19 +215,23 @@ class LikeAndUnlikeCall {
 
 class CreatePostCall {
   static Future<ApiCallResponse> call({
-    String? content = '',
+    String? content,
     FFUploadedFile? image,
     String? token = '',
   }) async {
     final baseUrl = FulWinGroup.getBaseUrl(
       token: token,
     );
-    final apiRequestBody = '''
-{
-  "content": "$content",
-  "image": "$image"
-}''';
-print(content);
+
+    
+    final APIRequestBody = '''
+    {
+    "content": "$content"
+    }''';
+
+    print('Request body: $APIRequestBody');
+    
+    // Prepare the API call
     return ApiManager.instance.makeApiCall(
       callName: 'createPost',
       apiUrl: '${baseUrl}post/create/',
@@ -235,10 +239,8 @@ print(content);
       headers: {
         'Authorization': 'Bearer $token',
       },
-      params: {
-        'image': image,
-      },
-      body: apiRequestBody,
+      params: image != null ? {'image': image} : {},
+      body: APIRequestBody,
       bodyType: BodyType.MULTIPART,
       returnBody: true,
       encodeBodyUtf8: false,
