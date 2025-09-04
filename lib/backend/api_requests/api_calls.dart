@@ -1,7 +1,5 @@
-// import 'dart:convert';
-// import 'dart:typed_data';
-// import 'package:flutter/foundation.dart';
-// import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'package:flutter/foundation.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
@@ -620,28 +618,68 @@ class SubmitScoreCall {
 
 class UpdateProfileCall {
   static Future<ApiCallResponse> call({
-    String? userId = '',
-    String? fullName = '',
-    String? email = '',
+    required String userId,
+    String? fullName,
+    String? email,
     int? phoneNumber,
-    String? bio = '',
-    String? gender = '',
-    String? country = '',
+    String? bio,
+    String? gender,
+    String? country,
   }) async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'updateProfile',
-      apiUrl: 'https://api.fulboost.fun/api/users/profile/$userId',
-      callType: ApiCallType.PUT,
-      headers: {},
-      params: {},
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
-    );
+    // Get token from app state
+    final token = FFAppState().token;
+    try {
+      // Prepare request body
+      final Map<String, dynamic> requestBody = {};
+      
+      // Only add non-null and non-empty fields to the request
+      if (fullName != null && fullName.isNotEmpty) requestBody['fullName'] = fullName;
+      if (email != null && email.isNotEmpty) requestBody['email'] = email;
+      if (phoneNumber != null) requestBody['phoneNumber'] = phoneNumber.toString();
+      if (bio != null && bio.isNotEmpty) requestBody['bio'] = bio;
+      if (gender != null && gender.isNotEmpty) requestBody['gender'] = gender;
+      if (country != null && country.isNotEmpty) requestBody['country'] = country;
+
+      // Make the API call
+      final response = await ApiManager.instance.makeApiCall(
+        callName: 'updateProfile',
+        apiUrl: 'https://api.fulboost.fun/api/users/profile/$userId',
+        callType: ApiCallType.PUT,
+        headers: {
+          'Authorization': 'Bearer $token',
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode(requestBody),
+        bodyType: BodyType.JSON,
+        returnBody: true,
+        encodeBodyUtf8: true,
+        decodeUtf8: true,
+        cache: false,
+        isStreamingApi: false,
+        alwaysAllowBody: true,
+      );
+
+      // Log the response for debugging
+      debugPrint('UpdateProfile API Response: ${response.statusCode} - ${response.jsonBody}');
+      
+      return response;
+    } catch (e, stackTrace) {
+      // Log the error for debugging
+      debugPrint('Error in UpdateProfileCall: $e');
+      debugPrint('Stack trace: $stackTrace');
+      
+      // Return a failed response with error details
+      final errorResponse = jsonEncode({
+        'success': false,
+        'message': 'Failed to update profile: ${e.toString()}',
+      });
+      
+      return ApiCallResponse(
+        errorResponse,
+        {'Content-Type': 'application/json'},
+        500,
+      );
+    }
   }
 }
 

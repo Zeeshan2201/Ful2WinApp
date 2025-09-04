@@ -2962,9 +2962,98 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                             ).animateOnPageLoad(animationsMap[
                                                 'buttonOnPageLoadAnimation1']!),
                                             FFButtonWidget(
-                                              onPressed: () {
-                                                print('Button pressed ...');
+                                              onPressed: () async {
+                                                // Get the current user ID and token
+                                                final userId = FFAppState().userId;
+                                                final token = FFAppState().token;
+                                                
+                                                if (userId.isEmpty || token.isEmpty) {
+                                                  ScaffoldMessenger.of(context).showSnackBar(
+                                                    const SnackBar(
+                                                      content: Text('User not authenticated'),
+                                                      backgroundColor: Colors.red,
+                                                    ),
+                                                  );
+                                                  return;
+                                                }
+
+                                                // Show loading indicator
+                                                final scaffold = ScaffoldMessenger.of(context);
+                                                scaffold.showSnackBar(
+                                                  SnackBar(
+                                                    content: Row(
+                                                      children: const [
+                                                        SizedBox(
+                                                          width: 20,
+                                                          height: 20,
+                                                          child: CircularProgressIndicator(
+                                                            valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                                                            strokeWidth: 2,
+                                                          ),
+                                                        ),
+                                                        SizedBox(width: 20),
+                                                        Text('Updating profile...'),
+                                                      ],
+                                                    ),
+                                                    duration: const Duration(seconds: 5),
+                                                  ),
+                                                );
+
+                                                try {
+                                                  // Call the UpdateProfile API
+                                                  final response = await UpdateProfileCall.call(
+                                                    userId: userId,
+                                                    fullName: _model.textController1?.text ?? '',
+                                                    email: _model.textController2?.text ?? '',
+                                                    phoneNumber: int.tryParse(_model.textController3?.text ?? ''),
+                                                    bio: _model.textController4?.text ?? '',
+                                                    // Add other fields as needed
+                                                  );
+
+                                                  // Hide loading indicator
+                                                  scaffold.hideCurrentSnackBar();
+
+                                                  if (response.succeeded) {
+                                                    // Update app state with new user data if needed
+                                                    FFAppState().userName = _model.textController1?.text ?? '';
+                                                    
+                                                    // Show success message
+                                                    scaffold.showSnackBar(
+                                                      const SnackBar(
+                                                        content: Text('Profile updated successfully!'),
+                                                        backgroundColor: Colors.green,
+                                                      ),
+                                                    );
+                                                    // Optionally navigate back
+                                                    if (Navigator.canPop(context)) {
+                                                      Navigator.pop(context);
+                                                    }
+                                                  } else {
+                                                    // Show error message
+                                                    final errorMessage = response.jsonBody?.isNotEmpty == true 
+                                                        ? (jsonDecode(response.jsonBody)['message'] ?? 'Failed to update profile')
+                                                        : 'Failed to update profile';
+                                                    scaffold.showSnackBar(
+                                                      SnackBar(
+                                                        content: Text(errorMessage),
+                                                        backgroundColor: Colors.red,
+                                                      ),
+                                                    );
+                                                  }
+                                                } catch (e) {
+                                                  // Hide loading indicator
+                                                  scaffold.hideCurrentSnackBar();
+                                                  
+                                                  // Show error message
+                                                  scaffold.showSnackBar(
+                                                    SnackBar(
+                                                      content: Text('Error: ${e.toString()}'),
+                                                      backgroundColor: Colors.red,
+                                                    ),
+                                                  );
+                                                }
                                               },
+
                                               text: 'Save Changes',
                                               options: FFButtonOptions(
                                                 width:
