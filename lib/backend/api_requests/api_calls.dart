@@ -190,10 +190,9 @@ class LikeAndUnlikeCall {
     );
     final apiRequestBody = '''
 {
-  "postId": "$postId",
-
+  "postId": "$postId"
 }''';
-
+    print('Request body: $apiRequestBody, isLike: $isLike');
     return ApiManager.instance.makeApiCall(
       callName: 'likeAndUnlike',
       apiUrl: '${baseUrl}posts/$isLike',

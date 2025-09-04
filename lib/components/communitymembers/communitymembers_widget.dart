@@ -161,7 +161,8 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget> {
                                               children: [
                                                 Container(
                                                   decoration: BoxDecoration(
-                                                    gradient: LinearGradient(
+                                                    gradient:
+                                                        const LinearGradient(
                                                       colors: [
                                                         Color(0xFF0BC1FF),
                                                         Color(0xFF0A2472)
@@ -205,12 +206,14 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
+                                                  padding:
+                                                      const EdgeInsetsDirectional
+                                                          .fromSTEB(
                                                           5.0, 0.0, 0.0, 0.0),
                                                   child: Container(
                                                     decoration: BoxDecoration(
-                                                      gradient: LinearGradient(
+                                                      gradient:
+                                                          const LinearGradient(
                                                         colors: [
                                                           Color(0xFFF3E2C2),
                                                           Color(0xFFE1B769)
