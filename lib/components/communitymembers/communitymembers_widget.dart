@@ -402,7 +402,7 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                                             ),
                                             onPressed: () async {
                                               context.pushNamed(
-                                                  CommunityLcopyWidget
+                                                  CommunityPageWidget
                                                       .routeName);
                                             },
                                           ),
