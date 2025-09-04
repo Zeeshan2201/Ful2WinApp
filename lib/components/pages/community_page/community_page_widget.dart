@@ -860,6 +860,7 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                           token: FFAppState()
                                                               .token,
                                                         );
+                                                        print(_model.createPost?.jsonBody);
 
                                                         if ((_model.createPost
                                                                 ?.succeeded ??
