@@ -1,3 +1,5 @@
+import 'package:http/http.dart';
+
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -37,6 +39,8 @@ class _MessageWidgetState extends State<MessageWidget>
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final animationsMap = <String, AnimationInfo>{};
+  // Controls scrolling to keep the latest messages in view.
+  final ScrollController _chatScrollController = ScrollController();
 
   @override
   void initState() {
@@ -76,6 +80,7 @@ class _MessageWidgetState extends State<MessageWidget>
 
   @override
   void dispose() {
+    _chatScrollController.dispose();
     _model.dispose();
 
     super.dispose();
@@ -107,7 +112,7 @@ class _MessageWidgetState extends State<MessageWidget>
         ),
         child: FutureBuilder<ApiCallResponse>(
           future: ProfileCall.call(
-            userId: widget!.user2,
+            userId: widget.user2,
             token: FFAppState().token,
           ),
           builder: (context, snapshot) {
@@ -134,7 +139,7 @@ class _MessageWidgetState extends State<MessageWidget>
                 Container(
                   width: double.infinity,
                   height: 70,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     gradient: LinearGradient(
                       colors: [Color(0xFF1565C0), Color(0xFF0A2472)],
                       stops: [0, 1],
@@ -180,7 +185,7 @@ class _MessageWidgetState extends State<MessageWidget>
                                       onTap: () async {
                                         context.safePop();
                                       },
-                                      child: Icon(
+                                      child: const Icon(
                                         Icons.chevron_left_outlined,
                                         color: Color(0xFFE9EEF1),
                                         size: 26,
@@ -207,7 +212,7 @@ class _MessageWidgetState extends State<MessageWidget>
                           width: 50,
                           height: 50,
                           clipBehavior: Clip.antiAlias,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                           ),
                           child: Image.network(
@@ -285,9 +290,12 @@ class _MessageWidgetState extends State<MessageWidget>
                     child: FutureBuilder<ApiCallResponse>(
                       future: ChatsCall.call(
                         user1: FFAppState().userId,
-                        user2: widget!.user2,
+                        user2: widget.user2,
                         token: FFAppState().token,
-                      ),
+                      ).then((response) {
+                        print('ChatsCall response: ${response.jsonBody}');
+                        return response;
+                      }),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {
@@ -312,111 +320,148 @@ class _MessageWidgetState extends State<MessageWidget>
                               r'''$''',
                             ).toList();
 
+                            // Ensure we auto-scroll to the latest message after build.
+                            WidgetsBinding.instance.addPostFrameCallback((_) {
+                              if (_chatScrollController.hasClients) {
+                                _chatScrollController.animateTo(
+                                  _chatScrollController
+                                      .position.maxScrollExtent,
+                                  duration: const Duration(milliseconds: 250),
+                                  curve: Curves.easeOut,
+                                );
+                              }
+                            });
+
                             return ListView.builder(
                               padding: EdgeInsets.zero,
                               shrinkWrap: true,
                               scrollDirection: Axis.vertical,
+                              controller: _chatScrollController,
                               itemCount: chats.length,
                               itemBuilder: (context, chatsIndex) {
                                 final chatsItem = chats[chatsIndex];
+                                // Determine alignment based on sender/receiver relative to current user
+                                final currentUserId = FFAppState().userId;
+                                final senderId = valueOrDefault<String>(
+                                  getJsonField(chatsItem, r'''$.senderId''')
+                                      ?.toString(),
+                                  valueOrDefault<String>(
+                                    getJsonField(chatsItem, r'''$.sender._id''')
+                                        ?.toString(),
+                                    valueOrDefault<String>(
+                                      getJsonField(chatsItem, r'''$.sender''')
+                                          ?.toString(),
+                                      '',
+                                    ),
+                                  ),
+                                );
+                                final bool isMine = senderId == currentUserId;
+                                final AlignmentDirectional itemAlign = isMine
+                                    ? const AlignmentDirectional(1, 1)
+                                    : const AlignmentDirectional(-1, 1);
+
                                 return Align(
-                                  alignment: AlignmentDirectional(1, 1),
+                                  alignment: itemAlign,
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 6, 0),
-                                    child: Container(
-                                      width: 100,
-                                      child: Stack(
-                                        alignment: AlignmentDirectional(1, 1),
-                                        children: [
-                                          Align(
-                                            alignment:
-                                                AlignmentDirectional(1, 0),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 6, 6, 0),
-                                              child: Container(
-                                                height: 50,
-                                                decoration: BoxDecoration(
-                                                  color: Color(0xBB08162C),
-                                                  borderRadius:
-                                                      BorderRadius.only(
-                                                    bottomLeft:
-                                                        Radius.circular(20),
-                                                    bottomRight:
-                                                        Radius.circular(20),
-                                                    topLeft:
-                                                        Radius.circular(20),
-                                                    topRight:
-                                                        Radius.circular(20),
-                                                  ),
-                                                  border: Border.all(
-                                                    color: Color(0xFF00CFFF),
-                                                  ),
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            8, 6, 8, 0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment: isMine
+                                          ? MainAxisAlignment.end
+                                          : MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        Flexible(
+                                          child: ConstrainedBox(
+                                            constraints: BoxConstraints(
+                                              maxWidth: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.75,
+                                            ),
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: const Color(0xBB08162C),
+                                                borderRadius:
+                                                    const BorderRadius.only(
+                                                  bottomLeft:
+                                                      Radius.circular(20),
+                                                  bottomRight:
+                                                      Radius.circular(20),
+                                                  topLeft: Radius.circular(20),
+                                                  topRight: Radius.circular(20),
                                                 ),
-                                                child: Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0, 0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Text(
-                                                        valueOrDefault<String>(
-                                                          getJsonField(
-                                                            chatsItem,
-                                                            r'''$.content''',
-                                                          )?.toString(),
-                                                          'Hi',
+                                                border: Border.all(
+                                                  color:
+                                                      const Color(0xFF00CFFF),
+                                                ),
+                                              ),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 12,
+                                                        vertical: 10),
+                                                child: Text(
+                                                  valueOrDefault<String>(
+                                                    getJsonField(
+                                                      chatsItem,
+                                                      r'''$.content''',
+                                                    )?.toString(),
+                                                    'Hi',
+                                                  ),
+                                                  textAlign: isMine
+                                                      ? TextAlign.right
+                                                      : TextAlign.left,
+                                                  softWrap: true,
+                                                  maxLines: null,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font:
+                                                            GoogleFonts.poppins(
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
                                                         ),
-                                                        style:
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        fontSize: 17,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .bodyMedium
-                                                                .override(
-                                                                  font: GoogleFonts
-                                                                      .poppins(
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                                  fontSize: 17,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
-                                                                ),
+                                                                .fontStyle,
                                                       ),
-                                                    ],
-                                                  ),
                                                 ),
                                               ),
                                             ),
                                           ),
-                                          Icon(
-                                            Icons.check_circle,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            size: 24,
+                                        ),
+                                        if (isMine)
+                                          Padding(
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(6, 0, 0, 0),
+                                            child: Icon(
+                                              Icons.check_circle,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              size: 20,
+                                            ),
                                           ),
-                                        ],
-                                      ),
+                                      ],
                                     ),
                                   ),
                                 );
@@ -454,7 +499,7 @@ class _MessageWidgetState extends State<MessageWidget>
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.circular(40),
                             bottomRight: Radius.circular(40),
                             topLeft: Radius.circular(40),
@@ -523,7 +568,7 @@ class _MessageWidgetState extends State<MessageWidget>
                                                   .fontStyle,
                                         ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 1,
                                       ),
@@ -593,8 +638,37 @@ class _MessageWidgetState extends State<MessageWidget>
                                       .secondaryText,
                                   size: 24,
                                 ),
-                                onPressed: () {
-                                  print('IconButton pressed ...');
+                                onPressed: () async {
+                                  final text =
+                                      _model.textController.text.trim();
+                                  if (text.isEmpty) return;
+                                  final response = await SendChatCall.call(
+                                    recipient: widget.user2,
+                                    content: text,
+                                    token: FFAppState().token,
+                                  );
+                                  // Clear input immediately for better UX.
+                                  _model.textController!.clear();
+                                  // Rebuild to refresh the FutureBuilder and fetch latest messages.
+                                  if (mounted) setState(() {});
+                                  // Scroll to bottom to reveal the newly sent message.
+                                  WidgetsBinding.instance
+                                      .addPostFrameCallback((_) {
+                                    if (_chatScrollController.hasClients) {
+                                      _chatScrollController.animateTo(
+                                        _chatScrollController
+                                            .position.maxScrollExtent,
+                                        duration:
+                                            const Duration(milliseconds: 300),
+                                        curve: Curves.easeOut,
+                                      );
+                                    }
+                                  });
+                                  // Optional logging
+                                  try {
+                                    // ignore: avoid_print
+                                    print(response.jsonBody);
+                                  } catch (_) {}
                                 },
                               ),
                             ],

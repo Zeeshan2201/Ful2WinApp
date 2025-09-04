@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '/backend/api_requests/api_manager.dart';
+//import '/backend/api_requests/api_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'flutter_flow/flutter_flow_util.dart';
+//import 'flutter_flow/flutter_flow_util.dart';
 
 class FFAppState extends ChangeNotifier {
   static FFAppState _instance = FFAppState._internal();
@@ -59,7 +59,7 @@ class FFAppState extends ChangeNotifier {
     prefs.setString('ff_token', value);
   }
 
-  String _userId = '6878cbf15c6a3b819fddfadf';
+  String _userId = '685c330ab7e0f4d7def7171b';
   String get userId => _userId;
   set userId(String value) {
     _userId = value;
