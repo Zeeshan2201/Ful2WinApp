@@ -44,7 +44,7 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final animationsMap = <String, AnimationInfo>{};
-
+  int likeCount = 0;
   @override
   void initState() {
     super.initState();
@@ -876,14 +876,15 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                                 style:
                                                                     GoogleFonts
                                                                         .roboto(
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0x00000000),
                                                                   fontSize: 0,
                                                                 ),
                                                               ),
-                                                              duration: Duration(
-                                                                  milliseconds:
-                                                                      4000),
+                                                              duration:
+                                                                  const Duration(
+                                                                      milliseconds:
+                                                                          4000),
                                                               backgroundColor:
                                                                   FlutterFlowTheme.of(
                                                                           context)
@@ -902,9 +903,9 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                       options: FFButtonOptions(
                                                         height: 40,
                                                         padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(10, 0,
-                                                                    10, 0),
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                10, 0, 10, 0),
                                                         iconPadding:
                                                             EdgeInsetsDirectional
                                                                 .fromSTEB(
@@ -1145,6 +1146,17 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                     SizedBox(height: 10),
                                 itemBuilder: (context, postDataIndex) {
                                   final postDataItem = postData[postDataIndex];
+                                  final List<String> likes = (getJsonField(
+                                    postDataItem,
+                                    r'''$.likes''',
+                                    true,
+                                  ) as List?)!
+                                      .map<String>((e) => e.toString())
+                                      .toList()
+                                      .cast<String>();
+
+                                  bool isLiked =
+                                      likes.contains(FFAppState().userId);
                                   return Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
@@ -1188,10 +1200,12 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                           .primary
                                                     ],
                                                     stops: [0, 1],
-                                                    begin: AlignmentDirectional(
-                                                        1, -0.98),
-                                                    end: AlignmentDirectional(
-                                                        -1, 0.98),
+                                                    begin:
+                                                        const AlignmentDirectional(
+                                                            1, -0.98),
+                                                    end:
+                                                        const AlignmentDirectional(
+                                                            -1, 0.98),
                                                   ),
                                                   borderRadius:
                                                       BorderRadius.circular(24),
@@ -1264,7 +1278,7 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                                       .bodyMedium
                                                                       .fontStyle,
                                                                 ),
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFF01BCF9),
                                                                 fontSize: 16,
                                                                 letterSpacing:
@@ -1284,15 +1298,17 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                               ),
                                               Align(
                                                 alignment:
-                                                    AlignmentDirectional(-1, 0),
+                                                    const AlignmentDirectional(
+                                                        -1, 0),
                                                 child: Container(
                                                   width: 50,
-                                                  decoration: BoxDecoration(),
+                                                  decoration:
+                                                      const BoxDecoration(),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                0, 0, 0, 18),
+                                                            0, 0, 0, 18),
                                                     child: Text(
                                                       functions
                                                           .timeAgo(getJsonField(
@@ -1447,9 +1463,8 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                           ),
                                         ),
                                         Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 10, 0, 0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(0, 10, 0, 0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
@@ -1489,21 +1504,19 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                       highlightColor:
                                                           Colors.transparent,
                                                       onTap: () async {
+                                                        if (isLiked) {
+                                                          isLiked = false;
+                                                        } else {
+                                                          isLiked = true;
+                                                          print(isLiked);
+                                                        }
+
                                                         _model.likes =
                                                             await LikeAndUnlikeCall
                                                                 .call(
-                                                          isLike: functions.isLike(
-                                                                  (getJsonField(
-                                                                    postDataItem,
-                                                                    r'''$.likes''',
-                                                                    true,
-                                                                  ) as List?)!
-                                                                      .map<String>((e) => e.toString())
-                                                                      .toList()
-                                                                      .cast<String>(),
-                                                                  FFAppState().userId)!
-                                                              ? 'unlike'
-                                                              : 'like',
+                                                          isLike: isLiked
+                                                              ? 'like'
+                                                              : 'unlike',
                                                           postId: getJsonField(
                                                             postDataItem,
                                                             r'''$._id''',
@@ -1513,26 +1526,17 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                         );
 
                                                         safeSetState(() {});
+                                                        print(_model
+                                                            .likes?.jsonBody);
                                                       },
                                                       child: Icon(
                                                         Icons.favorite_rounded,
-                                                        color: functions.isLike(
-                                                                (getJsonField(
-                                                                  postDataItem,
-                                                                  r'''$.likes''',
-                                                                  true,
-                                                                ) as List?)!
-                                                                    .map<String>(
-                                                                        (e) => e
-                                                                            .toString())
-                                                                    .toList()
-                                                                    .cast<
-                                                                        String>(),
-                                                                FFAppState()
-                                                                    .userId)!
-                                                            ? Color(0xFFE81111)
-                                                            : Color(0xFFE8E3E3),
-                                                        size: 24,
+                                                        color: isLiked
+                                                            ? Color.fromARGB(
+                                                                255, 52, 50, 50)
+                                                            : const Color
+                                                                .fromARGB(255,
+                                                                250, 25, 25),
                                                       ),
                                                     ),
                                                     Padding(
