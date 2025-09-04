@@ -884,7 +884,6 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                         }
 
                                                         try {
-<<<<<<< HEAD
                                                           final postContent = _model.textController.text.trim();
                                                           print('Sending post with content: "$postContent"');
                                                           
@@ -895,20 +894,6 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                           );
                                                           
                                                           print('API Response: ${_model.createPost?.jsonBody}');
-=======
-                                                          _model.createPost =
-                                                              await CreatePostCall
-                                                                  .call(
-                                                            content: _model
-                                                                .textController
-                                                                .text
-                                                                .trim(),
-                                                            image: _model
-                                                                .uploadedLocalFile_images,
-                                                            token: FFAppState()
-                                                                .token,
-                                                          );
->>>>>>> b643c93d61f01442e3bd7016733620b8db1839a8
 
                                                           print(_model
                                                               .textController
