@@ -179,6 +179,38 @@ class TournamentRegisterCall {
   }
 }
 
+class ChatsCall {
+  static Future<ApiCallResponse> call({
+    String? user1,
+    String? user2,
+    String? token,
+  }) async {
+    final baseUrl = FulWinGroup.getBaseUrl(
+      token: token,
+    );
+    final Map<String, dynamic> params = {
+      'user1': user1,
+      'user2': user2,
+    };
+    return ApiManager.instance.makeApiCall(
+      callName: 'chats',
+      apiUrl: '${baseUrl}messages/conversation',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer $token',
+      },
+      params: params,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class LikeAndUnlikeCall {
   static Future<ApiCallResponse> call({
     String? postId = '',
@@ -225,19 +257,19 @@ class CreatePostCall {
 
     // Create a map for the request parameters
     final Map<String, dynamic> params = {};
-    
+
     // Add content as a form field if not empty
     if (content != null && content.trim().isNotEmpty) {
       params['content'] = content;
     }
-    
+
     // Add image to params if exists
     if (image != null) {
       params['image'] = image;
     }
-    
+
     print('Request params: $params');
-    
+
     // Prepare the API call
     return ApiManager.instance.makeApiCall(
       callName: 'createPost',
