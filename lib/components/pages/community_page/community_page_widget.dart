@@ -860,7 +860,8 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                           token: FFAppState()
                                                               .token,
                                                         );
-                                                        print(_model.createPost?.jsonBody);
+                                                        print(_model.createPost
+                                                            ?.jsonBody);
 
                                                         if ((_model.createPost
                                                                 ?.succeeded ??
@@ -1154,9 +1155,22 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                       .map<String>((e) => e.toString())
                                       .toList()
                                       .cast<String>();
-
+                                  final String postId = getJsonField(
+                                    postDataItem,
+                                    r'''$._id''',
+                                  ).toString();
+                                  // Effective liked state and count using local overrides when available
                                   bool isLiked =
-                                      likes.contains(FFAppState().userId);
+                                      _model.localLikeStates[postId] ??
+                                          likes.contains(FFAppState().userId);
+                                  int likeCount =
+                                      _model.localLikeCounts[postId] ??
+                                          ((getJsonField(
+                                                postDataItem,
+                                                r'''$.likeCount''',
+                                              ) as num?)
+                                                  ?.toInt() ??
+                                              0);
                                   return Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
@@ -1504,42 +1518,39 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                       highlightColor:
                                                           Colors.transparent,
                                                       onTap: () async {
-                                                        if (isLiked) {
-                                                          isLiked = false;
-                                                          print(
-                                                              'its if block: $isLiked');
-                                                        } else {
-                                                          isLiked = true;
-                                                          print(
-                                                              'its else block: $isLiked');
-                                                        }
+                                                        // Determine the current state before toggling
+                                                        final wasLiked =
+                                                            isLiked;
+                                                        // Optimistically toggle UI state and count
+                                                        isLiked = !wasLiked;
+                                                        _model.localLikeStates[
+                                                            postId] = isLiked;
+                                                        likeCount +=
+                                                            isLiked ? 1 : -1;
+                                                        if (likeCount < 0)
+                                                          likeCount = 0;
+                                                        _model.localLikeCounts[
+                                                            postId] = likeCount;
 
+                                                        // Call the correct endpoint based on previous state
                                                         _model.likes =
                                                             await LikeAndUnlikeCall
                                                                 .call(
-                                                          isLike: isLiked
+                                                          isLike: wasLiked
                                                               ? 'unlike'
                                                               : 'like',
-                                                          postId: getJsonField(
-                                                            postDataItem,
-                                                            r'''$._id''',
-                                                          ).toString(),
+                                                          postId: postId,
                                                           token: FFAppState()
                                                               .token,
                                                         );
 
                                                         safeSetState(() {});
-                                                        print(_model
-                                                            .likes?.jsonBody);
                                                       },
                                                       child: Icon(
                                                         Icons.favorite_rounded,
                                                         color: isLiked
-                                                            ? Color.fromARGB(
-                                                                255, 52, 50, 50)
-                                                            : const Color
-                                                                .fromARGB(255,
-                                                                250, 25, 25),
+                                                            ? Colors.red
+                                                            : Colors.grey,
                                                       ),
                                                     ),
                                                     Padding(
@@ -1548,10 +1559,7 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                               .fromSTEB(
                                                                   5, 0, 0, 0),
                                                       child: Text(
-                                                        getJsonField(
-                                                          postDataItem,
-                                                          r'''$.likeCount''',
-                                                        ).toString(),
+                                                        likeCount.toString(),
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
