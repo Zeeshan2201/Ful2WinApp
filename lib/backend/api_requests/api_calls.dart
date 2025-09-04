@@ -227,10 +227,10 @@ class CreatePostCall {
   "content": "$content",
   "image": "$image"
 }''';
-
+print(content);
     return ApiManager.instance.makeApiCall(
       callName: 'createPost',
-      apiUrl: '${baseUrl}posts/',
+      apiUrl: '${baseUrl}post/create/',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer $token',
