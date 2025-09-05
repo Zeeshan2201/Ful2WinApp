@@ -211,6 +211,40 @@ class ChatsCall {
   }
 }
 
+class AddComment {
+  static Future<ApiCallResponse> call({
+    String? postId = '',
+    String? content = '',
+    String? token = '',
+  }) async {
+    final baseUrl = FulWinGroup.getBaseUrl(
+      token: token,
+    );
+    final apiRequestBody = '''
+{
+  "content": "$content"
+}''';
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'addComment',
+      apiUrl: '${baseUrl}posts/$postId/comment',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer $token',
+      },
+      params: {},
+      body: apiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class SendChatCall {
   static Future<ApiCallResponse> call({
     String? content,

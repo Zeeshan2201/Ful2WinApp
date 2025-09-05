@@ -293,7 +293,7 @@ class _MessageWidgetState extends State<MessageWidget>
                         user2: widget.user2,
                         token: FFAppState().token,
                       ).then((response) {
-                        print('ChatsCall response: ${response.jsonBody}');
+                        // print('ChatsCall response: ${response.jsonBody}');
                         return response;
                       }),
                       builder: (context, snapshot) {
@@ -647,6 +647,8 @@ class _MessageWidgetState extends State<MessageWidget>
                                     content: text,
                                     token: FFAppState().token,
                                   );
+                                  print(
+                                      'SendChatCall response: ${response.jsonBody}');
                                   // Clear input immediately for better UX.
                                   _model.textController!.clear();
                                   // Rebuild to refresh the FutureBuilder and fetch latest messages.
@@ -667,7 +669,7 @@ class _MessageWidgetState extends State<MessageWidget>
                                   // Optional logging
                                   try {
                                     // ignore: avoid_print
-                                    print(response.jsonBody);
+                                    //print(response.jsonBody);
                                   } catch (_) {}
                                 },
                               ),
