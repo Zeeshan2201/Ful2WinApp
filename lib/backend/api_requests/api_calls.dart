@@ -694,22 +694,22 @@ class UpdateProfileCall {
     String? bio,
     String? gender,
     String? country,
+    String? token,
   }) async {
     // Get token from app state
-    final token = FFAppState().token;
+    print(token);
     try {
       // Prepare request body
-      final Map<String, dynamic> requestBody = {};
-      
-      // Only add non-null and non-empty fields to the request
-      if (fullName != null && fullName.isNotEmpty) requestBody['fullName'] = fullName;
-      if (email != null && email.isNotEmpty) requestBody['email'] = email;
-      if (phoneNumber != null) requestBody['phoneNumber'] = phoneNumber.toString();
-      if (bio != null && bio.isNotEmpty) requestBody['bio'] = bio;
-      if (gender != null && gender.isNotEmpty) requestBody['gender'] = gender;
-      if (country != null && country.isNotEmpty) requestBody['country'] = country;
-
+      final apiRequestBody = {
+        if (fullName != null) 'fullName': fullName,
+        if (email != null) 'email': email,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber,
+        if (bio != null) 'bio': bio,
+        if (gender != null) 'gender': gender,
+        if (country != null) 'country': country,
+      };
       // Make the API call
+      print(apiRequestBody);
       final response = await ApiManager.instance.makeApiCall(
         callName: 'updateProfile',
         apiUrl: 'https://api.fulboost.fun/api/users/profile/$userId',
@@ -718,7 +718,7 @@ class UpdateProfileCall {
           'Authorization': 'Bearer $token',
           'Content-Type': 'application/json',
         },
-        body: jsonEncode(requestBody),
+        body: jsonEncode(apiRequestBody),
         bodyType: BodyType.JSON,
         returnBody: true,
         encodeBodyUtf8: true,
@@ -729,20 +729,21 @@ class UpdateProfileCall {
       );
 
       // Log the response for debugging
-      debugPrint('UpdateProfile API Response: ${response.statusCode} - ${response.jsonBody}');
-      
+      debugPrint(
+          'UpdateProfile API Response: ${response.statusCode} - ${response.jsonBody}');
+
       return response;
     } catch (e, stackTrace) {
       // Log the error for debugging
       debugPrint('Error in UpdateProfileCall: $e');
       debugPrint('Stack trace: $stackTrace');
-      
+
       // Return a failed response with error details
       final errorResponse = jsonEncode({
         'success': false,
         'message': 'Failed to update profile: ${e.toString()}',
       });
-      
+
       return ApiCallResponse(
         errorResponse,
         {'Content-Type': 'application/json'},

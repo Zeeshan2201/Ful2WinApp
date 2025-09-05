@@ -52,7 +52,7 @@ class FFAppState extends ChangeNotifier {
   late SharedPreferences prefs;
 
   String _token =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NjYyNzBhNjg3NjQ0MTIxYmFlYmI0ZCIsInBob25lTnVtYmVyIjoiOTAyMjk3NTc4NSIsImlhdCI6MTc1NTg0NDgxMiwiZXhwIjoxNzU4NDM2ODEyfQ.I0v5q07rrinYvAR8pTEtH0cqQ6pUZ13WKWs7I00nhyw';
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NWMzMzBhYjdlMGY0ZDdkZWY3MTcxYiIsInBob25lTnVtYmVyIjoiMTExMTEyMjIyMyIsImlhdCI6MTc1NjM2MjAwMiwiZXhwIjoxNzU4OTU0MDAyfQ.MZkgthzElldrYawIWkF4vj1vCg-VBrhr1DQOboJg31g';
   String get token => _token;
   set token(String value) {
     _token = value;
@@ -73,7 +73,7 @@ class FFAppState extends ChangeNotifier {
     prefs.setString('ff_gameId', value);
   }
 
-  String _tournamentId = '685ed3d4a81dc4940706b443';
+  String _tournamentId = '6878cbf15c6a3b819fddfadf';
   String get tournamentId => _tournamentId;
   set tournamentId(String value) {
     _tournamentId = value;

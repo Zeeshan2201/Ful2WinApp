@@ -77,7 +77,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -89,7 +89,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -115,7 +115,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFF000B33),
+        backgroundColor: const Color(0xFF000B33),
         body: Container(
           width: double.infinity,
           height: double.infinity,
@@ -258,7 +258,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: Image.asset(
-                                                      'assets/images/cxi3o_1.jpg',
+                                                      'assets/images/1.jpg',
                                                       fit: BoxFit.cover,
                                                     ),
                                                   ),
@@ -326,7 +326,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: Image.asset(
-                                                      'assets/images/g2t7j_2.jpg',
+                                                      'assets/images/2.jpg',
                                                       fit: BoxFit.cover,
                                                     ),
                                                   ),
@@ -394,7 +394,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: Image.asset(
-                                                      'assets/images/7fbgi_3.jpg',
+                                                      'assets/images/3.jpg',
                                                       fit: BoxFit.cover,
                                                     ),
                                                   ),
@@ -462,7 +462,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: Image.asset(
-                                                      'assets/images/3mjpg_4.jpg',
+                                                      'assets/images/4.jpg',
                                                       fit: BoxFit.cover,
                                                     ),
                                                   ),
@@ -530,7 +530,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: Image.asset(
-                                                      'assets/images/5a6e9_5.jpg',
+                                                      'assets/images/5.jpg',
                                                       fit: BoxFit.cover,
                                                     ),
                                                   ),
@@ -598,7 +598,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: Image.asset(
-                                                      'assets/images/75n71_6.jpg',
+                                                      'assets/images/6.jpg',
                                                       fit: BoxFit.cover,
                                                     ),
                                                   ),
@@ -666,7 +666,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: Image.asset(
-                                                      'assets/images/ic2rl_7.jpg',
+                                                      'assets/images/7.jpg',
                                                       fit: BoxFit.cover,
                                                     ),
                                                   ),
@@ -734,7 +734,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: Image.asset(
-                                                      'assets/images/0zhao_8.jpg',
+                                                      'assets/images/8.jpg',
                                                       fit: BoxFit.cover,
                                                     ),
                                                   ),
@@ -802,7 +802,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: Image.asset(
-                                                      'assets/images/6rnw0_9.jpg',
+                                                      'assets/images/9.jpg',
                                                       fit: BoxFit.cover,
                                                     ),
                                                   ),
@@ -929,7 +929,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                             shape: BoxShape.circle,
                                           ),
                                           child: Image.asset(
-                                            'assets/images/cxi3o_1.jpg',
+                                            'assets/images/1.jpg',
                                             fit: BoxFit.cover,
                                           ),
                                         ),
@@ -953,7 +953,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                             shape: BoxShape.circle,
                                           ),
                                           child: Image.asset(
-                                            'assets/images/g2t7j_2.jpg',
+                                            'assets/images/2.jpg',
                                             fit: BoxFit.cover,
                                           ),
                                         ),
@@ -977,7 +977,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                             shape: BoxShape.circle,
                                           ),
                                           child: Image.asset(
-                                            'assets/images/7fbgi_3.jpg',
+                                            'assets/images/3.jpg',
                                             fit: BoxFit.cover,
                                           ),
                                         ),
@@ -1001,7 +1001,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                             shape: BoxShape.circle,
                                           ),
                                           child: Image.asset(
-                                            'assets/images/3mjpg_4.jpg',
+                                            'assets/images/4.jpg',
                                             fit: BoxFit.cover,
                                           ),
                                         ),
@@ -1025,7 +1025,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                             shape: BoxShape.circle,
                                           ),
                                           child: Image.asset(
-                                            'assets/images/5a6e9_5.jpg',
+                                            'assets/images/5.jpg',
                                             fit: BoxFit.cover,
                                           ),
                                         ),
@@ -1049,7 +1049,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                             shape: BoxShape.circle,
                                           ),
                                           child: Image.asset(
-                                            'assets/images/75n71_6.jpg',
+                                            'assets/images/6.jpg',
                                             fit: BoxFit.cover,
                                           ),
                                         ),
@@ -1073,7 +1073,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                             shape: BoxShape.circle,
                                           ),
                                           child: Image.asset(
-                                            'assets/images/ic2rl_7.jpg',
+                                            'assets/images/7.jpg',
                                             fit: BoxFit.cover,
                                           ),
                                         ),
@@ -1097,7 +1097,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                             shape: BoxShape.circle,
                                           ),
                                           child: Image.asset(
-                                            'assets/images/0zhao_8.jpg',
+                                            'assets/images/8.jpg',
                                             fit: BoxFit.cover,
                                           ),
                                         ),
@@ -1121,7 +1121,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                             shape: BoxShape.circle,
                                           ),
                                           child: Image.asset(
-                                            'assets/images/6rnw0_9.jpg',
+                                            'assets/images/9.jpg',
                                             fit: BoxFit.cover,
                                           ),
                                         ),
@@ -1563,7 +1563,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                 text: getJsonField(
                                                   columnProfileResponse
                                                       .jsonBody,
-                                                  r'''$.pnoneNumber''',
+                                                  r'''$.phoneNumber''',
                                                 ).toString(),
                                               ),
                                               focusNode:
@@ -1944,8 +1944,9 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                             alignment:
                                                 AlignmentDirectional(-1, 0),
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(20, 5, 0, 0),
+                                              padding:
+                                                  const EdgeInsetsDirectional
+                                                      .fromSTEB(20, 5, 0, 0),
                                               child: Container(
                                                 width:
                                                     MediaQuery.sizeOf(context)
@@ -2029,7 +2030,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                                   .fontStyle,
                                                         ),
                                                     enabledBorder:
-                                                        OutlineInputBorder(
+                                                        const OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
@@ -2048,7 +2049,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                       ),
                                                     ),
                                                     focusedBorder:
-                                                        OutlineInputBorder(
+                                                        const OutlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
                                                             Color(0x00000000),
@@ -2964,96 +2965,143 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                             FFButtonWidget(
                                               onPressed: () async {
                                                 // Get the current user ID and token
-                                                final userId = FFAppState().userId;
-                                                final token = FFAppState().token;
-                                                
-                                                if (userId.isEmpty || token.isEmpty) {
-                                                  ScaffoldMessenger.of(context).showSnackBar(
+                                                final userId =
+                                                    FFAppState().userId;
+                                                final token =
+                                                    FFAppState().token;
+
+                                                if (userId.isEmpty ||
+                                                    token.isEmpty) {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
                                                     const SnackBar(
-                                                      content: Text('User not authenticated'),
-                                                      backgroundColor: Colors.red,
+                                                      content: Text(
+                                                          'User not authenticated'),
+                                                      backgroundColor:
+                                                          Colors.red,
                                                     ),
                                                   );
                                                   return;
                                                 }
 
                                                 // Show loading indicator
-                                                final scaffold = ScaffoldMessenger.of(context);
+                                                final scaffold =
+                                                    ScaffoldMessenger.of(
+                                                        context);
                                                 scaffold.showSnackBar(
-                                                  SnackBar(
+                                                  const SnackBar(
                                                     content: Row(
-                                                      children: const [
+                                                      children: <Widget>[
                                                         SizedBox(
                                                           width: 20,
                                                           height: 20,
-                                                          child: CircularProgressIndicator(
-                                                            valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                                                          child:
+                                                              CircularProgressIndicator(
+                                                            valueColor:
+                                                                AlwaysStoppedAnimation<
+                                                                        Color>(
+                                                                    Colors
+                                                                        .white),
                                                             strokeWidth: 2,
                                                           ),
                                                         ),
                                                         SizedBox(width: 20),
-                                                        Text('Updating profile...'),
+                                                        Text(
+                                                            'Updating profile...'),
                                                       ],
                                                     ),
-                                                    duration: const Duration(seconds: 5),
+                                                    duration:
+                                                        Duration(seconds: 5),
                                                   ),
                                                 );
 
                                                 try {
                                                   // Call the UpdateProfile API
-                                                  final response = await UpdateProfileCall.call(
-                                                    userId: userId,
-                                                    fullName: _model.textController1?.text ?? '',
-                                                    email: _model.textController2?.text ?? '',
-                                                    phoneNumber: int.tryParse(_model.textController3?.text ?? ''),
-                                                    bio: _model.textController4?.text ?? '',
+                                                  final response =
+                                                      await UpdateProfileCall
+                                                          .call(
+                                                    userId: FFAppState().userId,
+                                                    token: FFAppState().token,
+                                                    fullName: _model
+                                                            .textController1
+                                                            ?.text ??
+                                                        '',
+                                                    email: _model
+                                                            .textController3
+                                                            ?.text ??
+                                                        '',
+
+                                                    bio: _model.textController6
+                                                            ?.text ??
+                                                        '',
+                                                    country: _model
+                                                            .textController5
+                                                            ?.text ??
+                                                        '',
                                                     // Add other fields as needed
                                                   );
 
                                                   // Hide loading indicator
-                                                  scaffold.hideCurrentSnackBar();
+                                                  scaffold
+                                                      .hideCurrentSnackBar();
 
                                                   if (response.succeeded) {
                                                     // Update app state with new user data if needed
-                                                    FFAppState().userName = _model.textController1?.text ?? '';
-                                                    
+                                                    FFAppState().userName =
+                                                        _model.textController1
+                                                                ?.text ??
+                                                            '';
+
                                                     // Show success message
                                                     scaffold.showSnackBar(
                                                       const SnackBar(
-                                                        content: Text('Profile updated successfully!'),
-                                                        backgroundColor: Colors.green,
+                                                        content: Text(
+                                                            'Profile updated successfully!'),
+                                                        backgroundColor:
+                                                            Colors.green,
                                                       ),
                                                     );
                                                     // Optionally navigate back
-                                                    if (Navigator.canPop(context)) {
+                                                    if (Navigator.canPop(
+                                                        context)) {
                                                       Navigator.pop(context);
                                                     }
                                                   } else {
                                                     // Show error message
-                                                    final errorMessage = response.jsonBody?.isNotEmpty == true 
-                                                        ? (jsonDecode(response.jsonBody)['message'] ?? 'Failed to update profile')
+                                                    final errorMessage = response
+                                                                .jsonBody
+                                                                ?.isNotEmpty ==
+                                                            true
+                                                        ? (jsonDecode(response
+                                                                    .jsonBody)[
+                                                                'message'] ??
+                                                            'Failed to update profile')
                                                         : 'Failed to update profile';
                                                     scaffold.showSnackBar(
                                                       SnackBar(
-                                                        content: Text(errorMessage),
-                                                        backgroundColor: Colors.red,
+                                                        content:
+                                                            Text(errorMessage),
+                                                        backgroundColor:
+                                                            Colors.red,
                                                       ),
                                                     );
                                                   }
                                                 } catch (e) {
                                                   // Hide loading indicator
-                                                  scaffold.hideCurrentSnackBar();
-                                                  
+                                                  scaffold
+                                                      .hideCurrentSnackBar();
+
                                                   // Show error message
                                                   scaffold.showSnackBar(
                                                     SnackBar(
-                                                      content: Text('Error: ${e.toString()}'),
-                                                      backgroundColor: Colors.red,
+                                                      content: Text(
+                                                          'Error: ${e.toString()}'),
+                                                      backgroundColor:
+                                                          Colors.red,
                                                     ),
                                                   );
                                                 }
                                               },
-
                                               text: 'Save Changes',
                                               options: FFButtonOptions(
                                                 width:
