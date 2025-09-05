@@ -884,16 +884,27 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                         }
 
                                                         try {
-                                                          final postContent = _model.textController.text.trim();
-                                                          print('Sending post with content: "$postContent"');
-                                                          
-                                                          _model.createPost = await CreatePostCall.call(
-                                                            content: postContent,
-                                                            image: _model.uploadedLocalFile_images,
-                                                            token: FFAppState().token,
+                                                          final postContent =
+                                                              _model
+                                                                  .textController
+                                                                  .text
+                                                                  .trim();
+                                                          print(
+                                                              'Sending post with content: "$postContent"');
+
+                                                          _model.createPost =
+                                                              await CreatePostCall
+                                                                  .call(
+                                                            content:
+                                                                postContent,
+                                                            image: _model
+                                                                .uploadedLocalFile_images,
+                                                            token: FFAppState()
+                                                                .token,
                                                           );
-                                                          
-                                                          print('API Response: ${_model.createPost?.jsonBody}');
+
+                                                          print(
+                                                              'API Response: ${_model.createPost?.jsonBody}');
 
                                                           print(_model
                                                               .textController
@@ -1511,10 +1522,14 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               if (getJsonField(
+                                                        postDataItem,
+                                                        r'''$.images[0].url''',
+                                                      ) !=
+                                                      null &&
+                                                  getJsonField(
                                                     postDataItem,
-                                                    r'''$.images[0]''',
-                                                  ) !=
-                                                  null)
+                                                    r'''$.images[0].url''',
+                                                  ).toString().isNotEmpty)
                                                 Container(
                                                   decoration: BoxDecoration(),
                                                   child: Padding(
@@ -1529,7 +1544,7 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                       child: Image.network(
                                                         getJsonField(
                                                           postDataItem,
-                                                          r'''$.images[0]''',
+                                                          r'''$.images[0].url''',
                                                         ).toString(),
                                                         width: 100,
                                                         height: 100,
@@ -2090,6 +2105,11 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                             ),
                                                             child:
                                                                 MessagetextfieldWidget(
+                                                              PostId:
+                                                                  getJsonField(
+                                                                postDataItem,
+                                                                r'''$._id''',
+                                                              ).toString(),
                                                               key: Key(
                                                                   'Keychw_${postDataIndex}_of_${postData.length}'),
                                                             ),
@@ -2102,8 +2122,19 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                                       0, 10, 0),
                                                           child: FFButtonWidget(
                                                             onPressed: () {
-                                                              print(
-                                                                  'Button pressed ...');
+                                                              AddComment.call(
+                                                                postId:
+                                                                    getJsonField(
+                                                                  postDataItem,
+                                                                  r'''$._id''',
+                                                                ).toString(),
+                                                                content: _model
+                                                                    .textController
+                                                                    .text,
+                                                                token:
+                                                                    FFAppState()
+                                                                        .token,
+                                                              );
                                                             },
                                                             text: 'Post',
                                                             options:

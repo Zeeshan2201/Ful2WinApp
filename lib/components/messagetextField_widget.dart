@@ -10,7 +10,12 @@ import 'messagetextfield_model.dart';
 export 'messagetextfield_model.dart';
 
 class MessagetextfieldWidget extends StatefulWidget {
-  const MessagetextfieldWidget({super.key});
+  const MessagetextfieldWidget({
+    super.key,
+    required this.PostId,
+  });
+
+  final String PostId;
 
   @override
   State<MessagetextfieldWidget> createState() => _MessagetextfieldWidgetState();

@@ -114,7 +114,10 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget> {
                                 image: DecorationImage(
                                   fit: BoxFit.cover,
                                   image: Image.network(
-                                    'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwyfHxhbmltZXxlbnwwfHx8fDE3NTU1MDkxOTh8MA&ixlib=rb-4.1.0&q=80&w=1080',
+                                    getJsonField(
+                                      profilepageProfileResponse.jsonBody,
+                                      r'''$.profilePicture''',
+                                    ),
                                   ).image,
                                 ),
                                 shape: BoxShape.circle,
@@ -237,11 +240,11 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget> {
                               child: Container(
                                 width: 60.0,
                                 height: 60.0,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Color(0xFF3B82F6),
                                   shape: BoxShape.circle,
                                 ),
-                                child: Icon(
+                                child: const Icon(
                                   Icons.work_history,
                                   color: Color(0xFFE4E9ED),
                                   size: 24.0,
@@ -260,11 +263,11 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget> {
                               child: Container(
                                 width: 60.0,
                                 height: 60.0,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Color(0xFF3B82F6),
                                   shape: BoxShape.circle,
                                 ),
-                                child: Icon(
+                                child: const Icon(
                                   Icons.person_add,
                                   color: Color(0xFFE9EDF0),
                                   size: 24.0,
