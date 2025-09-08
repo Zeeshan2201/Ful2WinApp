@@ -4,7 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
-import '/index.dart';
+import '/index.dart'; // ✅ make sure SpinWheelWidget is exported in index.dart
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -36,7 +36,6 @@ class _HeaderWidgetState extends State<HeaderWidget> {
   @override
   void dispose() {
     _model.maybeDispose();
-
     super.dispose();
   }
 
@@ -54,7 +53,6 @@ class _HeaderWidgetState extends State<HeaderWidget> {
             userId: FFAppState().userId,
           ),
           builder: (context, snapshot) {
-            // Customize what your widget looks like when it's loading.
             if (!snapshot.hasData) {
               return Center(
                 child: SizedBox(
@@ -95,17 +93,15 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(20.0),
                     bottomRight: Radius.circular(20.0),
-                    topLeft: Radius.circular(0.0),
-                    topRight: Radius.circular(0.0),
                   ),
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    // Logo
                     Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                      padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -128,17 +124,18 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                         ),
                       ),
                     ),
+
+                    // Wallet + Notifications + Spin Wheel
                     Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                       child: Container(
                         width: 134.0,
                         height: 32.0,
-                        decoration: BoxDecoration(),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
+                            // Wallet
                             InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
@@ -152,22 +149,14 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                                 height: 23.0,
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context).secondary,
-                                  borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(40.0),
-                                    bottomRight: Radius.circular(40.0),
-                                    topLeft: Radius.circular(40.0),
-                                    topRight: Radius.circular(40.0),
-                                  ),
+                                  borderRadius: BorderRadius.circular(40.0),
                                 ),
                                 child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Icon(
                                       Icons.account_balance_wallet,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
+                                      color: FlutterFlowTheme.of(context).primaryText,
                                       size: 18.0,
                                     ),
                                     Text(
@@ -175,28 +164,20 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                                         containerProfileResponse.jsonBody,
                                         r'''$.balance''',
                                       ).toString(),
-                                      style: FlutterFlowTheme.of(context)
-                                          .headlineLarge
-                                          .override(
-                                            font: GoogleFonts.poppins(
-                                              fontWeight: FontWeight.bold,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineLarge
-                                                      .fontStyle,
-                                            ),
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineLarge
-                                                    .fontStyle,
-                                          ),
+                                      style: FlutterFlowTheme.of(context).headlineLarge.override(
+                                        font: GoogleFonts.poppins(
+                                          fontWeight: FontWeight.bold,
+                                          fontStyle: FlutterFlowTheme.of(context).headlineLarge.fontStyle,
+                                        ),
+                                        letterSpacing: 0.0,
+                                      ),
                                     ),
                                   ],
                                 ),
                               ),
                             ),
+
+                            // Notifications
                             Align(
                               alignment: AlignmentDirectional(0.0, 0.0),
                               child: FlutterFlowIconButton(
@@ -208,26 +189,45 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                                   size: 22.0,
                                 ),
                                 onPressed: () async {
-                                  context
-                                      .pushNamed(NotificationWidget.routeName);
+                                  context.pushNamed(NotificationWidget.routeName);
                                 },
                               ),
                             ),
-                            Container(
-                              width: 35.0,
-                              height: 35.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: Image.asset(
-                                    'assets/images/Pngtreegolden_spin_wheel_4199603.png',
-                                  ).image,
-                                ),
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  color: Color(0xFFAECBF9),
+
+                            // Spin Wheel Icon (clickable, FIXED: no white border)
+                            InkWell(
+                              onTap: () {
+                                showDialog(
+                                  context: context,
+                                  barrierColor: Colors.black54,
+                                  builder: (BuildContext context) {
+                                    return Dialog(
+                                      backgroundColor: Colors.transparent,
+                                      insetPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+                                      child: Container(
+                                        width: MediaQuery.of(context).size.width * 0.9,
+                                        height: MediaQuery.of(context).size.height * 0.6,
+                                        child: const SpinWheelWidget(),
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                              child: Container(
+                                width: 35.0,
+                                height: 35.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                                  image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: Image.asset(
+                                      'assets/images/Pngtreegolden_spin_wheel_4199603.png',
+                                    ).image,
+                                  ),
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: Color(0xFFAECBF9),
+                                  ),
                                 ),
                               ),
                             ),
@@ -243,5 +243,5 @@ class _HeaderWidgetState extends State<HeaderWidget> {
         ),
       ),
     );
-  }
+  } 
 }
