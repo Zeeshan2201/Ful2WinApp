@@ -12,10 +12,10 @@ export 'messagetextfield_model.dart';
 class MessagetextfieldWidget extends StatefulWidget {
   const MessagetextfieldWidget({
     super.key,
-    required this.PostId,
+    required this.controller,
   });
 
-  final String PostId;
+  final TextEditingController controller;
 
   @override
   State<MessagetextfieldWidget> createState() => _MessagetextfieldWidgetState();
@@ -34,8 +34,6 @@ class _MessagetextfieldWidgetState extends State<MessagetextfieldWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => MessagetextfieldModel());
-
-    _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
   }
 
@@ -54,7 +52,7 @@ class _MessagetextfieldWidgetState extends State<MessagetextfieldWidget> {
         Container(
           width: double.infinity,
           child: TextFormField(
-            controller: _model.textController,
+            controller: widget.controller,
             focusNode: _model.textFieldFocusNode,
             autofocus: false,
             obscureText: false,

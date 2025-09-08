@@ -2105,13 +2105,9 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                             ),
                                                             child:
                                                                 MessagetextfieldWidget(
-                                                              PostId:
-                                                                  getJsonField(
-                                                                postDataItem,
-                                                                r'''$._id''',
-                                                              ).toString(),
-                                                              key: Key(
-                                                                  'Keychw_${postDataIndex}_of_${postData.length}'),
+                                                              controller: _model
+                                                                      .textController ??=
+                                                                  TextEditingController(),
                                                             ),
                                                           ),
                                                         ),
@@ -2121,9 +2117,13 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                                   .fromSTEB(0,
                                                                       0, 10, 0),
                                                           child: FFButtonWidget(
-                                                            onPressed: () async {
-
-                                                              final response = await AddComment.call(
+                                                            onPressed:
+                                                                () async {
+                                                              print(
+                                                                  "content is ${_model.textController?.text}");
+                                                              final response =
+                                                                  await AddComment
+                                                                      .call(
                                                                 postId:
                                                                     getJsonField(
                                                                   postDataItem,
@@ -2136,7 +2136,8 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                                     FFAppState()
                                                                         .token,
                                                               );
-                                                              print(response.jsonBody);
+                                                              print(response
+                                                                  .jsonBody);
                                                             },
                                                             text: 'Post',
                                                             options:

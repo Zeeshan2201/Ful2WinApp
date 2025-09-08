@@ -220,7 +220,7 @@ class AddComment {
     );
     final apiRequestBody = '''
 {
-  "content": "$content"
+  "content": "${escapeStringForJson(content)}"
 }''';
 
     return ApiManager.instance.makeApiCall(
