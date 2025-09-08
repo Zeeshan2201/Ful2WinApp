@@ -225,7 +225,7 @@ class AddComment {
 
     return ApiManager.instance.makeApiCall(
       callName: 'addComment',
-      apiUrl: '${baseUrl}posts/$postId/comment',
+      apiUrl: '${baseUrl}posts/$postId/comments',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer $token',
