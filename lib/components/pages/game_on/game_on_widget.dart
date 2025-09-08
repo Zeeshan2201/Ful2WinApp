@@ -62,24 +62,6 @@ class _GameOnWidgetState extends State<GameOnWidget> {
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
-          title: Text(
-            'Page Title',
-            style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  font: GoogleFonts.poppins(
-                    fontWeight:
-                        FlutterFlowTheme.of(context).headlineMedium.fontWeight,
-                    fontStyle:
-                        FlutterFlowTheme.of(context).headlineMedium.fontStyle,
-                  ),
-                  color: Colors.white,
-                  fontSize: 22,
-                  letterSpacing: 0.0,
-                  fontWeight:
-                      FlutterFlowTheme.of(context).headlineMedium.fontWeight,
-                  fontStyle:
-                      FlutterFlowTheme.of(context).headlineMedium.fontStyle,
-                ),
-          ),
           actions: const [],
           centerTitle: false,
           elevation: 2,
@@ -89,15 +71,15 @@ class _GameOnWidgetState extends State<GameOnWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              SizedBox(
-                width: 400,
-                height: 893,
-                child: custom_widgets.GameOn(
-                  width: 400,
-                  height: 893,
-                  gameUrl: widget.gameUrl,
-                  gameName: widget.gamename!,
-                  tournamentId: widget.tournamentId!,
+              Expanded(
+                child: LayoutBuilder(
+                  builder: (context, constraints) => custom_widgets.GameOn(
+                    width: MediaQuery.of(context).size.width,
+                    height: constraints.maxHeight,
+                    gameUrl: widget.gameUrl,
+                    gameName: widget.gamename!,
+                    tournamentId: widget.tournamentId!,
+                  ),
                 ),
               ),
             ],

@@ -70,7 +70,8 @@ class _HistoryWidgetState extends State<HistoryWidget> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 0.0, 0.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -83,10 +84,10 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                         context.pushNamed(
                           WalletpageWidget.routeName,
                           extra: <String, dynamic>{
-                            kTransitionInfoKey: TransitionInfo(
+                            kTransitionInfoKey: const TransitionInfo(
                               hasTransition: true,
                               transitionType: PageTransitionType.fade,
-                              duration: const Duration(milliseconds: 0),
+                              duration: Duration(milliseconds: 0),
                             ),
                           },
                         );
@@ -119,7 +120,8 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          20.0, 0.0, 0.0, 0.0),
                       child: Text(
                         'History',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -553,7 +555,8 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -970,7 +973,9 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                       ],
                     ),
                   ),
-                ].divide(const SizedBox(height: 10.0)).around(const SizedBox(height: 10.0)),
+                ]
+                    .divide(const SizedBox(height: 10.0))
+                    .around(const SizedBox(height: 10.0)),
               ),
             ],
           ),

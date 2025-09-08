@@ -225,7 +225,8 @@ class _AccountpageWidgetState extends State<AccountpageWidget>
                                     context.pushNamed(
                                       EditAccountpageWidget.routeName,
                                       extra: <String, dynamic>{
-                                        kTransitionInfoKey: TransitionInfo(
+                                        kTransitionInfoKey:
+                                            const TransitionInfo(
                                           hasTransition: true,
                                           transitionType:
                                               PageTransitionType.fade,

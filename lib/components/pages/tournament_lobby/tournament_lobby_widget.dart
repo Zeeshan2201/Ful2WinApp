@@ -1492,13 +1492,13 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                     options: FFButtonOptions(
                                                       height: 40,
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  16, 0, 16, 0),
+                                                              16, 0, 16, 0),
                                                       iconPadding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  0, 0, 0, 0),
+                                                              0, 0, 0, 0),
                                                       color: Color(0x000B33FF),
                                                       textStyle:
                                                           FlutterFlowTheme.of(

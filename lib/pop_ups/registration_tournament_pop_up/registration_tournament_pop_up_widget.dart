@@ -285,15 +285,7 @@ class _RegistrationTournamentPopUpWidgetState
                         animationsMap['buttonOnPageLoadAnimation']!),
                     FFButtonWidget(
                       onPressed: () async {
-                        context.pushNamed(
-                          TournamentLobbyWidget.routeName,
-                          queryParameters: {
-                            'gameId': serializeParam(
-                              FFAppState().gameId,
-                              ParamType.String,
-                            ),
-                          }.withoutNulls,
-                        );
+                        context.pop();
 
                         _model.soundPlayer ??= AudioPlayer();
                         if (_model.soundPlayer!.playing) {

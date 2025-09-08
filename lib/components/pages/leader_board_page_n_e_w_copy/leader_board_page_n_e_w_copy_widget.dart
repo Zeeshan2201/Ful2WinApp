@@ -97,7 +97,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                         context.pushNamed(
                           TournamentLobbyWidget.routeName,
                           extra: <String, dynamic>{
-                            kTransitionInfoKey: TransitionInfo(
+                            kTransitionInfoKey: const TransitionInfo(
                               hasTransition: true,
                               transitionType: PageTransitionType.fade,
                               duration: Duration(milliseconds: 0),

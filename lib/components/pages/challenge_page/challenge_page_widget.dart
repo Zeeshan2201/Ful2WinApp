@@ -289,7 +289,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                     children: [
                                       Container(
                                         decoration: BoxDecoration(
-                                          gradient: LinearGradient(
+                                          gradient: const LinearGradient(
                                             colors: [
                                               Color(0xFFF3E2C2),
                                               Color(0xFFE1B769)
@@ -317,11 +317,11 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(5, 0, 0, 0),
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            gradient: LinearGradient(
+                                            gradient: const LinearGradient(
                                               colors: [
                                                 Color(0xFF0BC1FF),
                                                 Color(0xFF0A2472)
@@ -366,10 +366,10 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                               : 350.0,
                           height: 480,
                           decoration: BoxDecoration(
-                            color: Color(0xBB08162C),
+                            color: const Color(0xBB08162C),
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(
-                              color: Color(0xFF00CFFF),
+                              color: const Color(0xFF00CFFF),
                             ),
                           ),
                           child: FutureBuilder<ApiCallResponse>(
@@ -396,8 +396,9 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 10, 0, 0),
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            0, 10, 0, 0),
                                     child: Text(
                                       'Challenge a Friend',
                                       style: FlutterFlowTheme.of(context)
@@ -428,15 +429,17 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                             ? 250.0
                                             : 300.0,
                                     child: Autocomplete<String>(
-                                      initialValue: TextEditingValue(),
+                                      initialValue: const TextEditingValue(),
                                       optionsBuilder: (textEditingValue) {
                                         if (textEditingValue.text == '') {
                                           return const Iterable<String>.empty();
                                         }
-                                        return AllUsersCall.fullNames(
+                                        final allUserNames =
+                                            AllUsersCall.fullNames(
                                           columnAllUsersResponse.jsonBody,
-                                        )!
-                                            .where((option) {
+                                        )!;
+                                        print(allUserNames);
+                                        return allUserNames.where((option) {
                                           final lowercaseOption =
                                               option.toLowerCase();
                                           return lowercaseOption.contains(
@@ -573,7 +576,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                       lineHeight: 2,
                                                     ),
                                             enabledBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
+                                              borderSide: const BorderSide(
                                                 color: Color(0x00000000),
                                                 width: 1,
                                               ),
@@ -581,7 +584,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                   BorderRadius.circular(8),
                                             ),
                                             focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
+                                              borderSide: const BorderSide(
                                                 color: Color(0x00000000),
                                                 width: 1,
                                               ),
@@ -650,13 +653,13 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                       },
                                     ),
                                   ),
-                                  Container(
+                                  SizedBox(
                                     width:
                                         MediaQuery.sizeOf(context).width < 350.0
                                             ? 250.0
                                             : 300.0,
                                     child: Autocomplete<String>(
-                                      initialValue: TextEditingValue(),
+                                      initialValue: const TextEditingValue(),
                                       optionsBuilder: (textEditingValue) {
                                         if (textEditingValue.text == '') {
                                           return const Iterable<String>.empty();
@@ -801,7 +804,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                       lineHeight: 2,
                                                     ),
                                             enabledBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
+                                              borderSide: const BorderSide(
                                                 color: Color(0x00000000),
                                                 width: 1,
                                               ),
@@ -809,7 +812,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                   BorderRadius.circular(8),
                                             ),
                                             focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
+                                              borderSide: const BorderSide(
                                                 color: Color(0x00000000),
                                                 width: 1,
                                               ),
@@ -939,7 +942,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                       .fontStyle,
                                             ),
                                         enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1,
                                           ),
@@ -947,7 +950,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                               BorderRadius.circular(8),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1,
                                           ),

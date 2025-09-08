@@ -547,42 +547,87 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                         const EdgeInsetsDirectional
                                                             .fromSTEB(
                                                             8.0, 8.0, 8.0, 8.0),
-                                                    child: Container(
-                                                      width: 69.8,
-                                                      height: 69.8,
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        image: DecorationImage(
-                                                          fit: BoxFit.cover,
-                                                          image: Image.network(
-                                                            getJsonField(
-                                                              gamItem,
-                                                              r'''$.assets.thumbnail''',
-                                                            ).toString(),
-                                                          ).image,
-                                                        ),
-                                                        borderRadius:
-                                                            const BorderRadius
-                                                                .only(
-                                                          bottomLeft:
-                                                              Radius.circular(
-                                                                  10.0),
-                                                          bottomRight:
-                                                              Radius.circular(
-                                                                  10.0),
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  10.0),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  10.0),
-                                                        ),
-                                                        border: Border.all(
-                                                          color: const Color(
-                                                              0xFFAECBF9),
-                                                          width: 2.0,
+                                                    child: InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        context.pushNamed(
+                                                          GameOnWidget
+                                                              .routeName,
+                                                          queryParameters: {
+                                                            'gameUrl':
+                                                                serializeParam(
+                                                              getJsonField(
+                                                                gamItem,
+                                                                r'''$.assets.gameUrl.baseUrl''',
+                                                              ).toString(),
+                                                              ParamType.String,
+                                                            ),
+                                                            'gamename':
+                                                                serializeParam(
+                                                              getJsonField(
+                                                                gamItem,
+                                                                r'''$.name''',
+                                                              ).toString(),
+                                                              ParamType.String,
+                                                            ),
+                                                            'tournamentId':
+                                                                serializeParam(
+                                                              getJsonField(
+                                                                gamItem,
+                                                                r'''$._id''',
+                                                              ).toString(),
+                                                              ParamType.String,
+                                                            ),
+                                                          }.withoutNulls,
+                                                        );
+                                                      },
+                                                      child: Container(
+                                                        width: 69.8,
+                                                        height: 69.8,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          image:
+                                                              DecorationImage(
+                                                            fit: BoxFit.cover,
+                                                            image:
+                                                                Image.network(
+                                                              getJsonField(
+                                                                gamItem,
+                                                                r'''$.assets.thumbnail''',
+                                                              ).toString(),
+                                                            ).image,
+                                                          ),
+                                                          borderRadius:
+                                                              const BorderRadius
+                                                                  .only(
+                                                            bottomLeft:
+                                                                Radius.circular(
+                                                                    10.0),
+                                                            bottomRight:
+                                                                Radius.circular(
+                                                                    10.0),
+                                                            topLeft:
+                                                                Radius.circular(
+                                                                    10.0),
+                                                            topRight:
+                                                                Radius.circular(
+                                                                    10.0),
+                                                          ),
+                                                          border: Border.all(
+                                                            color: const Color(
+                                                                0xFFAECBF9),
+                                                            width: 2.0,
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
