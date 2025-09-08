@@ -1,0 +1,522 @@
+import 'dart:async';
+import 'dart:math';
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+class SpinWheelWidget extends StatefulWidget {
+  const SpinWheelWidget({super.key});
+
+  @override
+  State<SpinWheelWidget> createState() => _SpinWheelWidgetState();
+}
+
+class _SpinWheelWidgetState extends State<SpinWheelWidget>
+    with SingleTickerProviderStateMixin {
+  static const List<Color> colors = [
+    Color(0xFF800080),
+    Color(0xFFFF1493),
+    Color(0xFFFFB6C1),
+    Color(0xFFFF0000),
+    Color(0xFFFF7F00),
+    Color(0xFFFFD700),
+    Color(0xFF90EE90),
+    Color(0xFF008000),
+    Color(0xFF00FFFF),
+    Color(0xFF87CEFA),
+    Color(0xFF0000FF),
+    Color(0xFF4B0082),
+  ];
+  static final labels = List.generate(colors.length, (i) => "${(i + 1) * 50}");
+
+  static const spinsKey = "spinWheel_spinsLeft";
+  static const timerKey = "spinWheel_timer";
+  static const refillTime = 120;
+
+  int spinsLeft = 5;
+  int timer = refillTime;
+  bool isSpinning = false;
+  String currentReward = "";
+
+  double rotation = 0;
+  late AnimationController _controller;
+  late Animation<double> _animation;
+  Timer? _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadData();
+    _controller =
+        AnimationController(vsync: this, duration: const Duration(milliseconds: 3500));
+    _controller.addListener(() {
+      setState(() {
+        rotation = _animation.value;
+      });
+    });
+    _startTimer();
+  }
+
+  Future<void> _loadData() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      spinsLeft = prefs.getInt(spinsKey) ?? 5;
+      timer = prefs.getInt(timerKey) ?? refillTime;
+    });
+  }
+
+  Future<void> _saveData() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt(spinsKey, spinsLeft);
+    await prefs.setInt(timerKey, timer);
+  }
+
+  void _startTimer() {
+    _timer?.cancel();
+    _timer = Timer.periodic(const Duration(seconds: 1), (t) {
+      if (spinsLeft >= 5) return;
+      if (timer > 0) {
+        setState(() => timer--);
+      } else {
+        setState(() {
+          spinsLeft++;
+          timer = refillTime;
+        });
+      }
+      _saveData();
+    });
+  }
+
+  void _spin() {
+    if (isSpinning || spinsLeft == 0) return;
+
+    final random = Random();
+    final randomOffset = random.nextDouble() * 360;
+    final fullSpins = 5;
+    final totalRotation = fullSpins * 360 + randomOffset;
+    final startRotation = rotation;
+    final endRotation = startRotation + totalRotation;
+
+    _animation = Tween<double>(begin: startRotation, end: endRotation).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeOutQuart),
+    );
+
+    setState(() {
+      isSpinning = true;
+      spinsLeft--;
+    });
+
+    _controller.reset();
+    _controller.forward();
+
+    Future.delayed(const Duration(milliseconds: 3500), () {
+      final segmentDegree = 360 / colors.length;
+      final finalAngle = endRotation % 360;
+      final pointerAngle = (360 - finalAngle + segmentDegree / 2) % 360;
+      int index = (pointerAngle ~/ segmentDegree) % colors.length;
+      index = (index - 4 + colors.length) % colors.length;
+
+      setState(() {
+        currentReward = "${labels[index]} Coins";
+        isSpinning = false;
+      });
+
+      _saveData();
+      _showRewardDialog();
+    });
+  }
+
+  void _showRewardDialog() {
+    final media = MediaQuery.of(context);
+    final screenWidth = media.size.width;
+    final screenHeight = media.size.height;
+    final baseScale = min(screenWidth, screenHeight) / 400; // Responsive scaling
+
+    showDialog(
+      context: context,
+      barrierColor: Colors.black54,
+      builder: (_) => Center(
+        child: Material(
+          color: Colors.transparent,
+          child: Container(
+            width: screenWidth * 0.8,
+            padding: EdgeInsets.all(20 * baseScale),
+            decoration: BoxDecoration(
+              color: const Color(0xBB08162C),
+              borderRadius: BorderRadius.circular(15 * baseScale),
+              border: Border.all(
+                color: const Color(0xFF00CFFF),
+                width: 1 * baseScale,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.amber.withOpacity(0.25),
+                  blurRadius: 30 * baseScale,
+                  spreadRadius: 5 * baseScale,
+                ),
+              ],
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ShaderMask(
+                  shaderCallback: (bounds) => LinearGradient(
+                    colors: [Colors.amber, Colors.orange],
+                  ).createShader(
+                      Rect.fromLTWH(0, 0, bounds.width, bounds.height)),
+                  child: Text(
+                    "Reward Unlocked!",
+                    style: TextStyle(
+                      fontSize: 24 * baseScale,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 15 * baseScale),
+                Text(
+                  "Congratulations! You have won:",
+                  style: TextStyle(color: Colors.white, fontSize: 16 * baseScale),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: 15 * baseScale),
+                Text(
+                  currentReward,
+                  style: TextStyle(
+                    fontSize: 28 * baseScale,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.amber,
+                    shadows: [
+                      Shadow(
+                          color: Colors.black54,
+                          offset: Offset(2 * baseScale, 2 * baseScale),
+                          blurRadius: 4 * baseScale)
+                    ],
+                  ),
+                ),
+                SizedBox(height: 20 * baseScale),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.amber,
+                    foregroundColor: Colors.indigo,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30 * baseScale)),
+                  ),
+                  onPressed: () => Navigator.pop(context),
+                  child: Text("OK",
+                      style:
+                          TextStyle(fontSize: 18 * baseScale, fontWeight: FontWeight.bold)),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  String _formatTime(int seconds) {
+    final m = seconds ~/ 60;
+    final s = seconds % 60;
+    return "${m.toString().padLeft(2, "0")}:${s.toString().padLeft(2, "0")}";
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        // Cap the base for tablet/desktop to avoid overflow
+        final screenBase = min(constraints.maxWidth, constraints.maxHeight);
+        final double base = min(screenBase, 400); // 400: adjust as needed
+        final wheelSize = base * 0.62;
+        final pointerSize = wheelSize * 0.09;
+        final centerSize = wheelSize * 0.21;
+        final buttonWidth = base * 0.64;
+
+        return Center(
+          child: Container(
+            width: base,
+            height: base * 1.17,
+            clipBehavior: Clip.antiAlias,
+            decoration: BoxDecoration(
+              color: const Color(0xBB08162C),
+              borderRadius: BorderRadius.circular(15),
+              border: Border.all(
+                color: const Color(0xFF00CFFF),
+                width: 1,
+              ),
+            ),
+            child: Stack(
+              children: [
+                // Main content
+                Positioned.fill(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(height: base * 0.07),
+                      Text(
+                        "Daily Spin Wheel",
+                        style: TextStyle(
+                          fontSize: base * 0.09,
+                          fontWeight: FontWeight.bold,
+                          foreground: Paint()
+                            ..shader = const LinearGradient(
+                              colors: [Colors.amber, Colors.orange],
+                            ).createShader(const Rect.fromLTWH(0, 0, 300, 100)),
+                          shadows: [
+                            Shadow(
+                              color: Colors.black.withOpacity(0.3),
+                              offset: const Offset(2, 2),
+                              blurRadius: 4,
+                            )
+                          ],
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(height: base * 0.04),
+                      Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          // Outer ring
+                          Container(
+                            width: wheelSize,
+                            height: wheelSize,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              gradient: const LinearGradient(
+                                colors: [
+                                  Color(0xFFB8860B),
+                                  Color(0xFFDAA520),
+                                  Color(0xFFFFD700),
+                                  Color(0xFFDAA520),
+                                  Color(0xFFB8860B)
+                                ],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ),
+                            ),
+                            padding: EdgeInsets.all(wheelSize * 0.045),
+                            child: Transform.rotate(
+                              angle: 0,
+                              child: CustomPaint(
+                                size: Size(wheelSize - wheelSize * 0.09,
+                                    wheelSize - wheelSize * 0.09),
+                                painter: SpinWheelPainter(
+                                  colors: colors,
+                                  labels: labels,
+                                  rotation: rotation,
+                                ),
+                              ),
+                            ),
+                          ),
+                          // Center Hub
+                          Container(
+                            width: centerSize,
+                            height: centerSize,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              gradient: const LinearGradient(
+                                colors: [Colors.amber, Colors.orange],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ),
+                              border: Border.all(color: Color(0xFFB8860B), width: 3),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "₹",
+                                style: TextStyle(
+                                    fontSize: centerSize * 0.4,
+                                    fontWeight: FontWeight.bold,
+                                    color: const Color(0xFF8B4513),
+                                    shadows: [
+                                      const Shadow(
+                                          color: Colors.black45,
+                                          offset: Offset(1, 1),
+                                          blurRadius: 2)
+                                    ]),
+                              ),
+                            ),
+                          ),
+                          // Pointer
+                          Positioned(
+                            top: -pointerSize / 2,
+                            child: ClipPath(
+                              clipper: TriangleClipper(),
+                              child: Container(
+                                width: pointerSize,
+                                height: pointerSize,
+                                color: Colors.amber,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: wheelSize * 0.09),
+
+                      // Spin button
+                      SizedBox(
+                        width: buttonWidth,
+                        child: ElevatedButton(
+                          onPressed: isSpinning ? null : _spin,
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.symmetric(
+                                vertical: wheelSize * 0.045),
+                            backgroundColor: spinsLeft > 0
+                                ? Colors.red
+                                : const Color(0xBB08162C),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12)),
+                            shadowColor: Colors.black,
+                            elevation: 10,
+                          ),
+                          child: Text(
+                            spinsLeft > 0
+                                ? "Spin ($spinsLeft left)"
+                                : "No Spins Left",
+                            style: TextStyle(
+                                fontSize: wheelSize * 0.07,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          ),
+                        ),
+                      ),
+
+                      SizedBox(height: wheelSize * 0.04),
+
+                      // Timer
+                      if (spinsLeft < 5)
+                        Text(
+                          "Next spin in: ${_formatTime(timer)}",
+                          style: TextStyle(
+                              color: Colors.amber,
+                              fontSize: wheelSize * 0.048,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      SizedBox(height: base * 0.03),
+                    ],
+                  ),
+                ),
+                // Cross button (top right inside container)
+                Positioned(
+                  top: base * 0.028,
+                  right: base * 0.028,
+                  child: GestureDetector(
+                    onTap: () => Navigator.of(context).pop(),
+                    child: Container(
+                      width: base * 0.11,
+                      height: base * 0.11,
+                      decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.20),
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        Icons.close,
+                        color: Colors.white,
+                        size: base * 0.07,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class SpinWheelPainter extends CustomPainter {
+  final List<Color> colors;
+  final List<String> labels;
+  final double rotation;
+
+  SpinWheelPainter({
+    required this.colors,
+    required this.labels,
+    required this.rotation,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final segmentAngle = 2 * pi / colors.length;
+    final radius = size.width / 2;
+    final center = Offset(radius, radius);
+
+    // Apply rotation
+    canvas.save();
+    canvas.translate(center.dx, center.dy);
+    canvas.rotate(rotation * pi / 180);
+    canvas.translate(-center.dx, -center.dy);
+
+    // Draw each segment
+    for (int i = 0; i < colors.length; i++) {
+      final startAngle = i * segmentAngle;
+      final sweepAngle = segmentAngle;
+
+      final paint = Paint()
+        ..style = PaintingStyle.fill
+        ..color = colors[i];
+
+      canvas.drawArc(
+        Rect.fromCircle(center: center, radius: radius),
+        startAngle,
+        sweepAngle,
+        true,
+        paint,
+      );
+
+      // Draw labels
+      final textPainter = TextPainter(
+        text: TextSpan(
+          text: labels[i],
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: size.width * 0.07,
+            fontWeight: FontWeight.bold,
+            shadows: [const Shadow(color: Colors.black, offset: Offset(1,1), blurRadius:2)],
+          ),
+        ),
+        textDirection: TextDirection.ltr,
+      );
+      textPainter.layout();
+
+      // Position label
+      final labelAngle = startAngle + segmentAngle / 2;
+      final labelRadius = radius * 0.75;
+      final labelOffset = Offset(
+        center.dx + labelRadius * cos(labelAngle) - textPainter.width / 2,
+        center.dy + labelRadius * sin(labelAngle) - textPainter.height / 2,
+      );
+
+      textPainter.paint(canvas, labelOffset);
+    }
+
+    canvas.restore();
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
+}
+
+class TriangleClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    final path = Path();
+    path.moveTo(size.width / 2, 0);
+    path.lineTo(0, size.height);
+    path.lineTo(size.width, size.height);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper oldClipper) => false;
+}
