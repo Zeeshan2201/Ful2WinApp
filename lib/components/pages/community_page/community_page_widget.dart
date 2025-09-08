@@ -2121,8 +2121,9 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                                   .fromSTEB(0,
                                                                       0, 10, 0),
                                                           child: FFButtonWidget(
-                                                            onPressed: () {
-                                                              AddComment.call(
+                                                            onPressed: () async {
+
+                                                              final response = await AddComment.call(
                                                                 postId:
                                                                     getJsonField(
                                                                   postDataItem,
@@ -2135,6 +2136,7 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                                     FFAppState()
                                                                         .token,
                                                               );
+                                                              print(response.jsonBody);
                                                             },
                                                             text: 'Post',
                                                             options:
