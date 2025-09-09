@@ -58,7 +58,7 @@ class _KycstatusWidgetState extends State<KycstatusWidget> {
                 'assets/images/bgimage.png',
               ).image,
             ),
-            gradient: LinearGradient(
+            gradient: const LinearGradient(
               colors: [Color(0xFF0B33FF), Color(0xFF000B33)],
               stops: [0.0, 1.0],
               begin: AlignmentDirectional(0.0, -1.0),
@@ -70,7 +70,7 @@ class _KycstatusWidgetState extends State<KycstatusWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 0.0, 0.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -79,7 +79,7 @@ class _KycstatusWidgetState extends State<KycstatusWidget> {
                   onTap: () async {
                     context.safePop();
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.arrow_back,
                     color: Color(0xFFE9EEF1),
                     size: 40.0,
@@ -104,7 +104,7 @@ class _KycstatusWidgetState extends State<KycstatusWidget> {
                                     .bodyMedium
                                     .fontStyle,
                               ),
-                              color: Color(0xFFE9EBED),
+                              color: const Color(0xFFE9EBED),
                               fontSize: 20.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
@@ -118,11 +118,11 @@ class _KycstatusWidgetState extends State<KycstatusWidget> {
                 ],
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 10.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 10.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   height: 145.02,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Color(0x33FFFFFF),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(25.0),
@@ -136,7 +136,7 @@ class _KycstatusWidgetState extends State<KycstatusWidget> {
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -152,7 +152,7 @@ class _KycstatusWidgetState extends State<KycstatusWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFFE6EDF3),
+                                    color: const Color(0xFFE6EDF3),
                                     fontSize: 18.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
@@ -166,7 +166,7 @@ class _KycstatusWidgetState extends State<KycstatusWidget> {
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -182,7 +182,7 @@ class _KycstatusWidgetState extends State<KycstatusWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFFE8EFF4),
+                                    color: const Color(0xFFE8EFF4),
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
@@ -199,7 +199,7 @@ class _KycstatusWidgetState extends State<KycstatusWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -212,10 +212,10 @@ class _KycstatusWidgetState extends State<KycstatusWidget> {
                       options: FFButtonOptions(
                         width: 150.0,
                         height: 40.0,
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 0.0, 16.0, 0.0),
                         iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
@@ -240,14 +240,14 @@ class _KycstatusWidgetState extends State<KycstatusWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () {
                           print('Button pressed ...');
@@ -256,11 +256,11 @@ class _KycstatusWidgetState extends State<KycstatusWidget> {
                         options: FFButtonOptions(
                           width: double.infinity,
                           height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               16.0, 0.0, 16.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: Color(0x33FFFFFF),
+                          color: const Color(0x33FFFFFF),
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     font: GoogleFonts.poppins(
@@ -285,13 +285,13 @@ class _KycstatusWidgetState extends State<KycstatusWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () {
                           print('Button pressed ...');
@@ -300,11 +300,11 @@ class _KycstatusWidgetState extends State<KycstatusWidget> {
                         options: FFButtonOptions(
                           width: double.infinity,
                           height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               16.0, 0.0, 16.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: Color(0x33FFFFFF),
+                          color: const Color(0x33FFFFFF),
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     font: GoogleFonts.poppins(
@@ -329,13 +329,13 @@ class _KycstatusWidgetState extends State<KycstatusWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Builder(
                       builder: (context) => Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             10.0, 0.0, 10.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
@@ -346,7 +346,7 @@ class _KycstatusWidgetState extends State<KycstatusWidget> {
                                   elevation: 0,
                                   insetPadding: EdgeInsets.zero,
                                   backgroundColor: Colors.transparent,
-                                  alignment: AlignmentDirectional(0.0, 0.0)
+                                  alignment: const AlignmentDirectional(0.0, 0.0)
                                       .resolve(Directionality.of(context)),
                                   child: GestureDetector(
                                     onTap: () {
@@ -354,7 +354,7 @@ class _KycstatusWidgetState extends State<KycstatusWidget> {
                                       FocusManager.instance.primaryFocus
                                           ?.unfocus();
                                     },
-                                    child: EnterpanidWidget(),
+                                    child: const EnterpanidWidget(),
                                   ),
                                 );
                               },
@@ -364,11 +364,11 @@ class _KycstatusWidgetState extends State<KycstatusWidget> {
                           options: FFButtonOptions(
                             width: double.infinity,
                             height: 40.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 0.0, 16.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: Color(0x33FFFFFF),
+                            color: const Color(0x33FFFFFF),
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
@@ -395,7 +395,7 @@ class _KycstatusWidgetState extends State<KycstatusWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 90.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 90.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -419,7 +419,7 @@ class _KycstatusWidgetState extends State<KycstatusWidget> {
                                     .bodyMedium
                                     .fontStyle,
                               ),
-                              color: Color(0xFFDAE2E9),
+                              color: const Color(0xFFDAE2E9),
                               fontSize: 16.0,
                               letterSpacing: 0.0,
                               fontWeight: FlutterFlowTheme.of(context)

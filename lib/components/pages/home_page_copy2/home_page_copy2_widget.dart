@@ -64,24 +64,24 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
               ).image,
             ),
             gradient: LinearGradient(
-              colors: [FlutterFlowTheme.of(context).primary, Color(0xFF000B33)],
-              stops: [0.0, 1.0],
-              begin: AlignmentDirectional(0.0, -1.0),
-              end: AlignmentDirectional(0, 1.0),
+              colors: [FlutterFlowTheme.of(context).primary, const Color(0xFF000B33)],
+              stops: const [0.0, 1.0],
+              begin: const AlignmentDirectional(0.0, -1.0),
+              end: const AlignmentDirectional(0, 1.0),
             ),
           ),
           child: Stack(
             children: [
               Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
+                alignment: const AlignmentDirectional(0.0, -1.0),
                 child: wrapWithModel(
                   model: _model.headerModel,
                   updateCallback: () => safeSetState(() {}),
-                  child: HeaderWidget(),
+                  child: const HeaderWidget(),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 80.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 80.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -95,7 +95,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
                           child: Container(
                             width: double.infinity,
@@ -109,7 +109,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                   'assets/images/bgmi.jpg',
                                 ).image,
                               ),
-                              borderRadius: BorderRadius.only(
+                              borderRadius: const BorderRadius.only(
                                 bottomLeft: Radius.circular(20.0),
                                 bottomRight: Radius.circular(20.0),
                                 topLeft: Radius.circular(20.0),
@@ -119,13 +119,13 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(-1.0, -1.0),
+                          alignment: const AlignmentDirectional(-1.0, -1.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 10.0, 32.0, 10.0, 0.0),
                             child: Container(
                               width: double.infinity,
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -133,7 +133,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                   Container(
                                     width: 185.0,
                                     height: 28.0,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
                                           Color(0xFFE0CA00),
@@ -155,7 +155,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   5.0, 0.0, 5.0, 0.0),
                                           child: FaIcon(
                                             FontAwesomeIcons.fire,
@@ -195,7 +195,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                     children: [
                                       Container(
                                         width: double.infinity,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           boxShadow: [
                                             BoxShadow(
                                               blurRadius: 25.0,
@@ -248,14 +248,14 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                                 ).toList();
 
                                                 return GridView.builder(
-                                                  padding: EdgeInsets.fromLTRB(
+                                                  padding: const EdgeInsets.fromLTRB(
                                                     0,
                                                     0,
                                                     0,
                                                     16.0,
                                                   ),
                                                   gridDelegate:
-                                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                                      const SliverGridDelegateWithFixedCrossAxisCount(
                                                     crossAxisCount: 4,
                                                     crossAxisSpacing: 0.0,
                                                     mainAxisSpacing: 0.0,
@@ -278,7 +278,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                                           ).toString(),
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     8.0,
                                                                     8.0,
@@ -369,7 +369,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                                                 ).image,
                                                               ),
                                                               borderRadius:
-                                                                  BorderRadius
+                                                                  const BorderRadius
                                                                       .only(
                                                                 bottomLeft: Radius
                                                                     .circular(
@@ -386,7 +386,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                                               ),
                                                               border:
                                                                   Border.all(
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFFAECBF9),
                                                                 width: 2.0,
                                                               ),
@@ -404,11 +404,11 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                       ),
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(-1.0, -1.0),
+                                            const AlignmentDirectional(-1.0, -1.0),
                                         child: Container(
                                           width: 20.0,
                                           height: 20.0,
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                             boxShadow: [
                                               BoxShadow(
                                                 blurRadius: 4.0,
@@ -431,13 +431,13 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(-1.0, -1.0),
+                          alignment: const AlignmentDirectional(-1.0, -1.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 10.0, 32.0, 10.0, 0.0),
                             child: Container(
                               width: double.infinity,
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -445,7 +445,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                   Container(
                                     width: 145.0,
                                     height: 28.0,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
                                           Color(0xFF96D9C0),
@@ -467,7 +467,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   5.0, 0.0, 5.0, 0.0),
                                           child: FaIcon(
                                             FontAwesomeIcons.infinity,
@@ -505,7 +505,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                   ),
                                   Container(
                                     width: double.infinity,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
                                           Color(0xE1201C46),
@@ -554,14 +554,14 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                             ).toList();
 
                                             return GridView.builder(
-                                              padding: EdgeInsets.fromLTRB(
+                                              padding: const EdgeInsets.fromLTRB(
                                                 0,
                                                 0,
                                                 0,
                                                 16.0,
                                               ),
                                               gridDelegate:
-                                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                                  const SliverGridDelegateWithFixedCrossAxisCount(
                                                 crossAxisCount: 4,
                                                 crossAxisSpacing: 0.0,
                                                 mainAxisSpacing: 0.0,
@@ -581,7 +581,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                                           ).toString(),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(8.0, 8.0,
                                                                 8.0, 8.0),
                                                     child: Container(
@@ -601,7 +601,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                                           ).image,
                                                         ),
                                                         borderRadius:
-                                                            BorderRadius.only(
+                                                            const BorderRadius.only(
                                                           bottomLeft:
                                                               Radius.circular(
                                                                   10.0),
@@ -617,7 +617,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                                         ),
                                                         border: Border.all(
                                                           color:
-                                                              Color(0xFFAECBF9),
+                                                              const Color(0xFFAECBF9),
                                                           width: 2.0,
                                                         ),
                                                       ),
@@ -637,13 +637,13 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(-1.0, -1.0),
+                          alignment: const AlignmentDirectional(-1.0, -1.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 10.0, 32.0, 10.0, 0.0),
                             child: Container(
                               width: double.infinity,
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -651,7 +651,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                   Container(
                                     width: 205.0,
                                     height: 28.0,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
                                           Color(0xFF00C9FF),
@@ -673,7 +673,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   5.0, 0.0, 5.0, 0.0),
                                           child: FaIcon(
                                             FontAwesomeIcons.gamepad,
@@ -711,7 +711,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                   ),
                                   Container(
                                     width: double.infinity,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
                                           Color(0xE1201C46),
@@ -730,14 +730,14 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                       ),
                                     ),
                                     child: GridView(
-                                      padding: EdgeInsets.fromLTRB(
+                                      padding: const EdgeInsets.fromLTRB(
                                         0,
                                         0,
                                         0,
                                         16.0,
                                       ),
                                       gridDelegate:
-                                          SliverGridDelegateWithFixedCrossAxisCount(
+                                          const SliverGridDelegateWithFixedCrossAxisCount(
                                         crossAxisCount: 4,
                                         crossAxisSpacing: 0.0,
                                         mainAxisSpacing: 0.0,
@@ -748,7 +748,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   8.0, 8.0, 8.0, 8.0),
                                           child: Container(
                                             width: 69.8,
@@ -763,7 +763,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                                   'assets/images/snake-and-ladder.png',
                                                 ).image,
                                               ),
-                                              borderRadius: BorderRadius.only(
+                                              borderRadius: const BorderRadius.only(
                                                 bottomLeft:
                                                     Radius.circular(10.0),
                                                 bottomRight:
@@ -772,7 +772,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                                 topRight: Radius.circular(10.0),
                                               ),
                                               border: Border.all(
-                                                color: Color(0xFFAECBF9),
+                                                color: const Color(0xFFAECBF9),
                                                 width: 2.0,
                                               ),
                                             ),
@@ -780,7 +780,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   8.0, 8.0, 8.0, 8.0),
                                           child: Container(
                                             width: 69.8,
@@ -795,7 +795,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                                   'assets/images/temple-run.png',
                                                 ).image,
                                               ),
-                                              borderRadius: BorderRadius.only(
+                                              borderRadius: const BorderRadius.only(
                                                 bottomLeft:
                                                     Radius.circular(10.0),
                                                 bottomRight:
@@ -804,7 +804,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                                 topRight: Radius.circular(10.0),
                                               ),
                                               border: Border.all(
-                                                color: Color(0xFFAECBF9),
+                                                color: const Color(0xFFAECBF9),
                                                 width: 2.0,
                                               ),
                                             ),
@@ -819,13 +819,13 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(-1.0, -1.0),
+                          alignment: const AlignmentDirectional(-1.0, -1.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 10.0, 32.0, 10.0, 0.0),
                             child: Container(
                               width: double.infinity,
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -833,7 +833,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                   Container(
                                     width: 180.0,
                                     height: 28.0,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
                                           Color(0xFFB721FF),
@@ -855,7 +855,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   5.0, 0.0, 5.0, 0.0),
                                           child: FaIcon(
                                             FontAwesomeIcons.solidStar,
@@ -893,7 +893,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                   ),
                                   Container(
                                     width: double.infinity,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
                                           Color(0xE1201C46),
@@ -912,14 +912,14 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                       ),
                                     ),
                                     child: GridView(
-                                      padding: EdgeInsets.fromLTRB(
+                                      padding: const EdgeInsets.fromLTRB(
                                         0,
                                         0,
                                         0,
                                         16.0,
                                       ),
                                       gridDelegate:
-                                          SliverGridDelegateWithFixedCrossAxisCount(
+                                          const SliverGridDelegateWithFixedCrossAxisCount(
                                         crossAxisCount: 4,
                                         crossAxisSpacing: 0.0,
                                         mainAxisSpacing: 0.0,
@@ -931,7 +931,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                         Stack(
                                           children: [
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       16.0, 16.0, 0.0, 0.0),
                                               child: Container(
@@ -948,7 +948,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                                     ).image,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.only(
+                                                      const BorderRadius.only(
                                                     bottomLeft:
                                                         Radius.circular(10.0),
                                                     bottomRight:
@@ -959,7 +959,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                                         Radius.circular(10.0),
                                                   ),
                                                   border: Border.all(
-                                                    color: Color(0xFFAECBF9),
+                                                    color: const Color(0xFFAECBF9),
                                                     width: 2.0,
                                                   ),
                                                 ),
@@ -968,12 +968,12 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                             Container(
                                               width: 50.0,
                                               height: 50.0,
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     -1.0, -1.0),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 0.0, 0.0, 0.0),
                                                   child: Text(
@@ -999,7 +999,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                                       fontStyle:
                                                           FontStyle.italic,
                                                       shadows: [
-                                                        Shadow(
+                                                        const Shadow(
                                                           color:
                                                               Color(0x8BEAB308),
                                                           offset:
@@ -1017,7 +1017,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                         Stack(
                                           children: [
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       16.0, 16.0, 0.0, 0.0),
                                               child: Container(
@@ -1034,7 +1034,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                                     ).image,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.only(
+                                                      const BorderRadius.only(
                                                     bottomLeft:
                                                         Radius.circular(10.0),
                                                     bottomRight:
@@ -1045,7 +1045,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                                         Radius.circular(10.0),
                                                   ),
                                                   border: Border.all(
-                                                    color: Color(0xFFAECBF9),
+                                                    color: const Color(0xFFAECBF9),
                                                     width: 2.0,
                                                   ),
                                                 ),
@@ -1054,12 +1054,12 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                             Container(
                                               width: 50.0,
                                               height: 50.0,
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     -1.0, -1.0),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 0.0, 0.0, 0.0),
                                                   child: Text(
@@ -1085,7 +1085,7 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                                                       fontStyle:
                                                           FontStyle.italic,
                                                       shadows: [
-                                                        Shadow(
+                                                        const Shadow(
                                                           color:
                                                               Color(0x76EAB308),
                                                           offset:
@@ -1114,11 +1114,11 @@ class _HomePageCopy2WidgetState extends State<HomePageCopy2Widget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.0, 1.0),
+                alignment: const AlignmentDirectional(0.0, 1.0),
                 child: wrapWithModel(
                   model: _model.navbarModel,
                   updateCallback: () => safeSetState(() {}),
-                  child: NavbarWidget(
+                  child: const NavbarWidget(
                     pageNav: 'HomePage',
                   ),
                 ),

@@ -2,6 +2,9 @@ import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '/app_state.dart';
+export 'spin_wheel_model.dart';
+import '/backend/api_requests/api_calls.dart';
 
 class SpinWheelWidget extends StatefulWidget {
   const SpinWheelWidget({super.key});
@@ -41,6 +44,56 @@ class _SpinWheelWidgetState extends State<SpinWheelWidget>
   late AnimationController _controller;
   late Animation<double> _animation;
   Timer? _timer;
+
+  // Trigger backend crediting and show a congratulations message
+  Future<void> _onRewardOkPressed() async {
+
+    try {
+      // Parse the numeric value from currentReward if needed (e.g., "150 Coins" -> 150)
+      final match = RegExp(r"(\d+)").firstMatch(currentReward);
+      final int amount = match != null ? int.parse(match.group(1)!) : 0;
+
+      final response = await SpinWheelCall.call(
+        token: FFAppState().token,
+        amount: amount,
+      );
+      debugPrint('SpinWheel API => status: ${response.statusCode}, body: ${response.bodyText}');
+
+      if (!mounted) return;
+
+      if (response.succeeded) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Congratulations! $amount coins have been credited.'),
+            behavior: SnackBarBehavior.floating,
+          ),
+        );
+      } else {
+        // Try to show message from backend, else generic.
+        String errMsg = 'Could not process your reward. Please try again.';
+        final body = response.jsonBody;
+        if (body is Map && body['message'] is String) {
+          errMsg = body['message'];
+        } else if (response.bodyText.isNotEmpty) {
+          errMsg = response.bodyText;
+        }
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(errMsg),
+            behavior: SnackBarBehavior.floating,
+          ),
+        );
+      }
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Could not process your reward. Please try again.'),
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+    }
+  }
 
   @override
   void initState() {
@@ -201,7 +254,12 @@ class _SpinWheelWidgetState extends State<SpinWheelWidget>
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30 * baseScale)),
                   ),
-                  onPressed: () => Navigator.pop(context),
+                  onPressed: () async {
+                    // Close the dialog first
+                    Navigator.pop(context);
+                    // Then trigger the backend action and show congratulations message
+                    await _onRewardOkPressed();
+                  },
                   child: Text("OK",
                       style:
                           TextStyle(fontSize: 18 * baseScale, fontWeight: FontWeight.bold)),

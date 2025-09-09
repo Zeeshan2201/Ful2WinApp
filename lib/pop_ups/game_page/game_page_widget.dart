@@ -73,12 +73,12 @@ class _GamePageWidgetState extends State<GamePageWidget>
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(30, 60, 30, 50),
+      padding: const EdgeInsetsDirectional.fromSTEB(30, 60, 30, 50),
       child: Container(
         width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(
-          gradient: LinearGradient(
+          gradient: const LinearGradient(
             colors: [Color(0xFF0A2A66), Color(0xFF0033CC)],
             stops: [0.5, 1],
             begin: AlignmentDirectional(0, -1),
@@ -90,7 +90,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
           children: [
             FutureBuilder<ApiCallResponse>(
               future: GameCall.call(
-                gameId: widget!.gameId,
+                gameId: widget.gameId,
               ),
               builder: (context, snapshot) {
                 // Customize what your widget looks like when it's loading.
@@ -127,7 +127,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                             ).toString(),
                           ).image,
                         ),
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(0),
                           bottomRight: Radius.circular(0),
                           topLeft: Radius.circular(20),
@@ -137,7 +137,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                       child: Container(
                         width: double.infinity,
                         height: 180,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Color(0x8C14181B),
                           borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(0),
@@ -152,13 +152,13 @@ class _GamePageWidgetState extends State<GamePageWidget>
                           children: [
                             Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                  const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0, 0, 10, 0),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(8),
@@ -239,7 +239,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     5, 0, 5, 0),
                                             child: Icon(
                                               Icons.circle_sharp,
@@ -284,7 +284,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     5, 0, 5, 0),
                                             child: Icon(
                                               Icons.circle_sharp,
@@ -333,9 +333,9 @@ class _GamePageWidgetState extends State<GamePageWidget>
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
                       child: ListView(
-                        padding: EdgeInsets.symmetric(vertical: 10),
+                        padding: const EdgeInsets.symmetric(vertical: 10),
                         primary: false,
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
@@ -365,7 +365,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                             width: double.infinity,
                             height: 70,
                             decoration: BoxDecoration(
-                              gradient: LinearGradient(
+                              gradient: const LinearGradient(
                                 colors: [Color(0x802E4DA7), Color(0x844F6FEF)],
                                 stops: [0, 1],
                                 begin: AlignmentDirectional(1, 0),
@@ -386,7 +386,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                   TournamentLobbyWidget.routeName,
                                   queryParameters: {
                                     'gameId': serializeParam(
-                                      widget!.gameId,
+                                      widget.gameId,
                                       ParamType.String,
                                     ),
                                   }.withoutNulls,
@@ -398,7 +398,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         5, 0, 0, 0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -420,7 +420,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                                           .bodyMedium
                                                           .fontStyle,
                                                 ),
-                                                color: Color(0xFFF7B500),
+                                                color: const Color(0xFFF7B500),
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.bold,
                                                 fontStyle:
@@ -460,7 +460,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                     width: 70,
                                     height: 40,
                                     decoration: BoxDecoration(
-                                      gradient: LinearGradient(
+                                      gradient: const LinearGradient(
                                         colors: [
                                           Color(0xFF3B65D5),
                                           Color(0xEA6A8CFF)
@@ -551,7 +551,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                             width: double.infinity,
                             height: 70,
                             decoration: BoxDecoration(
-                              gradient: LinearGradient(
+                              gradient: const LinearGradient(
                                 colors: [Color(0x802E4DA7), Color(0x844F6FEF)],
                                 stops: [0, 1],
                                 begin: AlignmentDirectional(1, 0),
@@ -564,7 +564,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       5, 0, 0, 0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -585,7 +585,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFFF7B500),
+                                              color: const Color(0xFFF7B500),
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               fontStyle:
@@ -626,12 +626,12 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                   decoration: BoxDecoration(
                                     gradient: LinearGradient(
                                       colors: [
-                                        Color(0xD022C55E),
+                                        const Color(0xD022C55E),
                                         FlutterFlowTheme.of(context).tertiary
                                       ],
-                                      stops: [0, 1],
-                                      begin: AlignmentDirectional(1, 0),
-                                      end: AlignmentDirectional(-1, 0),
+                                      stops: const [0, 1],
+                                      begin: const AlignmentDirectional(1, 0),
+                                      end: const AlignmentDirectional(-1, 0),
                                     ),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
@@ -710,7 +710,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                             width: double.infinity,
                             height: 70,
                             decoration: BoxDecoration(
-                              gradient: LinearGradient(
+                              gradient: const LinearGradient(
                                 colors: [Color(0x802E4DA7), Color(0x844F6FEF)],
                                 stops: [0, 1],
                                 begin: AlignmentDirectional(1, 0),
@@ -723,7 +723,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       5, 0, 0, 0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -744,7 +744,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFFF7B500),
+                                              color: const Color(0xFFF7B500),
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               fontStyle:
@@ -785,12 +785,12 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                   decoration: BoxDecoration(
                                     gradient: LinearGradient(
                                       colors: [
-                                        Color(0xD022C55E),
+                                        const Color(0xD022C55E),
                                         FlutterFlowTheme.of(context).tertiary
                                       ],
-                                      stops: [0, 1],
-                                      begin: AlignmentDirectional(1, 0),
-                                      end: AlignmentDirectional(-1, 0),
+                                      stops: const [0, 1],
+                                      begin: const AlignmentDirectional(1, 0),
+                                      end: const AlignmentDirectional(-1, 0),
                                     ),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
@@ -879,7 +879,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           5, 0, 0, 0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -901,7 +901,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  color: Color(0xA7F7B500),
+                                                  color: const Color(0xA7F7B500),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.bold,
                                                   fontStyle:
@@ -924,7 +924,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  color: Color(0x6DFFFFFF),
+                                                  color: const Color(0x6DFFFFFF),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
                                                   fontStyle:
@@ -941,10 +941,10 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                       width: 70,
                                       height: 40,
                                       decoration: BoxDecoration(
-                                        color: Color(0x9C57636C),
+                                        color: const Color(0x9C57636C),
                                         borderRadius: BorderRadius.circular(10),
                                       ),
-                                      child: Align(
+                                      child: const Align(
                                         alignment: AlignmentDirectional(0, 0),
                                         child: FaIcon(
                                           FontAwesomeIcons.clock,
@@ -956,11 +956,11 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                   ],
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0, 0),
+                                  alignment: const AlignmentDirectional(0, 0),
                                   child: Container(
                                     width: 120,
                                     height: 30,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       color: Color(0x7BEAB308),
                                       borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(20),
@@ -970,7 +970,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0, 2, 0, 0),
                                       child: Text(
                                         'Coming Soon',
@@ -1006,7 +1006,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                               ],
                             ),
                           ),
-                        ].divide(SizedBox(height: 10)),
+                        ].divide(const SizedBox(height: 10)),
                       ),
                     ),
                   ],
@@ -1014,13 +1014,13 @@ class _GamePageWidgetState extends State<GamePageWidget>
               },
             ),
             Align(
-              alignment: AlignmentDirectional(1, -1),
+              alignment: const AlignmentDirectional(1, -1),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 10, 10, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 10, 0),
                 child: FlutterFlowIconButton(
                   borderRadius: 200,
                   buttonSize: 30,
-                  fillColor: Color(0x71000000),
+                  fillColor: const Color(0x71000000),
                   icon: Icon(
                     Icons.close,
                     color: FlutterFlowTheme.of(context).info,

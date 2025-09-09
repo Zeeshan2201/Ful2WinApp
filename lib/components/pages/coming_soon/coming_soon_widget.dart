@@ -58,23 +58,23 @@ class _ComingSoonWidgetState extends State<ComingSoonWidget> {
               ).image,
             ),
             gradient: LinearGradient(
-              colors: [FlutterFlowTheme.of(context).primary, Color(0xFF000B33)],
-              stops: [0.0, 1.0],
-              begin: AlignmentDirectional(0.0, -1.0),
-              end: AlignmentDirectional(0, 1.0),
+              colors: [FlutterFlowTheme.of(context).primary, const Color(0xFF000B33)],
+              stops: const [0.0, 1.0],
+              begin: const AlignmentDirectional(0.0, -1.0),
+              end: const AlignmentDirectional(0, 1.0),
             ),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -86,7 +86,7 @@ class _ComingSoonWidgetState extends State<ComingSoonWidget> {
                         child: Container(
                           width: 90.0,
                           height: 40.0,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Color(0x33FFFFFF),
                             borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(40.0),
@@ -106,7 +106,7 @@ class _ComingSoonWidgetState extends State<ComingSoonWidget> {
                                 size: 24.0,
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 10.0, 0.0),
                                 child: Text(
                                   'Back',
@@ -144,10 +144,10 @@ class _ComingSoonWidgetState extends State<ComingSoonWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 160.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 160.0, 0.0, 0.0),
                 child: Container(
                   width: double.infinity,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -164,7 +164,7 @@ class _ComingSoonWidgetState extends State<ComingSoonWidget> {
                                         .displayLarge
                                         .fontStyle,
                                   ),
-                                  color: Color(0xFF007BFF),
+                                  color: const Color(0xFF007BFF),
                                   fontSize: 40.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FlutterFlowTheme.of(context)
@@ -174,7 +174,7 @@ class _ComingSoonWidgetState extends State<ComingSoonWidget> {
                                       .displayLarge
                                       .fontStyle,
                                 ),
-                        colors: [
+                        colors: const [
                           Color(0xFF00CFFF),
                           Color(0xFF00B8FF),
                           Color(0xFF007BFF)
@@ -208,7 +208,7 @@ class _ComingSoonWidgetState extends State<ComingSoonWidget> {
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                         child: Container(
                           width: 192.0,
                           height: 128.0,

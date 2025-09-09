@@ -61,7 +61,7 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -73,7 +73,7 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -85,7 +85,7 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -97,7 +97,7 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -109,7 +109,7 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -130,7 +130,7 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFF000B33),
+      backgroundColor: const Color(0xFF000B33),
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -146,9 +146,9 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
               FlutterFlowTheme.of(context).primary,
               FlutterFlowTheme.of(context).secondary
             ],
-            stops: [0, 1],
-            begin: AlignmentDirectional(0, -1),
-            end: AlignmentDirectional(0, 1),
+            stops: const [0, 1],
+            begin: const AlignmentDirectional(0, -1),
+            end: const AlignmentDirectional(0, 1),
           ),
         ),
         child: Stack(
@@ -156,10 +156,10 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
             wrapWithModel(
               model: _model.headerModel,
               updateCallback: () => safeSetState(() {}),
-              child: HeaderWidget(),
+              child: const HeaderWidget(),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 60, 0, 0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0, 60, 0, 0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -178,7 +178,7 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                                     .bodyMedium
                                     .fontStyle,
                               ),
-                              color: Color(0xFFFBD34D),
+                              color: const Color(0xFFFBD34D),
                               fontSize: 24,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
@@ -194,13 +194,13 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width < 350.0
                               ? 300.0
                               : 350.0,
                           height: 40,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.transparent,
                           ),
                           child: Row(
@@ -209,7 +209,7 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                             children: [
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
+                                    const EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -223,7 +223,7 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                                       children: [
                                         Container(
                                           decoration: BoxDecoration(
-                                            gradient: LinearGradient(
+                                            gradient: const LinearGradient(
                                               colors: [
                                                 Color(0xFF0BC1FF),
                                                 Color(0xFF0A2472)
@@ -263,11 +263,11 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                                             'containerOnPageLoadAnimation2']!),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   5, 0, 0, 0),
                                           child: Container(
                                             decoration: BoxDecoration(
-                                              gradient: LinearGradient(
+                                              gradient: const LinearGradient(
                                                 colors: [
                                                   Color(0xFFF3E2C2),
                                                   Color(0xFFE1B769)
@@ -306,10 +306,10 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                               Container(
                                 width: 100,
                                 decoration: BoxDecoration(
-                                  color: Color(0x33FFFFFF),
+                                  color: const Color(0x33FFFFFF),
                                   borderRadius: BorderRadius.circular(40),
                                 ),
-                                alignment: AlignmentDirectional(0, 0),
+                                alignment: const AlignmentDirectional(0, 0),
                                 child: Text(
                                   'Chat',
                                   style: FlutterFlowTheme.of(context)
@@ -322,7 +322,7 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFFFBD34D),
+                                        color: const Color(0xFFFBD34D),
                                         fontSize: 20,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
@@ -342,7 +342,7 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                                     children: [
                                       Container(
                                         decoration: BoxDecoration(
-                                          gradient: LinearGradient(
+                                          gradient: const LinearGradient(
                                             colors: [
                                               Color(0xFF0BC1FF),
                                               Color(0xFF0A2472)
@@ -372,11 +372,11 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                                       ).animateOnPageLoad(animationsMap[
                                           'containerOnPageLoadAnimation5']!),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             5, 0, 0, 0),
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            gradient: LinearGradient(
+                                            gradient: const LinearGradient(
                                               colors: [
                                                 Color(0xFF0BC1FF),
                                                 Color(0xFF0A2472)
@@ -486,11 +486,11 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                                             Container(
                                               width: 236.3,
                                               height: 50,
-                                              decoration: BoxDecoration(
+                                              decoration: const BoxDecoration(
                                                 color: Colors.transparent,
                                               ),
                                               alignment:
-                                                  AlignmentDirectional(0, 0),
+                                                  const AlignmentDirectional(0, 0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
@@ -507,7 +507,7 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(10, 0,
                                                                     0, 0),
                                                         child: Container(
@@ -516,7 +516,7 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                                                           clipBehavior:
                                                               Clip.antiAlias,
                                                           decoration:
-                                                              BoxDecoration(
+                                                              const BoxDecoration(
                                                             shape:
                                                                 BoxShape.circle,
                                                           ),
@@ -533,7 +533,7 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 10, 0, 0, 0),
                                                     child: Column(
@@ -661,7 +661,7 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                                             Container(
                                               width: 50,
                                               height: 50,
-                                              decoration: BoxDecoration(
+                                              decoration: const BoxDecoration(
                                                 color: Colors.transparent,
                                               ),
                                               child: Row(
@@ -704,7 +704,7 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                                           ],
                                         ),
                                       ),
-                                      Divider(
+                                      const Divider(
                                         thickness: 2,
                                         color: Color(0xFF00CFFF),
                                       ),
@@ -718,13 +718,13 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                       },
                     ),
                   ),
-                ].divide(SizedBox(height: 20)).around(SizedBox(height: 20)),
+                ].divide(const SizedBox(height: 20)).around(const SizedBox(height: 20)),
               ),
             ),
             wrapWithModel(
               model: _model.navbarModel,
               updateCallback: () => safeSetState(() {}),
-              child: NavbarWidget(
+              child: const NavbarWidget(
                 pageNav: 'CommunityPage',
               ),
             ),

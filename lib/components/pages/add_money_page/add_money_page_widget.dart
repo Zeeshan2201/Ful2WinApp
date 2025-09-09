@@ -85,11 +85,11 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
               gradient: LinearGradient(
                 colors: [
                   FlutterFlowTheme.of(context).primary,
-                  Color(0xFF000B33)
+                  const Color(0xFF000B33)
                 ],
-                stops: [0.0, 1.0],
-                begin: AlignmentDirectional(0.0, -1.0),
-                end: AlignmentDirectional(0, 1.0),
+                stops: const [0.0, 1.0],
+                begin: const AlignmentDirectional(0.0, -1.0),
+                end: const AlignmentDirectional(0, 1.0),
               ),
             ),
             child: Column(
@@ -97,7 +97,7 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
               children: [
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(15.0, 30.0, 15.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(15.0, 30.0, 15.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -112,7 +112,7 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                         child: Container(
                           width: 40.0,
                           height: 40.0,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Color(0x33FFFFFF),
                             borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(40.0),
@@ -138,7 +138,7 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                         child: Text(
                           'Add Money',
                           style:
@@ -164,14 +164,14 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(10.0, 25.0, 10.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(10.0, 25.0, 10.0, 0.0),
                     child: Container(
                       width: double.infinity,
                       height: 443.9,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Color(0x33FFFFFF),
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(25.0),
@@ -181,7 +181,7 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                         ),
                       ),
                       child: Align(
-                        alignment: AlignmentDirectional(340.0, 0.0),
+                        alignment: const AlignmentDirectional(340.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -202,7 +202,7 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                                     width: 200.0,
                                     height: 200.0,
                                     clipBehavior: Clip.antiAlias,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       shape: BoxShape.circle,
                                     ),
                                     child: Image.network(
@@ -215,7 +215,7 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 10.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -255,7 +255,7 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 5.0, 0.0),
                                       child: Text(
                                         'Balance:',
@@ -272,7 +272,7 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFFFFD54A),
+                                              color: const Color(0xFFFFD54A),
                                               fontSize: 17.0,
                                               letterSpacing: 0.0,
                                               fontWeight:
@@ -287,7 +287,7 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 5.0, 0.0),
                                       child: Text(
                                         getJsonField(
@@ -304,7 +304,7 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFFFFD54A),
+                                              color: const Color(0xFFFFD54A),
                                               fontSize: 14.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
@@ -315,7 +315,7 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                                             ),
                                       ),
                                     ),
-                                    Icon(
+                                    const Icon(
                                       Icons.arrow_forward,
                                       color: Color(0xFFFFD54A),
                                       size: 20.0,
@@ -325,7 +325,7 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                               ],
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 0.0, 20.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -339,12 +339,12 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                                     text: '₹50',
                                     options: FFButtonOptions(
                                       height: 40.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 16.0, 0.0),
                                       iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
-                                      color: Color(0x33FFFFFF),
+                                      color: const Color(0x33FFFFFF),
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
@@ -380,12 +380,12 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                                     text: '₹100',
                                     options: FFButtonOptions(
                                       height: 40.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 16.0, 0.0),
                                       iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
-                                      color: Color(0x33FFFFFF),
+                                      color: const Color(0x33FFFFFF),
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
@@ -421,12 +421,12 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                                     text: '₹200',
                                     options: FFButtonOptions(
                                       height: 40.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 16.0, 0.0),
                                       iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
-                                      color: Color(0x33FFFFFF),
+                                      color: const Color(0x33FFFFFF),
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
@@ -462,12 +462,12 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                                     text: '₹500',
                                     options: FFButtonOptions(
                                       height: 40.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 16.0, 0.0),
                                       iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
-                                      color: Color(0x33FFFFFF),
+                                      color: const Color(0x33FFFFFF),
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
@@ -500,7 +500,7 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -508,9 +508,9 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                                 children: [
                                   Expanded(
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           20.0, 0.0, 20.0, 0.0),
-                                      child: Container(
+                                      child: SizedBox(
                                         width: double.infinity,
                                         child: TextFormField(
                                           controller: _model.textController,
@@ -581,7 +581,7 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                                                               .fontStyle,
                                                     ),
                                             enabledBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
+                                              borderSide: const BorderSide(
                                                 color: Color(0x00000000),
                                                 width: 1.0,
                                               ),
@@ -589,7 +589,7 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                                                   BorderRadius.circular(9.0),
                                             ),
                                             focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
+                                              borderSide: const BorderSide(
                                                 color: Color(0x00000000),
                                                 width: 1.0,
                                               ),
@@ -663,7 +663,7 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   20.0, 20.0, 20.0, 0.0),
                               child: FFButtonWidget(
                                 onPressed: () {
@@ -672,12 +672,12 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                                 text: 'ADD MONEY',
                                 options: FFButtonOptions(
                                   width: double.infinity,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 18.0, 0.0, 20.0),
                                   iconAlignment: IconAlignment.start,
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  color: Color(0xFFFFD028),
+                                  color: const Color(0xFFFFD028),
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
@@ -691,7 +691,7 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                                                   .titleSmall
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF072244),
+                                        color: const Color(0xFF072244),
                                         letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .titleSmall
