@@ -60,10 +60,10 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
               ).image,
             ),
             gradient: LinearGradient(
-              colors: [FlutterFlowTheme.of(context).primary, Color(0xFF000B33)],
-              stops: [0.0, 1.0],
-              begin: AlignmentDirectional(0.0, -1.0),
-              end: AlignmentDirectional(0, 1.0),
+              colors: [FlutterFlowTheme.of(context).primary, const Color(0xFF000B33)],
+              stops: const [0.0, 1.0],
+              begin: const AlignmentDirectional(0.0, -1.0),
+              end: const AlignmentDirectional(0, 1.0),
             ),
           ),
           child: InkWell(
@@ -81,11 +81,11 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                   wrapWithModel(
                     model: _model.headerModel,
                     updateCallback: () => safeSetState(() {}),
-                    child: HeaderWidget(),
+                    child: const HeaderWidget(),
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                     child: Container(
                       width: double.infinity,
                       height: 145.0,
@@ -97,7 +97,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                             'assets/images/bgmi.jpg',
                           ).image,
                         ),
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(20.0),
                           bottomRight: Radius.circular(20.0),
                           topLeft: Radius.circular(20.0),
@@ -108,7 +108,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                     child: ListView(
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
@@ -117,14 +117,14 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                         Container(
                           width: double.infinity,
                           height: 163.4,
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Expanded(
                                 child: Align(
-                                  alignment: AlignmentDirectional(0.0, -1.0),
+                                  alignment: const AlignmentDirectional(0.0, -1.0),
                                   child: Container(
                                     width: double.infinity,
                                     height: 30.0,
@@ -137,12 +137,12 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           10.0, 10.0, 0.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          Padding(
+                                          const Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 4.0, 0.0, 0.0),
@@ -154,7 +154,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     5.0, 1.0, 0.0, 0.0),
                                             child: Text(
                                               'Trending',
@@ -201,9 +201,9 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                               Container(
                                 width: double.infinity,
                                 height: 80.0,
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 5.0, 0.0, 5.0),
                                   child: ListView(
                                     padding: EdgeInsets.zero,
@@ -211,7 +211,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                     scrollDirection: Axis.horizontal,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             10.0, 0.0, 0.0, 0.0),
                                         child: Container(
                                           width: 69.8,
@@ -225,7 +225,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                                 'assets/images/EggCatcher.png',
                                               ).image,
                                             ),
-                                            boxShadow: [
+                                            boxShadow: const [
                                               BoxShadow(
                                                 blurRadius: 7.0,
                                                 color: Color(0xAE14181B),
@@ -235,7 +235,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                                 ),
                                               )
                                             ],
-                                            borderRadius: BorderRadius.only(
+                                            borderRadius: const BorderRadius.only(
                                               bottomLeft: Radius.circular(10.0),
                                               bottomRight:
                                                   Radius.circular(10.0),
@@ -243,14 +243,14 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                               topRight: Radius.circular(10.0),
                                             ),
                                             border: Border.all(
-                                              color: Color(0xFFAECBF9),
+                                              color: const Color(0xFFAECBF9),
                                               width: 2.0,
                                             ),
                                           ),
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             10.0, 0.0, 0.0, 0.0),
                                         child: Container(
                                           width: 69.8,
@@ -264,7 +264,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                                 'assets/images/EggCatcher.png',
                                               ).image,
                                             ),
-                                            boxShadow: [
+                                            boxShadow: const [
                                               BoxShadow(
                                                 blurRadius: 7.0,
                                                 color: Color(0xAE14181B),
@@ -274,7 +274,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                                 ),
                                               )
                                             ],
-                                            borderRadius: BorderRadius.only(
+                                            borderRadius: const BorderRadius.only(
                                               bottomLeft: Radius.circular(10.0),
                                               bottomRight:
                                                   Radius.circular(10.0),
@@ -282,14 +282,14 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                               topRight: Radius.circular(10.0),
                                             ),
                                             border: Border.all(
-                                              color: Color(0xFFAECBF9),
+                                              color: const Color(0xFFAECBF9),
                                               width: 2.0,
                                             ),
                                           ),
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             10.0, 0.0, 0.0, 0.0),
                                         child: Container(
                                           width: 69.8,
@@ -303,7 +303,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                                 'assets/images/EggCatcher.png',
                                               ).image,
                                             ),
-                                            boxShadow: [
+                                            boxShadow: const [
                                               BoxShadow(
                                                 blurRadius: 7.0,
                                                 color: Color(0xAE14181B),
@@ -313,7 +313,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                                 ),
                                               )
                                             ],
-                                            borderRadius: BorderRadius.only(
+                                            borderRadius: const BorderRadius.only(
                                               bottomLeft: Radius.circular(10.0),
                                               bottomRight:
                                                   Radius.circular(10.0),
@@ -321,14 +321,14 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                               topRight: Radius.circular(10.0),
                                             ),
                                             border: Border.all(
-                                              color: Color(0xFFAECBF9),
+                                              color: const Color(0xFFAECBF9),
                                               width: 2.0,
                                             ),
                                           ),
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             10.0, 0.0, 0.0, 0.0),
                                         child: Container(
                                           width: 69.8,
@@ -342,7 +342,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                                 'assets/images/EggCatcher.png',
                                               ).image,
                                             ),
-                                            boxShadow: [
+                                            boxShadow: const [
                                               BoxShadow(
                                                 blurRadius: 7.0,
                                                 color: Color(0xAE14181B),
@@ -352,7 +352,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                                 ),
                                               )
                                             ],
-                                            borderRadius: BorderRadius.only(
+                                            borderRadius: const BorderRadius.only(
                                               bottomLeft: Radius.circular(10.0),
                                               bottomRight:
                                                   Radius.circular(10.0),
@@ -360,14 +360,14 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                               topRight: Radius.circular(10.0),
                                             ),
                                             border: Border.all(
-                                              color: Color(0xFFAECBF9),
+                                              color: const Color(0xFFAECBF9),
                                               width: 2.0,
                                             ),
                                           ),
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             10.0, 0.0, 0.0, 0.0),
                                         child: Container(
                                           width: 69.8,
@@ -381,7 +381,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                                 'assets/images/EggCatcher.png',
                                               ).image,
                                             ),
-                                            boxShadow: [
+                                            boxShadow: const [
                                               BoxShadow(
                                                 blurRadius: 7.0,
                                                 color: Color(0xAE14181B),
@@ -391,7 +391,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                                 ),
                                               )
                                             ],
-                                            borderRadius: BorderRadius.only(
+                                            borderRadius: const BorderRadius.only(
                                               bottomLeft: Radius.circular(10.0),
                                               bottomRight:
                                                   Radius.circular(10.0),
@@ -399,7 +399,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                               topRight: Radius.circular(10.0),
                                             ),
                                             border: Border.all(
-                                              color: Color(0xFFAECBF9),
+                                              color: const Color(0xFFAECBF9),
                                               width: 2.0,
                                             ),
                                           ),
@@ -411,7 +411,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                               ),
                               Expanded(
                                 child: Align(
-                                  alignment: AlignmentDirectional(0.0, 1.0),
+                                  alignment: const AlignmentDirectional(0.0, 1.0),
                                   child: Container(
                                     width: double.infinity,
                                     height: 32.0,
@@ -424,12 +424,12 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           10.0, 10.0, 0.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          Padding(
+                                          const Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 4.0, 0.0, 0.0),
@@ -441,7 +441,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     5.0, 1.0, 0.0, 0.0),
                                             child: Text(
                                               'Free Games',
@@ -491,21 +491,21 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                         Container(
                           width: double.infinity,
                           height: 135.0,
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 15.0, 0.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
                                   height: 80.0,
-                                  decoration: BoxDecoration(),
+                                  decoration: const BoxDecoration(),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 5.0, 0.0, 5.0),
                                     child: ListView(
                                       padding: EdgeInsets.zero,
@@ -514,7 +514,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 0.0, 0.0),
                                           child: Container(
                                             width: 69.8,
@@ -529,7 +529,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                                   'assets/images/flappy_ball.png',
                                                 ).image,
                                               ),
-                                              boxShadow: [
+                                              boxShadow: const [
                                                 BoxShadow(
                                                   blurRadius: 7.0,
                                                   color: Color(0xAE14181B),
@@ -539,7 +539,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                                   ),
                                                 )
                                               ],
-                                              borderRadius: BorderRadius.only(
+                                              borderRadius: const BorderRadius.only(
                                                 bottomLeft:
                                                     Radius.circular(10.0),
                                                 bottomRight:
@@ -548,7 +548,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                                 topRight: Radius.circular(10.0),
                                               ),
                                               border: Border.all(
-                                                color: Color(0xFFAECBF9),
+                                                color: const Color(0xFFAECBF9),
                                                 width: 2.0,
                                               ),
                                             ),
@@ -556,7 +556,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 0.0, 0.0),
                                           child: Container(
                                             width: 69.8,
@@ -571,7 +571,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                                   'assets/images/call_break.png',
                                                 ).image,
                                               ),
-                                              boxShadow: [
+                                              boxShadow: const [
                                                 BoxShadow(
                                                   blurRadius: 7.0,
                                                   color: Color(0xAE14181B),
@@ -581,7 +581,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                                   ),
                                                 )
                                               ],
-                                              borderRadius: BorderRadius.only(
+                                              borderRadius: const BorderRadius.only(
                                                 bottomLeft:
                                                     Radius.circular(10.0),
                                                 bottomRight:
@@ -590,7 +590,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                                 topRight: Radius.circular(10.0),
                                               ),
                                               border: Border.all(
-                                                color: Color(0xFFAECBF9),
+                                                color: const Color(0xFFAECBF9),
                                                 width: 2.0,
                                               ),
                                             ),
@@ -603,7 +603,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                               ),
                               Expanded(
                                 child: Align(
-                                  alignment: AlignmentDirectional(0.0, 1.0),
+                                  alignment: const AlignmentDirectional(0.0, 1.0),
                                   child: Container(
                                     width: double.infinity,
                                     height: 24.0,
@@ -624,18 +624,18 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                         Container(
                           width: double.infinity,
                           height: 140.0,
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     10.0, 0.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    Padding(
+                                    const Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 0.0),
                                       child: Icon(
@@ -645,7 +645,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           5.0, 1.0, 0.0, 0.0),
                                       child: Text(
                                         'Multiplayer Games',
@@ -684,9 +684,9 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                               Container(
                                 width: double.infinity,
                                 height: 80.0,
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 5.0, 0.0, 5.0),
                                   child: ListView(
                                     padding: EdgeInsets.zero,
@@ -694,7 +694,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                     scrollDirection: Axis.horizontal,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             10.0, 0.0, 0.0, 0.0),
                                         child: Container(
                                           width: 69.8,
@@ -708,7 +708,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                                 'assets/images/sl.png',
                                               ).image,
                                             ),
-                                            boxShadow: [
+                                            boxShadow: const [
                                               BoxShadow(
                                                 blurRadius: 7.0,
                                                 color: Color(0xAE14181B),
@@ -718,7 +718,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                                 ),
                                               )
                                             ],
-                                            borderRadius: BorderRadius.only(
+                                            borderRadius: const BorderRadius.only(
                                               bottomLeft: Radius.circular(10.0),
                                               bottomRight:
                                                   Radius.circular(10.0),
@@ -726,14 +726,14 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                               topRight: Radius.circular(10.0),
                                             ),
                                             border: Border.all(
-                                              color: Color(0xFFAECBF9),
+                                              color: const Color(0xFFAECBF9),
                                               width: 2.0,
                                             ),
                                           ),
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             10.0, 0.0, 0.0, 0.0),
                                         child: Container(
                                           width: 69.8,
@@ -747,7 +747,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                                 'assets/images/temple-run.png',
                                               ).image,
                                             ),
-                                            boxShadow: [
+                                            boxShadow: const [
                                               BoxShadow(
                                                 blurRadius: 7.0,
                                                 color: Color(0xAE14181B),
@@ -757,7 +757,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                                 ),
                                               )
                                             ],
-                                            borderRadius: BorderRadius.only(
+                                            borderRadius: const BorderRadius.only(
                                               bottomLeft: Radius.circular(10.0),
                                               bottomRight:
                                                   Radius.circular(10.0),
@@ -765,7 +765,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                               topRight: Radius.circular(10.0),
                                             ),
                                             border: Border.all(
-                                              color: Color(0xFFAECBF9),
+                                              color: const Color(0xFFAECBF9),
                                               width: 2.0,
                                             ),
                                           ),
@@ -777,7 +777,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                               ),
                               Expanded(
                                 child: Align(
-                                  alignment: AlignmentDirectional(0.0, 1.0),
+                                  alignment: const AlignmentDirectional(0.0, 1.0),
                                   child: Container(
                                     width: double.infinity,
                                     height: 32.0,
@@ -790,12 +790,12 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           10.0, 10.0, 0.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          Padding(
+                                          const Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 4.0, 0.0, 0.0),
@@ -807,7 +807,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     5.0, 1.0, 0.0, 0.0),
                                             child: Text(
                                               'Popular Games',
@@ -857,20 +857,20 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                         Container(
                           width: double.infinity,
                           height: 140.0,
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 5.0, 0.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
                                   height: 80.0,
-                                  decoration: BoxDecoration(),
+                                  decoration: const BoxDecoration(),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 5.0, 0.0, 0.0),
                                     child: ListView(
                                       padding: EdgeInsets.zero,
@@ -879,7 +879,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 0.0, 0.0),
                                           child: Container(
                                             width: 69.8,
@@ -894,7 +894,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                                   'assets/images/EggCatcher.png',
                                                 ).image,
                                               ),
-                                              boxShadow: [
+                                              boxShadow: const [
                                                 BoxShadow(
                                                   blurRadius: 7.0,
                                                   color: Color(0xAE14181B),
@@ -904,7 +904,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                                   ),
                                                 )
                                               ],
-                                              borderRadius: BorderRadius.only(
+                                              borderRadius: const BorderRadius.only(
                                                 bottomLeft:
                                                     Radius.circular(10.0),
                                                 bottomRight:
@@ -913,7 +913,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                                 topRight: Radius.circular(10.0),
                                               ),
                                               border: Border.all(
-                                                color: Color(0xFFAECBF9),
+                                                color: const Color(0xFFAECBF9),
                                                 width: 2.0,
                                               ),
                                             ),
@@ -921,7 +921,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 0.0, 0.0),
                                           child: Container(
                                             width: 69.8,
@@ -936,7 +936,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                                   'assets/images/EggCatcher.png',
                                                 ).image,
                                               ),
-                                              boxShadow: [
+                                              boxShadow: const [
                                                 BoxShadow(
                                                   blurRadius: 7.0,
                                                   color: Color(0xAE14181B),
@@ -946,7 +946,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                                   ),
                                                 )
                                               ],
-                                              borderRadius: BorderRadius.only(
+                                              borderRadius: const BorderRadius.only(
                                                 bottomLeft:
                                                     Radius.circular(10.0),
                                                 bottomRight:
@@ -955,7 +955,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                                                 topRight: Radius.circular(10.0),
                                               ),
                                               border: Border.all(
-                                                color: Color(0xFFAECBF9),
+                                                color: const Color(0xFFAECBF9),
                                                 width: 2.0,
                                               ),
                                             ),
@@ -968,7 +968,7 @@ class _HomePageCopyCopyWidgetState extends State<HomePageCopyCopyWidget> {
                               ),
                               Expanded(
                                 child: Align(
-                                  alignment: AlignmentDirectional(0.0, 1.0),
+                                  alignment: const AlignmentDirectional(0.0, 1.0),
                                   child: Container(
                                     width: double.infinity,
                                     height: 32.0,

@@ -47,11 +47,11 @@ class _NavbarWidgetState extends State<NavbarWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 1.0),
+      alignment: const AlignmentDirectional(0.0, 1.0),
       child: Container(
         width: double.infinity,
         height: 100.0,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(0.0),
             bottomRight: Radius.circular(0.0),
@@ -59,9 +59,9 @@ class _NavbarWidgetState extends State<NavbarWidget> {
             topRight: Radius.circular(30.0),
           ),
         ),
-        alignment: AlignmentDirectional(0.0, 1.0),
+        alignment: const AlignmentDirectional(0.0, 1.0),
         child: Stack(
-          alignment: AlignmentDirectional(0.0, 1.0),
+          alignment: const AlignmentDirectional(0.0, 1.0),
           children: [
             Row(
               mainAxisSize: MainAxisSize.max,
@@ -69,7 +69,7 @@ class _NavbarWidgetState extends State<NavbarWidget> {
                 Expanded(
                   child: Container(
                     height: 58.0,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         colors: [Color(0xFF1565C0), Color(0xFF0A2472)],
                         stops: [0.0, 1.0],
@@ -99,16 +99,16 @@ class _NavbarWidgetState extends State<NavbarWidget> {
                             width: 50.0,
                             height: 50.0,
                             decoration: BoxDecoration(
-                              color: widget!.pageNav == 'HomePage'
+                              color: widget.pageNav == 'HomePage'
                                   ? FlutterFlowTheme.of(context).secondary
-                                  : Color(0x000B33FF),
+                                  : const Color(0x000B33FF),
                               shape: BoxShape.circle,
                             ),
                             child: Icon(
                               Icons.home,
-                              color: widget!.pageNav == 'HomePage'
+                              color: widget.pageNav == 'HomePage'
                                   ? FlutterFlowTheme.of(context).primaryText
-                                  : Color(0xFFAECBF9),
+                                  : const Color(0xFFAECBF9),
                               size: 24.0,
                             ),
                           ),
@@ -125,16 +125,16 @@ class _NavbarWidgetState extends State<NavbarWidget> {
                             width: 50.0,
                             height: 50.0,
                             decoration: BoxDecoration(
-                              color: widget!.pageNav == 'GamesPage'
+                              color: widget.pageNav == 'GamesPage'
                                   ? FlutterFlowTheme.of(context).secondary
-                                  : Color(0x000B33FF),
+                                  : const Color(0x000B33FF),
                               shape: BoxShape.circle,
                             ),
                             child: Icon(
                               Icons.sports_esports_rounded,
-                              color: widget!.pageNav == 'GamesPage'
+                              color: widget.pageNav == 'GamesPage'
                                   ? FlutterFlowTheme.of(context).primaryText
-                                  : Color(0xFFAECBF9),
+                                  : const Color(0xFFAECBF9),
                               size: 24.0,
                             ),
                           ),
@@ -146,7 +146,7 @@ class _NavbarWidgetState extends State<NavbarWidget> {
                 Expanded(
                   child: Container(
                     height: 58.0,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         colors: [Color(0xFF1565C0), Color(0xFF0A2472)],
                         stops: [0.0, 1.0],
@@ -184,16 +184,16 @@ class _NavbarWidgetState extends State<NavbarWidget> {
                             width: 50.0,
                             height: 50.0,
                             decoration: BoxDecoration(
-                              color: widget!.pageNav == 'CommunityPage'
+                              color: widget.pageNav == 'CommunityPage'
                                   ? FlutterFlowTheme.of(context).secondary
-                                  : Color(0x000B33FF),
+                                  : const Color(0x000B33FF),
                               shape: BoxShape.circle,
                             ),
                             child: Icon(
                               Icons.groups_sharp,
-                              color: widget!.pageNav == 'CommunityPage'
+                              color: widget.pageNav == 'CommunityPage'
                                   ? FlutterFlowTheme.of(context).primaryText
-                                  : Color(0xFFAECBF9),
+                                  : const Color(0xFFAECBF9),
                               size: 24.0,
                             ),
                           ),
@@ -210,16 +210,16 @@ class _NavbarWidgetState extends State<NavbarWidget> {
                             width: 50.0,
                             height: 50.0,
                             decoration: BoxDecoration(
-                              color: widget!.pageNav == 'Profilepage'
+                              color: widget.pageNav == 'Profilepage'
                                   ? FlutterFlowTheme.of(context).secondary
-                                  : Color(0x000B33FF),
+                                  : const Color(0x000B33FF),
                               shape: BoxShape.circle,
                             ),
                             child: Icon(
                               Icons.person,
-                              color: widget!.pageNav == 'Profilepage'
+                              color: widget.pageNav == 'Profilepage'
                                   ? FlutterFlowTheme.of(context).primaryText
-                                  : Color(0xFFAECBF9),
+                                  : const Color(0xFFAECBF9),
                               size: 24.0,
                             ),
                           ),
@@ -231,11 +231,11 @@ class _NavbarWidgetState extends State<NavbarWidget> {
               ],
             ),
             Align(
-              alignment: AlignmentDirectional(0.0, -1.0),
+              alignment: const AlignmentDirectional(0.0, -1.0),
               child: Container(
                 width: 55.0,
                 height: 55.0,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     colors: [Color(0xFF1565C0), Color(0xFF0A2472)],
                     stops: [0.0, 1.0],
@@ -256,18 +256,18 @@ class _NavbarWidgetState extends State<NavbarWidget> {
                     width: 55.0,
                     height: 55.0,
                     decoration: BoxDecoration(
-                      color: widget!.pageNav == 'TournamentPage'
+                      color: widget.pageNav == 'TournamentPage'
                           ? FlutterFlowTheme.of(context).secondary
-                          : Color(0x000B33FF),
+                          : const Color(0x000B33FF),
                       shape: BoxShape.circle,
                     ),
                     child: Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: FaIcon(
                         FontAwesomeIcons.trophy,
-                        color: widget!.pageNav == 'TournamentPage'
+                        color: widget.pageNav == 'TournamentPage'
                             ? FlutterFlowTheme.of(context).primaryText
-                            : Color(0xFFAECBF9),
+                            : const Color(0xFFAECBF9),
                         size: 24.0,
                       ),
                     ),

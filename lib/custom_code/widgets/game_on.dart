@@ -15,13 +15,12 @@ import '/backend/api_requests/api_calls.dart';
 
 class GameOn extends StatefulWidget {
   const GameOn(
-      {Key? key,
+      {super.key,
       required this.gameUrl,
       this.width,
       this.height,
       required this.gameName,
-      required this.tournamentId})
-      : super(key: key);
+      required this.tournamentId});
 
   final String gameUrl;
   final String tournamentId;

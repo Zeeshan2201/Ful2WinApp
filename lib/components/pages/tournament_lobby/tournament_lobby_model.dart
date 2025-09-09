@@ -1,22 +1,9 @@
-import '/backend/api_requests/api_calls.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pop_ups/header/header_widget.dart';
-import '/pop_ups/howto_playtournament/howto_playtournament_widget.dart';
-import '/pop_ups/registration_tournament_pop_up/registration_tournament_pop_up_widget.dart';
-import 'dart:math';
-import 'dart:ui';
-import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'tournament_lobby_widget.dart' show TournamentLobbyWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:provider/provider.dart';
 
 class TournamentLobbyModel extends FlutterFlowModel<TournamentLobbyWidget> {
   ///  Local state fields for this page.

@@ -57,23 +57,23 @@ class _AdsPageWidgetState extends State<AdsPageWidget> {
               ).image,
             ),
             gradient: LinearGradient(
-              colors: [FlutterFlowTheme.of(context).primary, Color(0xFF000B33)],
-              stops: [0.0, 1.0],
-              begin: AlignmentDirectional(0.0, -1.0),
-              end: AlignmentDirectional(0, 1.0),
+              colors: [FlutterFlowTheme.of(context).primary, const Color(0xFF000B33)],
+              stops: const [0.0, 1.0],
+              begin: const AlignmentDirectional(0.0, -1.0),
+              end: const AlignmentDirectional(0, 1.0),
             ),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -85,7 +85,7 @@ class _AdsPageWidgetState extends State<AdsPageWidget> {
                         child: Container(
                           width: 90.0,
                           height: 40.0,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Color(0x33FFFFFF),
                             borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(40.0),
@@ -105,7 +105,7 @@ class _AdsPageWidgetState extends State<AdsPageWidget> {
                                 size: 24.0,
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 10.0, 0.0),
                                 child: Text(
                                   'Back',
@@ -143,18 +143,18 @@ class _AdsPageWidgetState extends State<AdsPageWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 160.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 160.0, 0.0, 0.0),
                 child: Container(
                   width: double.infinity,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10.0, 25.0, 10.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(10.0, 25.0, 10.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   height: 186.1,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Color(0x33FFFFFF),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(25.0),
@@ -183,7 +183,7 @@ class _AdsPageWidgetState extends State<AdsPageWidget> {
                                         .displayLarge
                                         .fontStyle,
                                   ),
-                                  color: Color(0xFFFFD54A),
+                                  color: const Color(0xFFFFD54A),
                                   fontSize: 30.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w600,
@@ -228,7 +228,7 @@ class _AdsPageWidgetState extends State<AdsPageWidget> {
                           ),
                         ],
                       ),
-                    ].divide(SizedBox(height: 20.0)),
+                    ].divide(const SizedBox(height: 20.0)),
                   ),
                 ),
               ),

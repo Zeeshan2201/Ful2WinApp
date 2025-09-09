@@ -35,218 +35,210 @@ class AppStateNotifier extends ChangeNotifier {
   }
 }
 
-GoRouter createRouter(AppStateNotifier appStateNotifier) {
-  // Choose initial route based on persisted auth token
-  final initialRoute =
-      (FFAppState().token != null && FFAppState().token.isNotEmpty)
-          ? HomePageWidget.routePath
-          : LoginpageWidget.routePath;
-
-  return GoRouter(
-    initialLocation: initialRoute,
-    debugLogDiagnostics: true,
-    refreshListenable: appStateNotifier,
-    navigatorKey: appNavigatorKey,
-    errorBuilder: (context, state) => HomePageWidget(),
-    routes: [
-      FFRoute(
-        name: '_initialize',
-        path: '/',
-        builder: (context, _) => HomePageWidget(),
-      ),
-      FFRoute(
-        name: HomePageWidget.routeName,
-        path: HomePageWidget.routePath,
-        builder: (context, params) => HomePageWidget(),
-      ),
-      FFRoute(
-        name: LoginpageWidget.routeName,
-        path: LoginpageWidget.routePath,
-        builder: (context, params) => LoginpageWidget(),
-      ),
-      FFRoute(
-        name: ProfilepageWidget.routeName,
-        path: ProfilepageWidget.routePath,
-        builder: (context, params) => ProfilepageWidget(),
-      ),
-      FFRoute(
-        name: WalletpageWidget.routeName,
-        path: WalletpageWidget.routePath,
-        builder: (context, params) => WalletpageWidget(),
-      ),
-      FFRoute(
-        name: SignuppageWidget.routeName,
-        path: SignuppageWidget.routePath,
-        builder: (context, params) => SignuppageWidget(),
-      ),
-      FFRoute(
-        name: GamesPageWidget.routeName,
-        path: GamesPageWidget.routePath,
-        builder: (context, params) => GamesPageWidget(),
-      ),
-      FFRoute(
-        name: TournamentPageWidget.routeName,
-        path: TournamentPageWidget.routePath,
-        builder: (context, params) => TournamentPageWidget(),
-      ),
-      FFRoute(
-        name: HistoryWidget.routeName,
-        path: HistoryWidget.routePath,
-        builder: (context, params) => HistoryWidget(),
-      ),
-      FFRoute(
-        name: KycstatusWidget.routeName,
-        path: KycstatusWidget.routePath,
-        builder: (context, params) => KycstatusWidget(),
-      ),
-      FFRoute(
-        name: ComingSoonWidget.routeName,
-        path: ComingSoonWidget.routePath,
-        builder: (context, params) => ComingSoonWidget(),
-      ),
-      FFRoute(
-        name: NotificationWidget.routeName,
-        path: NotificationWidget.routePath,
-        builder: (context, params) => NotificationWidget(),
-      ),
-      FFRoute(
-        name: SupportpageWidget.routeName,
-        path: SupportpageWidget.routePath,
-        builder: (context, params) => SupportpageWidget(),
-      ),
-      FFRoute(
-        name: TournamentLobbyWidget.routeName,
-        path: TournamentLobbyWidget.routePath,
-        builder: (context, params) => TournamentLobbyWidget(
-          gameId: params.getParam(
-            'gameId',
-            ParamType.String,
+GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
+      initialLocation: '/',
+      debugLogDiagnostics: true,
+      refreshListenable: appStateNotifier,
+      navigatorKey: appNavigatorKey,
+      errorBuilder: (context, state) => HomePageWidget(),
+      routes: [
+        FFRoute(
+          name: '_initialize',
+          path: '/',
+          builder: (context, _) => HomePageWidget(),
+        ),
+        FFRoute(
+          name: HomePageWidget.routeName,
+          path: HomePageWidget.routePath,
+          builder: (context, params) => HomePageWidget(),
+        ),
+        FFRoute(
+          name: LoginpageWidget.routeName,
+          path: LoginpageWidget.routePath,
+          builder: (context, params) => LoginpageWidget(),
+        ),
+        FFRoute(
+          name: ProfilepageWidget.routeName,
+          path: ProfilepageWidget.routePath,
+          builder: (context, params) => ProfilepageWidget(),
+        ),
+        FFRoute(
+          name: WalletpageWidget.routeName,
+          path: WalletpageWidget.routePath,
+          builder: (context, params) => WalletpageWidget(),
+        ),
+        FFRoute(
+          name: SignuppageWidget.routeName,
+          path: SignuppageWidget.routePath,
+          builder: (context, params) => SignuppageWidget(),
+        ),
+        FFRoute(
+          name: GamesPageWidget.routeName,
+          path: GamesPageWidget.routePath,
+          builder: (context, params) => GamesPageWidget(),
+        ),
+        FFRoute(
+          name: TournamentPageWidget.routeName,
+          path: TournamentPageWidget.routePath,
+          builder: (context, params) => TournamentPageWidget(),
+        ),
+        FFRoute(
+          name: HistoryWidget.routeName,
+          path: HistoryWidget.routePath,
+          builder: (context, params) => HistoryWidget(),
+        ),
+        FFRoute(
+          name: KycstatusWidget.routeName,
+          path: KycstatusWidget.routePath,
+          builder: (context, params) => KycstatusWidget(),
+        ),
+        FFRoute(
+          name: ComingSoonWidget.routeName,
+          path: ComingSoonWidget.routePath,
+          builder: (context, params) => ComingSoonWidget(),
+        ),
+        FFRoute(
+          name: NotificationWidget.routeName,
+          path: NotificationWidget.routePath,
+          builder: (context, params) => NotificationWidget(),
+        ),
+        FFRoute(
+          name: SupportpageWidget.routeName,
+          path: SupportpageWidget.routePath,
+          builder: (context, params) => SupportpageWidget(),
+        ),
+        FFRoute(
+          name: TournamentLobbyWidget.routeName,
+          path: TournamentLobbyWidget.routePath,
+          builder: (context, params) => TournamentLobbyWidget(
+            gameId: params.getParam(
+              'gameId',
+              ParamType.String,
+            ),
           ),
         ),
-      ),
-      FFRoute(
-        name: ReferralspageWidget.routeName,
-        path: ReferralspageWidget.routePath,
-        builder: (context, params) => ReferralspageWidget(),
-      ),
-      FFRoute(
-        name: AddMoneyPageWidget.routeName,
-        path: AddMoneyPageWidget.routePath,
-        builder: (context, params) => AddMoneyPageWidget(),
-      ),
-      FFRoute(
-        name: AccountpageWidget.routeName,
-        path: AccountpageWidget.routePath,
-        builder: (context, params) => AccountpageWidget(),
-      ),
-      FFRoute(
-        name: LeaderBoardPageWidget.routeName,
-        path: LeaderBoardPageWidget.routePath,
-        builder: (context, params) => LeaderBoardPageWidget(),
-      ),
-      FFRoute(
-        name: AdsPageWidget.routeName,
-        path: AdsPageWidget.routePath,
-        builder: (context, params) => AdsPageWidget(),
-      ),
-      FFRoute(
-        name: EditAccountpageWidget.routeName,
-        path: EditAccountpageWidget.routePath,
-        builder: (context, params) => EditAccountpageWidget(),
-      ),
-      FFRoute(
-        name: TransactionHistoryWidget.routeName,
-        path: TransactionHistoryWidget.routePath,
-        builder: (context, params) => TransactionHistoryWidget(),
-      ),
-      FFRoute(
-        name: CommunityleaderboardWidget.routeName,
-        path: CommunityleaderboardWidget.routePath,
-        builder: (context, params) => CommunityleaderboardWidget(),
-      ),
-      FFRoute(
-        name: ChallengePageWidget.routeName,
-        path: ChallengePageWidget.routePath,
-        builder: (context, params) => ChallengePageWidget(),
-      ),
-      FFRoute(
-        name: KycstatusSubmitWidget.routeName,
-        path: KycstatusSubmitWidget.routePath,
-        builder: (context, params) => KycstatusSubmitWidget(),
-      ),
-      FFRoute(
-        name: MessageWidget.routeName,
-        path: MessageWidget.routePath,
+        FFRoute(
+          name: ReferralspageWidget.routeName,
+          path: ReferralspageWidget.routePath,
+          builder: (context, params) => ReferralspageWidget(),
+        ),
+        FFRoute(
+          name: AddMoneyPageWidget.routeName,
+          path: AddMoneyPageWidget.routePath,
+          builder: (context, params) => AddMoneyPageWidget(),
+        ),
+        FFRoute(
+          name: AccountpageWidget.routeName,
+          path: AccountpageWidget.routePath,
+          builder: (context, params) => AccountpageWidget(),
+        ),
+        FFRoute(
+          name: LeaderBoardPageWidget.routeName,
+          path: LeaderBoardPageWidget.routePath,
+          builder: (context, params) => LeaderBoardPageWidget(),
+        ),
+        FFRoute(
+          name: AdsPageWidget.routeName,
+          path: AdsPageWidget.routePath,
+          builder: (context, params) => AdsPageWidget(),
+        ),
+        FFRoute(
+          name: EditAccountpageWidget.routeName,
+          path: EditAccountpageWidget.routePath,
+          builder: (context, params) => EditAccountpageWidget(),
+        ),
+        FFRoute(
+          name: TransactionHistoryWidget.routeName,
+          path: TransactionHistoryWidget.routePath,
+          builder: (context, params) => TransactionHistoryWidget(),
+        ),
+        FFRoute(
+          name: CommunityleaderboardWidget.routeName,
+          path: CommunityleaderboardWidget.routePath,
+          builder: (context, params) => CommunityleaderboardWidget(),
+        ),
+        FFRoute(
+          name: ChallengePageWidget.routeName,
+          path: ChallengePageWidget.routePath,
+          builder: (context, params) => ChallengePageWidget(),
+        ),
+        FFRoute(
+          name: KycstatusSubmitWidget.routeName,
+          path: KycstatusSubmitWidget.routePath,
+          builder: (context, params) => KycstatusSubmitWidget(),
+        ),
+        FFRoute(
+          name: MessageWidget.routeName,
+          path: MessageWidget.routePath,
         builder: (context, params) => MessageWidget(
           user2: params.getParam(
             'user2',
             ParamType.String,
           ),
         ),
-      ),
-      FFRoute(
-        name: WithdrawPageWidget.routeName,
-        path: WithdrawPageWidget.routePath,
-        builder: (context, params) => WithdrawPageWidget(),
-      ),
-      FFRoute(
-        name: HomePageCopyWidget.routeName,
-        path: HomePageCopyWidget.routePath,
-        builder: (context, params) => HomePageCopyWidget(),
-      ),
-      FFRoute(
-        name: GameOnWidget.routeName,
-        path: GameOnWidget.routePath,
-        builder: (context, params) => GameOnWidget(
-          gameUrl: params.getParam(
-            'gameUrl',
-            ParamType.String,
-          ),
-          gamename: params.getParam(
-                'gamename',
-                ParamType.String,
-              ) ??
-              'DefaultGame',
-          tournamentId: params.getParam(
-                'tournamentId',
-                ParamType.String,
-              ) ??
-              'DefaultGame', // fallback if param not passed
         ),
-      ),
-      FFRoute(
-        name: HomePageCopyCopyWidget.routeName,
-        path: HomePageCopyCopyWidget.routePath,
-        builder: (context, params) => HomePageCopyCopyWidget(),
-      ),
-      FFRoute(
-        name: CommunitymembersWidget.routeName,
-        path: CommunitymembersWidget.routePath,
-        builder: (context, params) => CommunitymembersWidget(),
-      ),
-      FFRoute(
-        name: HomePageCopy2Widget.routeName,
-        path: HomePageCopy2Widget.routePath,
-        builder: (context, params) => HomePageCopy2Widget(),
-      ),
-      FFRoute(
-        name: CommunityPageWidget.routeName,
-        path: CommunityPageWidget.routePath,
-        builder: (context, params) => CommunityPageWidget(
-          isExpanded: params.getParam(
-            'isExpanded',
-            ParamType.bool,
+        FFRoute(
+          name: WithdrawPageWidget.routeName,
+          path: WithdrawPageWidget.routePath,
+          builder: (context, params) => WithdrawPageWidget(),
+        ),
+        FFRoute(
+          name: HomePageCopyWidget.routeName,
+          path: HomePageCopyWidget.routePath,
+          builder: (context, params) => HomePageCopyWidget(),
+        ),
+        FFRoute(
+          name: GameOnWidget.routeName,
+          path: GameOnWidget.routePath,
+          builder: (context, params) => GameOnWidget(
+            gameUrl: params.getParam(
+              'gameUrl',
+              ParamType.String,
+            ),
+            gamename: params.getParam(
+                  'gamename',
+                  ParamType.String,
+                ) ??
+                'DefaultGame',
+            tournamentId: params.getParam(
+                  'tournamentId',
+                  ParamType.String,
+                ) ??
+                'DefaultGame', // fallback if param not passed
           ),
         ),
-      ),
-      FFRoute(
-        name: LeaderBoardPageNEWCopyWidget.routeName,
-        path: LeaderBoardPageNEWCopyWidget.routePath,
-        builder: (context, params) => LeaderBoardPageNEWCopyWidget(),
-      )
-    ].map((r) => r.toRoute(appStateNotifier)).toList(),
-  );
-}
+        FFRoute(
+          name: HomePageCopyCopyWidget.routeName,
+          path: HomePageCopyCopyWidget.routePath,
+          builder: (context, params) => HomePageCopyCopyWidget(),
+        ),
+        FFRoute(
+          name: CommunitymembersWidget.routeName,
+          path: CommunitymembersWidget.routePath,
+          builder: (context, params) => CommunitymembersWidget(),
+        ),
+        FFRoute(
+          name: HomePageCopy2Widget.routeName,
+          path: HomePageCopy2Widget.routePath,
+          builder: (context, params) => HomePageCopy2Widget(),
+        ),
+        FFRoute(
+          name: CommunityPageWidget.routeName,
+          path: CommunityPageWidget.routePath,
+          builder: (context, params) => CommunityPageWidget(
+            isExpanded: params.getParam(
+              'isExpanded',
+              ParamType.bool,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: LeaderBoardPageNEWCopyWidget.routeName,
+          path: LeaderBoardPageNEWCopyWidget.routePath,
+          builder: (context, params) => LeaderBoardPageNEWCopyWidget(),
+        )
+      ].map((r) => r.toRoute(appStateNotifier)).toList(),
+    );
 
 extension NavParamExtensions on Map<String, String?> {
   Map<String, String> get withoutNulls => Map.fromEntries(
@@ -407,8 +399,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() =>
-      const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

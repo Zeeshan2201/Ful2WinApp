@@ -59,10 +59,10 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
             ).image,
           ),
           gradient: LinearGradient(
-            colors: [FlutterFlowTheme.of(context).primary, Color(0xFF000B33)],
-            stops: [0.0, 1.0],
-            begin: AlignmentDirectional(0.17, -1.0),
-            end: AlignmentDirectional(-0.17, 1.0),
+            colors: [FlutterFlowTheme.of(context).primary, const Color(0xFF000B33)],
+            stops: const [0.0, 1.0],
+            begin: const AlignmentDirectional(0.17, -1.0),
+            end: const AlignmentDirectional(-0.17, 1.0),
           ),
           shape: BoxShape.rectangle,
         ),
@@ -71,10 +71,10 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
             wrapWithModel(
               model: _model.headerModel,
               updateCallback: () => safeSetState(() {}),
-              child: HeaderWidget(),
+              child: const HeaderWidget(),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(10.0, 60.0, 10.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(10.0, 60.0, 10.0, 0.0),
               child: FutureBuilder<ApiCallResponse>(
                 future: ProfileCall.call(),
                 builder: (context, snapshot) {
@@ -107,11 +107,11 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                               sigmaY: 2.0,
                             ),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   10.0, 20.0, 10.0, 0.0),
                               child: Container(
                                 width: double.infinity,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Color(0x33FFFFFF),
                                   borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(25.0),
@@ -121,13 +121,13 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       10.0, 0.0, 10.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 30.0, 0.0, 0.0),
                                         child: Container(
                                           width: 77.0,
@@ -141,7 +141,7 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                             width: 200.0,
                                             height: 200.0,
                                             clipBehavior: Clip.antiAlias,
-                                            decoration: BoxDecoration(
+                                            decoration: const BoxDecoration(
                                               shape: BoxShape.circle,
                                             ),
                                             child: Image.network(
@@ -166,7 +166,7 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                           Opacity(
                                             opacity: 0.9,
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 5.0, 0.0),
                                               child: Text(
                                                 'Coins',
@@ -183,7 +183,7 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                                                 .bodyMedium
                                                                 .fontStyle,
                                                       ),
-                                                      color: Color(0xFFF0F0F0),
+                                                      color: const Color(0xFFF0F0F0),
                                                       fontSize: 16.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
@@ -216,7 +216,7 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 10.0, 0.0),
                                             child: Text(
                                               getJsonField(
@@ -240,7 +240,7 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                                                   .fontStyle,
                                                         ),
                                                         color:
-                                                            Color(0xFFFFD54A),
+                                                            const Color(0xFFFFD54A),
                                                         fontSize: 17.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -256,14 +256,14 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                                       ),
                                             ),
                                           ),
-                                          FaIcon(
+                                          const FaIcon(
                                             FontAwesomeIcons.coins,
                                             color: Color(0xFFFFD54A),
                                             size: 24.0,
                                           ),
                                         ],
                                       ),
-                                      Opacity(
+                                      const Opacity(
                                         opacity: 0.4,
                                         child: Divider(
                                           height: 30.0,
@@ -345,7 +345,7 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                                                 .bodyMedium
                                                                 .fontStyle,
                                                       ),
-                                                      color: Color(0xFFFFD54A),
+                                                      color: const Color(0xFFFFD54A),
                                                       fontSize: 14.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
@@ -448,7 +448,7 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                         ],
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 10.0, 0.0, 0.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -522,7 +522,7 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                                             .fontStyle,
                                                   ),
                                             ),
-                                            Opacity(
+                                            const Opacity(
                                               opacity: 0.4,
                                               child: Divider(
                                                 height: 30.0,
@@ -543,7 +543,7 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 25.0, 0.0, 15.0),
                           child: Text(
                             'Earn Bonus',
@@ -556,7 +556,7 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                                  color: Color(0xFFFFD028),
+                                  color: const Color(0xFFFFD028),
                                   fontSize: 20.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w900,
@@ -567,7 +567,7 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 13.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -577,7 +577,7 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                 width: 93.43,
                                 height: 92.7,
                                 decoration: BoxDecoration(
-                                  color: Color(0x674E6AA5),
+                                  color: const Color(0x674E6AA5),
                                   borderRadius: BorderRadius.circular(10.0),
                                   border: Border.all(
                                     color: FlutterFlowTheme.of(context)
@@ -592,7 +592,7 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                     FlutterFlowIconButton(
                                       borderRadius: 25.0,
                                       buttonSize: 45.0,
-                                      fillColor: Color(0xFFFFD028),
+                                      fillColor: const Color(0xFFFFD028),
                                       icon: Icon(
                                         Icons.refresh,
                                         color: FlutterFlowTheme.of(context)
@@ -647,7 +647,7 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                   width: 93.93,
                                   height: 92.4,
                                   decoration: BoxDecoration(
-                                    color: Color(0x674E6AA5),
+                                    color: const Color(0x674E6AA5),
                                     borderRadius: BorderRadius.circular(10.0),
                                     border: Border.all(
                                       color: FlutterFlowTheme.of(context)
@@ -662,7 +662,7 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                       FlutterFlowIconButton(
                                         borderRadius: 25.0,
                                         buttonSize: 45.0,
-                                        fillColor: Color(0xFFFFD028),
+                                        fillColor: const Color(0xFFFFD028),
                                         icon: Icon(
                                           Icons.play_arrow,
                                           color: FlutterFlowTheme.of(context)
@@ -720,7 +720,7 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                   width: 92.8,
                                   height: 92.5,
                                   decoration: BoxDecoration(
-                                    color: Color(0x674E6AA5),
+                                    color: const Color(0x674E6AA5),
                                     borderRadius: BorderRadius.circular(10.0),
                                     border: Border.all(
                                       color: FlutterFlowTheme.of(context)
@@ -735,7 +735,7 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                       FlutterFlowIconButton(
                                         borderRadius: 25.0,
                                         buttonSize: 45.0,
-                                        fillColor: Color(0xFFFFD028),
+                                        fillColor: const Color(0xFFFFD028),
                                         icon: Icon(
                                           Icons.flash_on_rounded,
                                           color: FlutterFlowTheme.of(context)
@@ -780,13 +780,13 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                   ),
                                 ),
                               ),
-                            ].divide(SizedBox(width: 10.0)),
+                            ].divide(const SizedBox(width: 10.0)),
                           ),
                         ),
                         Opacity(
                           opacity: 0.7,
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 15.0, 0.0, 15.0),
                             child: FFButtonWidget(
                               onPressed: () async {
@@ -796,11 +796,11 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                               options: FFButtonOptions(
                                 width: double.infinity,
                                 height: 56.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                color: Color(0xC10B33FF),
+                                color: const Color(0xC10B33FF),
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
@@ -836,7 +836,7 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
             wrapWithModel(
               model: _model.navbarModel,
               updateCallback: () => safeSetState(() {}),
-              child: NavbarWidget(
+              child: const NavbarWidget(
                 pageNav: 'walletpage',
               ),
             ),

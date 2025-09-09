@@ -53,10 +53,10 @@ class _NotificationWidgetState extends State<NotificationWidget> {
             ).image,
           ),
           gradient: LinearGradient(
-            colors: [FlutterFlowTheme.of(context).primary, Color(0xFF000B33)],
-            stops: [0.0, 1.0],
-            begin: AlignmentDirectional(0.0, -1.0),
-            end: AlignmentDirectional(0, 1.0),
+            colors: [FlutterFlowTheme.of(context).primary, const Color(0xFF000B33)],
+            stops: const [0.0, 1.0],
+            begin: const AlignmentDirectional(0.0, -1.0),
+            end: const AlignmentDirectional(0, 1.0),
           ),
         ),
         child: SingleChildScrollView(
@@ -64,13 +64,13 @@ class _NotificationWidgetState extends State<NotificationWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -82,7 +82,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                         child: Container(
                           width: 40.0,
                           height: 40.0,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Color(0x33FFFFFF),
                             borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(40.0),
@@ -108,7 +108,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 10.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 10.0, 0.0, 0.0),
                       child: Text(
                         'NOTIFICATIONS',
                         style:
@@ -137,21 +137,21 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   height: 30.0,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                     child: ListView(
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 10.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -169,8 +169,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                 color: _model.selectedButton == 'All'
                                     ? FlutterFlowTheme.of(context)
                                         .secondaryBackground
-                                    : Color(0x0014181B),
-                                borderRadius: BorderRadius.only(
+                                    : const Color(0x0014181B),
+                                borderRadius: const BorderRadius.only(
                                   bottomLeft: Radius.circular(20.0),
                                   bottomRight: Radius.circular(20.0),
                                   topLeft: Radius.circular(20.0),
@@ -183,7 +183,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                 ),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     5.0, 0.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -200,7 +200,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                       size: 20.0,
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           5.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         'All',
@@ -236,7 +236,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 10.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -254,8 +254,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                 color: _model.selectedButton == 'Game'
                                     ? FlutterFlowTheme.of(context)
                                         .secondaryBackground
-                                    : Color(0x0014181B),
-                                borderRadius: BorderRadius.only(
+                                    : const Color(0x0014181B),
+                                borderRadius: const BorderRadius.only(
                                   bottomLeft: Radius.circular(20.0),
                                   bottomRight: Radius.circular(20.0),
                                   topLeft: Radius.circular(20.0),
@@ -312,7 +312,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 10.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -330,8 +330,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                 color: _model.selectedButton == 'Followers'
                                     ? FlutterFlowTheme.of(context)
                                         .secondaryBackground
-                                    : Color(0x0014181B),
-                                borderRadius: BorderRadius.only(
+                                    : const Color(0x0014181B),
+                                borderRadius: const BorderRadius.only(
                                   bottomLeft: Radius.circular(20.0),
                                   bottomRight: Radius.circular(20.0),
                                   topLeft: Radius.circular(20.0),
@@ -389,7 +389,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 10.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -407,8 +407,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                 color: _model.selectedButton == 'Tournaments'
                                     ? FlutterFlowTheme.of(context)
                                         .secondaryBackground
-                                    : Color(0x0014181B),
-                                borderRadius: BorderRadius.only(
+                                    : const Color(0x0014181B),
+                                borderRadius: const BorderRadius.only(
                                   bottomLeft: Radius.circular(20.0),
                                   bottomRight: Radius.circular(20.0),
                                   topLeft: Radius.circular(20.0),
@@ -467,7 +467,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 10.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -485,8 +485,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                 color: _model.selectedButton == 'Challenges'
                                     ? FlutterFlowTheme.of(context)
                                         .secondaryBackground
-                                    : Color(0x0014181B),
-                                borderRadius: BorderRadius.only(
+                                    : const Color(0x0014181B),
+                                borderRadius: const BorderRadius.only(
                                   bottomLeft: Radius.circular(20.0),
                                   bottomRight: Radius.circular(20.0),
                                   topLeft: Radius.circular(20.0),
@@ -549,10 +549,10 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                 child: Container(
                   width: double.infinity,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -563,7 +563,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                         scrollDirection: Axis.vertical,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -572,13 +572,13 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                 Container(
                                   width: 100.0,
                                   height: 30.0,
-                                  decoration: BoxDecoration(),
+                                  decoration: const BoxDecoration(),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(-1.0, 0.0),
+                                            const AlignmentDirectional(-1.0, 0.0),
                                         child: Text(
                                           'Unread',
                                           style: FlutterFlowTheme.of(context)
@@ -612,7 +612,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             5.0, 0.0, 0.0, 0.0),
                                         child: Container(
                                           width: 20.0,
@@ -624,7 +624,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                           ),
                                           child: Align(
                                             alignment:
-                                                AlignmentDirectional(0.0, 0.0),
+                                                const AlignmentDirectional(0.0, 0.0),
                                             child: Text(
                                               '1',
                                               style: FlutterFlowTheme.of(
@@ -664,13 +664,13 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       10.0, 0.0, 10.0, 2.0),
                                   child: Container(
                                     width: double.infinity,
                                     height: 80.0,
                                     decoration: BoxDecoration(
-                                      gradient: LinearGradient(
+                                      gradient: const LinearGradient(
                                         colors: [
                                           Color(0x16FFFFFF),
                                           Color(0x0DFFFFFF)
@@ -690,7 +690,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       10.0, 0.0, 0.0, 0.0),
                                               child: Container(
@@ -707,7 +707,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                                     ).image,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.only(
+                                                      const BorderRadius.only(
                                                     bottomLeft:
                                                         Radius.circular(10.0),
                                                     bottomRight:
@@ -724,7 +724,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -820,7 +820,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                             ],
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -829,13 +829,13 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                 Container(
                                   width: 100.0,
                                   height: 30.0,
-                                  decoration: BoxDecoration(),
+                                  decoration: const BoxDecoration(),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(-1.0, 0.0),
+                                            const AlignmentDirectional(-1.0, 0.0),
                                         child: Text(
                                           'Read',
                                           style: FlutterFlowTheme.of(context)
@@ -869,7 +869,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             5.0, 0.0, 0.0, 0.0),
                                         child: Container(
                                           width: 20.0,
@@ -881,7 +881,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                           ),
                                           child: Align(
                                             alignment:
-                                                AlignmentDirectional(0.0, 0.0),
+                                                const AlignmentDirectional(0.0, 0.0),
                                             child: Text(
                                               '2',
                                               style: FlutterFlowTheme.of(
@@ -921,13 +921,13 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       10.0, 0.0, 10.0, 5.0),
                                   child: Container(
                                     width: double.infinity,
                                     height: 80.0,
                                     decoration: BoxDecoration(
-                                      gradient: LinearGradient(
+                                      gradient: const LinearGradient(
                                         colors: [
                                           Color(0x16FFFFFF),
                                           Color(0x0DFFFFFF)
@@ -947,7 +947,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       10.0, 0.0, 0.0, 0.0),
                                               child: Container(
@@ -964,7 +964,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                                     ).image,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.only(
+                                                      const BorderRadius.only(
                                                     bottomLeft:
                                                         Radius.circular(10.0),
                                                     bottomRight:
@@ -981,7 +981,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -1081,13 +1081,13 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       10.0, 0.0, 10.0, 5.0),
                                   child: Container(
                                     width: double.infinity,
                                     height: 80.0,
                                     decoration: BoxDecoration(
-                                      gradient: LinearGradient(
+                                      gradient: const LinearGradient(
                                         colors: [
                                           Color(0x16FFFFFF),
                                           Color(0x0DFFFFFF)
@@ -1107,7 +1107,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       10.0, 0.0, 0.0, 0.0),
                                               child: Container(
@@ -1124,7 +1124,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                                     ).image,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.only(
+                                                      const BorderRadius.only(
                                                     bottomLeft:
                                                         Radius.circular(10.0),
                                                     bottomRight:
@@ -1141,7 +1141,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,

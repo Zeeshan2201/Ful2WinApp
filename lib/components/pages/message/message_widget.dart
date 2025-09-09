@@ -70,7 +70,7 @@ class _MessageWidgetState extends State<MessageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -92,7 +92,7 @@ class _MessageWidgetState extends State<MessageWidget>
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFF000B33),
+      backgroundColor: const Color(0xFF000B33),
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -104,10 +104,10 @@ class _MessageWidgetState extends State<MessageWidget>
             ).image,
           ),
           gradient: LinearGradient(
-            colors: [FlutterFlowTheme.of(context).primary, Color(0xFF000B33)],
-            stops: [0, 1],
-            begin: AlignmentDirectional(0, -1),
-            end: AlignmentDirectional(0, 1),
+            colors: [FlutterFlowTheme.of(context).primary, const Color(0xFF000B33)],
+            stops: const [0, 1],
+            begin: const AlignmentDirectional(0, -1),
+            end: const AlignmentDirectional(0, 1),
           ),
         ),
         child: FutureBuilder<ApiCallResponse>(
@@ -157,18 +157,18 @@ class _MessageWidgetState extends State<MessageWidget>
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0, 0),
+                        alignment: const AlignmentDirectional(0, 0),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
                           child: Container(
                             width: 40,
                             height: 35,
                             decoration: BoxDecoration(
-                              color: Color(0x33FFFFFF),
+                              color: const Color(0x33FFFFFF),
                               borderRadius: BorderRadius.circular(40),
                             ),
                             child: Align(
-                              alignment: AlignmentDirectional(0, 0),
+                              alignment: const AlignmentDirectional(0, 0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment:
@@ -176,7 +176,7 @@ class _MessageWidgetState extends State<MessageWidget>
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Align(
-                                    alignment: AlignmentDirectional(0, 0),
+                                    alignment: const AlignmentDirectional(0, 0),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
                                       focusColor: Colors.transparent,
@@ -204,7 +204,7 @@ class _MessageWidgetState extends State<MessageWidget>
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
-                            color: Color(0xFF6371B5),
+                            color: const Color(0xFF6371B5),
                             width: 2,
                           ),
                         ),
@@ -225,13 +225,13 @@ class _MessageWidgetState extends State<MessageWidget>
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                                  const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                               child: Text(
                                 getJsonField(
                                   columnProfileResponse.jsonBody,
@@ -286,7 +286,7 @@ class _MessageWidgetState extends State<MessageWidget>
                 ),
                 Flexible(
                   child: Align(
-                    alignment: AlignmentDirectional(-1, -1),
+                    alignment: const AlignmentDirectional(-1, -1),
                     child: FutureBuilder<ApiCallResponse>(
                       future: ChatsCall.call(
                         user1: FFAppState().userId,
@@ -474,7 +474,7 @@ class _MessageWidgetState extends State<MessageWidget>
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0, 1),
+                  alignment: const AlignmentDirectional(0, 1),
                   child: Container(
                     width: double.infinity,
                     height: 90,
@@ -493,7 +493,7 @@ class _MessageWidgetState extends State<MessageWidget>
                       ),
                     ),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(15, 15, 15, 15),
+                      padding: const EdgeInsetsDirectional.fromSTEB(15, 15, 15, 15),
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
@@ -507,7 +507,7 @@ class _MessageWidgetState extends State<MessageWidget>
                           ),
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -575,7 +575,7 @@ class _MessageWidgetState extends State<MessageWidget>
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 1,
                                       ),

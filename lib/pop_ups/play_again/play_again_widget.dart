@@ -47,7 +47,7 @@ class _PlayAgainWidgetState extends State<PlayAgainWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -59,7 +59,7 @@ class _PlayAgainWidgetState extends State<PlayAgainWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -79,23 +79,23 @@ class _PlayAgainWidgetState extends State<PlayAgainWidget>
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
         child: Container(
           width: double.infinity,
           height: 280.0,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color(0x6D0B33FF),
+                const Color(0x6D0B33FF),
                 FlutterFlowTheme.of(context).primaryText
               ],
-              stops: [0.0, 1.0],
-              begin: AlignmentDirectional(0.0, -1.0),
-              end: AlignmentDirectional(0, 1.0),
+              stops: const [0.0, 1.0],
+              begin: const AlignmentDirectional(0.0, -1.0),
+              end: const AlignmentDirectional(0, 1.0),
             ),
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(15.0),
               bottomRight: Radius.circular(15.0),
               topLeft: Radius.circular(15.0),
@@ -131,7 +131,7 @@ class _PlayAgainWidgetState extends State<PlayAgainWidget>
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 5.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 5.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -157,7 +157,7 @@ class _PlayAgainWidgetState extends State<PlayAgainWidget>
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(25.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(25.0, 0.0, 0.0, 0.0),
                         child: Container(
                           width: 60.0,
                           height: 60.0,
@@ -176,7 +176,7 @@ class _PlayAgainWidgetState extends State<PlayAgainWidget>
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                         child: Text(
                           'Jelly Slice',
                           textAlign: TextAlign.center,
@@ -207,15 +207,15 @@ class _PlayAgainWidgetState extends State<PlayAgainWidget>
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 40.0, 0.0, 0.0, 0.0),
                             child: Text(
                               'Your Score:',
@@ -246,7 +246,7 @@ class _PlayAgainWidgetState extends State<PlayAgainWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 0.0, 0.0),
                           child: Text(
                             '10',
@@ -280,7 +280,7 @@ class _PlayAgainWidgetState extends State<PlayAgainWidget>
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -294,13 +294,13 @@ class _PlayAgainWidgetState extends State<PlayAgainWidget>
                             gradient: LinearGradient(
                               colors: [
                                 FlutterFlowTheme.of(context).primary,
-                                Color(0x77B20BFF)
+                                const Color(0x77B20BFF)
                               ],
-                              stops: [0.0, 1.0],
-                              begin: AlignmentDirectional(0.34, -1.0),
-                              end: AlignmentDirectional(-0.34, 1.0),
+                              stops: const [0.0, 1.0],
+                              begin: const AlignmentDirectional(0.34, -1.0),
+                              end: const AlignmentDirectional(-0.34, 1.0),
                             ),
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                               bottomLeft: Radius.circular(15.0),
                               bottomRight: Radius.circular(15.0),
                               topLeft: Radius.circular(15.0),
@@ -308,7 +308,7 @@ class _PlayAgainWidgetState extends State<PlayAgainWidget>
                             ),
                           ),
                           child: Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Text(
                               'Play Again',
                               style: FlutterFlowTheme.of(context)
@@ -345,13 +345,13 @@ class _PlayAgainWidgetState extends State<PlayAgainWidget>
                             gradient: LinearGradient(
                               colors: [
                                 FlutterFlowTheme.of(context).secondaryText,
-                                Color(0xCD57636C)
+                                const Color(0xCD57636C)
                               ],
-                              stops: [0.0, 1.0],
-                              begin: AlignmentDirectional(0.34, -1.0),
-                              end: AlignmentDirectional(-0.34, 1.0),
+                              stops: const [0.0, 1.0],
+                              begin: const AlignmentDirectional(0.34, -1.0),
+                              end: const AlignmentDirectional(-0.34, 1.0),
                             ),
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                               bottomLeft: Radius.circular(15.0),
                               bottomRight: Radius.circular(15.0),
                               topLeft: Radius.circular(15.0),
@@ -359,7 +359,7 @@ class _PlayAgainWidgetState extends State<PlayAgainWidget>
                             ),
                           ),
                           child: Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Text(
                               'Tournaments',
                               style: FlutterFlowTheme.of(context)

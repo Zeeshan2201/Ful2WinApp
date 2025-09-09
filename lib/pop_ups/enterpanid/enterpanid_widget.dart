@@ -46,7 +46,7 @@ class _EnterpanidWidgetState extends State<EnterpanidWidget> {
     return Container(
       width: double.infinity,
       height: 210.1,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0x33FFFFFF),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(25.0),
@@ -59,7 +59,7 @@ class _EnterpanidWidgetState extends State<EnterpanidWidget> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 5.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 5.0, 0.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.end,
@@ -67,7 +67,7 @@ class _EnterpanidWidgetState extends State<EnterpanidWidget> {
                 FlutterFlowIconButton(
                   borderRadius: 100.0,
                   buttonSize: 40.0,
-                  fillColor: Color(0x4E000000),
+                  fillColor: const Color(0x4E000000),
                   icon: Icon(
                     Icons.close,
                     color: FlutterFlowTheme.of(context).info,
@@ -81,7 +81,7 @@ class _EnterpanidWidgetState extends State<EnterpanidWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -93,7 +93,7 @@ class _EnterpanidWidgetState extends State<EnterpanidWidget> {
                           fontStyle:
                               FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                         ),
-                        color: Color(0xFFF4F6F7),
+                        color: const Color(0xFFF4F6F7),
                         fontSize: 20.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.bold,
@@ -108,7 +108,7 @@ class _EnterpanidWidgetState extends State<EnterpanidWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                 child: Text(
                   'Enter your PAN details accurately.',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -117,7 +117,7 @@ class _EnterpanidWidgetState extends State<EnterpanidWidget> {
                           fontStyle:
                               FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                         ),
-                        color: Color(0xFFF2F5F7),
+                        color: const Color(0xFFF2F5F7),
                         fontSize: 16.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.normal,
@@ -129,15 +129,15 @@ class _EnterpanidWidgetState extends State<EnterpanidWidget> {
             ],
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Expanded(
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
-                    child: Container(
+                        const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                    child: SizedBox(
                       width: double.infinity,
                       child: TextFormField(
                         controller: _model.textController,
@@ -156,7 +156,7 @@ class _EnterpanidWidgetState extends State<EnterpanidWidget> {
                                           .labelMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFFF0F4F7),
+                                    color: const Color(0xFFF0F4F7),
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .labelMedium
@@ -176,7 +176,7 @@ class _EnterpanidWidgetState extends State<EnterpanidWidget> {
                                           .labelMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFFDCE2E6),
+                                    color: const Color(0xFFDCE2E6),
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
@@ -187,14 +187,14 @@ class _EnterpanidWidgetState extends State<EnterpanidWidget> {
                                         .fontStyle,
                                   ),
                           enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Color(0xFFF1ECEC),
                               width: 1.0,
                             ),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Color(0x00000000),
                               width: 1.0,
                             ),
@@ -215,7 +215,7 @@ class _EnterpanidWidgetState extends State<EnterpanidWidget> {
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           filled: true,
-                          fillColor: Color(0x33FFFFFF),
+                          fillColor: const Color(0x33FFFFFF),
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               font: GoogleFonts.inter(
@@ -246,7 +246,7 @@ class _EnterpanidWidgetState extends State<EnterpanidWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -260,9 +260,9 @@ class _EnterpanidWidgetState extends State<EnterpanidWidget> {
                     width: 300.0,
                     height: 40.0,
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                     iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           font: GoogleFonts.poppins(

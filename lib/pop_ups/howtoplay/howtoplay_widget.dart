@@ -43,11 +43,11 @@ class _HowtoplayWidgetState extends State<HowtoplayWidget> {
     context.watch<FFAppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(20.0, 25.0, 20.0, 0.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(20.0, 25.0, 20.0, 0.0),
       child: Container(
         width: double.infinity,
         height: 498.88,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Color(0x33FFFFFF),
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(25.0),
@@ -82,7 +82,7 @@ class _HowtoplayWidgetState extends State<HowtoplayWidget> {
               children: [
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -96,7 +96,7 @@ class _HowtoplayWidgetState extends State<HowtoplayWidget> {
                                     .bodyMedium
                                     .fontStyle,
                               ),
-                              color: Color(0xFFEDF1F4),
+                              color: const Color(0xFFEDF1F4),
                               fontSize: 18.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
@@ -108,7 +108,7 @@ class _HowtoplayWidgetState extends State<HowtoplayWidget> {
                       Container(
                         width: 40.8,
                         height: 40.8,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Color(0xFF08176F),
                           shape: BoxShape.circle,
                         ),
@@ -120,7 +120,7 @@ class _HowtoplayWidgetState extends State<HowtoplayWidget> {
                           onTap: () async {
                             Navigator.pop(context);
                           },
-                          child: Icon(
+                          child: const Icon(
                             Icons.close,
                             color: Color(0xFFEFF2F4),
                             size: 24.0,
@@ -130,12 +130,12 @@ class _HowtoplayWidgetState extends State<HowtoplayWidget> {
                     ],
                   ),
                 ),
-                Divider(
+                const Divider(
                   thickness: 1.0,
                   color: Color(0xFF4C4949),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -149,7 +149,7 @@ class _HowtoplayWidgetState extends State<HowtoplayWidget> {
                                     .bodyMedium
                                     .fontStyle,
                               ),
-                              color: Color(0xFFF4F9FC),
+                              color: const Color(0xFFF4F9FC),
                               fontSize: 18.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
@@ -162,13 +162,13 @@ class _HowtoplayWidgetState extends State<HowtoplayWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                         child: Text(
                           getJsonField(
                             columnGameResponse.jsonBody,
@@ -184,7 +184,7 @@ class _HowtoplayWidgetState extends State<HowtoplayWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFFE1EBF3),
+                                    color: const Color(0xFFE1EBF3),
                                     fontSize: 14.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
@@ -204,7 +204,7 @@ class _HowtoplayWidgetState extends State<HowtoplayWidget> {
                   color: FlutterFlowTheme.of(context).alternate,
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -217,7 +217,7 @@ class _HowtoplayWidgetState extends State<HowtoplayWidget> {
                                     .bodyMedium
                                     .fontStyle,
                               ),
-                              color: Color(0xFFF0F5FA),
+                              color: const Color(0xFFF0F5FA),
                               fontSize: 18.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
@@ -230,7 +230,7 @@ class _HowtoplayWidgetState extends State<HowtoplayWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                   child: Builder(
                     builder: (context) {
                       final rules = getJsonField(
@@ -258,7 +258,7 @@ class _HowtoplayWidgetState extends State<HowtoplayWidget> {
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                                  color: Color(0xFFE8EEF3),
+                                  color: const Color(0xFFE8EEF3),
                                   letterSpacing: 0.0,
                                   fontWeight: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -273,12 +273,12 @@ class _HowtoplayWidgetState extends State<HowtoplayWidget> {
                     },
                   ),
                 ),
-                Divider(
+                const Divider(
                   thickness: 0.5,
                   color: Color(0xFF645D5D),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -293,7 +293,7 @@ class _HowtoplayWidgetState extends State<HowtoplayWidget> {
                                     .bodyMedium
                                     .fontStyle,
                               ),
-                              color: Color(0xFFE8EEF3),
+                              color: const Color(0xFFE8EEF3),
                               letterSpacing: 0.0,
                               fontWeight: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -306,12 +306,12 @@ class _HowtoplayWidgetState extends State<HowtoplayWidget> {
                     ],
                   ),
                 ),
-                Divider(
+                const Divider(
                   thickness: 0.5,
                   color: Color(0xFF645D5D),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -326,7 +326,7 @@ class _HowtoplayWidgetState extends State<HowtoplayWidget> {
                                     .bodyMedium
                                     .fontStyle,
                               ),
-                              color: Color(0xFFE8EEF3),
+                              color: const Color(0xFFE8EEF3),
                               letterSpacing: 0.0,
                               fontWeight: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -339,12 +339,12 @@ class _HowtoplayWidgetState extends State<HowtoplayWidget> {
                     ],
                   ),
                 ),
-                Divider(
+                const Divider(
                   thickness: 0.5,
                   color: Color(0xFF645D5D),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -359,7 +359,7 @@ class _HowtoplayWidgetState extends State<HowtoplayWidget> {
                                     .bodyMedium
                                     .fontStyle,
                               ),
-                              color: Color(0xFFE8EEF3),
+                              color: const Color(0xFFE8EEF3),
                               letterSpacing: 0.0,
                               fontWeight: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -372,12 +372,12 @@ class _HowtoplayWidgetState extends State<HowtoplayWidget> {
                     ],
                   ),
                 ),
-                Divider(
+                const Divider(
                   thickness: 0.5,
                   color: Color(0xFF645D5D),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -392,7 +392,7 @@ class _HowtoplayWidgetState extends State<HowtoplayWidget> {
                                     .bodyMedium
                                     .fontStyle,
                               ),
-                              color: Color(0xFFE8EEF3),
+                              color: const Color(0xFFE8EEF3),
                               letterSpacing: 0.0,
                               fontWeight: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -405,12 +405,12 @@ class _HowtoplayWidgetState extends State<HowtoplayWidget> {
                     ],
                   ),
                 ),
-                Divider(
+                const Divider(
                   thickness: 0.5,
                   color: Color(0xFF645D5D),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -425,7 +425,7 @@ class _HowtoplayWidgetState extends State<HowtoplayWidget> {
                                     .bodyMedium
                                     .fontStyle,
                               ),
-                              color: Color(0xFFE8EEF3),
+                              color: const Color(0xFFE8EEF3),
                               letterSpacing: 0.0,
                               fontWeight: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -438,7 +438,7 @@ class _HowtoplayWidgetState extends State<HowtoplayWidget> {
                     ],
                   ),
                 ),
-                Divider(
+                const Divider(
                   thickness: 0.5,
                   color: Color(0xFF645D5D),
                 ),

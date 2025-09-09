@@ -70,7 +70,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                 'assets/images/bgimage.png',
               ).image,
             ),
-            gradient: LinearGradient(
+            gradient: const LinearGradient(
               colors: [Color(0xFF0B33FF), Color(0xFF000B33)],
               stops: [0.0, 1.0],
               begin: AlignmentDirectional(0.0, -1.0),
@@ -81,9 +81,9 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
                 child: Container(
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
                     child: Image.asset(
@@ -103,7 +103,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                         fontStyle:
                             FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                       ),
-                      color: Color(0xFFFFD700),
+                      color: const Color(0xFFFFD700),
                       fontSize: 16.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.bold,
@@ -112,11 +112,11 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                     ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   height: 580.0,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Color(0x33FFFFFF),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(0.0),
@@ -134,7 +134,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 0.0, 0.0),
                             child: Text(
                               'Hello Again!',
@@ -147,7 +147,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFFF3F4F6),
+                                    color: const Color(0xFFF3F4F6),
                                     fontSize: 24.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
@@ -163,7 +163,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 0.0, 0.0),
                             child: Text(
                               'Login to continue',
@@ -178,7 +178,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFFE5E7EB),
+                                    color: const Color(0xFFE5E7EB),
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
@@ -196,7 +196,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 0.0, 0.0),
                             child: Text(
                               'Phone Number',
@@ -211,7 +211,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFFF3F4F6),
+                                    color: const Color(0xFFF3F4F6),
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -229,9 +229,9 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 20.0, 0.0),
-                              child: Container(
+                              child: SizedBox(
                                 width: 200.0,
                                 child: TextFormField(
                                   controller: _model.textController1,
@@ -290,14 +290,14 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                                   .fontStyle,
                                         ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
@@ -320,7 +320,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     filled: true,
-                                    fillColor: Color(0x33FFFFFF),
+                                    fillColor: const Color(0x33FFFFFF),
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -360,7 +360,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 0.0, 0.0),
                             child: Text(
                               'Password',
@@ -375,7 +375,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFFF3F4F6),
+                                    color: const Color(0xFFF3F4F6),
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -393,9 +393,9 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 20.0, 0.0),
-                              child: Container(
+                              child: SizedBox(
                                 width: 200.0,
                                 child: TextFormField(
                                   controller: _model.textController2,
@@ -454,14 +454,14 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                                   .fontStyle,
                                         ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
@@ -484,7 +484,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     filled: true,
-                                    fillColor: Color(0x33FFFFFF),
+                                    fillColor: const Color(0x33FFFFFF),
                                     suffixIcon: InkWell(
                                       onTap: () => safeSetState(
                                         () => _model.passwordVisibility =
@@ -534,7 +534,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -563,7 +563,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                     ? BorderSide(
                                         width: 2,
                                         color: FlutterFlowTheme.of(context)
-                                            .alternate!,
+                                            .alternate,
                                       )
                                     : null,
                                 activeColor:
@@ -584,7 +584,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFFF3F4F6),
+                                    color: const Color(0xFFF3F4F6),
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -607,7 +607,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFF93C5FD),
+                                    color: const Color(0xFF93C5FD),
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -630,7 +630,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFFF3F4F6),
+                                    color: const Color(0xFFF3F4F6),
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -653,7 +653,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFF93C5FD),
+                                    color: const Color(0xFF93C5FD),
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -700,8 +700,8 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                             .primaryText,
                                       ),
                                     ),
-                                    duration: Duration(milliseconds: 4000),
-                                    backgroundColor: Color(0xFFEA1A08),
+                                    duration: const Duration(milliseconds: 4000),
+                                    backgroundColor: const Color(0xFFEA1A08),
                                   ),
                                 );
                               }
@@ -712,9 +712,9 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                             options: FFButtonOptions(
                               width: 300.0,
                               height: 50.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 16.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -760,7 +760,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                                  color: Color(0xFFD1D5DB),
+                                  color: const Color(0xFFD1D5DB),
                                   letterSpacing: 0.0,
                                   fontWeight: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -791,7 +791,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFF93C5FD),
+                                    color: const Color(0xFF93C5FD),
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .bodyMedium

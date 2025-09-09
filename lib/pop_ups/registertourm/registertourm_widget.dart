@@ -46,7 +46,7 @@ class _RegistertourmWidgetState extends State<RegistertourmWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -58,7 +58,7 @@ class _RegistertourmWidgetState extends State<RegistertourmWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -78,23 +78,23 @@ class _RegistertourmWidgetState extends State<RegistertourmWidget>
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
         child: Container(
           width: double.infinity,
           height: 280.0,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color(0x6D0B33FF),
+                const Color(0x6D0B33FF),
                 FlutterFlowTheme.of(context).primaryText
               ],
-              stops: [0.0, 1.0],
-              begin: AlignmentDirectional(0.0, -1.0),
-              end: AlignmentDirectional(0, 1.0),
+              stops: const [0.0, 1.0],
+              begin: const AlignmentDirectional(0.0, -1.0),
+              end: const AlignmentDirectional(0, 1.0),
             ),
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(15.0),
               bottomRight: Radius.circular(15.0),
               topLeft: Radius.circular(15.0),
@@ -162,13 +162,13 @@ class _RegistertourmWidgetState extends State<RegistertourmWidget>
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Text(
                             'Entry Fee:',
                             textAlign: TextAlign.center,
@@ -196,7 +196,7 @@ class _RegistertourmWidgetState extends State<RegistertourmWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 0.0, 0.0),
                           child: Text(
                             '₹40',
@@ -230,13 +230,13 @@ class _RegistertourmWidgetState extends State<RegistertourmWidget>
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Text(
                             'Prize Pool:',
                             textAlign: TextAlign.center,
@@ -264,7 +264,7 @@ class _RegistertourmWidgetState extends State<RegistertourmWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 0.0, 0.0),
                           child: Text(
                             '₹1000',
@@ -298,7 +298,7 @@ class _RegistertourmWidgetState extends State<RegistertourmWidget>
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -313,7 +313,7 @@ class _RegistertourmWidgetState extends State<RegistertourmWidget>
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           child: Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Text(
                               'Yes',
                               style: FlutterFlowTheme.of(context)
@@ -350,16 +350,16 @@ class _RegistertourmWidgetState extends State<RegistertourmWidget>
                             gradient: LinearGradient(
                               colors: [
                                 FlutterFlowTheme.of(context).secondaryText,
-                                Color(0xCD57636C)
+                                const Color(0xCD57636C)
                               ],
-                              stops: [0.0, 1.0],
-                              begin: AlignmentDirectional(0.34, -1.0),
-                              end: AlignmentDirectional(-0.34, 1.0),
+                              stops: const [0.0, 1.0],
+                              begin: const AlignmentDirectional(0.34, -1.0),
+                              end: const AlignmentDirectional(-0.34, 1.0),
                             ),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           child: Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Text(
                               'Cancel',
                               style: FlutterFlowTheme.of(context)
