@@ -26,11 +26,16 @@ class _HeaderWidgetState extends State<HeaderWidget> {
     super.setState(callback);
     _model.onUpdate();
   }
-
+  
+  late Future<ApiCallResponse> ProfileResponse;
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => HeaderModel());
+    ProfileResponse = ProfileCall.call(
+            token: FFAppState().token,
+            userId: FFAppState().userId,
+          );
   }
 
   @override
@@ -44,14 +49,12 @@ class _HeaderWidgetState extends State<HeaderWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, -1.0),
+      alignment: const AlignmentDirectional(0.0, -1.0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
         child: FutureBuilder<ApiCallResponse>(
-          future: ProfileCall.call(
-            token: FFAppState().token,
-            userId: FFAppState().userId,
-          ),
+          future: ProfileResponse,
+         
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
               return Center(
@@ -83,7 +86,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
               child: Container(
                 width: double.infinity,
                 height: 60.0,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     colors: [Color(0xFF1565C0), Color(0xFF0A2472)],
                     stops: [0.0, 1.0],
@@ -101,7 +104,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                   children: [
                     // Logo
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -127,8 +130,8 @@ class _HeaderWidgetState extends State<HeaderWidget> {
 
                     // Wallet + Notifications + Spin Wheel
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
-                      child: Container(
+                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                      child: SizedBox(
                         width: 134.0,
                         height: 32.0,
                         child: Row(
@@ -179,11 +182,11 @@ class _HeaderWidgetState extends State<HeaderWidget> {
 
                             // Notifications
                             Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: FlutterFlowIconButton(
                                 borderRadius: 8.0,
                                 buttonSize: 35.0,
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.notifications_sharp,
                                   color: Color(0xFFAECBF9),
                                   size: 22.0,
@@ -203,8 +206,8 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                                   builder: (BuildContext context) {
                                     return Dialog(
                                       backgroundColor: Colors.transparent,
-                                      insetPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 32),
-                                      child: Container(
+                                      insetPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+                                      child: SizedBox(
                                         width: MediaQuery.of(context).size.width * 0.9,
                                         height: MediaQuery.of(context).size.height * 0.6,
                                         child: const SpinWheelWidget(),
@@ -226,7 +229,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                                   ),
                                   shape: BoxShape.circle,
                                   border: Border.all(
-                                    color: Color(0xFFAECBF9),
+                                    color: const Color(0xFFAECBF9),
                                   ),
                                 ),
                               ),

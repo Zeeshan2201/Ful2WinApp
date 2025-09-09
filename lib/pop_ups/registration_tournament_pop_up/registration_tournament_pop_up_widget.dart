@@ -72,7 +72,7 @@ class _RegistrationTournamentPopUpWidgetState
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -92,17 +92,17 @@ class _RegistrationTournamentPopUpWidgetState
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0, 0),
+      alignment: const AlignmentDirectional(0, 0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+        padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
         child: Container(
           width: 350,
           height: 210,
           decoration: BoxDecoration(
-            color: Color(0xFF0D1724),
+            color: const Color(0xFF0D1724),
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
-              color: Color(0xFFFFD700),
+              color: const Color(0xFFFFD700),
             ),
           ),
           child: Column(
@@ -117,7 +117,7 @@ class _RegistrationTournamentPopUpWidgetState
                         fontStyle:
                             FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                       ),
-                      color: Color(0xFFFFD700),
+                      color: const Color(0xFFFFD700),
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.bold,
                       fontStyle:
@@ -125,7 +125,7 @@ class _RegistrationTournamentPopUpWidgetState
                     ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 5),
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 5),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -210,7 +210,7 @@ class _RegistrationTournamentPopUpWidgetState
                 ],
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -245,7 +245,7 @@ class _RegistrationTournamentPopUpWidgetState
                         } else {
                           context.safePop();
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
+                            const SnackBar(
                                 content:
                                     Text("Tournament registration failed")),
                           );
@@ -256,9 +256,9 @@ class _RegistrationTournamentPopUpWidgetState
                       text: 'Yes',
                       options: FFButtonOptions(
                         height: 40,
-                        padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-                        iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                        color: Color(0xFFFFCC00),
+                        padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                        iconPadding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                        color: const Color(0xFFFFCC00),
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   font: GoogleFonts.poppins(
@@ -299,9 +299,9 @@ class _RegistrationTournamentPopUpWidgetState
                       text: 'Cancel',
                       options: FFButtonOptions(
                         height: 40,
-                        padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-                        iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                        color: Color(0xFF333A46),
+                        padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                        iconPadding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                        color: const Color(0xFF333A46),
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   font: GoogleFonts.poppins(
