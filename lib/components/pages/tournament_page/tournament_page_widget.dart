@@ -27,11 +27,13 @@ class _TournamentPageWidgetState extends State<TournamentPageWidget> {
   late TournamentPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  late Future<ApiCallResponse> gameRespose;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => TournamentPageModel());
+    gameRespose = GamesCall.call();
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
@@ -65,7 +67,10 @@ class _TournamentPageWidgetState extends State<TournamentPageWidget> {
               ).image,
             ),
             gradient: LinearGradient(
-              colors: [FlutterFlowTheme.of(context).primary, const Color(0xFF000B33)],
+              colors: [
+                FlutterFlowTheme.of(context).primary,
+                const Color(0xFF000B33)
+              ],
               stops: const [0.0, 1.0],
               begin: const AlignmentDirectional(0.0, -1.0),
               end: const AlignmentDirectional(0, 1.0),
@@ -82,14 +87,15 @@ class _TournamentPageWidgetState extends State<TournamentPageWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 70.0, 0.0, 0.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(0.0, 70.0, 0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          10.0, 0.0, 0.0, 0.0),
                       child: Text(
                         'Tournament Games',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -111,8 +117,8 @@ class _TournamentPageWidgetState extends State<TournamentPageWidget> {
                       ),
                     ),
                     Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 10.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          10.0, 20.0, 10.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         height: 50.0,
@@ -280,7 +286,7 @@ class _TournamentPageWidgetState extends State<TournamentPageWidget> {
                         padding: const EdgeInsetsDirectional.fromSTEB(
                             10.0, 20.0, 10.0, 40.0),
                         child: FutureBuilder<ApiCallResponse>(
-                          future: GamesCall.call(),
+                          future: gameRespose,
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
@@ -365,8 +371,9 @@ class _TournamentPageWidgetState extends State<TournamentPageWidget> {
                                             ),
                                             Expanded(
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(
                                                         0.0, 5.0, 0.0, 5.0),
                                                 child: Column(
                                                   mainAxisSize:
@@ -470,11 +477,8 @@ class _TournamentPageWidgetState extends State<TournamentPageWidget> {
                                                     Padding(
                                                       padding:
                                                           const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  10.0,
-                                                                  0.0,
-                                                                  10.0,
-                                                                  0.0),
+                                                              .fromSTEB(10.0,
+                                                              0.0, 10.0, 0.0),
                                                       child: InkWell(
                                                         splashColor:
                                                             Colors.transparent,

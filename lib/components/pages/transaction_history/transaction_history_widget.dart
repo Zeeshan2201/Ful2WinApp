@@ -25,11 +25,16 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget> {
   late TransactionHistoryModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  late Future<ApiCallResponse> profileRespose;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => TransactionHistoryModel());
+    profileRespose = ProfileCall.call(
+      token: FFAppState().token,
+      userId: FFAppState().userId,
+    );
   }
 
   @override
@@ -57,7 +62,10 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget> {
             ).image,
           ),
           gradient: LinearGradient(
-            colors: [FlutterFlowTheme.of(context).primary, const Color(0xFF000B33)],
+            colors: [
+              FlutterFlowTheme.of(context).primary,
+              const Color(0xFF000B33)
+            ],
             stops: const [0.0, 1.0],
             begin: const AlignmentDirectional(0.0, -1.0),
             end: const AlignmentDirectional(0, 1.0),
@@ -66,10 +74,7 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget> {
         child: Padding(
           padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
           child: FutureBuilder<ApiCallResponse>(
-            future: ProfileCall.call(
-              token: FFAppState().token,
-              userId: FFAppState().userId,
-            ),
+            future: profileRespose,
             builder: (context, snapshot) {
               // Customize what your widget looks like when it's loading.
               if (!snapshot.hasData) {
@@ -91,8 +96,8 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        0.0, 10.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -171,8 +176,8 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget> {
                     ),
                   ),
                   Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        0.0, 10.0, 0.0, 0.0),
                     child: Container(
                       width: double.infinity,
                       height: 78.4,
@@ -367,8 +372,8 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget> {
                     ],
                   ),
                   Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        0.0, 10.0, 0.0, 0.0),
                     child: Builder(
                       builder: (context) {
                         final coinsH = getJsonField(
@@ -386,7 +391,8 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget> {
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
                           itemCount: coinsH.length,
-                          separatorBuilder: (_, __) => const SizedBox(height: 15.0),
+                          separatorBuilder: (_, __) =>
+                              const SizedBox(height: 15.0),
                           itemBuilder: (context, coinsHIndex) {
                             final coinsHItem = coinsH[coinsHIndex];
                             return Container(
@@ -520,8 +526,8 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget> {
                                             ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            1.0, 0.0, 0.0, 0.0),
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(1.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           'Coins',
                                           style: FlutterFlowTheme.of(context)
@@ -558,7 +564,9 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget> {
                       },
                     ),
                   ),
-                ].divide(const SizedBox(height: 10.0)).around(const SizedBox(height: 10.0)),
+                ]
+                    .divide(const SizedBox(height: 10.0))
+                    .around(const SizedBox(height: 10.0)),
               );
             },
           ),

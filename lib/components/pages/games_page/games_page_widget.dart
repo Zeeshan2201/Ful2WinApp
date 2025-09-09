@@ -36,6 +36,7 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final animationsMap = <String, AnimationInfo>{};
+  late Future<ApiCallResponse> gameResponse;
 
   @override
   void initState() {
@@ -44,6 +45,7 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
+    gameResponse = GameCall.call();
 
     animationsMap.addAll({
       'containerOnPageLoadAnimation': AnimationInfo(
@@ -536,10 +538,7 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
                         padding: const EdgeInsetsDirectional.fromSTEB(
                             10, 20, 10, 40),
                         child: FutureBuilder<ApiCallResponse>(
-                          future: (_model.apiRequestCompleter ??=
-                                  Completer<ApiCallResponse>()
-                                    ..complete(GamesCall.call()))
-                              .future,
+                          future: gameResponse,
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {

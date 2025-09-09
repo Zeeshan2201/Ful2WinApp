@@ -33,11 +33,16 @@ class _AccountpageWidgetState extends State<AccountpageWidget>
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final animationsMap = <String, AnimationInfo>{};
+  late Future<ApiCallResponse> profileResponse;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => AccountpageModel());
+    profileResponse = ProfileCall.call(
+      token: FFAppState().token,
+      userId: FFAppState().userId,
+    );
 
     _model.textFieldFocusNode1 ??= FocusNode();
 
@@ -103,10 +108,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget>
         body: Stack(
           children: [
             FutureBuilder<ApiCallResponse>(
-              future: ProfileCall.call(
-                token: FFAppState().token,
-                userId: FFAppState().userId,
-              ),
+              future: profileResponse,
               builder: (context, snapshot) {
                 // Customize what your widget looks like when it's loading.
                 if (!snapshot.hasData) {

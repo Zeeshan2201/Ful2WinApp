@@ -35,12 +35,14 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final animationsMap = <String, AnimationInfo>{};
-
+  late Future<ApiCallResponse> allUsersResponse;
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => CommunitymembersModel());
-
+    allUsersResponse = AllUsersCall.call(
+      token: FFAppState().token,
+    );
     animationsMap.addAll({
       'containerOnPageLoadAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
@@ -194,7 +196,8 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width < 350.0
                               ? 300.0
@@ -208,8 +211,8 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
-                                padding:
-                                    const EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    5, 0, 0, 0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -262,9 +265,8 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                                         ).animateOnPageLoad(animationsMap[
                                             'containerOnPageLoadAnimation2']!),
                                         Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  5, 0, 0, 0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(5, 0, 0, 0),
                                           child: Container(
                                             decoration: BoxDecoration(
                                               gradient: const LinearGradient(
@@ -372,8 +374,8 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                                       ).animateOnPageLoad(animationsMap[
                                           'containerOnPageLoadAnimation5']!),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(5, 0, 0, 0),
                                         child: Container(
                                           decoration: BoxDecoration(
                                             gradient: const LinearGradient(
@@ -421,9 +423,7 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                   ),
                   Expanded(
                     child: FutureBuilder<ApiCallResponse>(
-                      future: AllUsersCall.call(
-                        token: FFAppState().token,
-                      ),
+                      future: allUsersResponse,
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {
@@ -490,7 +490,8 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                                                 color: Colors.transparent,
                                               ),
                                               alignment:
-                                                  const AlignmentDirectional(0, 0),
+                                                  const AlignmentDirectional(
+                                                      0, 0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
@@ -508,8 +509,8 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                                                       Padding(
                                                         padding:
                                                             const EdgeInsetsDirectional
-                                                                .fromSTEB(10, 0,
-                                                                    0, 0),
+                                                                .fromSTEB(
+                                                                10, 0, 0, 0),
                                                         child: Container(
                                                           width: 40,
                                                           height: 40,
@@ -535,7 +536,7 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                                                     padding:
                                                         const EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                10, 0, 0, 0),
+                                                            10, 0, 0, 0),
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -718,7 +719,9 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                       },
                     ),
                   ),
-                ].divide(const SizedBox(height: 20)).around(const SizedBox(height: 20)),
+                ]
+                    .divide(const SizedBox(height: 20))
+                    .around(const SizedBox(height: 20)),
               ),
             ),
             wrapWithModel(

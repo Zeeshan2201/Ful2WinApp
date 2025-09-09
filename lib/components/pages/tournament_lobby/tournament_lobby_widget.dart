@@ -42,12 +42,18 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final animationsMap = <String, AnimationInfo>{};
-
+  late Future<ApiCallResponse> gameResponse;
+  late Future<ApiCallResponse> tournamentResponse;
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => TournamentLobbyModel());
-
+    gameResponse = GameCall.call(
+      gameId: widget.gameId,
+    );
+    tournamentResponse = TournamentBygameCall.call(
+      gameId: widget.gameId,
+    );
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
@@ -118,9 +124,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
           child: Stack(
             children: [
               FutureBuilder<ApiCallResponse>(
-                future: GameCall.call(
-                  gameId: widget.gameId,
-                ),
+                future: gameResponse,
                 builder: (context, snapshot) {
                   // Customize what your widget looks like when it's loading.
                   if (!snapshot.hasData) {
@@ -718,9 +722,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 280, 0, 10),
                   child: FutureBuilder<ApiCallResponse>(
-                    future: GameCall.call(
-                      gameId: widget.gameId,
-                    ),
+                    future: gameResponse,
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
@@ -742,9 +744,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                         width: double.infinity,
                         decoration: BoxDecoration(),
                         child: FutureBuilder<ApiCallResponse>(
-                          future: TournamentBygameCall.call(
-                            gameId: FFAppState().gameId,
-                          ),
+                          future: tournamentResponse,
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
@@ -1306,7 +1306,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                 ],
                                               ),
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               width: 350,
                                               child: Divider(
                                                 height: 2,
@@ -1379,9 +1379,9 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                     options: FFButtonOptions(
                                                       height: 40,
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  16, 0, 16, 0),
+                                                              16, 0, 16, 0),
                                                       iconPadding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
@@ -1499,7 +1499,8 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                           const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                               0, 0, 0, 0),
-                                                      color: Color(0x000B33FF),
+                                                      color: const Color(
+                                                          0x000B33FF),
                                                       textStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)

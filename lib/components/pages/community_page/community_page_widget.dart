@@ -40,7 +40,8 @@ class CommunityPageWidget extends StatefulWidget {
 class _CommunityPageWidgetState extends State<CommunityPageWidget>
     with TickerProviderStateMixin {
   late CommunityPageModel _model;
-
+  late Future<ApiCallResponse> profileResponse;
+  late Future<ApiCallResponse> postsResponse;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final animationsMap = <String, AnimationInfo>{};
@@ -49,6 +50,12 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => CommunityPageModel());
+
+    profileResponse = ProfileCall.call(
+      token: FFAppState().token,
+      userId: FFAppState().userId,
+    );
+    postsResponse = PostsCall.call();
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
@@ -108,10 +115,7 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
     context.watch<FFAppState>();
 
     return FutureBuilder<ApiCallResponse>(
-      future: ProfileCall.call(
-        token: FFAppState().token,
-        userId: FFAppState().userId,
-      ),
+      future: profileResponse,
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -1234,9 +1238,7 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                     child: Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
                       child: FutureBuilder<ApiCallResponse>(
-                        future: PostsCall.call(
-                          token: FFAppState().token,
-                        ),
+                        future: postsResponse,
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
                           if (!snapshot.hasData) {

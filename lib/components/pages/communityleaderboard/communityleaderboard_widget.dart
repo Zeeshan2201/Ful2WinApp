@@ -30,12 +30,14 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
   late CommunityleaderboardModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
+  late Future<ApiCallResponse> allUsers;
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => CommunityleaderboardModel());
-
+    allUsers = AllUsersCall.call(
+      token: FFAppState().token,
+    );
     _model.tabBarController = TabController(
       vsync: this,
       length: 2,
@@ -73,7 +75,10 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
               ).image,
             ),
             gradient: LinearGradient(
-              colors: [FlutterFlowTheme.of(context).primary, const Color(0xFF000B33)],
+              colors: [
+                FlutterFlowTheme.of(context).primary,
+                const Color(0xFF000B33)
+              ],
               stops: const [0.0, 1.0],
               begin: const AlignmentDirectional(0.0, -1.0),
               end: const AlignmentDirectional(0, 1.0),
@@ -95,8 +100,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            5.0, 0.0, 0.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -365,8 +370,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                     scrollDirection: Axis.vertical,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 5.0, 0.0, 0.0),
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(0.0, 5.0, 0.0, 0.0),
                                         child: Container(
                                           width: double.infinity,
                                           decoration: BoxDecoration(
@@ -388,9 +393,7 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                             ),
                                           ),
                                           child: FutureBuilder<ApiCallResponse>(
-                                            future: AllUsersCall.call(
-                                              token: FFAppState().token,
-                                            ),
+                                            future: allUsers,
                                             builder: (context, snapshot) {
                                               // Customize what your widget looks like when it's loading.
                                               if (!snapshot.hasData) {
@@ -435,10 +438,10 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                           padding:
                                                               const EdgeInsetsDirectional
                                                                   .fromSTEB(
-                                                                      0.0,
-                                                                      5.0,
-                                                                      0.0,
-                                                                      0.0),
+                                                                  0.0,
+                                                                  5.0,
+                                                                  0.0,
+                                                                  0.0),
                                                           child: Row(
                                                             mainAxisSize:
                                                                 MainAxisSize
@@ -449,8 +452,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                             children: [
                                                               Expanded(
                                                                 child: Padding(
-                                                                  padding: const EdgeInsetsDirectional
-                                                                      .fromSTEB(
+                                                                  padding:
+                                                                      const EdgeInsetsDirectional
+                                                                          .fromSTEB(
                                                                           10.0,
                                                                           0.0,
                                                                           10.0,
@@ -497,7 +501,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                               .spaceBetween,
                                                                       children: [
                                                                         Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional
+                                                                              .fromSTEB(
                                                                               10.0,
                                                                               0.0,
                                                                               0.0,
@@ -561,7 +566,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                           ),
                                                                         ),
                                                                         Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional
+                                                                              .fromSTEB(
                                                                               0.0,
                                                                               0.0,
                                                                               10.0,
@@ -624,8 +630,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                   scrollDirection: Axis.vertical,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 5.0, 0.0, 0.0),
+                                      padding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 5.0, 0.0, 0.0),
                                       child: Container(
                                         width: double.infinity,
                                         height: 638.2,
@@ -652,8 +659,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(
                                                         0.0, 8.0, 0.0, 0.0),
                                                 child: Row(
                                                   mainAxisSize:
@@ -666,11 +674,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                       child: Padding(
                                                         padding:
                                                             const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    10.0,
-                                                                    5.0,
-                                                                    10.0,
-                                                                    0.0),
+                                                                .fromSTEB(10.0,
+                                                                5.0, 10.0, 0.0),
                                                         child: Container(
                                                           width:
                                                               double.infinity,
@@ -711,10 +716,10 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                 padding:
                                                                     const EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                            10.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
+                                                                        10.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
                                                                 child: Row(
                                                                   mainAxisSize:
                                                                       MainAxisSize
@@ -739,7 +744,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional
+                                                                          .fromSTEB(
                                                                           10.0,
                                                                           10.0,
                                                                           0.0,
@@ -799,10 +805,10 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                 padding:
                                                                     const EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            10.0,
-                                                                            0.0),
+                                                                        0.0,
+                                                                        0.0,
+                                                                        10.0,
+                                                                        0.0),
                                                                 child: Text(
                                                                   '26,926 coins',
                                                                   style: FlutterFlowTheme.of(
@@ -844,8 +850,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(
                                                         0.0, 10.0, 0.0, 0.0),
                                                 child: Row(
                                                   mainAxisSize:
@@ -858,11 +865,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                       child: Padding(
                                                         padding:
                                                             const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    10.0,
-                                                                    5.0,
-                                                                    10.0,
-                                                                    0.0),
+                                                                .fromSTEB(10.0,
+                                                                5.0, 10.0, 0.0),
                                                         child: Container(
                                                           width:
                                                               double.infinity,
@@ -897,8 +901,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                     .max,
                                                             children: [
                                                               Padding(
-                                                                padding: const EdgeInsetsDirectional
-                                                                    .fromSTEB(
+                                                                padding:
+                                                                    const EdgeInsetsDirectional
+                                                                        .fromSTEB(
                                                                         10.0,
                                                                         10.0,
                                                                         0.0,
@@ -932,7 +937,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional
+                                                                          .fromSTEB(
                                                                           10.0,
                                                                           10.0,
                                                                           0.0,
@@ -962,7 +968,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional
+                                                                          .fromSTEB(
                                                                           10.0,
                                                                           10.0,
                                                                           0.0,
@@ -1040,8 +1047,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(
                                                         0.0, 10.0, 0.0, 0.0),
                                                 child: Row(
                                                   mainAxisSize:
@@ -1054,11 +1062,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                       child: Padding(
                                                         padding:
                                                             const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    10.0,
-                                                                    5.0,
-                                                                    10.0,
-                                                                    0.0),
+                                                                .fromSTEB(10.0,
+                                                                5.0, 10.0, 0.0),
                                                         child: Container(
                                                           width:
                                                               double.infinity,
@@ -1093,8 +1098,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                     .max,
                                                             children: [
                                                               Padding(
-                                                                padding: const EdgeInsetsDirectional
-                                                                    .fromSTEB(
+                                                                padding:
+                                                                    const EdgeInsetsDirectional
+                                                                        .fromSTEB(
                                                                         10.0,
                                                                         10.0,
                                                                         0.0,
@@ -1111,7 +1117,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                               0.0),
                                                                       child:
                                                                           Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional
+                                                                            .fromSTEB(
                                                                             0.0,
                                                                             10.0,
                                                                             0.0,
@@ -1128,7 +1135,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional
+                                                                          .fromSTEB(
                                                                           10.0,
                                                                           10.0,
                                                                           0.0,
@@ -1158,7 +1166,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional
+                                                                          .fromSTEB(
                                                                           10.0,
                                                                           10.0,
                                                                           0.0,
@@ -1236,8 +1245,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(
                                                         0.0, 10.0, 0.0, 0.0),
                                                 child: Row(
                                                   mainAxisSize:
@@ -1250,11 +1260,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                       child: Padding(
                                                         padding:
                                                             const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    10.0,
-                                                                    5.0,
-                                                                    10.0,
-                                                                    0.0),
+                                                                .fromSTEB(10.0,
+                                                                5.0, 10.0, 0.0),
                                                         child: Container(
                                                           width:
                                                               double.infinity,
@@ -1289,8 +1296,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                     .max,
                                                             children: [
                                                               Padding(
-                                                                padding: const EdgeInsetsDirectional
-                                                                    .fromSTEB(
+                                                                padding:
+                                                                    const EdgeInsetsDirectional
+                                                                        .fromSTEB(
                                                                         10.0,
                                                                         10.0,
                                                                         0.0,
@@ -1307,7 +1315,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                               0.0),
                                                                       child:
                                                                           Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional
+                                                                            .fromSTEB(
                                                                             0.0,
                                                                             10.0,
                                                                             0.0,
@@ -1324,7 +1333,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional
+                                                                          .fromSTEB(
                                                                           10.0,
                                                                           10.0,
                                                                           0.0,
@@ -1354,7 +1364,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional
+                                                                          .fromSTEB(
                                                                           10.0,
                                                                           10.0,
                                                                           0.0,
@@ -1432,8 +1443,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(
                                                         0.0, 10.0, 0.0, 0.0),
                                                 child: Row(
                                                   mainAxisSize:
@@ -1446,11 +1458,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                       child: Padding(
                                                         padding:
                                                             const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    10.0,
-                                                                    5.0,
-                                                                    10.0,
-                                                                    0.0),
+                                                                .fromSTEB(10.0,
+                                                                5.0, 10.0, 0.0),
                                                         child: Container(
                                                           width:
                                                               double.infinity,
@@ -1485,8 +1494,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                     .max,
                                                             children: [
                                                               Padding(
-                                                                padding: const EdgeInsetsDirectional
-                                                                    .fromSTEB(
+                                                                padding:
+                                                                    const EdgeInsetsDirectional
+                                                                        .fromSTEB(
                                                                         10.0,
                                                                         10.0,
                                                                         0.0,
@@ -1503,7 +1513,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                               0.0),
                                                                       child:
                                                                           Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional
+                                                                            .fromSTEB(
                                                                             0.0,
                                                                             10.0,
                                                                             0.0,
@@ -1520,7 +1531,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional
+                                                                          .fromSTEB(
                                                                           10.0,
                                                                           10.0,
                                                                           0.0,
@@ -1550,7 +1562,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional
+                                                                          .fromSTEB(
                                                                           10.0,
                                                                           10.0,
                                                                           0.0,
@@ -1628,8 +1641,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(
                                                         0.0, 10.0, 0.0, 0.0),
                                                 child: Row(
                                                   mainAxisSize:
@@ -1642,11 +1656,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                       child: Padding(
                                                         padding:
                                                             const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    10.0,
-                                                                    5.0,
-                                                                    10.0,
-                                                                    0.0),
+                                                                .fromSTEB(10.0,
+                                                                5.0, 10.0, 0.0),
                                                         child: Container(
                                                           width:
                                                               double.infinity,
@@ -1681,8 +1692,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                     .max,
                                                             children: [
                                                               Padding(
-                                                                padding: const EdgeInsetsDirectional
-                                                                    .fromSTEB(
+                                                                padding:
+                                                                    const EdgeInsetsDirectional
+                                                                        .fromSTEB(
                                                                         10.0,
                                                                         10.0,
                                                                         0.0,
@@ -1699,7 +1711,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                               0.0),
                                                                       child:
                                                                           Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional
+                                                                            .fromSTEB(
                                                                             0.0,
                                                                             10.0,
                                                                             0.0,
@@ -1716,7 +1729,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional
+                                                                          .fromSTEB(
                                                                           10.0,
                                                                           10.0,
                                                                           0.0,
@@ -1746,7 +1760,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional
+                                                                          .fromSTEB(
                                                                           10.0,
                                                                           10.0,
                                                                           0.0,
@@ -1824,8 +1839,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(
                                                         0.0, 10.0, 0.0, 0.0),
                                                 child: Row(
                                                   mainAxisSize:
@@ -1838,11 +1854,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                       child: Padding(
                                                         padding:
                                                             const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    10.0,
-                                                                    5.0,
-                                                                    10.0,
-                                                                    0.0),
+                                                                .fromSTEB(10.0,
+                                                                5.0, 10.0, 0.0),
                                                         child: Container(
                                                           width:
                                                               double.infinity,

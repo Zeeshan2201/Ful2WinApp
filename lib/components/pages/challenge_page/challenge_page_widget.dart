@@ -38,7 +38,9 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final animationsMap = <String, AnimationInfo>{};
-
+  late Future<ApiCallResponse> profileResponse;
+  late Future<ApiCallResponse> gamesResponse;
+  late Future<ApiCallResponse> allUsersResponse;
   @override
   void initState() {
     super.initState();
@@ -50,6 +52,14 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
 
     _model.textController3 ??= TextEditingController();
     _model.textFieldFocusNode3 ??= FocusNode();
+    profileResponse = ProfileCall.call(
+      token: FFAppState().token,
+      userId: FFAppState().userId,
+    );
+    gamesResponse = GamesCall.call();
+    allUsersResponse = AllUsersCall.call(
+      token: FFAppState().token,
+    );
 
     animationsMap.addAll({
       'containerOnPageLoadAnimation': AnimationInfo(
@@ -129,9 +139,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                 child: Container(
                   decoration: BoxDecoration(),
                   child: FutureBuilder<ApiCallResponse>(
-                    future: AllUsersCall.call(
-                      token: FFAppState().token,
-                    ),
+                    future: allUsersResponse,
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
@@ -385,7 +393,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                 ),
                               ),
                               child: FutureBuilder<ApiCallResponse>(
-                                future: GamesCall.call(),
+                                future: gamesResponse,
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
                                   if (!snapshot.hasData) {

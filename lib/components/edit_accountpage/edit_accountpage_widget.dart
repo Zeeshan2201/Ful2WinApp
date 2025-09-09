@@ -32,7 +32,7 @@ class EditAccountpageWidget extends StatefulWidget {
 class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
     with TickerProviderStateMixin {
   late EditAccountpageModel _model;
-
+  late Future<ApiCallResponse> profileResponse;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final animationsMap = <String, AnimationInfo>{};
@@ -41,7 +41,10 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => EditAccountpageModel());
-
+    profileResponse = ProfileCall.call(
+      token: FFAppState().token,
+      userId: FFAppState().userId,
+    );
     _model.textFieldFocusNode1 ??= FocusNode();
 
     _model.textFieldFocusNode2 ??= FocusNode();
@@ -134,10 +137,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
             ),
           ),
           child: FutureBuilder<ApiCallResponse>(
-            future: ProfileCall.call(
-              token: FFAppState().token,
-              userId: FFAppState().userId,
-            ),
+            future: profileResponse,
             builder: (context, snapshot) {
               // Customize what your widget looks like when it's loading.
               if (!snapshot.hasData) {

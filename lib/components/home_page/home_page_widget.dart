@@ -29,11 +29,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   late HomePageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  late Future<ApiCallResponse> gamesResponse;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageModel());
+    gamesResponse = GamesCall.call();
   }
 
   @override
@@ -216,7 +218,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       ),
                                     ),
                                     child: FutureBuilder<ApiCallResponse>(
-                                      future: GamesCall.call(),
+                                      future: gamesResponse,
                                       builder: (context, snapshot) {
                                         // Customize what your widget looks like when it's loading.
                                         if (!snapshot.hasData) {
@@ -481,7 +483,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       ),
                                     ),
                                     child: FutureBuilder<ApiCallResponse>(
-                                      future: GamesCall.call(),
+                                      future: gamesResponse,
                                       builder: (context, snapshot) {
                                         // Customize what your widget looks like when it's loading.
                                         if (!snapshot.hasData) {
