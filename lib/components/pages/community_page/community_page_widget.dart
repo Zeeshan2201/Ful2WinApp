@@ -55,7 +55,9 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
       token: FFAppState().token,
       userId: FFAppState().userId,
     );
-    postsResponse = PostsCall.call();
+    postsResponse = PostsCall.call(
+      token: FFAppState().token,
+    );
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
