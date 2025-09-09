@@ -224,13 +224,12 @@ class ChallengesCall {
   }
 }
 
-
 class SpinWheelCall {
-   static Future<ApiCallResponse> call({
+  static Future<ApiCallResponse> call({
     String? token = '',
     int amount = 0,
-   }) async {
-     final baseUrl = FulWinGroup.getBaseUrl(
+  }) async {
+    final baseUrl = FulWinGroup.getBaseUrl(
       token: token,
     );
     final apiRequestBody = '''
@@ -239,7 +238,7 @@ class SpinWheelCall {
 }''';
 
     return ApiManager.instance.makeApiCall(
-      callName  : 'SpinWheel',
+      callName: 'SpinWheel',
       apiUrl: '${baseUrl}wallet/spin-reward',
       callType: ApiCallType.POST,
       headers: {
@@ -255,8 +254,8 @@ class SpinWheelCall {
       cache: false,
       isStreamingApi: false,
       alwaysAllowBody: false,
-      );
-   }
+    );
+  }
 }
 
 class TournamentRegisterCall {

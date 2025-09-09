@@ -6,12 +6,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'dart:math';
 import 'dart:ui';
 import '/index.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -127,7 +124,10 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
               ).image,
             ),
             gradient: LinearGradient(
-              colors: [FlutterFlowTheme.of(context).primary, const Color(0xFF000B33)],
+              colors: [
+                FlutterFlowTheme.of(context).primary,
+                const Color(0xFF000B33)
+              ],
               stops: const [0, 1],
               begin: const AlignmentDirectional(0.17, -1),
               end: const AlignmentDirectional(-0.17, 1),
@@ -161,14 +161,15 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(15, 0, 0, 0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Padding(
-                            padding:
-                                const EdgeInsetsDirectional.fromSTEB(0, 35, 0, 0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0, 35, 0, 0),
                             child: Text(
                               'MY Profile',
                               style: FlutterFlowTheme.of(context)
@@ -194,7 +195,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                       child: Builder(
                         builder: (context) {
                           if (_model.editPic) {
@@ -223,8 +225,9 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                               const AlignmentDirectional(1, -1),
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0, 10, 0, 0),
+                                              padding:
+                                                  const EdgeInsetsDirectional
+                                                      .fromSTEB(0, 10, 0, 0),
                                               child: InkWell(
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
@@ -245,7 +248,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                   decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
                                                     border: Border.all(
-                                                      color: const Color(0xFFF4CD2A),
+                                                      color: const Color(
+                                                          0xFFF4CD2A),
                                                       width: 4,
                                                     ),
                                                   ),
@@ -254,7 +258,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                     height: 200,
                                                     clipBehavior:
                                                         Clip.antiAlias,
-                                                    decoration: const BoxDecoration(
+                                                    decoration:
+                                                        const BoxDecoration(
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: Image.asset(
@@ -291,8 +296,9 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                               const AlignmentDirectional(1, -1),
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0, 10, 0, 0),
+                                              padding:
+                                                  const EdgeInsetsDirectional
+                                                      .fromSTEB(0, 10, 0, 0),
                                               child: InkWell(
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
@@ -313,7 +319,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                   decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
                                                     border: Border.all(
-                                                      color: const Color(0xFFF4CD2A),
+                                                      color: const Color(
+                                                          0xFFF4CD2A),
                                                       width: 4,
                                                     ),
                                                   ),
@@ -322,7 +329,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                     height: 200,
                                                     clipBehavior:
                                                         Clip.antiAlias,
-                                                    decoration: const BoxDecoration(
+                                                    decoration:
+                                                        const BoxDecoration(
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: Image.asset(
@@ -359,8 +367,9 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                               const AlignmentDirectional(1, -1),
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0, 10, 0, 0),
+                                              padding:
+                                                  const EdgeInsetsDirectional
+                                                      .fromSTEB(0, 10, 0, 0),
                                               child: InkWell(
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
@@ -381,7 +390,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                   decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
                                                     border: Border.all(
-                                                      color: const Color(0xFFF4CD2A),
+                                                      color: const Color(
+                                                          0xFFF4CD2A),
                                                       width: 4,
                                                     ),
                                                   ),
@@ -390,7 +400,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                     height: 200,
                                                     clipBehavior:
                                                         Clip.antiAlias,
-                                                    decoration: const BoxDecoration(
+                                                    decoration:
+                                                        const BoxDecoration(
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: Image.asset(
@@ -427,8 +438,9 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                               const AlignmentDirectional(1, -1),
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0, 10, 0, 0),
+                                              padding:
+                                                  const EdgeInsetsDirectional
+                                                      .fromSTEB(0, 10, 0, 0),
                                               child: InkWell(
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
@@ -449,7 +461,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                   decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
                                                     border: Border.all(
-                                                      color: const Color(0xFFF4CD2A),
+                                                      color: const Color(
+                                                          0xFFF4CD2A),
                                                       width: 4,
                                                     ),
                                                   ),
@@ -458,7 +471,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                     height: 200,
                                                     clipBehavior:
                                                         Clip.antiAlias,
-                                                    decoration: const BoxDecoration(
+                                                    decoration:
+                                                        const BoxDecoration(
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: Image.asset(
@@ -495,8 +509,9 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                               const AlignmentDirectional(1, -1),
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0, 10, 0, 0),
+                                              padding:
+                                                  const EdgeInsetsDirectional
+                                                      .fromSTEB(0, 10, 0, 0),
                                               child: InkWell(
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
@@ -517,7 +532,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                   decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
                                                     border: Border.all(
-                                                      color: const Color(0xFFF4CD2A),
+                                                      color: const Color(
+                                                          0xFFF4CD2A),
                                                       width: 4,
                                                     ),
                                                   ),
@@ -526,7 +542,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                     height: 200,
                                                     clipBehavior:
                                                         Clip.antiAlias,
-                                                    decoration: const BoxDecoration(
+                                                    decoration:
+                                                        const BoxDecoration(
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: Image.asset(
@@ -563,8 +580,9 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                               const AlignmentDirectional(1, -1),
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0, 10, 0, 0),
+                                              padding:
+                                                  const EdgeInsetsDirectional
+                                                      .fromSTEB(0, 10, 0, 0),
                                               child: InkWell(
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
@@ -585,7 +603,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                   decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
                                                     border: Border.all(
-                                                      color: const Color(0xFFF4CD2A),
+                                                      color: const Color(
+                                                          0xFFF4CD2A),
                                                       width: 4,
                                                     ),
                                                   ),
@@ -594,7 +613,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                     height: 200,
                                                     clipBehavior:
                                                         Clip.antiAlias,
-                                                    decoration: const BoxDecoration(
+                                                    decoration:
+                                                        const BoxDecoration(
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: Image.asset(
@@ -631,8 +651,9 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                               const AlignmentDirectional(1, -1),
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0, 10, 0, 0),
+                                              padding:
+                                                  const EdgeInsetsDirectional
+                                                      .fromSTEB(0, 10, 0, 0),
                                               child: InkWell(
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
@@ -653,7 +674,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                   decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
                                                     border: Border.all(
-                                                      color: const Color(0xFFF4CD2A),
+                                                      color: const Color(
+                                                          0xFFF4CD2A),
                                                       width: 4,
                                                     ),
                                                   ),
@@ -662,7 +684,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                     height: 200,
                                                     clipBehavior:
                                                         Clip.antiAlias,
-                                                    decoration: const BoxDecoration(
+                                                    decoration:
+                                                        const BoxDecoration(
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: Image.asset(
@@ -699,8 +722,9 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                               const AlignmentDirectional(1, -1),
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0, 10, 0, 0),
+                                              padding:
+                                                  const EdgeInsetsDirectional
+                                                      .fromSTEB(0, 10, 0, 0),
                                               child: InkWell(
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
@@ -721,7 +745,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                   decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
                                                     border: Border.all(
-                                                      color: const Color(0xFFF4CD2A),
+                                                      color: const Color(
+                                                          0xFFF4CD2A),
                                                       width: 4,
                                                     ),
                                                   ),
@@ -730,7 +755,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                     height: 200,
                                                     clipBehavior:
                                                         Clip.antiAlias,
-                                                    decoration: const BoxDecoration(
+                                                    decoration:
+                                                        const BoxDecoration(
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: Image.asset(
@@ -767,8 +793,9 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                               const AlignmentDirectional(1, -1),
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0, 10, 0, 0),
+                                              padding:
+                                                  const EdgeInsetsDirectional
+                                                      .fromSTEB(0, 10, 0, 0),
                                               child: InkWell(
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
@@ -789,7 +816,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                   decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
                                                     border: Border.all(
-                                                      color: const Color(0xFFF4CD2A),
+                                                      color: const Color(
+                                                          0xFFF4CD2A),
                                                       width: 4,
                                                     ),
                                                   ),
@@ -798,7 +826,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                     height: 80,
                                                     clipBehavior:
                                                         Clip.antiAlias,
-                                                    decoration: const BoxDecoration(
+                                                    decoration:
+                                                        const BoxDecoration(
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: Image.asset(
@@ -851,8 +880,9 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 20, 0),
+                                      padding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0, 0, 20, 0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
                                           _model.editPic = false;
@@ -865,12 +895,11 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                         ),
                                         options: FFButtonOptions(
                                           height: 30,
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 0, 0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(0, 0, 0, 0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 0, 0),
+                                              const EdgeInsetsDirectional
+                                                  .fromSTEB(0, 0, 0, 0),
                                           color: const Color(0x000B33FF),
                                           textStyle: FlutterFlowTheme.of(
                                                   context)
@@ -1133,8 +1162,9 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          150, 0, 0, 0),
+                                      padding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              150, 0, 0, 0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
                                           _model.editPic = true;
@@ -1147,12 +1177,11 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                         ),
                                         options: FFButtonOptions(
                                           height: 30,
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 0, 0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(0, 0, 0, 0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 0, 0),
+                                              const EdgeInsetsDirectional
+                                                  .fromSTEB(0, 0, 0, 0),
                                           color: const Color(0x000B33FF),
                                           textStyle: FlutterFlowTheme.of(
                                                   context)
@@ -1199,8 +1228,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                               sigmaY: 2,
                             ),
                             child: Padding(
-                              padding:
-                                  const EdgeInsetsDirectional.fromSTEB(10, 20, 10, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  10, 20, 10, 0),
                               child: Container(
                                 width: double.infinity,
                                 height: 680,
@@ -1223,11 +1252,11 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                         CrossAxisAlignment.center,
                                     children: [
                                       Align(
-                                        alignment: const AlignmentDirectional(-1, 0),
+                                        alignment:
+                                            const AlignmentDirectional(-1, 0),
                                         child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  22, 15, 0, 0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(22, 15, 0, 0),
                                           child: Text(
                                             'Username',
                                             style: FlutterFlowTheme.of(context)
@@ -1241,7 +1270,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  color: const Color(0xFFFBD34D),
+                                                  color:
+                                                      const Color(0xFFFBD34D),
                                                   fontSize: 16,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
@@ -1274,9 +1304,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                           alignment:
                                               const AlignmentDirectional(-1, 0),
                                           child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    25, 0, 0, 0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(25, 0, 0, 0),
                                             child: Text(
                                               getJsonField(
                                                 columnProfileResponse.jsonBody,
@@ -1318,11 +1347,11 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                         ),
                                       ),
                                       Align(
-                                        alignment: const AlignmentDirectional(-1, 0),
+                                        alignment:
+                                            const AlignmentDirectional(-1, 0),
                                         child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  30, 20, 0, 0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(30, 20, 0, 0),
                                           child: Text(
                                             'Full Name',
                                             style: FlutterFlowTheme.of(context)
@@ -1336,7 +1365,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  color: const Color(0xFFFBD34D),
+                                                  color:
+                                                      const Color(0xFFFBD34D),
                                                   fontSize: 16,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
@@ -1350,11 +1380,11 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                         ),
                                       ),
                                       Align(
-                                        alignment: const AlignmentDirectional(0, 0),
+                                        alignment:
+                                            const AlignmentDirectional(0, 0),
                                         child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0, 5, 0, 0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(0, 5, 0, 0),
                                           child: SizedBox(
                                             width: MediaQuery.sizeOf(context)
                                                         .width <
@@ -1517,11 +1547,11 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                         ),
                                       ),
                                       Align(
-                                        alignment: const AlignmentDirectional(-1, 0),
+                                        alignment:
+                                            const AlignmentDirectional(-1, 0),
                                         child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  30, 20, 0, 0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(30, 20, 0, 0),
                                           child: Text(
                                             'Phone Number',
                                             style: FlutterFlowTheme.of(context)
@@ -1535,7 +1565,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  color: const Color(0xFFFBD34D),
+                                                  color:
+                                                      const Color(0xFFFBD34D),
                                                   fontSize: 16,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
@@ -1549,11 +1580,11 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                         ),
                                       ),
                                       Align(
-                                        alignment: const AlignmentDirectional(-1, 0),
+                                        alignment:
+                                            const AlignmentDirectional(-1, 0),
                                         child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  20, 5, 0, 0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(20, 5, 0, 0),
                                           child: SizedBox(
                                             width: 200,
                                             child: TextFormField(
@@ -1708,11 +1739,11 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                         ),
                                       ),
                                       Align(
-                                        alignment: const AlignmentDirectional(-1, 0),
+                                        alignment:
+                                            const AlignmentDirectional(-1, 0),
                                         child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  30, 20, 0, 0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(30, 20, 0, 0),
                                           child: Text(
                                             'Email',
                                             style: FlutterFlowTheme.of(context)
@@ -1726,7 +1757,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  color: const Color(0xFFFBD34D),
+                                                  color:
+                                                      const Color(0xFFFBD34D),
                                                   fontSize: 16,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
@@ -1740,11 +1772,11 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                         ),
                                       ),
                                       Align(
-                                        alignment: const AlignmentDirectional(-1, 0),
+                                        alignment:
+                                            const AlignmentDirectional(-1, 0),
                                         child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  20, 5, 0, 0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(20, 5, 0, 0),
                                           child: SizedBox(
                                             width: MediaQuery.sizeOf(context)
                                                         .width <
@@ -1906,11 +1938,11 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                         ),
                                       ),
                                       Align(
-                                        alignment: const AlignmentDirectional(-1, 0),
+                                        alignment:
+                                            const AlignmentDirectional(-1, 0),
                                         child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  30, 20, 0, 0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(30, 20, 0, 0),
                                           child: Text(
                                             'Date of Birth',
                                             style: FlutterFlowTheme.of(context)
@@ -1924,7 +1956,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  color: const Color(0xFFFBD34D),
+                                                  color:
+                                                      const Color(0xFFFBD34D),
                                                   fontSize: 16,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
@@ -1942,7 +1975,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                         children: [
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(-1, 0),
+                                                const AlignmentDirectional(
+                                                    -1, 0),
                                             child: Padding(
                                               padding:
                                                   const EdgeInsetsDirectional
@@ -2176,9 +2210,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                             ),
                                           ),
                                           Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0, 5, 0, 0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(0, 5, 0, 0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
                                                 final datePickedDate =
@@ -2240,8 +2273,9 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                               ),
                                               options: FFButtonOptions(
                                                 height: 45,
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(0, 0, 0, 0),
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(0, 0, 0, 0),
                                                 iconPadding:
                                                     const EdgeInsetsDirectional
                                                         .fromSTEB(0, 0, 0, 0),
@@ -2281,7 +2315,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                               .fontStyle,
                                                     ),
                                                 elevation: 0,
-                                                borderRadius: const BorderRadius.only(
+                                                borderRadius:
+                                                    const BorderRadius.only(
                                                   bottomLeft:
                                                       Radius.circular(0),
                                                   bottomRight:
@@ -2295,11 +2330,11 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                         ],
                                       ),
                                       Align(
-                                        alignment: const AlignmentDirectional(-1, 0),
+                                        alignment:
+                                            const AlignmentDirectional(-1, 0),
                                         child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  30, 20, 0, 0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(30, 20, 0, 0),
                                           child: Text(
                                             'Gender',
                                             style: FlutterFlowTheme.of(context)
@@ -2313,7 +2348,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  color: const Color(0xFFFBD34D),
+                                                  color:
+                                                      const Color(0xFFFBD34D),
                                                   fontSize: 16,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
@@ -2327,11 +2363,11 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                         ),
                                       ),
                                       Align(
-                                        alignment: const AlignmentDirectional(-1, 0),
+                                        alignment:
+                                            const AlignmentDirectional(-1, 0),
                                         child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  20, 5, 0, 0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(20, 5, 0, 0),
                                           child: FlutterFlowChoiceChips(
                                             options: (getJsonField(
                                               columnProfileResponse.jsonBody,
@@ -2452,11 +2488,11 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                         ),
                                       ),
                                       Align(
-                                        alignment: const AlignmentDirectional(-1, 0),
+                                        alignment:
+                                            const AlignmentDirectional(-1, 0),
                                         child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  30, 20, 0, 0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(30, 20, 0, 0),
                                           child: Text(
                                             'Country',
                                             style: FlutterFlowTheme.of(context)
@@ -2470,7 +2506,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  color: const Color(0xFFFBD34D),
+                                                  color:
+                                                      const Color(0xFFFBD34D),
                                                   fontSize: 16,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
@@ -2484,11 +2521,11 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                         ),
                                       ),
                                       Align(
-                                        alignment: const AlignmentDirectional(-1, 0),
+                                        alignment:
+                                            const AlignmentDirectional(-1, 0),
                                         child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  20, 5, 0, 0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(20, 5, 0, 0),
                                           child: SizedBox(
                                             width: MediaQuery.sizeOf(context)
                                                         .width <
@@ -2649,11 +2686,11 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                         ),
                                       ),
                                       Align(
-                                        alignment: const AlignmentDirectional(-1, 0),
+                                        alignment:
+                                            const AlignmentDirectional(-1, 0),
                                         child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  30, 20, 0, 0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(30, 20, 0, 0),
                                           child: Text(
                                             'Bio',
                                             style: FlutterFlowTheme.of(context)
@@ -2667,7 +2704,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  color: const Color(0xFFFBD34D),
+                                                  color:
+                                                      const Color(0xFFFBD34D),
                                                   fontSize: 16,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
@@ -2681,11 +2719,11 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                         ),
                                       ),
                                       Align(
-                                        alignment: const AlignmentDirectional(-1, 0),
+                                        alignment:
+                                            const AlignmentDirectional(-1, 0),
                                         child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  20, 5, 0, 20),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(20, 5, 0, 20),
                                           child: SizedBox(
                                             width: MediaQuery.sizeOf(context)
                                                         .width <
@@ -2879,8 +2917,8 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                             ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0, 30, 0, 30),
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(0, 30, 0, 30),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
@@ -2917,8 +2955,9 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                         ? 130.0
                                                         : 150.0,
                                                 height: 40,
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(16, 0, 16, 0),
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(16, 0, 16, 0),
                                                 iconPadding:
                                                     const EdgeInsetsDirectional
                                                         .fromSTEB(0, 0, 0, 0),
@@ -3111,8 +3150,9 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                                         ? 130.0
                                                         : 150.0,
                                                 height: 40,
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(16, 0, 16, 0),
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(16, 0, 16, 0),
                                                 iconPadding:
                                                     const EdgeInsetsDirectional
                                                         .fromSTEB(0, 0, 0, 0),
