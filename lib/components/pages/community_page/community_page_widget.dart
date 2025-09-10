@@ -42,6 +42,8 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
   late CommunityPageModel _model;
   late Future<ApiCallResponse> profileResponse;
   late Future<ApiCallResponse> postsResponse;
+  List<dynamic> _userData = [];
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final animationsMap = <String, AnimationInfo>{};
@@ -58,6 +60,7 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
     postsResponse = PostsCall.call(
       token: FFAppState().token,
     );
+    fetchUsersList();
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
@@ -88,6 +91,32 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
         ],
       ),
     });
+  }
+
+  Future<void> fetchUsersList() async {
+    try {
+      final response = await AllUsersCall.call(
+        token: FFAppState().token,
+      );
+      if (response.statusCode == 200) {
+        final fetched = getJsonField(
+          response.jsonBody,
+          r'''$.data''',
+        );
+        if (fetched is List) {
+          safeSetState(() {
+            _userData = fetched;
+          });
+          print("Users data fetched: count=${_userData.length}");
+        } else {
+          print('Users data format unexpected: $fetched');
+        }
+      } else {
+        print('Failed to load users list. Status code: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Error fetching users list: $e');
+    }
   }
 
   @override
@@ -856,13 +885,19 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                     FFButtonWidget(
                                                       onPressed: () async {
                                                         // Validate that either content or image is provided
-                                                        if (_model
-                                                                .textController
-                                                                .text
-                                                                .trim()
-                                                                .isEmpty &&
-                                                            _model.uploadedLocalFile_images ==
-                                                                null) {
+                                                        final hasText = _model
+                                                            .textController.text
+                                                            .trim()
+                                                            .isNotEmpty;
+                                                        final bytes = _model
+                                                            .uploadedLocalFile_images
+                                                            .bytes;
+                                                        final hasImage =
+                                                            bytes != null &&
+                                                                bytes
+                                                                    .isNotEmpty;
+                                                        if (!hasText &&
+                                                            !hasImage) {
                                                           // Show error message if neither content nor image is provided
                                                           ScaffoldMessenger.of(
                                                                   context)
@@ -1037,9 +1072,9 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                                 .fromSTEB(
                                                                 10, 0, 10, 0),
                                                         iconPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
-                                                                    0, 0, 0, 0),
+                                                                0, 0, 0, 0),
                                                         color: Colors.orange,
                                                         textStyle:
                                                             FlutterFlowTheme.of(
@@ -1084,14 +1119,15 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                       );
                                     } else {
                                       return Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 0, 0, 20),
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(0, 0, 0, 20),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(10, 5, 0, 0),
+                                              padding:
+                                                  const EdgeInsetsDirectional
+                                                      .fromSTEB(10, 5, 0, 0),
                                               child: Container(
                                                 width: 40,
                                                 height: 40,
@@ -1123,8 +1159,9 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                             ),
                                             Expanded(
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(10, 0, 10, 0),
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(10, 0, 10, 0),
                                                 child: InkWell(
                                                   splashColor:
                                                       Colors.transparent,
@@ -1236,9 +1273,10 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                       60),
                   child: Container(
                     height: double.infinity,
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
                       child: FutureBuilder<ApiCallResponse>(
                         future: postsResponse,
                         builder: (context, snapshot) {
@@ -1266,12 +1304,13 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                               ).toList();
 
                               return ListView.separated(
-                                padding: EdgeInsets.symmetric(vertical: 10),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 10),
                                 shrinkWrap: true,
                                 scrollDirection: Axis.vertical,
                                 itemCount: postData.length,
                                 separatorBuilder: (_, __) =>
-                                    SizedBox(height: 10),
+                                    const SizedBox(height: 10),
                                 itemBuilder: (context, postDataIndex) {
                                   final postDataItem = postData[postDataIndex];
                                   final List<String> likes = (getJsonField(
@@ -1309,9 +1348,8 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  2, 10, 0, 0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(2, 10, 0, 0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
@@ -1335,12 +1373,12 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                   ),
                                                   gradient: LinearGradient(
                                                     colors: [
-                                                      Color(0xFFCB23CE),
+                                                      const Color(0xFFCB23CE),
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .primary
                                                     ],
-                                                    stops: [0, 1],
+                                                    stops: const [0, 1],
                                                     begin:
                                                         const AlignmentDirectional(
                                                             1, -0.98),
@@ -1352,7 +1390,8 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                       BorderRadius.circular(24),
                                                 ),
                                                 alignment:
-                                                    AlignmentDirectional(0, 0),
+                                                    const AlignmentDirectional(
+                                                        0, 0),
                                               ),
                                               Column(
                                                 mainAxisSize: MainAxisSize.max,
@@ -1361,7 +1400,8 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                 children: [
                                                   Container(
                                                     width: 170,
-                                                    decoration: BoxDecoration(),
+                                                    decoration:
+                                                        const BoxDecoration(),
                                                     child: Text(
                                                       getJsonField(
                                                         postDataItem,
@@ -1396,7 +1436,8 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                   ),
                                                   Container(
                                                     width: 170,
-                                                    decoration: BoxDecoration(),
+                                                    decoration:
+                                                        const BoxDecoration(),
                                                     child: Text(
                                                       getJsonField(
                                                         postDataItem,
@@ -1473,7 +1514,7 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                                       .bodyMedium
                                                                       .fontStyle,
                                                                 ),
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFF01BCF9),
                                                                 fontSize:
                                                                     MediaQuery.sizeOf(context).width <
@@ -1496,8 +1537,9 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 0, 0, 10),
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(0, 0, 0, 10),
                                                 child: FlutterFlowIconButton(
                                                   borderRadius: 8,
                                                   buttonSize: 30,
@@ -1519,9 +1561,8 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                           ),
                                         ),
                                         Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10, 25, 0, 0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(10, 25, 0, 0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
@@ -1535,12 +1576,13 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                     r'''$.images[0].url''',
                                                   ).toString().isNotEmpty)
                                                 Container(
-                                                  decoration: BoxDecoration(),
+                                                  decoration:
+                                                      const BoxDecoration(),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                0, 0, 10, 0),
+                                                            0, 0, 10, 0),
                                                     child: ClipRRect(
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -1573,7 +1615,8 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                             390.0
                                                         ? 170.0
                                                         : 240.0,
-                                                decoration: BoxDecoration(),
+                                                decoration:
+                                                    const BoxDecoration(),
                                                 child: Text(
                                                   getJsonField(
                                                     postDataItem,
@@ -1658,8 +1701,9 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                             postId] = isLiked;
                                                         likeCount +=
                                                             isLiked ? 1 : -1;
-                                                        if (likeCount < 0)
+                                                        if (likeCount < 0) {
                                                           likeCount = 0;
+                                                        }
                                                         _model.localLikeCounts[
                                                             postId] = likeCount;
 
@@ -1686,9 +1730,9 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  5, 0, 0, 0),
+                                                              5, 0, 0, 0),
                                                       child: Text(
                                                         likeCount.toString(),
                                                         style:
@@ -1762,9 +1806,9 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
-                                                                    5, 0, 0, 0),
+                                                                5, 0, 0, 0),
                                                         child: Text(
                                                           getJsonField(
                                                             postDataItem,
@@ -1841,9 +1885,9 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  5, 0, 0, 0),
+                                                              5, 0, 0, 0),
                                                       child: Text(
                                                         'Share',
                                                         style:
@@ -1901,9 +1945,9 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                10, 0, 0, 0),
+                                                            10, 0, 0, 0),
                                                     child: Row(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -1957,136 +2001,210 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                                 .of(context)
                                                             .secondaryBackground,
                                                       ),
-                                                      child: ListView(
-                                                        padding:
-                                                            EdgeInsets.zero,
-                                                        shrinkWrap: true,
-                                                        scrollDirection:
-                                                            Axis.vertical,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0,
-                                                                        5,
-                                                                        0,
-                                                                        0),
-                                                            child: Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                Container(
-                                                                  width: 45,
-                                                                  height: 45,
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    image:
-                                                                        DecorationImage(
-                                                                      fit: BoxFit
-                                                                          .cover,
-                                                                      image: Image
-                                                                          .network(
-                                                                        valueOrDefault<
-                                                                            String>(
-                                                                          getJsonField(
-                                                                            postDataItem,
-                                                                            r'''$.author.profilePicture''',
-                                                                          )?.toString(),
-                                                                          'https://www.shutterstock.com/image-vector/vector-logo-man-head-red-260nw-2011799393.jpg',
-                                                                        ),
-                                                                      ).image,
-                                                                    ),
-                                                                    gradient:
-                                                                        LinearGradient(
-                                                                      colors: [
-                                                                        Color(
-                                                                            0xFFCB23CE),
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .primary
-                                                                      ],
-                                                                      stops: [
-                                                                        0,
-                                                                        1
-                                                                      ],
-                                                                      begin: AlignmentDirectional(
-                                                                          1,
-                                                                          -0.98),
-                                                                      end: AlignmentDirectional(
-                                                                          -1,
-                                                                          0.98),
-                                                                    ),
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            24),
-                                                                  ),
-                                                                  alignment:
-                                                                      AlignmentDirectional(
-                                                                          0, 0),
-                                                                ),
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                      child: Builder(
+                                                        builder: (context) {
+                                                          final comments =
+                                                              getJsonField(
+                                                            postDataItem,
+                                                            r'''$.comments''',
+                                                          ).toList();
+                                                          if (comments
+                                                              .isEmpty) {
+                                                            return Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                          5,
-                                                                          0,
-                                                                          0,
-                                                                          0),
-                                                                  child: Column(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    crossAxisAlignment:
-                                                                        CrossAxisAlignment
-                                                                            .start,
-                                                                    children: [
-                                                                      Text(
-                                                                        'Profile Name',
-                                                                        style: FlutterFlowTheme.of(context)
+                                                                      0,
+                                                                      10,
+                                                                      0,
+                                                                      10),
+                                                              child: Text(
+                                                                'No comments yet. Be the first to comment!',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      font: GoogleFonts
+                                                                          .inter(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
-                                                                            .override(
-                                                                              font: GoogleFonts.inter(
-                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                              ),
-                                                                              color: FlutterFlowTheme.of(context).secondaryText,
-                                                                              fontSize: 16,
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                            ),
-                                                                      ),
-                                                                      Text(
-                                                                        'Post Reply',
-                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
-                                                                            .override(
-                                                                              font: GoogleFonts.inter(
-                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                              ),
-                                                                              color: FlutterFlowTheme.of(context).secondaryText,
-                                                                              fontSize: 16,
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                            ),
+                                                                            .fontStyle,
                                                                       ),
-                                                                    ],
-                                                                  ),
-                                                                ),
-                                                              ],
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                      fontSize:
+                                                                          16,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
+                                                              ),
+                                                            );
+                                                          }
+
+                                                          return ListView
+                                                              .builder(
+                                                            padding: EdgeInsets
+                                                                .fromLTRB(
+                                                              0,
+                                                              0,
+                                                              0,
+                                                              10,
                                                             ),
-                                                          ),
-                                                        ],
+                                                            shrinkWrap: true,
+                                                            scrollDirection:
+                                                                Axis.vertical,
+                                                            itemCount:
+                                                                comments.length,
+                                                            itemBuilder: (context,
+                                                                commentsIndex) {
+                                                              final commentsItem =
+                                                                  comments[
+                                                                      commentsIndex];
+                                                              return Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0,
+                                                                            5,
+                                                                            0,
+                                                                            0),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Container(
+                                                                      width: 45,
+                                                                      height:
+                                                                          45,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        image:
+                                                                            DecorationImage(
+                                                                          fit: BoxFit
+                                                                              .cover,
+                                                                          image:
+                                                                              Image.network(
+                                                                            valueOrDefault<String>(
+                                                                              functions.userProfilePicture(
+                                                                                _userData,
+                                                                                getJsonField(
+                                                                                  commentsItem,
+                                                                                  r'''$.user''',
+                                                                                ).toString(),
+                                                                              ),
+                                                                              'https://www.shutterstock.com/image-vector/vector-logo-man-head-red-260nw-2011799393.jpg',
+                                                                            ),
+                                                                          ).image,
+                                                                        ),
+                                                                        gradient:
+                                                                            LinearGradient(
+                                                                          colors: [
+                                                                            Color(0xFFCB23CE),
+                                                                            FlutterFlowTheme.of(context).primary
+                                                                          ],
+                                                                          stops: [
+                                                                            0,
+                                                                            1
+                                                                          ],
+                                                                          begin: AlignmentDirectional(
+                                                                              1,
+                                                                              -0.98),
+                                                                          end: AlignmentDirectional(
+                                                                              -1,
+                                                                              0.98),
+                                                                        ),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(24),
+                                                                      ),
+                                                                      alignment:
+                                                                          AlignmentDirectional(
+                                                                              0,
+                                                                              0),
+                                                                    ),
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              5,
+                                                                              0,
+                                                                              0,
+                                                                              0),
+                                                                      child:
+                                                                          Column(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment.start,
+                                                                        children: [
+                                                                          Text(
+                                                                            valueOrDefault<String>(
+                                                                              functions.userName(
+                                                                                _userData,
+                                                                                getJsonField(
+                                                                                  commentsItem,
+                                                                                  r'''$.user''',
+                                                                                ).toString(),
+                                                                              ),
+                                                                              'xyz',
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  font: GoogleFonts.inter(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                  ),
+                                                                                  color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                  fontSize: 16,
+                                                                                  letterSpacing: 0.0,
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                ),
+                                                                          ),
+                                                                          Text(
+                                                                            getJsonField(
+                                                                              commentsItem,
+                                                                              r'''$.content''',
+                                                                            ).toString(),
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  font: GoogleFonts.inter(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                  ),
+                                                                                  color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                  fontSize: 16,
+                                                                                  letterSpacing: 0.0,
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              );
+                                                            },
+                                                          );
+                                                        },
                                                       ),
                                                     ),
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                0, 10, 0, 5),
+                                                            0, 10, 0, 5),
                                                     child: Row(
                                                       mainAxisSize:
                                                           MainAxisSize.min,
@@ -2096,9 +2214,9 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(10,
-                                                                      0, 10, 0),
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                  10, 0, 10, 0),
                                                           child: Container(
                                                             width: 250,
                                                             decoration:
@@ -2117,14 +2235,12 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(0,
-                                                                      0, 10, 0),
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                  0, 0, 10, 0),
                                                           child: FFButtonWidget(
                                                             onPressed:
                                                                 () async {
-                                                              print(
-                                                                  "content is ${_model.textController?.text}");
                                                               final response =
                                                                   await AddComment
                                                                       .call(
@@ -2140,27 +2256,25 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                                     FFAppState()
                                                                         .token,
                                                               );
-                                                              print(response
-                                                                  .jsonBody);
                                                             },
                                                             text: 'Post',
                                                             options:
                                                                 FFButtonOptions(
                                                               height: 40,
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                          16,
-                                                                          0,
-                                                                          16,
-                                                                          0),
+                                                                      16,
+                                                                      0,
+                                                                      16,
+                                                                      0),
                                                               iconPadding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                          0,
-                                                                          0,
-                                                                          0,
-                                                                          0),
+                                                                      0,
+                                                                      0,
+                                                                      0,
+                                                                      0),
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .primary,
@@ -2205,7 +2319,7 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                 ],
                                               );
                                             } else {
-                                              return Column(
+                                              return const Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
@@ -2230,7 +2344,7 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                 wrapWithModel(
                   model: _model.navbarModel,
                   updateCallback: () => safeSetState(() {}),
-                  child: NavbarWidget(
+                  child: const NavbarWidget(
                     pageNav: 'CommunityPage',
                   ),
                 ),

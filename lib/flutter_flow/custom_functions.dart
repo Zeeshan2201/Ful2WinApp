@@ -1,5 +1,3 @@
-
-
 bool? isRegister(
   List<String> players,
   String? userId,
@@ -76,6 +74,80 @@ String timeAgo(String date) {
 
 List<dynamic>? filterGames(List<dynamic>? allGames) {
   return allGames?.where((game) => game['type'] != 'Unlimited').toList();
+}
+
+String? userName(
+  List<dynamic> users,
+  String userId,
+) {
+  if (users.isEmpty || userId.isEmpty) return '';
+  try {
+    for (final raw in users) {
+      if (raw is Map) {
+        final id = (raw['_id'] ?? raw['id'] ?? raw['user'])?.toString();
+        if (id == userId) {
+          final name = (raw['fullName'] ?? raw['username'] ?? '').toString();
+          return name;
+        }
+      }
+    }
+  } catch (e) {
+    // Silently fail; optionally log with debugPrint if needed
+  }
+  return '';
+}
+
+String? userProfilePicture(
+  List<dynamic> users,
+  String userId,
+) {
+  if (users.isEmpty || userId.isEmpty) return '';
+  try {
+    for (final raw in users) {
+      if (raw is Map) {
+        final id = (raw['_id'] ?? raw['id'] ?? raw['user'])?.toString();
+        if (id == userId) {
+          final name = (raw['profilePicture'] ?? '').toString();
+          return name;
+        }
+      }
+    }
+  } catch (e) {
+    // Silently fail; optionally log with debugPrint if needed
+  }
+  return '';
+}
+
+List<String>? fullNames(List<dynamic>? allUsers) {
+  if (allUsers == null) return null;
+  try {
+    final names = <String>[];
+    for (final raw in allUsers) {
+      if (raw is Map && raw['fullName'] != null) {
+        names.add(raw['fullName'].toString());
+      }
+    }
+    return names;
+  } catch (e) {
+    // Silently fail; optionally log with debugPrint if needed
+  }
+  return null;
+}
+
+List<String>? gameNames(List<dynamic>? allGames) {
+  if (allGames == null) return null;
+  try {
+    final names = <String>[];
+    for (final raw in allGames) {
+      if (raw is Map && raw['displayName'] != null) {
+        names.add(raw['displayName'].toString());
+      }
+    }
+    return names;
+  } catch (e) {
+    // Silently fail; optionally log with debugPrint if needed
+  }
+  return null;
 }
 
 List<dynamic>? filterUnlimitedGames(List<dynamic>? allGames) {

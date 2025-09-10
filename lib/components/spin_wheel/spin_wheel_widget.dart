@@ -47,7 +47,6 @@ class _SpinWheelWidgetState extends State<SpinWheelWidget>
 
   // Trigger backend crediting and show a congratulations message
   Future<void> _onRewardOkPressed() async {
-
     try {
       // Parse the numeric value from currentReward if needed (e.g., "150 Coins" -> 150)
       final match = RegExp(r"(\d+)").firstMatch(currentReward);
@@ -57,7 +56,8 @@ class _SpinWheelWidgetState extends State<SpinWheelWidget>
         token: FFAppState().token,
         amount: amount,
       );
-      debugPrint('SpinWheel API => status: ${response.statusCode}, body: ${response.bodyText}');
+      debugPrint(
+          'SpinWheel API => status: ${response.statusCode}, body: ${response.bodyText}');
 
       if (!mounted) return;
 
@@ -99,8 +99,8 @@ class _SpinWheelWidgetState extends State<SpinWheelWidget>
   void initState() {
     super.initState();
     _loadData();
-    _controller =
-        AnimationController(vsync: this, duration: const Duration(milliseconds: 3500));
+    _controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 3500));
     _controller.addListener(() {
       setState(() {
         rotation = _animation.value;
@@ -144,7 +144,7 @@ class _SpinWheelWidgetState extends State<SpinWheelWidget>
 
     final random = Random();
     final randomOffset = random.nextDouble() * 360;
-    final fullSpins = 5;
+    const fullSpins = 5;
     final totalRotation = fullSpins * 360 + randomOffset;
     final startRotation = rotation;
     final endRotation = startRotation + totalRotation;
@@ -182,7 +182,8 @@ class _SpinWheelWidgetState extends State<SpinWheelWidget>
     final media = MediaQuery.of(context);
     final screenWidth = media.size.width;
     final screenHeight = media.size.height;
-    final baseScale = min(screenWidth, screenHeight) / 400; // Responsive scaling
+    final baseScale =
+        min(screenWidth, screenHeight) / 400; // Responsive scaling
 
     showDialog(
       context: context,
@@ -212,7 +213,7 @@ class _SpinWheelWidgetState extends State<SpinWheelWidget>
               mainAxisSize: MainAxisSize.min,
               children: [
                 ShaderMask(
-                  shaderCallback: (bounds) => LinearGradient(
+                  shaderCallback: (bounds) => const LinearGradient(
                     colors: [Colors.amber, Colors.orange],
                   ).createShader(
                       Rect.fromLTWH(0, 0, bounds.width, bounds.height)),
@@ -228,7 +229,8 @@ class _SpinWheelWidgetState extends State<SpinWheelWidget>
                 SizedBox(height: 15 * baseScale),
                 Text(
                   "Congratulations! You have won:",
-                  style: TextStyle(color: Colors.white, fontSize: 16 * baseScale),
+                  style:
+                      TextStyle(color: Colors.white, fontSize: 16 * baseScale),
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 15 * baseScale),
@@ -261,8 +263,9 @@ class _SpinWheelWidgetState extends State<SpinWheelWidget>
                     await _onRewardOkPressed();
                   },
                   child: Text("OK",
-                      style:
-                          TextStyle(fontSize: 18 * baseScale, fontWeight: FontWeight.bold)),
+                      style: TextStyle(
+                          fontSize: 18 * baseScale,
+                          fontWeight: FontWeight.bold)),
                 )
               ],
             ),
@@ -345,9 +348,9 @@ class _SpinWheelWidgetState extends State<SpinWheelWidget>
                           Container(
                             width: wheelSize,
                             height: wheelSize,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               shape: BoxShape.circle,
-                              gradient: const LinearGradient(
+                              gradient: LinearGradient(
                                 colors: [
                                   Color(0xFFB8860B),
                                   Color(0xFFDAA520),
@@ -384,7 +387,8 @@ class _SpinWheelWidgetState extends State<SpinWheelWidget>
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
                               ),
-                              border: Border.all(color: Color(0xFFB8860B), width: 3),
+                              border: Border.all(
+                                  color: const Color(0xFFB8860B), width: 3),
                             ),
                             child: Center(
                               child: Text(
@@ -393,8 +397,8 @@ class _SpinWheelWidgetState extends State<SpinWheelWidget>
                                     fontSize: centerSize * 0.4,
                                     fontWeight: FontWeight.bold,
                                     color: const Color(0xFF8B4513),
-                                    shadows: [
-                                      const Shadow(
+                                    shadows: const [
+                                      Shadow(
                                           color: Colors.black45,
                                           offset: Offset(1, 1),
                                           blurRadius: 2)
@@ -539,7 +543,9 @@ class SpinWheelPainter extends CustomPainter {
             color: Colors.white,
             fontSize: size.width * 0.07,
             fontWeight: FontWeight.bold,
-            shadows: [const Shadow(color: Colors.black, offset: Offset(1,1), blurRadius:2)],
+            shadows: const [
+              Shadow(color: Colors.black, offset: Offset(1, 1), blurRadius: 2)
+            ],
           ),
         ),
         textDirection: TextDirection.ltr,

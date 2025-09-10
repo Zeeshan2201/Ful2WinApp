@@ -552,12 +552,6 @@ class GamesCall {
       alwaysAllowBody: false,
     );
   }
-
-  static List<String>? gameNames(dynamic response) {
-    return (getJsonField(response, r'$.games[:].name', true) as List?)
-        ?.map((e) => e.toString())
-        .toList();
-  }
 }
 
 class LogOutCall {
@@ -713,12 +707,6 @@ class AllUsersCall {
       alwaysAllowBody: false,
     );
   }
-
-  static List<String>? fullNames(dynamic response) {
-    return (getJsonField(response, r'$.users[:].fullName', true) as List?)
-        ?.map((e) => e.toString())
-        .toList();
-  }
 }
 
 class GameCall {
@@ -738,12 +726,6 @@ class GameCall {
       isStreamingApi: false,
       alwaysAllowBody: false,
     );
-  }
-
-  static List<String>? gameNames(dynamic response) {
-    return (getJsonField(response, r'$.games[:].displayName', true) as List?)
-        ?.map((e) => e.toString())
-        .toList();
   }
 }
 
