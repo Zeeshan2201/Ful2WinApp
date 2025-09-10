@@ -1,16 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
-import '/main.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'serialization_util.dart';
 
 import '/index.dart';
 
@@ -40,72 +33,72 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
-      errorBuilder: (context, state) => HomePageWidget(),
+      errorBuilder: (context, state) => const HomePageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => HomePageWidget(),
+          builder: (context, _) => const HomePageWidget(),
         ),
         FFRoute(
           name: HomePageWidget.routeName,
           path: HomePageWidget.routePath,
-          builder: (context, params) => HomePageWidget(),
+          builder: (context, params) => const HomePageWidget(),
         ),
         FFRoute(
           name: LoginpageWidget.routeName,
           path: LoginpageWidget.routePath,
-          builder: (context, params) => LoginpageWidget(),
+          builder: (context, params) => const LoginpageWidget(),
         ),
         FFRoute(
           name: ProfilepageWidget.routeName,
           path: ProfilepageWidget.routePath,
-          builder: (context, params) => ProfilepageWidget(),
+          builder: (context, params) => const ProfilepageWidget(),
         ),
         FFRoute(
           name: WalletpageWidget.routeName,
           path: WalletpageWidget.routePath,
-          builder: (context, params) => WalletpageWidget(),
+          builder: (context, params) => const WalletpageWidget(),
         ),
         FFRoute(
           name: SignuppageWidget.routeName,
           path: SignuppageWidget.routePath,
-          builder: (context, params) => SignuppageWidget(),
+          builder: (context, params) => const SignuppageWidget(),
         ),
         FFRoute(
           name: GamesPageWidget.routeName,
           path: GamesPageWidget.routePath,
-          builder: (context, params) => GamesPageWidget(),
+          builder: (context, params) => const GamesPageWidget(),
         ),
         FFRoute(
           name: TournamentPageWidget.routeName,
           path: TournamentPageWidget.routePath,
-          builder: (context, params) => TournamentPageWidget(),
+          builder: (context, params) => const TournamentPageWidget(),
         ),
         FFRoute(
           name: HistoryWidget.routeName,
           path: HistoryWidget.routePath,
-          builder: (context, params) => HistoryWidget(),
+          builder: (context, params) => const HistoryWidget(),
         ),
         FFRoute(
           name: KycstatusWidget.routeName,
           path: KycstatusWidget.routePath,
-          builder: (context, params) => KycstatusWidget(),
+          builder: (context, params) => const KycstatusWidget(),
         ),
         FFRoute(
           name: ComingSoonWidget.routeName,
           path: ComingSoonWidget.routePath,
-          builder: (context, params) => ComingSoonWidget(),
+          builder: (context, params) => const ComingSoonWidget(),
         ),
         FFRoute(
           name: NotificationWidget.routeName,
           path: NotificationWidget.routePath,
-          builder: (context, params) => NotificationWidget(),
+          builder: (context, params) => const NotificationWidget(),
         ),
         FFRoute(
           name: SupportpageWidget.routeName,
           path: SupportpageWidget.routePath,
-          builder: (context, params) => SupportpageWidget(),
+          builder: (context, params) => const SupportpageWidget(),
         ),
         FFRoute(
           name: TournamentLobbyWidget.routeName,
@@ -120,52 +113,52 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: ReferralspageWidget.routeName,
           path: ReferralspageWidget.routePath,
-          builder: (context, params) => ReferralspageWidget(),
+          builder: (context, params) => const ReferralspageWidget(),
         ),
         FFRoute(
           name: AddMoneyPageWidget.routeName,
           path: AddMoneyPageWidget.routePath,
-          builder: (context, params) => AddMoneyPageWidget(),
+          builder: (context, params) => const AddMoneyPageWidget(),
         ),
         FFRoute(
           name: AccountpageWidget.routeName,
           path: AccountpageWidget.routePath,
-          builder: (context, params) => AccountpageWidget(),
+          builder: (context, params) => const AccountpageWidget(),
         ),
         FFRoute(
           name: LeaderBoardPageWidget.routeName,
           path: LeaderBoardPageWidget.routePath,
-          builder: (context, params) => LeaderBoardPageWidget(),
+          builder: (context, params) => const LeaderBoardPageWidget(),
         ),
         FFRoute(
           name: AdsPageWidget.routeName,
           path: AdsPageWidget.routePath,
-          builder: (context, params) => AdsPageWidget(),
+          builder: (context, params) => const AdsPageWidget(),
         ),
         FFRoute(
           name: EditAccountpageWidget.routeName,
           path: EditAccountpageWidget.routePath,
-          builder: (context, params) => EditAccountpageWidget(),
+          builder: (context, params) => const EditAccountpageWidget(),
         ),
         FFRoute(
           name: TransactionHistoryWidget.routeName,
           path: TransactionHistoryWidget.routePath,
-          builder: (context, params) => TransactionHistoryWidget(),
+          builder: (context, params) => const TransactionHistoryWidget(),
         ),
         FFRoute(
           name: CommunityleaderboardWidget.routeName,
           path: CommunityleaderboardWidget.routePath,
-          builder: (context, params) => CommunityleaderboardWidget(),
+          builder: (context, params) => const CommunityleaderboardWidget(),
         ),
         FFRoute(
           name: ChallengePageWidget.routeName,
           path: ChallengePageWidget.routePath,
-          builder: (context, params) => ChallengePageWidget(),
+          builder: (context, params) => const ChallengePageWidget(),
         ),
         FFRoute(
           name: KycstatusSubmitWidget.routeName,
           path: KycstatusSubmitWidget.routePath,
-          builder: (context, params) => KycstatusSubmitWidget(),
+          builder: (context, params) => const KycstatusSubmitWidget(),
         ),
         FFRoute(
           name: MessageWidget.routeName,
@@ -180,12 +173,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: WithdrawPageWidget.routeName,
           path: WithdrawPageWidget.routePath,
-          builder: (context, params) => WithdrawPageWidget(),
+          builder: (context, params) => const WithdrawPageWidget(),
         ),
         FFRoute(
           name: HomePageCopyWidget.routeName,
           path: HomePageCopyWidget.routePath,
-          builder: (context, params) => HomePageCopyWidget(),
+          builder: (context, params) => const HomePageCopyWidget(),
         ),
         FFRoute(
           name: GameOnWidget.routeName,
@@ -210,17 +203,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: HomePageCopyCopyWidget.routeName,
           path: HomePageCopyCopyWidget.routePath,
-          builder: (context, params) => HomePageCopyCopyWidget(),
+          builder: (context, params) => const HomePageCopyCopyWidget(),
         ),
         FFRoute(
           name: CommunitymembersWidget.routeName,
           path: CommunitymembersWidget.routePath,
-          builder: (context, params) => CommunitymembersWidget(),
+          builder: (context, params) => const CommunitymembersWidget(),
         ),
         FFRoute(
           name: HomePageCopy2Widget.routeName,
           path: HomePageCopy2Widget.routePath,
-          builder: (context, params) => HomePageCopy2Widget(),
+          builder: (context, params) => const HomePageCopy2Widget(),
         ),
         FFRoute(
           name: CommunityPageWidget.routeName,
@@ -235,7 +228,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: LeaderBoardPageNEWCopyWidget.routeName,
           path: LeaderBoardPageNEWCopyWidget.routePath,
-          builder: (context, params) => LeaderBoardPageNEWCopyWidget(),
+          builder: (context, params) => const LeaderBoardPageNEWCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -399,7 +392,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {
