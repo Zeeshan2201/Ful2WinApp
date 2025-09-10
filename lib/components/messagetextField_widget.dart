@@ -1,10 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 import 'messagetextfield_model.dart';
 export 'messagetextfield_model.dart';
@@ -49,7 +46,7 @@ class _MessagetextfieldWidgetState extends State<MessagetextfieldWidget> {
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
-        Container(
+        SizedBox(
           width: double.infinity,
           child: TextFormField(
             controller: widget.controller,
@@ -86,14 +83,14 @@ class _MessagetextfieldWidgetState extends State<MessagetextfieldWidget> {
                         FlutterFlowTheme.of(context).labelMedium.fontStyle,
                   ),
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(
+                borderSide: const BorderSide(
                   color: Colors.black,
                   width: 1,
                 ),
                 borderRadius: BorderRadius.circular(20),
               ),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
+                borderSide: const BorderSide(
                   color: Color(0x00000000),
                   width: 1,
                 ),

@@ -1,10 +1,16 @@
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
+//import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+//import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
+//import 'package:provider/provider.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
+
 import 'ads_page_model.dart';
 export 'ads_page_model.dart';
 
@@ -18,15 +24,45 @@ class AdsPageWidget extends StatefulWidget {
   State<AdsPageWidget> createState() => _AdsPageWidgetState();
 }
 
-class _AdsPageWidgetState extends State<AdsPageWidget> {
+class _AdsPageWidgetState extends State<AdsPageWidget>
+    with TickerProviderStateMixin {
   late AdsPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => AdsPageModel());
+
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeIn,
+            delay: 180.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'containerOnPageLoadAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ShimmerEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            color: Color(0x80FFFFFF),
+            angle: 0.524,
+          ),
+        ],
+      ),
+    });
   }
 
   @override
@@ -45,7 +81,7 @@ class _AdsPageWidgetState extends State<AdsPageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: Color(0xFF000B33),
         body: Container(
           width: double.infinity,
           height: double.infinity,
@@ -57,23 +93,22 @@ class _AdsPageWidgetState extends State<AdsPageWidget> {
               ).image,
             ),
             gradient: LinearGradient(
-              colors: [FlutterFlowTheme.of(context).primary, const Color(0xFF000B33)],
-              stops: const [0.0, 1.0],
-              begin: const AlignmentDirectional(0.0, -1.0),
-              end: const AlignmentDirectional(0, 1.0),
+              colors: [FlutterFlowTheme.of(context).primary, Color(0xFF000B33)],
+              stops: [0, 1],
+              begin: AlignmentDirectional(0, -1),
+              end: AlignmentDirectional(0, 1),
             ),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                      padding: EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -83,15 +118,15 @@ class _AdsPageWidgetState extends State<AdsPageWidget> {
                           context.safePop();
                         },
                         child: Container(
-                          width: 90.0,
-                          height: 40.0,
-                          decoration: const BoxDecoration(
+                          width: 40,
+                          height: 35,
+                          decoration: BoxDecoration(
                             color: Color(0x33FFFFFF),
                             borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(40.0),
-                              bottomRight: Radius.circular(40.0),
-                              topLeft: Radius.circular(40.0),
-                              topRight: Radius.circular(40.0),
+                              bottomLeft: Radius.circular(40),
+                              bottomRight: Radius.circular(40),
+                              topLeft: Radius.circular(40),
+                              topRight: Radius.circular(40),
                             ),
                           ),
                           child: Row(
@@ -99,40 +134,10 @@ class _AdsPageWidgetState extends State<AdsPageWidget> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Icon(
-                                Icons.arrow_back,
+                                Icons.chevron_left_rounded,
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
-                                size: 24.0,
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 10.0, 0.0),
-                                child: Text(
-                                  'Back',
-                                  style: FlutterFlowTheme.of(context)
-                                      .displaySmall
-                                      .override(
-                                        font: GoogleFonts.poppins(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .displaySmall
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .displaySmall
-                                                  .fontStyle,
-                                        ),
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .displaySmall
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .displaySmall
-                                            .fontStyle,
-                                      ),
-                                ),
+                                size: 26,
                               ),
                             ],
                           ),
@@ -143,24 +148,27 @@ class _AdsPageWidgetState extends State<AdsPageWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 160.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 160, 0, 0),
                 child: Container(
                   width: double.infinity,
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(10.0, 25.0, 10.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(10, 25, 10, 0),
                 child: Container(
                   width: double.infinity,
                   height: 186.1,
-                  decoration: const BoxDecoration(
-                    color: Color(0x33FFFFFF),
+                  decoration: BoxDecoration(
+                    color: Color(0xBB08162C),
                     borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(25.0),
-                      bottomRight: Radius.circular(25.0),
-                      topLeft: Radius.circular(25.0),
-                      topRight: Radius.circular(25.0),
+                      bottomLeft: Radius.circular(25),
+                      bottomRight: Radius.circular(25),
+                      topLeft: Radius.circular(25),
+                      topRight: Radius.circular(25),
+                    ),
+                    border: Border.all(
+                      color: Color(0xFF00CFFF),
                     ),
                   ),
                   child: Column(
@@ -171,7 +179,7 @@ class _AdsPageWidgetState extends State<AdsPageWidget> {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
+                          GradientText(
                             'Ads Coming Soon !',
                             textAlign: TextAlign.start,
                             style: FlutterFlowTheme.of(context)
@@ -183,14 +191,21 @@ class _AdsPageWidgetState extends State<AdsPageWidget> {
                                         .displayLarge
                                         .fontStyle,
                                   ),
-                                  color: const Color(0xFFFFD54A),
-                                  fontSize: 30.0,
+                                  color: Color(0xFF007BFF),
+                                  fontSize: 30,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w600,
                                   fontStyle: FlutterFlowTheme.of(context)
                                       .displayLarge
                                       .fontStyle,
                                 ),
+                            colors: [
+                              Color(0xFF00CFFF),
+                              Color(0xFF00B8FF),
+                              Color(0xFF007BFF)
+                            ],
+                            gradientDirection: GradientDirection.ltr,
+                            gradientType: GradientType.linear,
                           ),
                         ],
                       ),
@@ -211,8 +226,7 @@ class _AdsPageWidgetState extends State<AdsPageWidget> {
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
+                                  color: Color(0xFFFBD34D),
                                   fontSize:
                                       MediaQuery.sizeOf(context).width < 350.0
                                           ? 14.0
@@ -228,13 +242,14 @@ class _AdsPageWidgetState extends State<AdsPageWidget> {
                           ),
                         ],
                       ),
-                    ].divide(const SizedBox(height: 20.0)),
+                    ].divide(SizedBox(height: 20)),
                   ),
-                ),
+                ).animateOnPageLoad(
+                    animationsMap['containerOnPageLoadAnimation2']!),
               ),
             ],
           ),
-        ),
+        ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation1']!),
       ),
     );
   }
