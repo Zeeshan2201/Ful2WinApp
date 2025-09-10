@@ -95,9 +95,9 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                       child: Container(
                         width: 40.0,
                         height: 40.0,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Color(0x33FFFFFF),
-                          borderRadius: const BorderRadius.only(
+                          borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(40.0),
                             bottomRight: Radius.circular(40.0),
                             topLeft: Radius.circular(40.0),

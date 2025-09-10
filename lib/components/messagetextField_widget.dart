@@ -49,7 +49,7 @@ class _MessagetextfieldWidgetState extends State<MessagetextfieldWidget> {
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
-        Container(
+        SizedBox(
           width: double.infinity,
           child: TextFormField(
             controller: widget.controller,
@@ -86,14 +86,14 @@ class _MessagetextfieldWidgetState extends State<MessagetextfieldWidget> {
                         FlutterFlowTheme.of(context).labelMedium.fontStyle,
                   ),
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(
+                borderSide: const BorderSide(
                   color: Colors.black,
                   width: 1,
                 ),
                 borderRadius: BorderRadius.circular(20),
               ),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
+                borderSide: const BorderSide(
                   color: Color(0x00000000),
                   width: 1,
                 ),

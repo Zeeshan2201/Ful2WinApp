@@ -3,12 +3,8 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:math';
-import 'dart:ui';
 import '/index.dart';
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
@@ -256,8 +252,10 @@ class _RegistrationTournamentPopUpWidgetState
                       text: 'Yes',
                       options: FFButtonOptions(
                         height: 40,
-                        padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-                        iconPadding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                        iconPadding:
+                            const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                         color: const Color(0xFFFFCC00),
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
@@ -299,8 +297,10 @@ class _RegistrationTournamentPopUpWidgetState
                       text: 'Cancel',
                       options: FFButtonOptions(
                         height: 40,
-                        padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-                        iconPadding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                        iconPadding:
+                            const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                         color: const Color(0xFF333A46),
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(

@@ -30,22 +30,21 @@ class _GamePageWidgetState extends State<GamePageWidget>
   late GamePageModel _model;
 
   final animationsMap = <String, AnimationInfo>{};
-  late Future<ApiCallResponse> GameResponse;
+  late Future<ApiCallResponse> gameResponse;
 
   @override
   void setState(VoidCallback callback) {
     super.setState(callback);
     _model.onUpdate();
-    GameResponse = GameCall.call(
-                gameId: widget.gameId,
-              );
   }
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => GamePageModel());
-
+    gameResponse = GameCall.call(
+      gameId: widget.gameId,
+    );
     animationsMap.addAll({
       'containerOnPageLoadAnimation': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
@@ -88,7 +87,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
         child: Stack(
           children: [
             FutureBuilder<ApiCallResponse>(
-              future: GameResponse,
+              future: gameResponse,
               builder: (context, snapshot) {
                 // Customize what your widget looks like when it's loading.
                 if (!snapshot.hasData) {
@@ -148,15 +147,16 @@ class _GamePageWidgetState extends State<GamePageWidget>
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Padding(
-                              padding:
-                                  const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  10, 0, 0, 0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 10, 0),
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            0, 0, 10, 0),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(8),
                                       child: Image.network(
@@ -235,9 +235,8 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                                 ),
                                           ),
                                           Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    5, 0, 5, 0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(5, 0, 5, 0),
                                             child: Icon(
                                               Icons.circle_sharp,
                                               color:
@@ -280,9 +279,8 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                             size: 12,
                                           ),
                                           Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    5, 0, 5, 0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(5, 0, 5, 0),
                                             child: Icon(
                                               Icons.circle_sharp,
                                               color:
@@ -330,7 +328,8 @@ class _GamePageWidgetState extends State<GamePageWidget>
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
                       child: ListView(
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         primary: false,
@@ -395,8 +394,9 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        5, 0, 0, 0),
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            5, 0, 0, 0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -876,8 +876,9 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          5, 0, 0, 0),
+                                      padding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              5, 0, 0, 0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -898,7 +899,8 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  color: const Color(0xA7F7B500),
+                                                  color:
+                                                      const Color(0xA7F7B500),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.bold,
                                                   fontStyle:
@@ -921,7 +923,8 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  color: const Color(0x6DFFFFFF),
+                                                  color:
+                                                      const Color(0x6DFFFFFF),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
                                                   fontStyle:
@@ -967,8 +970,9 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0, 2, 0, 0),
+                                      padding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0, 2, 0, 0),
                                       child: Text(
                                         'Coming Soon',
                                         textAlign: TextAlign.center,

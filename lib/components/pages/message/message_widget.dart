@@ -1,15 +1,9 @@
-import 'package:http/http.dart';
-
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:math';
-import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -104,7 +98,10 @@ class _MessageWidgetState extends State<MessageWidget>
             ).image,
           ),
           gradient: LinearGradient(
-            colors: [FlutterFlowTheme.of(context).primary, const Color(0xFF000B33)],
+            colors: [
+              FlutterFlowTheme.of(context).primary,
+              const Color(0xFF000B33)
+            ],
             stops: const [0, 1],
             begin: const AlignmentDirectional(0, -1),
             end: const AlignmentDirectional(0, 1),
@@ -159,7 +156,8 @@ class _MessageWidgetState extends State<MessageWidget>
                       Align(
                         alignment: const AlignmentDirectional(0, 0),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              10, 0, 10, 0),
                           child: Container(
                             width: 40,
                             height: 35,
@@ -225,13 +223,14 @@ class _MessageWidgetState extends State<MessageWidget>
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding:
-                                  const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0, 15, 0, 0),
                               child: Text(
                                 getJsonField(
                                   columnProfileResponse.jsonBody,
@@ -493,7 +492,8 @@ class _MessageWidgetState extends State<MessageWidget>
                       ),
                     ),
                     child: Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(15, 15, 15, 15),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(15, 15, 15, 15),
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
@@ -507,7 +507,8 @@ class _MessageWidgetState extends State<MessageWidget>
                           ),
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              10, 0, 10, 0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,

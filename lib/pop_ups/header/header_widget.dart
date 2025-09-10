@@ -2,8 +2,6 @@ import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import '/index.dart'; // ✅ make sure SpinWheelWidget is exported in index.dart
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,16 +24,16 @@ class _HeaderWidgetState extends State<HeaderWidget> {
     super.setState(callback);
     _model.onUpdate();
   }
-  
-  late Future<ApiCallResponse> ProfileResponse;
+
+  late Future<ApiCallResponse> profileResponse;
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => HeaderModel());
-    ProfileResponse = ProfileCall.call(
-            token: FFAppState().token,
-            userId: FFAppState().userId,
-          );
+    profileResponse = ProfileCall.call(
+      token: FFAppState().token,
+      userId: FFAppState().userId,
+    );
   }
 
   @override
@@ -53,8 +51,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
       child: Padding(
         padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
         child: FutureBuilder<ApiCallResponse>(
-          future: ProfileResponse,
-         
+          future: profileResponse,
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
               return Center(
@@ -104,7 +101,8 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                   children: [
                     // Logo
                     Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          10.0, 0.0, 0.0, 0.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -130,7 +128,8 @@ class _HeaderWidgetState extends State<HeaderWidget> {
 
                     // Wallet + Notifications + Spin Wheel
                     Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          0.0, 0.0, 8.0, 0.0),
                       child: SizedBox(
                         width: 134.0,
                         height: 32.0,
@@ -155,11 +154,13 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                                   borderRadius: BorderRadius.circular(40.0),
                                 ),
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Icon(
                                       Icons.account_balance_wallet,
-                                      color: FlutterFlowTheme.of(context).primaryText,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
                                       size: 18.0,
                                     ),
                                     Text(
@@ -167,13 +168,18 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                                         containerProfileResponse.jsonBody,
                                         r'''$.balance''',
                                       ).toString(),
-                                      style: FlutterFlowTheme.of(context).headlineLarge.override(
-                                        font: GoogleFonts.poppins(
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle: FlutterFlowTheme.of(context).headlineLarge.fontStyle,
-                                        ),
-                                        letterSpacing: 0.0,
-                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineLarge
+                                          .override(
+                                            font: GoogleFonts.poppins(
+                                              fontWeight: FontWeight.bold,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineLarge
+                                                      .fontStyle,
+                                            ),
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
                                   ],
                                 ),
@@ -192,7 +198,8 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                                   size: 22.0,
                                 ),
                                 onPressed: () async {
-                                  context.pushNamed(NotificationWidget.routeName);
+                                  context
+                                      .pushNamed(NotificationWidget.routeName);
                                 },
                               ),
                             ),
@@ -206,10 +213,15 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                                   builder: (BuildContext context) {
                                     return Dialog(
                                       backgroundColor: Colors.transparent,
-                                      insetPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+                                      insetPadding: const EdgeInsets.symmetric(
+                                          horizontal: 16, vertical: 32),
                                       child: SizedBox(
-                                        width: MediaQuery.of(context).size.width * 0.9,
-                                        height: MediaQuery.of(context).size.height * 0.6,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.9,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.6,
                                         child: const SpinWheelWidget(),
                                       ),
                                     );
@@ -220,7 +232,8 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                                 width: 35.0,
                                 height: 35.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
                                   image: DecorationImage(
                                     fit: BoxFit.cover,
                                     image: Image.asset(
@@ -246,5 +259,5 @@ class _HeaderWidgetState extends State<HeaderWidget> {
         ),
       ),
     );
-  } 
+  }
 }
