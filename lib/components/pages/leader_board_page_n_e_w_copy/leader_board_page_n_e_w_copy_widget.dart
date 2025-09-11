@@ -1,13 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pop_ups/header/header_widget.dart';
-import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'leader_board_page_n_e_w_copy_model.dart';
 export 'leader_board_page_n_e_w_copy_model.dart';
 
@@ -68,10 +65,10 @@ class _LeaderBoardPageNEWCopyWidgetState
               ).image,
             ),
             gradient: LinearGradient(
-              colors: [FlutterFlowTheme.of(context).primary, Color(0xFF000B33)],
-              stops: [0.0, 1.0],
-              begin: AlignmentDirectional(0.0, -1.0),
-              end: AlignmentDirectional(0, 1.0),
+              colors: [FlutterFlowTheme.of(context).primary, const Color(0xFF000B33)],
+              stops: const [0.0, 1.0],
+              begin: const AlignmentDirectional(0.0, -1.0),
+              end: const AlignmentDirectional(0, 1.0),
             ),
           ),
           child: Column(
@@ -80,10 +77,10 @@ class _LeaderBoardPageNEWCopyWidgetState
               wrapWithModel(
                 model: _model.headerModel,
                 updateCallback: () => safeSetState(() {}),
-                child: HeaderWidget(),
+                child: const HeaderWidget(),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -114,9 +111,9 @@ class _LeaderBoardPageNEWCopyWidgetState
                     Expanded(
                       child: Container(
                         width: double.infinity,
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 0.0, 0.0),
                           child: Text(
                             'Most Boot Amount Paid',
@@ -146,13 +143,13 @@ class _LeaderBoardPageNEWCopyWidgetState
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
+                alignment: const AlignmentDirectional(0.0, -1.0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                   child: Container(
                     width: double.infinity,
                     height: 120.0,
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -160,12 +157,12 @@ class _LeaderBoardPageNEWCopyWidgetState
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   10.0, 0.0, 10.0, 0.0),
                               child: Material(
                                 color: Colors.transparent,
                                 elevation: 200.0,
-                                shape: RoundedRectangleBorder(
+                                shape: const RoundedRectangleBorder(
                                   borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(10.0),
                                     bottomRight: Radius.circular(10.0),
@@ -183,7 +180,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                         'assets/images/snake-and-ladder.png',
                                       ).image,
                                     ),
-                                    boxShadow: [
+                                    boxShadow: const [
                                       BoxShadow(
                                         blurRadius: 90.0,
                                         color: Color(0xAE14181B),
@@ -193,14 +190,14 @@ class _LeaderBoardPageNEWCopyWidgetState
                                         ),
                                       )
                                     ],
-                                    borderRadius: BorderRadius.only(
+                                    borderRadius: const BorderRadius.only(
                                       bottomLeft: Radius.circular(10.0),
                                       bottomRight: Radius.circular(10.0),
                                       topLeft: Radius.circular(10.0),
                                       topRight: Radius.circular(10.0),
                                     ),
                                     border: Border.all(
-                                      color: Color(0xFFAECBF9),
+                                      color: const Color(0xFFAECBF9),
                                       width: 2.0,
                                     ),
                                   ),
@@ -208,12 +205,12 @@ class _LeaderBoardPageNEWCopyWidgetState
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   15.0, 0.0, 0.0, 0.0),
                               child: Container(
                                 width: 297.7,
                                 height: 134.64,
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
@@ -245,7 +242,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
-                                                offset: Offset(2.0, 2.0),
+                                                offset: const Offset(2.0, 2.0),
                                                 blurRadius: 2.0,
                                               )
                                             ],
@@ -254,14 +251,14 @@ class _LeaderBoardPageNEWCopyWidgetState
                                       ],
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 1.0, 0.0, 0.0),
                                             child: Text(
                                               '1st - 5000 coins',
@@ -302,14 +299,14 @@ class _LeaderBoardPageNEWCopyWidgetState
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 7.0, 0.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 1.0, 0.0, 0.0),
                                             child: Text(
                                               '2nd - 2500 coins',
@@ -350,14 +347,14 @@ class _LeaderBoardPageNEWCopyWidgetState
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 7.0, 0.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 1.0, 0.0, 0.0),
                                             child: Text(
                                               '3rd - 1000 coins',
@@ -412,10 +409,10 @@ class _LeaderBoardPageNEWCopyWidgetState
                 child: Column(
                   children: [
                     Align(
-                      alignment: Alignment(0.0, 0),
+                      alignment: const Alignment(0.0, 0),
                       child: TabBar(
                         labelColor: Colors.white,
-                        unselectedLabelColor: Color(0xFF77A6E8),
+                        unselectedLabelColor: const Color(0xFF77A6E8),
                         labelStyle:
                             FlutterFlowTheme.of(context).titleMedium.override(
                                   font: GoogleFonts.poppins(
@@ -455,7 +452,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                       .fontStyle,
                                 ),
                         indicatorColor: FlutterFlowTheme.of(context).primary,
-                        tabs: [
+                        tabs: const [
                           Tab(
                             text: 'LEADERBOARD',
                           ),
@@ -471,24 +468,24 @@ class _LeaderBoardPageNEWCopyWidgetState
                         controller: _model.tabBarController,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 15.0, 0.0, 15.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Divider(
+                                const Divider(
                                   thickness: 1.0,
                                   color: Color(0xFF77A6E8),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 5.0, 0.0, 0.0),
                                   child: Container(
                                     width: double.infinity,
                                     height: 638.2,
                                     decoration: BoxDecoration(
-                                      color: Color(0x17FFFFFF),
-                                      boxShadow: [
+                                      color: const Color(0x17FFFFFF),
+                                      boxShadow: const [
                                         BoxShadow(
                                           blurRadius: 4.0,
                                           color: Color(0x33000000),
@@ -500,7 +497,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                       ],
                                       borderRadius: BorderRadius.circular(20.0),
                                       border: Border.all(
-                                        color: Color(0x3DFFFFFF),
+                                        color: const Color(0x3DFFFFFF),
                                       ),
                                     ),
                                     child: SingleChildScrollView(
@@ -509,7 +506,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 8.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -519,7 +516,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(10.0, 5.0,
                                                                 10.0, 0.0),
                                                     child: Container(
@@ -527,8 +524,8 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                       height: 86.1,
                                                       decoration: BoxDecoration(
                                                         color:
-                                                            Color(0x42FFFFFF),
-                                                        boxShadow: [
+                                                            const Color(0x42FFFFFF),
+                                                        boxShadow: const [
                                                           BoxShadow(
                                                             blurRadius: 4.0,
                                                             color: Color(
@@ -544,7 +541,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                                 .circular(20.0),
                                                         border: Border.all(
                                                           color:
-                                                              Color(0x3DFFFFFF),
+                                                              const Color(0x3DFFFFFF),
                                                         ),
                                                       ),
                                                       child: Row(
@@ -556,7 +553,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
@@ -572,7 +569,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                               children: [
                                                                 Align(
                                                                   alignment:
-                                                                      AlignmentDirectional(
+                                                                      const AlignmentDirectional(
                                                                           0.0,
                                                                           0.0),
                                                                   child: FaIcon(
@@ -585,7 +582,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           10.0,
                                                                           10.0,
@@ -651,7 +648,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -704,7 +701,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 10.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -714,7 +711,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(10.0, 5.0,
                                                                 10.0, 0.0),
                                                     child: Container(
@@ -722,8 +719,8 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                       height: 86.1,
                                                       decoration: BoxDecoration(
                                                         color:
-                                                            Color(0x42FFFFFF),
-                                                        boxShadow: [
+                                                            const Color(0x42FFFFFF),
+                                                        boxShadow: const [
                                                           BoxShadow(
                                                             blurRadius: 4.0,
                                                             color: Color(
@@ -739,7 +736,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                                 .circular(20.0),
                                                         border: Border.all(
                                                           color:
-                                                              Color(0x3DFFFFFF),
+                                                              const Color(0x3DFFFFFF),
                                                         ),
                                                       ),
                                                       child: Column(
@@ -748,7 +745,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         10.0,
@@ -759,7 +756,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                                   MainAxisSize
                                                                       .max,
                                                               children: [
-                                                                Align(
+                                                                const Align(
                                                                   alignment:
                                                                       AlignmentDirectional(
                                                                           0.0,
@@ -784,7 +781,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           10.0,
                                                                           10.0,
@@ -815,7 +812,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           10.0,
                                                                           10.0,
@@ -909,7 +906,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 10.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -919,7 +916,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(10.0, 5.0,
                                                                 10.0, 0.0),
                                                     child: Container(
@@ -927,8 +924,8 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                       height: 86.1,
                                                       decoration: BoxDecoration(
                                                         color:
-                                                            Color(0x42FFFFFF),
-                                                        boxShadow: [
+                                                            const Color(0x42FFFFFF),
+                                                        boxShadow: const [
                                                           BoxShadow(
                                                             blurRadius: 4.0,
                                                             color: Color(
@@ -944,7 +941,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                                 .circular(20.0),
                                                         border: Border.all(
                                                           color:
-                                                              Color(0x3DFFFFFF),
+                                                              const Color(0x3DFFFFFF),
                                                         ),
                                                       ),
                                                       child: Column(
@@ -953,7 +950,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         10.0,
@@ -966,12 +963,12 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                               children: [
                                                                 Align(
                                                                   alignment:
-                                                                      AlignmentDirectional(
+                                                                      const AlignmentDirectional(
                                                                           0.0,
                                                                           0.0),
                                                                   child:
                                                                       Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             10.0,
@@ -990,7 +987,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           10.0,
                                                                           10.0,
@@ -1021,7 +1018,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           10.0,
                                                                           10.0,
@@ -1115,7 +1112,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 10.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -1125,7 +1122,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(10.0, 5.0,
                                                                 10.0, 0.0),
                                                     child: Container(
@@ -1133,8 +1130,8 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                       height: 86.1,
                                                       decoration: BoxDecoration(
                                                         color:
-                                                            Color(0x42FFFFFF),
-                                                        boxShadow: [
+                                                            const Color(0x42FFFFFF),
+                                                        boxShadow: const [
                                                           BoxShadow(
                                                             blurRadius: 4.0,
                                                             color: Color(
@@ -1150,7 +1147,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                                 .circular(20.0),
                                                         border: Border.all(
                                                           color:
-                                                              Color(0x3DFFFFFF),
+                                                              const Color(0x3DFFFFFF),
                                                         ),
                                                       ),
                                                       child: Column(
@@ -1159,7 +1156,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         10.0,
@@ -1172,12 +1169,12 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                               children: [
                                                                 Align(
                                                                   alignment:
-                                                                      AlignmentDirectional(
+                                                                      const AlignmentDirectional(
                                                                           0.0,
                                                                           0.0),
                                                                   child:
                                                                       Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             10.0,
@@ -1195,7 +1192,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           10.0,
                                                                           10.0,
@@ -1226,7 +1223,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           10.0,
                                                                           10.0,
@@ -1320,7 +1317,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 10.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -1330,7 +1327,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(10.0, 5.0,
                                                                 10.0, 0.0),
                                                     child: Container(
@@ -1338,8 +1335,8 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                       height: 86.1,
                                                       decoration: BoxDecoration(
                                                         color:
-                                                            Color(0x42FFFFFF),
-                                                        boxShadow: [
+                                                            const Color(0x42FFFFFF),
+                                                        boxShadow: const [
                                                           BoxShadow(
                                                             blurRadius: 4.0,
                                                             color: Color(
@@ -1355,7 +1352,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                                 .circular(20.0),
                                                         border: Border.all(
                                                           color:
-                                                              Color(0x3DFFFFFF),
+                                                              const Color(0x3DFFFFFF),
                                                         ),
                                                       ),
                                                       child: Column(
@@ -1364,7 +1361,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         10.0,
@@ -1377,12 +1374,12 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                               children: [
                                                                 Align(
                                                                   alignment:
-                                                                      AlignmentDirectional(
+                                                                      const AlignmentDirectional(
                                                                           0.0,
                                                                           0.0),
                                                                   child:
                                                                       Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             10.0,
@@ -1400,7 +1397,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           10.0,
                                                                           10.0,
@@ -1431,7 +1428,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           10.0,
                                                                           10.0,
@@ -1525,7 +1522,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 10.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -1535,7 +1532,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(10.0, 5.0,
                                                                 10.0, 0.0),
                                                     child: Container(
@@ -1543,8 +1540,8 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                       height: 86.1,
                                                       decoration: BoxDecoration(
                                                         color:
-                                                            Color(0x42FFFFFF),
-                                                        boxShadow: [
+                                                            const Color(0x42FFFFFF),
+                                                        boxShadow: const [
                                                           BoxShadow(
                                                             blurRadius: 4.0,
                                                             color: Color(
@@ -1560,7 +1557,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                                 .circular(20.0),
                                                         border: Border.all(
                                                           color:
-                                                              Color(0x3DFFFFFF),
+                                                              const Color(0x3DFFFFFF),
                                                         ),
                                                       ),
                                                       child: Column(
@@ -1569,7 +1566,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         10.0,
@@ -1582,12 +1579,12 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                               children: [
                                                                 Align(
                                                                   alignment:
-                                                                      AlignmentDirectional(
+                                                                      const AlignmentDirectional(
                                                                           0.0,
                                                                           0.0),
                                                                   child:
                                                                       Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             10.0,
@@ -1605,7 +1602,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           10.0,
                                                                           10.0,
@@ -1636,7 +1633,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           10.0,
                                                                           10.0,
@@ -1730,7 +1727,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 10.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -1740,7 +1737,7 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(10.0, 5.0,
                                                                 10.0, 0.0),
                                                     child: Container(
@@ -1748,8 +1745,8 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                       height: 86.1,
                                                       decoration: BoxDecoration(
                                                         color:
-                                                            Color(0x42FFFFFF),
-                                                        boxShadow: [
+                                                            const Color(0x42FFFFFF),
+                                                        boxShadow: const [
                                                           BoxShadow(
                                                             blurRadius: 4.0,
                                                             color: Color(
@@ -1765,10 +1762,10 @@ class _LeaderBoardPageNEWCopyWidgetState
                                                                 .circular(20.0),
                                                         border: Border.all(
                                                           color:
-                                                              Color(0x3DFFFFFF),
+                                                              const Color(0x3DFFFFFF),
                                                         ),
                                                       ),
-                                                      child: Column(
+                                                      child: const Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [],

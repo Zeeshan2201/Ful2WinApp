@@ -77,7 +77,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -103,7 +103,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFF000B33),
+        backgroundColor: const Color(0xFF000B33),
         body: Container(
           width: double.infinity,
           height: double.infinity,
@@ -115,10 +115,10 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
               ).image,
             ),
             gradient: LinearGradient(
-              colors: [FlutterFlowTheme.of(context).primary, Color(0xFF000B33)],
-              stops: [0, 1],
-              begin: AlignmentDirectional(0, -1),
-              end: AlignmentDirectional(0, 1),
+              colors: [FlutterFlowTheme.of(context).primary, const Color(0xFF000B33)],
+              stops: const [0, 1],
+              begin: const AlignmentDirectional(0, -1),
+              end: const AlignmentDirectional(0, 1),
             ),
           ),
           child: Stack(
@@ -148,10 +148,10 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                       wrapWithModel(
                         model: _model.headerModel,
                         updateCallback: () => safeSetState(() {}),
-                        child: HeaderWidget(),
+                        child: const HeaderWidget(),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -181,7 +181,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                             ),
                             Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                  const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                               child: Text(
                                 getJsonField(
                                   columnGameResponse.jsonBody,
@@ -211,14 +211,14 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(10, 20, 10, 0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(10, 20, 10, 0),
                         child: Container(
                           width: double.infinity,
                           height: 50,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             border: Border.all(
-                              color: Color(0x85FFFFFF),
+                              color: const Color(0x85FFFFFF),
                             ),
                           ),
                           child: Row(
@@ -226,7 +226,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                             children: [
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
+                                    const EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
                                 child: Icon(
                                   Icons.search_sharp,
                                   color: FlutterFlowTheme.of(context)
@@ -236,9 +236,9 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 10, 0),
-                                  child: Container(
+                                  child: SizedBox(
                                     width: 200,
                                     child: TextFormField(
                                       controller: _model.textController,
@@ -301,7 +301,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                       .fontStyle,
                                             ),
                                         enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1,
                                           ),
@@ -309,7 +309,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                               BorderRadius.circular(8),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1,
                                           ),
@@ -371,13 +371,13 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                 ),
                               ),
                             ]
-                                .divide(SizedBox(width: 0))
-                                .around(SizedBox(width: 0)),
+                                .divide(const SizedBox(width: 0))
+                                .around(const SizedBox(width: 0)),
                           ),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(5, 10, 0, 0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(5, 10, 0, 0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -397,13 +397,13 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                               text: 'All',
                               options: FFButtonOptions(
                                 height: 35,
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     16, 0, 16, 0),
                                 iconPadding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                                    const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                                 color: _model.selectedCategory == 'All'
-                                    ? Color(0xFFFFD600)
-                                    : Color(0xFF191A47),
+                                    ? const Color(0xFFFFD600)
+                                    : const Color(0xFF191A47),
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
@@ -449,13 +449,13 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                               text: 'Upcoming',
                               options: FFButtonOptions(
                                 height: 35,
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     16, 0, 16, 0),
                                 iconPadding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                                    const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                                 color: _model.selectedCategory == 'Upcoming'
-                                    ? Color(0xFFFFD600)
-                                    : Color(0xFF191A47),
+                                    ? const Color(0xFFFFD600)
+                                    : const Color(0xFF191A47),
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
@@ -502,13 +502,13 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                               text: 'Live',
                               options: FFButtonOptions(
                                 height: 35,
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     16, 0, 16, 0),
                                 iconPadding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                                    const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                                 color: _model.selectedCategory == 'Live'
-                                    ? Color(0xFFFFD600)
-                                    : Color(0xFF191A47),
+                                    ? const Color(0xFFFFD600)
+                                    : const Color(0xFF191A47),
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
@@ -554,13 +554,13 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                               text: 'Completed',
                               options: FFButtonOptions(
                                 height: 35,
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     16, 0, 16, 0),
                                 iconPadding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                                    const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                                 color: _model.selectedCategory == 'Completed'
-                                    ? Color(0xFFFFD600)
-                                    : Color(0xFF191A47),
+                                    ? const Color(0xFFFFD600)
+                                    : const Color(0xFF191A47),
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
@@ -591,11 +591,11 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                 borderRadius: BorderRadius.circular(20),
                               ),
                             ),
-                          ].divide(SizedBox(width: 2)),
+                          ].divide(const SizedBox(width: 2)),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -619,13 +619,13 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                     ? 170.0
                                     : 140.0,
                                 height: 35,
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     16, 0, 16, 0),
                                 iconPadding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                                    const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                                 color: _model.moneyMode == 'Cash'
-                                    ? Color(0xFFFFD600)
-                                    : Color(0xFF191A47),
+                                    ? const Color(0xFFFFD600)
+                                    : const Color(0xFF191A47),
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
@@ -674,13 +674,13 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                     ? 170.0
                                     : 140.0,
                                 height: 35,
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     16, 0, 16, 0),
                                 iconPadding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                                    const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                                 color: _model.moneyMode == 'Coins'
-                                    ? Color(0xFFFFD600)
-                                    : Color(0xFF191A47),
+                                    ? const Color(0xFFFFD600)
+                                    : const Color(0xFF191A47),
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
@@ -710,7 +710,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                 borderRadius: BorderRadius.circular(20),
                               ),
                             ),
-                          ].divide(SizedBox(width: 5)),
+                          ].divide(const SizedBox(width: 5)),
                         ),
                       ),
                     ],
@@ -718,9 +718,9 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                 },
               ),
               Align(
-                alignment: AlignmentDirectional(0, -1),
+                alignment: const AlignmentDirectional(0, -1),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 280, 0, 10),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0, 280, 0, 10),
                   child: FutureBuilder<ApiCallResponse>(
                     future: gameResponse,
                     builder: (context, snapshot) {
@@ -742,7 +742,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
 
                       return Container(
                         width: double.infinity,
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: FutureBuilder<ApiCallResponse>(
                           future: tournamentResponse,
                           builder: (context, snapshot) {
@@ -771,24 +771,24 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                 ).toList().take(8).toList();
 
                                 return ListView.separated(
-                                  padding: EdgeInsets.symmetric(vertical: 10),
+                                  padding: const EdgeInsets.symmetric(vertical: 10),
                                   primary: false,
                                   shrinkWrap: true,
                                   scrollDirection: Axis.vertical,
                                   itemCount: tournaments.length,
                                   separatorBuilder: (_, __) =>
-                                      SizedBox(height: 10),
+                                      const SizedBox(height: 10),
                                   itemBuilder: (context, tournamentsIndex) {
                                     final tournamentsItem =
                                         tournaments[tournamentsIndex];
                                     return Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           10, 0, 10, 0),
                                       child: Container(
                                         width: double.infinity,
                                         height: 170,
                                         decoration: BoxDecoration(
-                                          boxShadow: [
+                                          boxShadow: const [
                                             BoxShadow(
                                               blurRadius: 4,
                                               color: Color(0x33000000),
@@ -798,7 +798,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                               ),
                                             )
                                           ],
-                                          gradient: LinearGradient(
+                                          gradient: const LinearGradient(
                                             colors: [
                                               Color(0xFF123C94),
                                               Color(0xFF1655DB),
@@ -820,7 +820,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                               MainAxisAlignment.center,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(5, 5, 5, 0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -831,17 +831,17 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                   Container(
                                                     width: 40,
                                                     decoration: BoxDecoration(
-                                                      color: Color(0xFFFFD600),
+                                                      color: const Color(0xFFFFD600),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               10),
                                                     ),
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             0, 0),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   5, 5, 5, 5),
                                                       child: Text(
@@ -952,7 +952,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0, 5, 0, 5),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -962,7 +962,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 5, 5, 0, 0),
                                                     child: Row(
@@ -986,7 +986,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(5,
                                                                       0, 0, 0),
                                                           child: Column(
@@ -1124,7 +1124,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 0, 0, 5, 0),
                                                     child: FFButtonWidget(
@@ -1259,15 +1259,15 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                       options: FFButtonOptions(
                                                         height: 40,
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(16, 0,
                                                                     16, 0),
                                                         iconPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0, 0, 0, 0),
                                                         color:
-                                                            Color(0xFF2AD266),
+                                                            const Color(0xFF2AD266),
                                                         textStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1315,7 +1315,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(5, 5, 5, 0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -1383,10 +1383,10 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                               .fromSTEB(
                                                               16, 0, 16, 0),
                                                       iconPadding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0, 0, 0, 0),
-                                                      color: Color(0x000B33FF),
+                                                      color: const Color(0x000B33FF),
                                                       textStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
