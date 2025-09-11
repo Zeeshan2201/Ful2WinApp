@@ -128,7 +128,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: LeaderBoardPageWidget.routeName,
           path: LeaderBoardPageWidget.routePath,
-          builder: (context, params) => const LeaderBoardPageWidget(),
+          builder: (context, params) => LeaderBoardPageWidget(
+            gameId: params.getParam(
+              'gameId',
+              ParamType.String,
+            ),
+            tournamentId: params.getParam(
+              'tournamentId',
+              ParamType.String,
+            ),
+            gameName: params.getParam(
+              'gameName',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: AdsPageWidget.routeName,
@@ -163,12 +176,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: MessageWidget.routeName,
           path: MessageWidget.routePath,
-        builder: (context, params) => MessageWidget(
-          user2: params.getParam(
-            'user2',
-            ParamType.String,
+          builder: (context, params) => MessageWidget(
+            user2: params.getParam(
+              'user2',
+              ParamType.String,
+            ),
           ),
-        ),
         ),
         FFRoute(
           name: WithdrawPageWidget.routeName,
@@ -392,7 +405,8 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() =>
+      const TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {
