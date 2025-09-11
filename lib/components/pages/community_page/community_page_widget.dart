@@ -1991,9 +1991,9 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                20, 5, 20, 0),
+                                                            20, 5, 20, 0),
                                                     child: Container(
                                                       width: double.infinity,
                                                       decoration: BoxDecoration(
@@ -2055,8 +2055,9 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
 
                                                           return ListView
                                                               .builder(
-                                                            padding: EdgeInsets
-                                                                .fromLTRB(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .fromLTRB(
                                                               0,
                                                               0,
                                                               0,
@@ -2074,12 +2075,12 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                                       commentsIndex];
                                                               return Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                            0,
-                                                                            5,
-                                                                            0,
-                                                                            0),
+                                                                        0,
+                                                                        5,
+                                                                        0,
+                                                                        0),
                                                                 child: Row(
                                                                   mainAxisSize:
                                                                       MainAxisSize
@@ -2112,17 +2113,17 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                                         gradient:
                                                                             LinearGradient(
                                                                           colors: [
-                                                                            Color(0xFFCB23CE),
+                                                                            const Color(0xFFCB23CE),
                                                                             FlutterFlowTheme.of(context).primary
                                                                           ],
-                                                                          stops: [
+                                                                          stops: const [
                                                                             0,
                                                                             1
                                                                           ],
-                                                                          begin: AlignmentDirectional(
+                                                                          begin: const AlignmentDirectional(
                                                                               1,
                                                                               -0.98),
-                                                                          end: AlignmentDirectional(
+                                                                          end: const AlignmentDirectional(
                                                                               -1,
                                                                               0.98),
                                                                         ),
@@ -2130,17 +2131,17 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                                             BorderRadius.circular(24),
                                                                       ),
                                                                       alignment:
-                                                                          AlignmentDirectional(
+                                                                          const AlignmentDirectional(
                                                                               0,
                                                                               0),
                                                                     ),
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional
+                                                                      padding: const EdgeInsetsDirectional
                                                                           .fromSTEB(
-                                                                              5,
-                                                                              0,
-                                                                              0,
-                                                                              0),
+                                                                          5,
+                                                                          0,
+                                                                          0,
+                                                                          0),
                                                                       child:
                                                                           Column(
                                                                         mainAxisSize:
