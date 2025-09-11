@@ -169,7 +169,7 @@ class GetChallengesCall {
     );
 
     return ApiManager.instance.makeApiCall(
-      callName: 'getChallenges',
+      callName: 'getchallenges',
       apiUrl: '${baseUrl}challenges',
       callType: ApiCallType.GET,
       headers: {
