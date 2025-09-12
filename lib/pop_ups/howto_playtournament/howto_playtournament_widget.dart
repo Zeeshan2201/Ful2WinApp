@@ -3,14 +3,9 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:math';
-import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 import 'howto_playtournament_model.dart';
 export 'howto_playtournament_model.dart';
@@ -74,9 +69,9 @@ class _HowtoPlaytournamentWidgetState extends State<HowtoPlaytournamentWidget>
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0, 0),
+      alignment: const AlignmentDirectional(0, 0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+        padding: const EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
         child: FutureBuilder<ApiCallResponse>(
           future: gameResponse,
           builder: (context, snapshot) {
@@ -100,14 +95,14 @@ class _HowtoPlaytournamentWidgetState extends State<HowtoPlaytournamentWidget>
               width: double.infinity,
               height: 561.4,
               decoration: BoxDecoration(
-                color: Color(0xBB08162C),
+                color: const Color(0xBB08162C),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(10, 10, 10, 0),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -118,7 +113,7 @@ class _HowtoPlaytournamentWidgetState extends State<HowtoPlaytournamentWidget>
                           children: [
                             Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                  const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                               child: Text(
                                 'How To Play',
                                 style: FlutterFlowTheme.of(context)
@@ -144,7 +139,7 @@ class _HowtoPlaytournamentWidgetState extends State<HowtoPlaytournamentWidget>
                             FlutterFlowIconButton(
                               borderRadius: 100,
                               buttonSize: 40,
-                              fillColor: Color(0x4E000000),
+                              fillColor: const Color(0x4E000000),
                               icon: Icon(
                                 Icons.close,
                                 color: FlutterFlowTheme.of(context).info,
@@ -156,12 +151,12 @@ class _HowtoPlaytournamentWidgetState extends State<HowtoPlaytournamentWidget>
                             ),
                           ],
                         ),
-                        Divider(
+                        const Divider(
                           thickness: 0.5,
                           color: Color(0xFF746464),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(10, 5, 0, 0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(10, 5, 0, 0),
                           child: Text(
                             'Objective',
                             style: FlutterFlowTheme.of(context)
@@ -186,10 +181,10 @@ class _HowtoPlaytournamentWidgetState extends State<HowtoPlaytournamentWidget>
                         ),
                         Padding(
                           padding:
-                              EdgeInsetsDirectional.fromSTEB(25, 10, 25, 10),
+                              const EdgeInsetsDirectional.fromSTEB(25, 10, 25, 10),
                           child: Container(
                             width: double.infinity,
-                            decoration: BoxDecoration(),
+                            decoration: const BoxDecoration(),
                             child: Text(
                               getJsonField(
                                 containerGameResponse.jsonBody,
@@ -216,7 +211,7 @@ class _HowtoPlaytournamentWidgetState extends State<HowtoPlaytournamentWidget>
                             ),
                           ),
                         ),
-                        Divider(
+                        const Divider(
                           thickness: 0.5,
                           color: Color(0xFF746464),
                         ),
@@ -225,15 +220,15 @@ class _HowtoPlaytournamentWidgetState extends State<HowtoPlaytournamentWidget>
                   ),
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                      padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
                       child: Container(
                         height: double.infinity,
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Stack(
                           children: [
                             Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 5, 0, 5),
+                                  const EdgeInsetsDirectional.fromSTEB(10, 5, 0, 5),
                               child: Text(
                                 'Rules',
                                 style: FlutterFlowTheme.of(context)
@@ -258,7 +253,7 @@ class _HowtoPlaytournamentWidgetState extends State<HowtoPlaytournamentWidget>
                             ),
                             Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(25, 35, 25, 0),
+                                  const EdgeInsetsDirectional.fromSTEB(25, 35, 25, 0),
                               child: Builder(
                                 builder: (context) {
                                   final howToPlay = getJsonField(
@@ -308,9 +303,9 @@ class _HowtoPlaytournamentWidgetState extends State<HowtoPlaytournamentWidget>
                                           Expanded(
                                             child: Container(
                                               width: double.infinity,
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(5, 0, 0, 0),
                                                 child: Text(
                                                   getJsonField(

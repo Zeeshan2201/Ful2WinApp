@@ -5,14 +5,10 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/pop_ups/aboutourcompany/aboutourcompany_widget.dart';
-import 'dart:math';
-import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:provider/provider.dart';
 
 import 'supportpage_model.dart';
 export 'supportpage_model.dart';
@@ -67,7 +63,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
         effectsBuilder: () => [
           FadeEffect(
             curve: Curves.easeIn,
-            delay: 0.0.ms,
+            delay: 180.0.ms,
             duration: 600.0.ms,
             begin: 0.0,
             end: 1.0,
@@ -81,7 +77,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -98,74 +94,74 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: Color(0xFF000B33),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: Image.asset(
-              'assets/images/bgimage.png',
-            ).image,
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: const Color(0xFF000B33),
+        body: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: Image.asset(
+                'assets/images/bgimage.png',
+              ).image,
+            ),
+            gradient: const LinearGradient(
+              colors: [Color(0xFF0B33FF), Color(0xFF000B33)],
+              stops: [0, 1],
+              begin: AlignmentDirectional(0, -1),
+              end: AlignmentDirectional(0, 1),
+            ),
           ),
-          gradient: LinearGradient(
-            colors: [Color(0xFF0B33FF), Color(0xFF000B33)],
-            stops: [0, 1],
-            begin: AlignmentDirectional(0, -1),
-            end: AlignmentDirectional(0, 1),
-          ),
-        ),
-        child: Align(
-          alignment: AlignmentDirectional(0, 0),
-          child: ListView(
-            padding: EdgeInsets.zero,
-            primary: false,
-            shrinkWrap: true,
-            scrollDirection: Axis.vertical,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Align(
-                alignment: AlignmentDirectional(0, 0),
+              Expanded(
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 10),
+                  padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 10),
                   child: Container(
                     width: double.infinity,
-                    height: 750,
                     decoration: BoxDecoration(
-                      color: Color(0xBB08162C),
-                      borderRadius: BorderRadius.only(
+                      color: const Color(0xBB08162C),
+                      borderRadius: const BorderRadius.only(
                         bottomLeft: Radius.circular(25),
                         bottomRight: Radius.circular(25),
                         topLeft: Radius.circular(25),
                         topRight: Radius.circular(25),
                       ),
                       border: Border.all(
-                        color: Color(0xFF00CFFF),
+                        color: const Color(0xFF00CFFF),
                       ),
                     ),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(-1, -1),
+                          alignment: const AlignmentDirectional(-1, -1),
                           child: Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(10, 15, 0, 0),
+                                const EdgeInsetsDirectional.fromSTEB(10, 15, 0, 0),
                             child: Container(
                               width: 40,
                               height: 35,
                               decoration: BoxDecoration(
-                                color: Color(0x33FFFFFF),
+                                color: const Color(0x33FFFFFF),
                                 borderRadius: BorderRadius.circular(40),
                               ),
-                              alignment: AlignmentDirectional(0, 0),
+                              alignment: const AlignmentDirectional(0, 0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Align(
-                                    alignment: AlignmentDirectional(0, 0),
+                                    alignment: const AlignmentDirectional(0, 0),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
                                       focusColor: Colors.transparent,
@@ -174,7 +170,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                       onTap: () async {
                                         context.safePop();
                                       },
-                                      child: Icon(
+                                      child: const Icon(
                                         Icons.chevron_left_outlined,
                                         color: Color(0xFFE9EEF1),
                                         size: 26,
@@ -201,7 +197,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFFFBD34D),
+                                    color: const Color(0xFFFBD34D),
                                     fontSize: 24,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
@@ -213,7 +209,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                           ],
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -231,7 +227,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFFE8EEF3),
+                                      color: const Color(0xFFE8EEF3),
                                       fontSize: 16,
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)
@@ -248,14 +244,14 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                         Expanded(
                           child: Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                                const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                             child: Column(
                               children: [
                                 Align(
-                                  alignment: Alignment(0, 0),
+                                  alignment: const Alignment(0, 0),
                                   child: TabBar(
-                                    labelColor: Color(0xFFEFF0F1),
-                                    unselectedLabelColor: Color(0xFF6E8594),
+                                    labelColor: const Color(0xFFEFF0F1),
+                                    unselectedLabelColor: const Color(0xFF6E8594),
                                     labelStyle: FlutterFlowTheme.of(context)
                                         .titleMedium
                                         .override(
@@ -305,8 +301,8 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
-                                    indicatorColor: Color(0xFF00CFFF),
-                                    tabs: [
+                                    indicatorColor: const Color(0xFF00CFFF),
+                                    tabs: const [
                                       Tab(
                                         text: 'FAQs',
                                       ),
@@ -350,51 +346,35 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                     controller: _model.tabBarController,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             10, 10, 10, 0),
-                                        child: SingleChildScrollView(
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(5, 10, 5, 0),
-                                                child:
-                                                    FlutterFlowDropDown<String>(
-                                                  controller: _model
-                                                          .dropDownValueController1 ??=
-                                                      FormFieldController<
-                                                          String>(null),
-                                                  options: [
-                                                    'Go to Wallet → Withdraw and follow on-screen steps.'
-                                                  ],
-                                                  onChanged: (val) =>
-                                                      safeSetState(() => _model
-                                                              .dropDownValue1 =
-                                                          val),
-                                                  width: double.infinity,
-                                                  height: 45,
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        color:
-                                                            Color(0xFFEAEFF3),
-                                                        letterSpacing: 0.0,
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(5, 10, 5, 0),
+                                              child:
+                                                  FlutterFlowDropDown<String>(
+                                                controller: _model
+                                                        .dropDownValueController1 ??=
+                                                    FormFieldController<String>(
+                                                        null),
+                                                options: const [
+                                                  'Go to Wallet → Withdraw and follow on-screen steps.'
+                                                ],
+                                                onChanged: (val) =>
+                                                    safeSetState(() => _model
+                                                        .dropDownValue1 = val),
+                                                width: double.infinity,
+                                                height: 45,
+                                                textStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      font: GoogleFonts.inter(
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -406,67 +386,64 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                                 .bodyMedium
                                                                 .fontStyle,
                                                       ),
-                                                  hintText:
-                                                      'How to withdraw coins?',
-                                                  icon: Icon(
-                                                    Icons
-                                                        .keyboard_arrow_down_rounded,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
-                                                    size: 24,
-                                                  ),
-                                                  fillColor: Color(0xBB08162C),
-                                                  elevation: 2,
-                                                  borderColor:
-                                                      Color(0xFF00CFFF),
-                                                  borderWidth: 0,
-                                                  borderRadius: 8,
-                                                  margin: EdgeInsetsDirectional
-                                                      .fromSTEB(12, 0, 12, 0),
-                                                  hidesUnderline: true,
-                                                  isOverButton: false,
-                                                  isSearchable: false,
-                                                  isMultiSelect: false,
+                                                      color: const Color(0xFFEAEFF3),
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                hintText:
+                                                    'How to withdraw coins?',
+                                                icon: Icon(
+                                                  Icons
+                                                      .keyboard_arrow_down_rounded,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  size: 24,
                                                 ),
+                                                fillColor: const Color(0xBB08162C),
+                                                elevation: 2,
+                                                borderColor: const Color(0xFF00CFFF),
+                                                borderWidth: 0,
+                                                borderRadius: 8,
+                                                margin: const EdgeInsetsDirectional
+                                                    .fromSTEB(12, 0, 12, 0),
+                                                hidesUnderline: true,
+                                                isOverButton: false,
+                                                isSearchable: false,
+                                                isMultiSelect: false,
                                               ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(5, 10, 5, 0),
-                                                child:
-                                                    FlutterFlowDropDown<String>(
-                                                  controller: _model
-                                                          .dropDownValueController2 ??=
-                                                      FormFieldController<
-                                                          String>(null),
-                                                  options: [
-                                                    'You’re paired with players of similar skill level.'
-                                                  ],
-                                                  onChanged: (val) =>
-                                                      safeSetState(() => _model
-                                                              .dropDownValue2 =
-                                                          val),
-                                                  width: double.infinity,
-                                                  height: 45,
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        color:
-                                                            Color(0xFFEAEFF3),
-                                                        letterSpacing: 0.0,
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(5, 10, 5, 0),
+                                              child:
+                                                  FlutterFlowDropDown<String>(
+                                                controller: _model
+                                                        .dropDownValueController2 ??=
+                                                    FormFieldController<String>(
+                                                        null),
+                                                options: const [
+                                                  'You’re paired with players of similar skill level.'
+                                                ],
+                                                onChanged: (val) =>
+                                                    safeSetState(() => _model
+                                                        .dropDownValue2 = val),
+                                                width: double.infinity,
+                                                height: 45,
+                                                textStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      font: GoogleFonts.inter(
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -478,67 +455,64 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                                 .bodyMedium
                                                                 .fontStyle,
                                                       ),
-                                                  hintText:
-                                                      'How Does matchmaking works?',
-                                                  icon: Icon(
-                                                    Icons
-                                                        .keyboard_arrow_down_rounded,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
-                                                    size: 24,
-                                                  ),
-                                                  fillColor: Color(0xBB08162C),
-                                                  elevation: 2,
-                                                  borderColor:
-                                                      Color(0xFF00CFFF),
-                                                  borderWidth: 0,
-                                                  borderRadius: 8,
-                                                  margin: EdgeInsetsDirectional
-                                                      .fromSTEB(12, 0, 12, 0),
-                                                  hidesUnderline: true,
-                                                  isOverButton: false,
-                                                  isSearchable: false,
-                                                  isMultiSelect: false,
+                                                      color: const Color(0xFFEAEFF3),
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                hintText:
+                                                    'How Does matchmaking works?',
+                                                icon: Icon(
+                                                  Icons
+                                                      .keyboard_arrow_down_rounded,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  size: 24,
                                                 ),
+                                                fillColor: const Color(0xBB08162C),
+                                                elevation: 2,
+                                                borderColor: const Color(0xFF00CFFF),
+                                                borderWidth: 0,
+                                                borderRadius: 8,
+                                                margin: const EdgeInsetsDirectional
+                                                    .fromSTEB(12, 0, 12, 0),
+                                                hidesUnderline: true,
+                                                isOverButton: false,
+                                                isSearchable: false,
+                                                isMultiSelect: false,
                                               ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(5, 10, 5, 0),
-                                                child:
-                                                    FlutterFlowDropDown<String>(
-                                                  controller: _model
-                                                          .dropDownValueController3 ??=
-                                                      FormFieldController<
-                                                          String>(null),
-                                                  options: [
-                                                    'Go to Profile → KYC Status to verify.'
-                                                  ],
-                                                  onChanged: (val) =>
-                                                      safeSetState(() => _model
-                                                              .dropDownValue3 =
-                                                          val),
-                                                  width: double.infinity,
-                                                  height: 45,
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        color:
-                                                            Color(0xFFEAEFF3),
-                                                        letterSpacing: 0.0,
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(5, 10, 5, 0),
+                                              child:
+                                                  FlutterFlowDropDown<String>(
+                                                controller: _model
+                                                        .dropDownValueController3 ??=
+                                                    FormFieldController<String>(
+                                                        null),
+                                                options: const [
+                                                  'Go to Profile → KYC Status to verify.'
+                                                ],
+                                                onChanged: (val) =>
+                                                    safeSetState(() => _model
+                                                        .dropDownValue3 = val),
+                                                width: double.infinity,
+                                                height: 45,
+                                                textStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      font: GoogleFonts.inter(
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -550,67 +524,64 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                                 .bodyMedium
                                                                 .fontStyle,
                                                       ),
-                                                  hintText:
-                                                      'How can i verify my account?',
-                                                  icon: Icon(
-                                                    Icons
-                                                        .keyboard_arrow_down_rounded,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
-                                                    size: 24,
-                                                  ),
-                                                  fillColor: Color(0xBB08162C),
-                                                  elevation: 2,
-                                                  borderColor:
-                                                      Color(0xFF00CFFF),
-                                                  borderWidth: 0,
-                                                  borderRadius: 8,
-                                                  margin: EdgeInsetsDirectional
-                                                      .fromSTEB(12, 0, 12, 0),
-                                                  hidesUnderline: true,
-                                                  isOverButton: false,
-                                                  isSearchable: false,
-                                                  isMultiSelect: false,
+                                                      color: const Color(0xFFEAEFF3),
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                hintText:
+                                                    'How can i verify my account?',
+                                                icon: Icon(
+                                                  Icons
+                                                      .keyboard_arrow_down_rounded,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  size: 24,
                                                 ),
+                                                fillColor: const Color(0xBB08162C),
+                                                elevation: 2,
+                                                borderColor: const Color(0xFF00CFFF),
+                                                borderWidth: 0,
+                                                borderRadius: 8,
+                                                margin: const EdgeInsetsDirectional
+                                                    .fromSTEB(12, 0, 12, 0),
+                                                hidesUnderline: true,
+                                                isOverButton: false,
+                                                isSearchable: false,
+                                                isMultiSelect: false,
                                               ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(5, 10, 5, 0),
-                                                child:
-                                                    FlutterFlowDropDown<String>(
-                                                  controller: _model
-                                                          .dropDownValueController4 ??=
-                                                      FormFieldController<
-                                                          String>(null),
-                                                  options: [
-                                                    'Restart or reinstall. Contact support if issue remains.'
-                                                  ],
-                                                  onChanged: (val) =>
-                                                      safeSetState(() => _model
-                                                              .dropDownValue4 =
-                                                          val),
-                                                  width: double.infinity,
-                                                  height: 45,
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        color:
-                                                            Color(0xFFEAEFF3),
-                                                        letterSpacing: 0.0,
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(5, 10, 5, 0),
+                                              child:
+                                                  FlutterFlowDropDown<String>(
+                                                controller: _model
+                                                        .dropDownValueController4 ??=
+                                                    FormFieldController<String>(
+                                                        null),
+                                                options: const [
+                                                  'Restart or reinstall. Contact support if issue remains.'
+                                                ],
+                                                onChanged: (val) =>
+                                                    safeSetState(() => _model
+                                                        .dropDownValue4 = val),
+                                                width: double.infinity,
+                                                height: 45,
+                                                textStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      font: GoogleFonts.inter(
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -622,66 +593,63 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                                 .bodyMedium
                                                                 .fontStyle,
                                                       ),
-                                                  hintText:
-                                                      'What if the app crashes?',
-                                                  icon: Icon(
-                                                    Icons
-                                                        .keyboard_arrow_down_rounded,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
-                                                    size: 24,
-                                                  ),
-                                                  fillColor: Color(0xBB08162C),
-                                                  elevation: 2,
-                                                  borderColor:
-                                                      Color(0xFF00CFFF),
-                                                  borderWidth: 0,
-                                                  borderRadius: 8,
-                                                  margin: EdgeInsetsDirectional
-                                                      .fromSTEB(12, 0, 12, 0),
-                                                  hidesUnderline: true,
-                                                  isOverButton: false,
-                                                  isSearchable: false,
-                                                  isMultiSelect: false,
+                                                      color: const Color(0xFFEAEFF3),
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                hintText:
+                                                    'What if the app crashes?',
+                                                icon: Icon(
+                                                  Icons
+                                                      .keyboard_arrow_down_rounded,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  size: 24,
                                                 ),
+                                                fillColor: const Color(0xBB08162C),
+                                                elevation: 2,
+                                                borderColor: const Color(0xFF00CFFF),
+                                                borderWidth: 0,
+                                                borderRadius: 8,
+                                                margin: const EdgeInsetsDirectional
+                                                    .fromSTEB(12, 0, 12, 0),
+                                                hidesUnderline: true,
+                                                isOverButton: false,
+                                                isSearchable: false,
+                                                isMultiSelect: false,
                                               ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 20, 0, 10),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Flexible(
-                                                      child: Text(
-                                                        'Restart or reinstall. Contact support if issue remains.',
-                                                        textAlign:
-                                                            TextAlign.start,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .inter(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  color: Color(
-                                                                      0xFFE2E8ED),
-                                                                  fontSize: 16,
-                                                                  letterSpacing:
-                                                                      0.0,
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0, 20, 0, 10),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: [
+                                                  Flexible(
+                                                    child: Text(
+                                                      'Restart or reinstall. Contact support if issue remains.',
+                                                      textAlign:
+                                                          TextAlign.start,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -691,50 +659,49 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                                       .bodyMedium
                                                                       .fontStyle,
                                                                 ),
-                                                      ),
+                                                                color: const Color(
+                                                                    0xFFE2E8ED),
+                                                                fontSize: 16,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                              ),
                                                     ),
-                                                  ],
-                                                ),
+                                                  ),
+                                                ],
                                               ),
-                                              Divider(
-                                                thickness: 0.5,
-                                                color: Color(0xFFF5EDED),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 10, 0, 0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceAround,
-                                                  children: [
-                                                    Flexible(
-                                                      child: Text(
-                                                        '© 2025 Your Game Name. All rights reserved.',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .inter(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  color: Color(
-                                                                      0xFFE6EFF5),
-                                                                  fontSize: 16,
-                                                                  letterSpacing:
-                                                                      0.0,
+                                            ),
+                                            const Divider(
+                                              thickness: 0.5,
+                                              color: Color(0xFFF5EDED),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0, 10, 0, 0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceAround,
+                                                children: [
+                                                  Flexible(
+                                                    child: Text(
+                                                      '© 2025 Your Game Name. All rights reserved.',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -744,17 +711,30 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                                       .bodyMedium
                                                                       .fontStyle,
                                                                 ),
-                                                      ),
+                                                                color: const Color(
+                                                                    0xFFE6EFF5),
+                                                                fontSize: 16,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                              ),
                                                     ),
-                                                  ],
-                                                ),
+                                                  ),
+                                                ],
                                               ),
-                                            ],
-                                          ),
+                                            ),
+                                          ],
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             10, 0, 10, 0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -765,10 +745,10 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 10, 20, 10, 0),
-                                                    child: Container(
+                                                    child: SizedBox(
                                                       width: double.infinity,
                                                       child: TextFormField(
                                                         controller: _model
@@ -796,7 +776,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                                           .labelMedium
                                                                           .fontStyle,
                                                                     ),
-                                                                    color: Color(
+                                                                    color: const Color(
                                                                         0xFFF2F7FB),
                                                                     letterSpacing:
                                                                         0.0,
@@ -826,7 +806,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                                           .labelMedium
                                                                           .fontStyle,
                                                                     ),
-                                                                    color: Color(
+                                                                    color: const Color(
                                                                         0xFFEEF4F8),
                                                                     letterSpacing:
                                                                         0.0,
@@ -842,7 +822,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                           enabledBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Color(
                                                                   0xFF00CFFF),
                                                               width: 1,
@@ -855,7 +835,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                           focusedBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Color(
                                                                   0x00000000),
                                                               width: 1,
@@ -895,7 +875,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                           ),
                                                           filled: true,
                                                           fillColor:
-                                                              Color(0x33FFFFFF),
+                                                              const Color(0x33FFFFFF),
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -914,7 +894,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                                         .bodyMedium
                                                                         .fontStyle,
                                                                   ),
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0xFFEDF0F3),
                                                                   letterSpacing:
                                                                       0.0,
@@ -949,10 +929,10 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 10, 20, 10, 0),
-                                                    child: Container(
+                                                    child: SizedBox(
                                                       width: double.infinity,
                                                       child: TextFormField(
                                                         controller: _model
@@ -1008,7 +988,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                                           .labelMedium
                                                                           .fontStyle,
                                                                     ),
-                                                                    color: Color(
+                                                                    color: const Color(
                                                                         0xFFECF5FC),
                                                                     letterSpacing:
                                                                         0.0,
@@ -1024,7 +1004,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                           enabledBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Color(
                                                                   0xFF00CFFF),
                                                               width: 1,
@@ -1037,7 +1017,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                           focusedBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Color(
                                                                   0x00000000),
                                                               width: 1,
@@ -1077,7 +1057,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                           ),
                                                           filled: true,
                                                           fillColor:
-                                                              Color(0x33FFFFFF),
+                                                              const Color(0x33FFFFFF),
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -1132,10 +1112,10 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 10, 20, 10, 0),
-                                                    child: Container(
+                                                    child: SizedBox(
                                                       width: double.infinity,
                                                       child: TextFormField(
                                                         controller: _model
@@ -1191,7 +1171,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                                           .labelMedium
                                                                           .fontStyle,
                                                                     ),
-                                                                    color: Color(
+                                                                    color: const Color(
                                                                         0xFFECF5FC),
                                                                     letterSpacing:
                                                                         0.0,
@@ -1207,7 +1187,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                           enabledBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Color(
                                                                   0xFF00CFFF),
                                                               width: 1,
@@ -1220,7 +1200,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                           focusedBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Color(
                                                                   0x00000000),
                                                               width: 1,
@@ -1260,7 +1240,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                           ),
                                                           filled: true,
                                                           fillColor:
-                                                              Color(0x33FFFFFF),
+                                                              const Color(0x33FFFFFF),
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -1312,10 +1292,10 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 10, 20, 10, 0),
-                                                    child: Container(
+                                                    child: SizedBox(
                                                       width: double.infinity,
                                                       child: TextFormField(
                                                         controller: _model
@@ -1371,7 +1351,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                                           .labelMedium
                                                                           .fontStyle,
                                                                     ),
-                                                                    color: Color(
+                                                                    color: const Color(
                                                                         0xFFECF5FC),
                                                                     letterSpacing:
                                                                         0.0,
@@ -1387,7 +1367,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                           enabledBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Color(
                                                                   0xFF00CFFF),
                                                               width: 1,
@@ -1400,7 +1380,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                           focusedBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Color(
                                                                   0x00000000),
                                                               width: 1,
@@ -1440,7 +1420,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                           ),
                                                           filled: true,
                                                           fillColor:
-                                                              Color(0x33FFFFFF),
+                                                              const Color(0x33FFFFFF),
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -1487,9 +1467,9 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                               ],
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(10, 20, 10, 0),
-                                              child: Container(
+                                              child: SizedBox(
                                                 width: double.infinity,
                                                 child: TextFormField(
                                                   controller:
@@ -1548,7 +1528,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                                     .fontStyle,
                                                           ),
                                                           color:
-                                                              Color(0xFFDAE2E7),
+                                                              const Color(0xFFDAE2E7),
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
@@ -1563,7 +1543,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                         ),
                                                     enabledBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: BorderSide(
+                                                      borderSide: const BorderSide(
                                                         color:
                                                             Color(0xFF00CFFF),
                                                         width: 1,
@@ -1574,7 +1554,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                     ),
                                                     focusedBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: BorderSide(
+                                                      borderSide: const BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1,
@@ -1611,7 +1591,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                     ),
                                                     filled: true,
                                                     fillColor:
-                                                        Color(0x33EDDEDE),
+                                                        const Color(0x33EDDEDE),
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -1654,7 +1634,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(10, 20, 0, 0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -1671,14 +1651,14 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                       width: 130,
                                                       height: 35,
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16, 0, 16, 0),
                                                       iconPadding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0, 0, 0, 0),
-                                                      color: Color(0x33FFFFFF),
+                                                      color: const Color(0x33FFFFFF),
                                                       textStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1708,7 +1688,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                                     .fontStyle,
                                                               ),
                                                       elevation: 0,
-                                                      borderSide: BorderSide(
+                                                      borderSide: const BorderSide(
                                                         color:
                                                             Color(0xFF00CFFF),
                                                       ),
@@ -1721,7 +1701,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(10, 20, 10, 20),
                                               child: FFButtonWidget(
                                                 onPressed: () {
@@ -1731,10 +1711,10 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                 options: FFButtonOptions(
                                                   width: double.infinity,
                                                   height: 40,
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(16, 0, 16, 0),
                                                   iconPadding:
-                                                      EdgeInsetsDirectional
+                                                      const EdgeInsetsDirectional
                                                           .fromSTEB(0, 0, 0, 0),
                                                   color: FlutterFlowTheme.of(
                                                           context)
@@ -1775,7 +1755,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                 ),
                                               ),
                                             ),
-                                            Divider(
+                                            const Divider(
                                               thickness: 0.5,
                                               color: Color(0xFFECE3E3),
                                             ),
@@ -1803,7 +1783,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                                   .fontStyle,
                                                         ),
                                                         color:
-                                                            Color(0xFFE5EAEE),
+                                                            const Color(0xFFE5EAEE),
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
@@ -1820,7 +1800,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                               ],
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0, 10, 0, 0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -1848,7 +1828,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                                     .fontStyle,
                                                           ),
                                                           color:
-                                                              Color(0xFFF7FCFF),
+                                                              const Color(0xFFF7FCFF),
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
@@ -1886,13 +1866,25 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                               backgroundColor:
                                                                   Colors
                                                                       .transparent,
-                                                              alignment: AlignmentDirectional(
+                                                              alignment: const AlignmentDirectional(
                                                                       0, 0)
                                                                   .resolve(
                                                                       Directionality.of(
                                                                           context)),
                                                               child:
-                                                                  AboutourcompanyWidget(),
+                                                                  GestureDetector(
+                                                                onTap: () {
+                                                                  FocusScope.of(
+                                                                          dialogContext)
+                                                                      .unfocus();
+                                                                  FocusManager
+                                                                      .instance
+                                                                      .primaryFocus
+                                                                      ?.unfocus();
+                                                                },
+                                                                child:
+                                                                    const AboutourcompanyWidget(),
+                                                              ),
                                                             );
                                                           },
                                                         );
@@ -1916,7 +1908,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                                                         .bodyMedium
                                                                         .fontStyle,
                                                                   ),
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0xFFE8ECEE),
                                                                   letterSpacing:
                                                                       0.0,
@@ -1953,8 +1945,8 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
               ),
             ],
           ),
-        ),
-      ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation1']!),
+        ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation1']!),
+      ),
     );
   }
 }

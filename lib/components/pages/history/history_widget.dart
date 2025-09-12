@@ -59,7 +59,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
               ).image,
             ),
             gradient: LinearGradient(
-              colors: [FlutterFlowTheme.of(context).primary, Color(0xFF000B33)],
+              colors: [FlutterFlowTheme.of(context).primary, const Color(0xFF000B33)],
               stops: const [0.0, 1.0],
               begin: const AlignmentDirectional(0.0, -1.0),
               end: const AlignmentDirectional(0, 1.0),
@@ -131,7 +131,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                     .bodyMedium
                                     .fontStyle,
                               ),
-                              color: Color(0xFFF7FAFC),
+                              color: const Color(0xFFF7FAFC),
                               fontSize: 24.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
@@ -147,7 +147,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
               Container(
                 width: 400.0,
                 height: 250.0,
-                decoration: BoxDecoration(),
+                decoration: const BoxDecoration(),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -161,7 +161,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                               : 173.0,
                           height: 64.0,
                           decoration: BoxDecoration(
-                            color: Color(0x33FFFFFF),
+                            color: const Color(0x33FFFFFF),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           child: Column(
@@ -181,7 +181,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFF4ADE80),
+                                      color: const Color(0xFF4ADE80),
                                       fontSize: 18.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)
@@ -205,7 +205,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFFF7FAFC),
+                                      color: const Color(0xFFF7FAFC),
                                       fontSize: 12.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)
@@ -225,7 +225,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                               : 173.0,
                           height: 64.0,
                           decoration: BoxDecoration(
-                            color: Color(0x33FFFFFF),
+                            color: const Color(0x33FFFFFF),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           child: Column(
@@ -245,7 +245,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFFFDE047),
+                                      color: const Color(0xFFFDE047),
                                       fontSize: 18.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)
@@ -269,7 +269,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFFF7FAFC),
+                                      color: const Color(0xFFF7FAFC),
                                       fontSize: 12.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)
@@ -289,7 +289,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                               : 173.0,
                           height: 64.0,
                           decoration: BoxDecoration(
-                            color: Color(0x33FFFFFF),
+                            color: const Color(0x33FFFFFF),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           child: Column(
@@ -309,7 +309,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFF93C5FD),
+                                      color: const Color(0xFF93C5FD),
                                       fontSize: 18.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)
@@ -333,7 +333,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFFF7FAFC),
+                                      color: const Color(0xFFF7FAFC),
                                       fontSize: 12.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)
@@ -361,7 +361,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                               : 173.0,
                           height: 64.0,
                           decoration: BoxDecoration(
-                            color: Color(0x33FFFFFF),
+                            color: const Color(0x33FFFFFF),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           child: Column(
@@ -381,7 +381,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFFFB7171),
+                                      color: const Color(0xFFFB7171),
                                       fontSize: 18.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)
@@ -405,7 +405,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFFF7FAFC),
+                                      color: const Color(0xFFF7FAFC),
                                       fontSize: 12.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)
@@ -425,7 +425,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                               : 173.0,
                           height: 64.0,
                           decoration: BoxDecoration(
-                            color: Color(0x33FFFFFF),
+                            color: const Color(0x33FFFFFF),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           child: Column(
@@ -445,7 +445,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFFC084FC),
+                                      color: const Color(0xFFC084FC),
                                       fontSize: 18.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)
@@ -469,7 +469,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFFF7FAFC),
+                                      color: const Color(0xFFF7FAFC),
                                       fontSize: 12.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)
@@ -489,7 +489,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                               : 173.0,
                           height: 64.0,
                           decoration: BoxDecoration(
-                            color: Color(0x33FFFFFF),
+                            color: const Color(0x33FFFFFF),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           child: Column(
@@ -509,7 +509,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFFF9A8D4),
+                                      color: const Color(0xFFF9A8D4),
                                       fontSize: 18.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)
@@ -533,7 +533,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFFF7FAFC),
+                                      color: const Color(0xFFF7FAFC),
                                       fontSize: 12.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)
@@ -569,7 +569,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                   .bodyMedium
                                   .fontStyle,
                             ),
-                            color: Color(0xFFE5E7EB),
+                            color: const Color(0xFFE5E7EB),
                             fontSize: 18.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w600,
@@ -605,7 +605,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                   FocusScope.of(dialogContext).unfocus();
                                   FocusManager.instance.primaryFocus?.unfocus();
                                 },
-                                child: GamehistorydetailWidget(),
+                                child: const GamehistorydetailWidget(),
                               ),
                             );
                           },
@@ -617,7 +617,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                             : 350.0,
                         height: 70.0,
                         decoration: BoxDecoration(
-                          color: Color(0x33FFFFFF),
+                          color: const Color(0x33FFFFFF),
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         child: Row(
@@ -631,7 +631,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                 width: 50.0,
                                 height: 50.0,
                                 clipBehavior: Clip.antiAlias,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                 ),
                                 child: Image.asset(
@@ -662,7 +662,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
-                                          color: Color(0xFFF7FAFC),
+                                          color: const Color(0xFFF7FAFC),
                                           letterSpacing: 0.0,
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
@@ -689,7 +689,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
-                                          color: Color(0xFFF7FAFC),
+                                          color: const Color(0xFFF7FAFC),
                                           letterSpacing: 0.0,
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
@@ -715,7 +715,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                         : 350.0,
                     height: 70.0,
                     decoration: BoxDecoration(
-                      color: Color(0x33FFFFFF),
+                      color: const Color(0x33FFFFFF),
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     child: Row(
@@ -729,7 +729,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                             width: 50.0,
                             height: 50.0,
                             clipBehavior: Clip.antiAlias,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                             ),
                             child: Image.asset(
@@ -758,7 +758,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFFF7FAFC),
+                                      color: const Color(0xFFF7FAFC),
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -781,7 +781,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFFF7FAFC),
+                                      color: const Color(0xFFF7FAFC),
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -803,7 +803,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                         : 350.0,
                     height: 70.0,
                     decoration: BoxDecoration(
-                      color: Color(0x33FFFFFF),
+                      color: const Color(0x33FFFFFF),
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     child: Row(
@@ -817,7 +817,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                             width: 50.0,
                             height: 50.0,
                             clipBehavior: Clip.antiAlias,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                             ),
                             child: Image.asset(
@@ -846,7 +846,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFFF7FAFC),
+                                      color: const Color(0xFFF7FAFC),
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -869,7 +869,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFFF7FAFC),
+                                      color: const Color(0xFFF7FAFC),
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -891,7 +891,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                         : 350.0,
                     height: 70.0,
                     decoration: BoxDecoration(
-                      color: Color(0x33FFFFFF),
+                      color: const Color(0x33FFFFFF),
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     child: Row(
@@ -905,7 +905,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                             width: 50.0,
                             height: 50.0,
                             clipBehavior: Clip.antiAlias,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                             ),
                             child: Image.asset(
@@ -934,7 +934,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFFF7FAFC),
+                                      color: const Color(0xFFF7FAFC),
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -957,7 +957,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFFF7FAFC),
+                                      color: const Color(0xFFF7FAFC),
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)
                                           .bodyMedium
