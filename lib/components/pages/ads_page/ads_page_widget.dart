@@ -1,14 +1,14 @@
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-//import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/material.dart';
-//import 'package:flutter/scheduler.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
-//import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import 'ads_page_model.dart';
@@ -43,7 +43,7 @@ class _AdsPageWidgetState extends State<AdsPageWidget>
         effectsBuilder: () => [
           FadeEffect(
             curve: Curves.easeIn,
-            delay: 180.0.ms,
+            delay: 0.0.ms,
             duration: 600.0.ms,
             begin: 0.0,
             end: 1.0,
@@ -228,7 +228,7 @@ class _AdsPageWidgetState extends State<AdsPageWidget>
                                   ),
                                   color: Color(0xFFFBD34D),
                                   fontSize:
-                                      MediaQuery.sizeOf(context).width < 350.0
+                                      MediaQuery.sizeOf(context).width < 370.0
                                           ? 14.0
                                           : 17.0,
                                   letterSpacing: 0.0,
