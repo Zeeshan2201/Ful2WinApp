@@ -1,3 +1,5 @@
+import 'package:http/http.dart';
+
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_autocomplete_options_list.dart';
@@ -1109,7 +1111,8 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                     ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: const BorderSide(
-                                                color: Color(0x00000000),
+                                                color: Color.fromARGB(
+                                                    0, 249, 243, 243),
                                                 width: 1,
                                               ),
                                               borderRadius:
@@ -1340,17 +1343,29 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                 onTap: () {
                                                   setState(() {
                                                     _model.availChallenges =
-                                                        true;
+                                                        false;
                                                   });
                                                 },
-                                              ),
-                                              Text(
-                                                'Incoming Invites',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      font: GoogleFonts.roboto(
+                                                child: Text(
+                                                  'Incoming Invites',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font:
+                                                            GoogleFonts.roboto(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        color:
+                                                            Color(0xFFFBD34D),
+                                                        fontSize: 24,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.bold,
                                                         fontStyle:
@@ -1359,17 +1374,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                 .bodyMedium
                                                                 .fontStyle,
                                                       ),
-                                                      color: Color(0xFFFBD34D),
-                                                      fontSize: 24,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .fontStyle,
-                                                    ),
+                                                ),
                                               ),
                                             ]
                                                 .divide(SizedBox(height: 20))
@@ -1634,8 +1639,59 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                         child:
                                                                             FFButtonWidget(
                                                                           onPressed:
-                                                                              () {
-                                                                            print('Button pressed ...');
+                                                                              () async {
+                                                                            final apiResult =
+                                                                                await AcceptChallengeCall.call(
+                                                                              token: FFAppState().token,
+                                                                              challengeId: getJsonField(
+                                                                                challenge[challengeIndex],
+                                                                                r'''$._id''',
+                                                                              ).toString(),
+                                                                            );
+                                                                            if ((apiResult?.succeeded ??
+                                                                                true)) {
+                                                                              ScaffoldMessenger.of(context).showSnackBar(
+                                                                                SnackBar(
+                                                                                  content: Text(
+                                                                                    'Challenge accepted!',
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                          font: GoogleFonts.poppins(
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                          ),
+                                                                                          color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                          letterSpacing: 0.0,
+                                                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                        ),
+                                                                                  ),
+                                                                                  duration: Duration(milliseconds: 4000),
+                                                                                  backgroundColor: Color(0x00000000),
+                                                                                  behavior: SnackBarBehavior.floating,
+                                                                                ),
+                                                                              );
+                                                                            } else {
+                                                                              ScaffoldMessenger.of(context).showSnackBar(
+                                                                                SnackBar(
+                                                                                  content: Text(
+                                                                                    'Error accepting challenge',
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                          font: GoogleFonts.poppins(
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                          ),
+                                                                                          color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                          letterSpacing: 0.0,
+                                                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                        ),
+                                                                                  ),
+                                                                                  duration: Duration(milliseconds: 4000),
+                                                                                  backgroundColor: Color(0x00000000),
+                                                                                  behavior: SnackBarBehavior.floating,
+                                                                                ),
+                                                                              );
+                                                                            }
                                                                           },
                                                                           text:
                                                                               'Accept',
@@ -1700,8 +1756,59 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                         child:
                                                                             FFButtonWidget(
                                                                           onPressed:
-                                                                              () {
-                                                                            print('Button pressed ...');
+                                                                              () async {
+                                                                            final response =
+                                                                                await RejectChallengeCall.call(
+                                                                              challengeId: getJsonField(
+                                                                                challenge[challengeIndex],
+                                                                                r'''$._id''',
+                                                                              ).toString(),
+                                                                              token: FFAppState().token,
+                                                                            );
+                                                                            if ((response?.succeeded ??
+                                                                                true)) {
+                                                                              ScaffoldMessenger.of(context).showSnackBar(
+                                                                                SnackBar(
+                                                                                  content: Text(
+                                                                                    'Challenge accepted!',
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                          font: GoogleFonts.poppins(
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                          ),
+                                                                                          color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                          letterSpacing: 0.0,
+                                                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                        ),
+                                                                                  ),
+                                                                                  duration: Duration(milliseconds: 4000),
+                                                                                  backgroundColor: Color(0x00000000),
+                                                                                  behavior: SnackBarBehavior.floating,
+                                                                                ),
+                                                                              );
+                                                                            } else {
+                                                                              ScaffoldMessenger.of(context).showSnackBar(
+                                                                                SnackBar(
+                                                                                  content: Text(
+                                                                                    'Error Rejecting challenge',
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                          font: GoogleFonts.poppins(
+                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                          ),
+                                                                                          color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                          letterSpacing: 0.0,
+                                                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                        ),
+                                                                                  ),
+                                                                                  duration: Duration(milliseconds: 4000),
+                                                                                  backgroundColor: Color(0x00000000),
+                                                                                  behavior: SnackBarBehavior.floating,
+                                                                                ),
+                                                                              );
+                                                                            }
                                                                           },
                                                                           text:
                                                                               'Reject',

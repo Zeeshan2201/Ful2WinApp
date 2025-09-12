@@ -5,14 +5,10 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/pop_ups/aboutourcompany/aboutourcompany_widget.dart';
-import 'dart:math';
-import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:provider/provider.dart';
 
 import 'supportpage_model.dart';
 export 'supportpage_model.dart';

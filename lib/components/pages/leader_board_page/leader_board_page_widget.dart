@@ -82,7 +82,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -95,7 +95,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -108,7 +108,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -131,7 +131,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: Color(0xFF000B33),
+            backgroundColor: const Color(0xFF000B33),
             body: Center(
               child: SizedBox(
                 width: 50,
@@ -154,7 +154,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
           },
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: Color(0xFF000B33),
+            backgroundColor: const Color(0xFF000B33),
             body: Container(
               width: double.infinity,
               height: double.infinity,
@@ -173,7 +173,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                   Container(
                     width: double.infinity,
                     height: 180,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         colors: [Color(0xFF08162C), Color(0x2208162C)],
                         stops: [0, 1],
@@ -185,7 +185,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 30, 0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 30, 0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -193,12 +193,12 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                             children: [
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                    const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                                 child: Container(
                                   width: 35,
                                   height: 35,
                                   decoration: BoxDecoration(
-                                    color: Color(0xA60A1B33),
+                                    color: const Color(0xA60A1B33),
                                     shape: BoxShape.circle,
                                     border: Border.all(
                                       color:
@@ -234,19 +234,19 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                               ),
                               Expanded(
                                 child: Align(
-                                  alignment: AlignmentDirectional(0, -1),
+                                  alignment: const AlignmentDirectional(0, -1),
                                   child: Container(
                                     width: 150,
                                     decoration: BoxDecoration(
-                                      color: Color(0xBB08162C),
-                                      borderRadius: BorderRadius.only(
+                                      color: const Color(0xBB08162C),
+                                      borderRadius: const BorderRadius.only(
                                         bottomLeft: Radius.circular(0),
                                         bottomRight: Radius.circular(0),
                                         topLeft: Radius.circular(25),
                                         topRight: Radius.circular(25),
                                       ),
                                       border: Border.all(
-                                        color: Color(0xFF00CFFF),
+                                        color: const Color(0xFF00CFFF),
                                         width: 2,
                                       ),
                                     ),
@@ -263,7 +263,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                       .fontWeight,
                                               fontStyle: FontStyle.italic,
                                             ),
-                                            color: Color(0xFFFBD34D),
+                                            color: const Color(0xFFFBD34D),
                                             fontSize: 24,
                                             letterSpacing: 0.0,
                                             fontWeight:
@@ -285,7 +285,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                             Container(
                               width: 100,
                               height: 2,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color(0xFF00CFFF),
                               ),
                             ),
@@ -293,7 +293,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                               child: Container(
                                 width: 100,
                                 height: 2,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Color(0xFF00CFFF),
                                 ),
                               ),
@@ -303,14 +303,14 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                         Expanded(
                           child: Container(
                             width: double.infinity,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Color(0xBB08162C),
                             ),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       10, 0, 0, 0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -332,14 +332,14 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                               ).toString(),
                                             ).image,
                                           ),
-                                          borderRadius: BorderRadius.only(
+                                          borderRadius: const BorderRadius.only(
                                             bottomLeft: Radius.circular(10),
                                             bottomRight: Radius.circular(10),
                                             topLeft: Radius.circular(10),
                                             topRight: Radius.circular(10),
                                           ),
                                           border: Border.all(
-                                            color: Color(0xFF00CFFF),
+                                            color: const Color(0xFF00CFFF),
                                             width: 2,
                                           ),
                                         ),
@@ -366,7 +366,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                         CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0, 5, 0, 0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -393,7 +393,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                               FontStyle.italic,
                                                         ),
                                                         color:
-                                                            Color(0xFF00CFFF),
+                                                            const Color(0xFF00CFFF),
                                                         fontSize: 12,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -419,7 +419,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                               FontStyle.italic,
                                                         ),
                                                         color:
-                                                            Color(0xFF00CFFF),
+                                                            const Color(0xFF00CFFF),
                                                         fontSize: 16,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -434,7 +434,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0, 5, 0, 0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -461,7 +461,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                               FontStyle.italic,
                                                         ),
                                                         color:
-                                                            Color(0xFF00CFFF),
+                                                            const Color(0xFF00CFFF),
                                                         fontSize: 12,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -487,7 +487,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                               FontStyle.italic,
                                                         ),
                                                         color:
-                                                            Color(0xFF00CFFF),
+                                                            const Color(0xFF00CFFF),
                                                         fontSize: 16,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -545,7 +545,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                         fontStyle:
                                                             FontStyle.italic,
                                                       ),
-                                                      color: Color(0xFF00CFFF),
+                                                      color: const Color(0xFF00CFFF),
                                                       fontSize: 12,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
@@ -569,7 +569,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                         fontStyle:
                                                             FontStyle.italic,
                                                       ),
-                                                      color: Color(0xFF00CFFF),
+                                                      color: const Color(0xFF00CFFF),
                                                       fontSize: 12,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
@@ -605,7 +605,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                         fontStyle:
                                                             FontStyle.italic,
                                                       ),
-                                                      color: Color(0xFF00CFFF),
+                                                      color: const Color(0xFF00CFFF),
                                                       fontSize: 12,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
@@ -629,7 +629,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                         fontStyle:
                                                             FontStyle.italic,
                                                       ),
-                                                      color: Color(0xFF00CFFF),
+                                                      color: const Color(0xFF00CFFF),
                                                       fontSize: 12,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
@@ -655,7 +655,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                   Expanded(
                     child: Container(
                       width: double.infinity,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         gradient: LinearGradient(
                           colors: [Color(0xFF08162C), Color(0x0008162C)],
                           stops: [0, 1],
@@ -666,10 +666,10 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                       child: Column(
                         children: [
                           Align(
-                            alignment: Alignment(0, 0),
+                            alignment: const Alignment(0, 0),
                             child: TabBar(
-                              labelColor: Color(0xFFFBD34D),
-                              unselectedLabelColor: Color(0x9D4CC3FF),
+                              labelColor: const Color(0xFFFBD34D),
+                              unselectedLabelColor: const Color(0x9D4CC3FF),
                               labelStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
@@ -706,9 +706,9 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                         .labelMedium
                                         .fontStyle,
                                   ),
-                              indicatorColor: Color(0xFFFBD34D),
+                              indicatorColor: const Color(0xFFFBD34D),
                               indicatorWeight: 3,
-                              tabs: [
+                              tabs: const [
                                 Tab(
                                   text: 'PRIZES',
                                 ),
@@ -733,25 +733,25 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           10, 5, 10, 0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
-                                          color: Color(0xFF0A1B33),
-                                          borderRadius: BorderRadius.only(
+                                          color: const Color(0xFF0A1B33),
+                                          borderRadius: const BorderRadius.only(
                                             bottomLeft: Radius.circular(0),
                                             bottomRight: Radius.circular(0),
                                             topLeft: Radius.circular(10),
                                             topRight: Radius.circular(10),
                                           ),
                                           border: Border.all(
-                                            color: Color(0xFF00CFFF),
+                                            color: const Color(0xFF00CFFF),
                                           ),
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0, 0, 0, 15),
                                           child: ListView(
                                             padding: EdgeInsets.zero,
@@ -759,7 +759,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                             scrollDirection: Axis.vertical,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(10, 5, 0, 5),
                                                 child: Row(
                                                   mainAxisSize:
@@ -770,7 +770,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   5, 0, 0, 0),
                                                       child: Text(
@@ -792,7 +792,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                         .bodyMedium
                                                                         .fontStyle,
                                                                   ),
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0x9D4CC3FF),
                                                                   letterSpacing:
                                                                       0.0,
@@ -809,7 +809,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   5, 0, 15, 0),
                                                       child: Text(
@@ -831,7 +831,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                         .bodyMedium
                                                                         .fontStyle,
                                                                   ),
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0x9D4CC3FF),
                                                                   letterSpacing:
                                                                       0.0,
@@ -854,7 +854,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 8, 0, 8, 10),
                                                     child: Container(
@@ -862,9 +862,9 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                       height: 50,
                                                       decoration: BoxDecoration(
                                                         color:
-                                                            Color(0xBB08162C),
+                                                            const Color(0xBB08162C),
                                                         borderRadius:
-                                                            BorderRadius.only(
+                                                            const BorderRadius.only(
                                                           bottomLeft:
                                                               Radius.circular(
                                                                   10),
@@ -880,7 +880,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                         ),
                                                         border: Border.all(
                                                           color:
-                                                              Color(0xFF00CFFF),
+                                                              const Color(0xFF00CFFF),
                                                         ),
                                                       ),
                                                       child: Row(
@@ -892,13 +892,13 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                AlignmentDirectional(
+                                                                const AlignmentDirectional(
                                                                     -1, 0),
                                                             child: Container(
                                                               width: 140,
                                                               height: 50,
                                                               decoration:
-                                                                  BoxDecoration(
+                                                                  const BoxDecoration(
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
@@ -917,7 +917,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                 ),
                                                               ),
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       1, 0),
                                                               child: Row(
                                                                 mainAxisSize:
@@ -926,12 +926,12 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                 children: [
                                                                   Align(
                                                                     alignment:
-                                                                        AlignmentDirectional(
+                                                                        const AlignmentDirectional(
                                                                             -1,
                                                                             0),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional
+                                                                      padding: const EdgeInsetsDirectional
                                                                           .fromSTEB(
                                                                               10,
                                                                               0,
@@ -949,7 +949,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                                 fontWeight: FlutterFlowTheme.of(context).displaySmall.fontWeight,
                                                                                 fontStyle: FontStyle.italic,
                                                                               ),
-                                                                              color: Color(0xFF00CFFF),
+                                                                              color: const Color(0xFF00CFFF),
                                                                               fontSize: 20,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FlutterFlowTheme.of(context).displaySmall.fontWeight,
@@ -959,7 +959,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20,
                                                                             0,
@@ -971,7 +971,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                       height:
                                                                           40,
                                                                       decoration:
-                                                                          BoxDecoration(
+                                                                          const BoxDecoration(
                                                                         boxShadow: [
                                                                           BoxShadow(
                                                                             blurRadius:
@@ -987,7 +987,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                       ),
                                                                       child:
                                                                           Align(
-                                                                        alignment: AlignmentDirectional(
+                                                                        alignment: const AlignmentDirectional(
                                                                             0,
                                                                             0),
                                                                         child:
@@ -1008,13 +1008,13 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                AlignmentDirectional(
+                                                                const AlignmentDirectional(
                                                                     1, 0),
                                                             child: Container(
                                                               width: 140,
                                                               height: 50,
                                                               decoration:
-                                                                  BoxDecoration(
+                                                                  const BoxDecoration(
                                                                 color: Color(
                                                                     0x2200CFFF),
                                                                 borderRadius:
@@ -1035,7 +1035,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                 ),
                                                               ),
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       1, 0),
                                                               child: Row(
                                                                 mainAxisSize:
@@ -1047,7 +1047,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                 children: [
                                                                   Align(
                                                                     alignment:
-                                                                        AlignmentDirectional(
+                                                                        const AlignmentDirectional(
                                                                             0,
                                                                             0),
                                                                     child: Text(
@@ -1062,7 +1062,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                               fontStyle: FontStyle.italic,
                                                                             ),
                                                                             color:
-                                                                                Color(0xFF00CFFF),
+                                                                                const Color(0xFF00CFFF),
                                                                             fontSize:
                                                                                 20,
                                                                             letterSpacing:
@@ -1086,7 +1086,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 8, 0, 8, 10),
                                                     child: Container(
@@ -1094,9 +1094,9 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                       height: 50,
                                                       decoration: BoxDecoration(
                                                         color:
-                                                            Color(0xBB08162C),
+                                                            const Color(0xBB08162C),
                                                         borderRadius:
-                                                            BorderRadius.only(
+                                                            const BorderRadius.only(
                                                           bottomLeft:
                                                               Radius.circular(
                                                                   10),
@@ -1112,7 +1112,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                         ),
                                                         border: Border.all(
                                                           color:
-                                                              Color(0xFF00CFFF),
+                                                              const Color(0xFF00CFFF),
                                                         ),
                                                       ),
                                                       child: Row(
@@ -1124,13 +1124,13 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                AlignmentDirectional(
+                                                                const AlignmentDirectional(
                                                                     -1, 0),
                                                             child: Container(
                                                               width: 140,
                                                               height: 50,
                                                               decoration:
-                                                                  BoxDecoration(
+                                                                  const BoxDecoration(
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
@@ -1149,7 +1149,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                 ),
                                                               ),
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       1, 0),
                                                               child: Row(
                                                                 mainAxisSize:
@@ -1158,12 +1158,12 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                 children: [
                                                                   Align(
                                                                     alignment:
-                                                                        AlignmentDirectional(
+                                                                        const AlignmentDirectional(
                                                                             -1,
                                                                             0),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional
+                                                                      padding: const EdgeInsetsDirectional
                                                                           .fromSTEB(
                                                                               10,
                                                                               0,
@@ -1181,7 +1181,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                                 fontWeight: FlutterFlowTheme.of(context).displaySmall.fontWeight,
                                                                                 fontStyle: FontStyle.italic,
                                                                               ),
-                                                                              color: Color(0xFF00CFFF),
+                                                                              color: const Color(0xFF00CFFF),
                                                                               fontSize: 20,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FlutterFlowTheme.of(context).displaySmall.fontWeight,
@@ -1196,13 +1196,13 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                AlignmentDirectional(
+                                                                const AlignmentDirectional(
                                                                     1, 0),
                                                             child: Container(
                                                               width: 140,
                                                               height: 50,
                                                               decoration:
-                                                                  BoxDecoration(
+                                                                  const BoxDecoration(
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
@@ -1221,7 +1221,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                 ),
                                                               ),
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       1, 0),
                                                               child: Row(
                                                                 mainAxisSize:
@@ -1233,7 +1233,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                 children: [
                                                                   Align(
                                                                     alignment:
-                                                                        AlignmentDirectional(
+                                                                        const AlignmentDirectional(
                                                                             0,
                                                                             0),
                                                                     child: Text(
@@ -1248,7 +1248,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                               fontStyle: FontStyle.italic,
                                                                             ),
                                                                             color:
-                                                                                Color(0xFF00CFFF),
+                                                                                const Color(0xFF00CFFF),
                                                                             fontSize:
                                                                                 20,
                                                                             letterSpacing:
@@ -1272,7 +1272,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 8, 0, 8, 10),
                                                     child: Container(
@@ -1280,9 +1280,9 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                       height: 50,
                                                       decoration: BoxDecoration(
                                                         color:
-                                                            Color(0xBB08162C),
+                                                            const Color(0xBB08162C),
                                                         borderRadius:
-                                                            BorderRadius.only(
+                                                            const BorderRadius.only(
                                                           bottomLeft:
                                                               Radius.circular(
                                                                   10),
@@ -1298,7 +1298,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                         ),
                                                         border: Border.all(
                                                           color:
-                                                              Color(0xFF00CFFF),
+                                                              const Color(0xFF00CFFF),
                                                         ),
                                                       ),
                                                       child: Row(
@@ -1310,13 +1310,13 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                AlignmentDirectional(
+                                                                const AlignmentDirectional(
                                                                     -1, 0),
                                                             child: Container(
                                                               width: 140,
                                                               height: 50,
                                                               decoration:
-                                                                  BoxDecoration(
+                                                                  const BoxDecoration(
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
@@ -1335,7 +1335,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                 ),
                                                               ),
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       1, 0),
                                                               child: Row(
                                                                 mainAxisSize:
@@ -1344,12 +1344,12 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                 children: [
                                                                   Align(
                                                                     alignment:
-                                                                        AlignmentDirectional(
+                                                                        const AlignmentDirectional(
                                                                             -1,
                                                                             0),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional
+                                                                      padding: const EdgeInsetsDirectional
                                                                           .fromSTEB(
                                                                               10,
                                                                               0,
@@ -1367,7 +1367,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                                 fontWeight: FlutterFlowTheme.of(context).displaySmall.fontWeight,
                                                                                 fontStyle: FontStyle.italic,
                                                                               ),
-                                                                              color: Color(0xFF00CFFF),
+                                                                              color: const Color(0xFF00CFFF),
                                                                               fontSize: 20,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FlutterFlowTheme.of(context).displaySmall.fontWeight,
@@ -1382,13 +1382,13 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                AlignmentDirectional(
+                                                                const AlignmentDirectional(
                                                                     1, 0),
                                                             child: Container(
                                                               width: 140,
                                                               height: 50,
                                                               decoration:
-                                                                  BoxDecoration(
+                                                                  const BoxDecoration(
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
@@ -1407,7 +1407,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                 ),
                                                               ),
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       1, 0),
                                                               child: Row(
                                                                 mainAxisSize:
@@ -1419,7 +1419,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                 children: [
                                                                   Align(
                                                                     alignment:
-                                                                        AlignmentDirectional(
+                                                                        const AlignmentDirectional(
                                                                             0,
                                                                             0),
                                                                     child: Text(
@@ -1434,7 +1434,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                               fontStyle: FontStyle.italic,
                                                                             ),
                                                                             color:
-                                                                                Color(0xFF00CFFF),
+                                                                                const Color(0xFF00CFFF),
                                                                             fontSize:
                                                                                 20,
                                                                             letterSpacing:
@@ -1456,7 +1456,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 8, 0, 8, 10),
                                                     child: Container(
@@ -1464,9 +1464,9 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                       height: 50,
                                                       decoration: BoxDecoration(
                                                         color:
-                                                            Color(0xBB08162C),
+                                                            const Color(0xBB08162C),
                                                         borderRadius:
-                                                            BorderRadius.only(
+                                                            const BorderRadius.only(
                                                           bottomLeft:
                                                               Radius.circular(
                                                                   10),
@@ -1482,7 +1482,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                         ),
                                                         border: Border.all(
                                                           color:
-                                                              Color(0xFF00CFFF),
+                                                              const Color(0xFF00CFFF),
                                                         ),
                                                       ),
                                                       child: Row(
@@ -1494,13 +1494,13 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                AlignmentDirectional(
+                                                                const AlignmentDirectional(
                                                                     -1, 0),
                                                             child: Container(
                                                               width: 140,
                                                               height: 50,
                                                               decoration:
-                                                                  BoxDecoration(
+                                                                  const BoxDecoration(
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
@@ -1519,7 +1519,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                 ),
                                                               ),
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       1, 0),
                                                               child: Row(
                                                                 mainAxisSize:
@@ -1528,12 +1528,12 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                 children: [
                                                                   Align(
                                                                     alignment:
-                                                                        AlignmentDirectional(
+                                                                        const AlignmentDirectional(
                                                                             -1,
                                                                             0),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional
+                                                                      padding: const EdgeInsetsDirectional
                                                                           .fromSTEB(
                                                                               10,
                                                                               0,
@@ -1551,7 +1551,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                                 fontWeight: FlutterFlowTheme.of(context).displaySmall.fontWeight,
                                                                                 fontStyle: FontStyle.italic,
                                                                               ),
-                                                                              color: Color(0xFF00CFFF),
+                                                                              color: const Color(0xFF00CFFF),
                                                                               fontSize: 20,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FlutterFlowTheme.of(context).displaySmall.fontWeight,
@@ -1566,13 +1566,13 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                AlignmentDirectional(
+                                                                const AlignmentDirectional(
                                                                     1, 0),
                                                             child: Container(
                                                               width: 140,
                                                               height: 50,
                                                               decoration:
-                                                                  BoxDecoration(
+                                                                  const BoxDecoration(
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
@@ -1591,7 +1591,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                 ),
                                                               ),
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       1, 0),
                                                               child: Row(
                                                                 mainAxisSize:
@@ -1603,7 +1603,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                 children: [
                                                                   Align(
                                                                     alignment:
-                                                                        AlignmentDirectional(
+                                                                        const AlignmentDirectional(
                                                                             0,
                                                                             0),
                                                                     child: Text(
@@ -1618,7 +1618,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                               fontStyle: FontStyle.italic,
                                                                             ),
                                                                             color:
-                                                                                Color(0xFF00CFFF),
+                                                                                const Color(0xFF00CFFF),
                                                                             fontSize:
                                                                                 20,
                                                                             letterSpacing:
@@ -1651,25 +1651,25 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           10, 5, 10, 0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
-                                          color: Color(0xFF0A1B33),
-                                          borderRadius: BorderRadius.only(
+                                          color: const Color(0xFF0A1B33),
+                                          borderRadius: const BorderRadius.only(
                                             bottomLeft: Radius.circular(0),
                                             bottomRight: Radius.circular(0),
                                             topLeft: Radius.circular(10),
                                             topRight: Radius.circular(10),
                                           ),
                                           border: Border.all(
-                                            color: Color(0xFF00CFFF),
+                                            color: const Color(0xFF00CFFF),
                                           ),
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0, 5, 0, 25),
                                           child: ListView(
                                             padding: EdgeInsets.zero,
@@ -1678,9 +1678,9 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                             children: [
                                               Align(
                                                 alignment:
-                                                    AlignmentDirectional(0, -1),
+                                                    const AlignmentDirectional(0, -1),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(0, 5, 0, 0),
                                                   child: Text(
                                                     'Your total entries - 1',
@@ -1720,7 +1720,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(10, 0, 0, 5),
                                                 child: Row(
                                                   mainAxisSize:
@@ -1731,7 +1731,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   5, 0, 0, 0),
                                                       child: Text(
@@ -1753,7 +1753,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                         .bodyMedium
                                                                         .fontStyle,
                                                                   ),
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0x9D4CC3FF),
                                                                   letterSpacing:
                                                                       0.0,
@@ -1770,7 +1770,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   5, 0, 15, 0),
                                                       child: Text(
@@ -1792,7 +1792,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                         .bodyMedium
                                                                         .fontStyle,
                                                                   ),
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0x9D4CC3FF),
                                                                   letterSpacing:
                                                                       0.0,
@@ -1855,7 +1855,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                   playersIndex];
                                                           return Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10,
                                                                         5,
@@ -1867,10 +1867,10 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                               height: 60,
                                                               decoration:
                                                                   BoxDecoration(
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xBB08162C),
                                                                 borderRadius:
-                                                                    BorderRadius
+                                                                    const BorderRadius
                                                                         .only(
                                                                   bottomLeft: Radius
                                                                       .circular(
@@ -1887,7 +1887,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                 ),
                                                                 border:
                                                                     Border.all(
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0xFF00CFFF),
                                                                 ),
                                                               ),
@@ -1904,7 +1904,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                       height:
                                                                           100,
                                                                       decoration:
-                                                                          BoxDecoration(
+                                                                          const BoxDecoration(
                                                                         borderRadius:
                                                                             BorderRadius.only(
                                                                           bottomLeft:
@@ -1919,7 +1919,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                       ),
                                                                       child:
                                                                           Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             10,
                                                                             0,
                                                                             0,
@@ -1944,7 +1944,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                                   ),
                                                                             ),
                                                                             Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                                                                               child: Container(
                                                                                 width: 40,
                                                                                 height: 40,
@@ -1967,7 +1967,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                               ),
                                                                             ),
                                                                             Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                                                                               child: Text(
                                                                                 getJsonField(
                                                                                   playersItem,
@@ -1995,7 +1995,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                     width: 100,
                                                                     height: 100,
                                                                     decoration:
-                                                                        BoxDecoration(
+                                                                        const BoxDecoration(
                                                                       color: Color(
                                                                           0x3F00CFFF),
                                                                       borderRadius:
@@ -2014,7 +2014,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                     child:
                                                                         Align(
                                                                       alignment:
-                                                                          AlignmentDirectional(
+                                                                          const AlignmentDirectional(
                                                                               0,
                                                                               0),
                                                                       child:
@@ -2061,11 +2061,11 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             10, 10, 10, 70),
                                         child: Container(
                                           width: double.infinity,
-                                          decoration: BoxDecoration(),
+                                          decoration: const BoxDecoration(),
                                           child: ListView(
                                             padding: EdgeInsets.zero,
                                             shrinkWrap: true,
@@ -2085,21 +2085,21 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                               ),
                                               Align(
                                                 alignment:
-                                                    AlignmentDirectional(0, 0),
+                                                    const AlignmentDirectional(0, 0),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(20, 10, 20, 0),
                                                   child: Container(
                                                     width: double.infinity,
                                                     decoration: BoxDecoration(
-                                                      color: Color(0xBB08162C),
+                                                      color: const Color(0xBB08162C),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               20),
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(10, 10,
                                                                   10, 0),
                                                       child: Column(
@@ -2119,7 +2119,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             10,
                                                                             0,
@@ -2155,14 +2155,14 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                               ),
                                                             ],
                                                           ),
-                                                          Divider(
+                                                          const Divider(
                                                             thickness: 0.5,
                                                             color: Color(
                                                                 0xFF746464),
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10,
                                                                         5,
@@ -2203,7 +2203,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         25,
                                                                         10,
@@ -2213,7 +2213,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                               width: double
                                                                   .infinity,
                                                               decoration:
-                                                                  BoxDecoration(),
+                                                                  const BoxDecoration(),
                                                               child: Text(
                                                                 getJsonField(
                                                                   leaderBoardPageGameResponse
@@ -2250,14 +2250,14 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                               ),
                                                             ),
                                                           ),
-                                                          Divider(
+                                                          const Divider(
                                                             thickness: 0.5,
                                                             color: Color(
                                                                 0xFF746464),
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10,
                                                                         5,
@@ -2298,7 +2298,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0,
                                                                         0,
@@ -2306,10 +2306,10 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                         10),
                                                             child: Container(
                                                               decoration:
-                                                                  BoxDecoration(),
+                                                                  const BoxDecoration(),
                                                               child: Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             25,
                                                                             0,
@@ -2358,9 +2358,9 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                               Expanded(
                                                                                 child: Container(
                                                                                   width: double.infinity,
-                                                                                  decoration: BoxDecoration(),
+                                                                                  decoration: const BoxDecoration(),
                                                                                   child: Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
+                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                                                                                     child: Text(
                                                                                       getJsonField(
                                                                                         rulesItem,

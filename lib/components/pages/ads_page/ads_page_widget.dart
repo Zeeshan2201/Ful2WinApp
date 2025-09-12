@@ -57,7 +57,7 @@ class _AdsPageWidgetState extends State<AdsPageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -81,7 +81,7 @@ class _AdsPageWidgetState extends State<AdsPageWidget>
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFF000B33),
+        backgroundColor: const Color(0xFF000B33),
         body: Container(
           width: double.infinity,
           height: double.infinity,
@@ -93,22 +93,22 @@ class _AdsPageWidgetState extends State<AdsPageWidget>
               ).image,
             ),
             gradient: LinearGradient(
-              colors: [FlutterFlowTheme.of(context).primary, Color(0xFF000B33)],
-              stops: [0, 1],
-              begin: AlignmentDirectional(0, -1),
-              end: AlignmentDirectional(0, 1),
+              colors: [FlutterFlowTheme.of(context).primary, const Color(0xFF000B33)],
+              stops: const [0, 1],
+              begin: const AlignmentDirectional(0, -1),
+              end: const AlignmentDirectional(0, 1),
             ),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -120,7 +120,7 @@ class _AdsPageWidgetState extends State<AdsPageWidget>
                         child: Container(
                           width: 40,
                           height: 35,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Color(0x33FFFFFF),
                             borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(40),
@@ -148,27 +148,27 @@ class _AdsPageWidgetState extends State<AdsPageWidget>
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 160, 0, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 160, 0, 0),
                 child: Container(
                   width: double.infinity,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10, 25, 10, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(10, 25, 10, 0),
                 child: Container(
                   width: double.infinity,
                   height: 186.1,
                   decoration: BoxDecoration(
-                    color: Color(0xBB08162C),
-                    borderRadius: BorderRadius.only(
+                    color: const Color(0xBB08162C),
+                    borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(25),
                       bottomRight: Radius.circular(25),
                       topLeft: Radius.circular(25),
                       topRight: Radius.circular(25),
                     ),
                     border: Border.all(
-                      color: Color(0xFF00CFFF),
+                      color: const Color(0xFF00CFFF),
                     ),
                   ),
                   child: Column(
@@ -191,7 +191,7 @@ class _AdsPageWidgetState extends State<AdsPageWidget>
                                         .displayLarge
                                         .fontStyle,
                                   ),
-                                  color: Color(0xFF007BFF),
+                                  color: const Color(0xFF007BFF),
                                   fontSize: 30,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w600,
@@ -199,7 +199,7 @@ class _AdsPageWidgetState extends State<AdsPageWidget>
                                       .displayLarge
                                       .fontStyle,
                                 ),
-                            colors: [
+                            colors: const [
                               Color(0xFF00CFFF),
                               Color(0xFF00B8FF),
                               Color(0xFF007BFF)
@@ -226,7 +226,7 @@ class _AdsPageWidgetState extends State<AdsPageWidget>
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                                  color: Color(0xFFFBD34D),
+                                  color: const Color(0xFFFBD34D),
                                   fontSize:
                                       MediaQuery.sizeOf(context).width < 350.0
                                           ? 14.0
@@ -242,7 +242,7 @@ class _AdsPageWidgetState extends State<AdsPageWidget>
                           ),
                         ],
                       ),
-                    ].divide(SizedBox(height: 20)),
+                    ].divide(const SizedBox(height: 20)),
                   ),
                 ).animateOnPageLoad(
                     animationsMap['containerOnPageLoadAnimation2']!),

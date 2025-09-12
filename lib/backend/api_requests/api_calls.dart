@@ -203,11 +203,11 @@ class ChallengesCall {
   "challengedUserId": "$challengedUserId",
   "message": "$message"
 }''';
-
+    print("apiRequestBody $apiRequestBody ");
     return ApiManager.instance.makeApiCall(
       callName: 'challenges',
       apiUrl: '${baseUrl}challenges',
-      callType: ApiCallType.GET,
+      callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer $token',
       },

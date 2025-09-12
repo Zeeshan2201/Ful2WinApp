@@ -71,7 +71,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -83,7 +83,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -95,7 +95,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -107,7 +107,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -119,7 +119,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -131,7 +131,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: Color(0x80FFFFFF),
+            color: const Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -157,7 +157,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFF000B33),
+        backgroundColor: const Color(0xFF000B33),
         body: Container(
           width: double.infinity,
           height: double.infinity,
@@ -168,7 +168,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                 'assets/images/bgimage.png',
               ).image,
             ),
-            gradient: LinearGradient(
+            gradient: const LinearGradient(
               colors: [Color(0xFF0B33FF), Color(0xFF000B33)],
               stops: [0, 1],
               begin: AlignmentDirectional(0, -1),
@@ -199,15 +199,15 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(10, 15, 0, 0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(10, 15, 0, 0),
                     child: Container(
                       width: 40,
                       height: 35,
                       decoration: BoxDecoration(
-                        color: Color(0x33FFFFFF),
+                        color: const Color(0x33FFFFFF),
                         borderRadius: BorderRadius.circular(40),
                       ),
-                      alignment: AlignmentDirectional(0, 0),
+                      alignment: const AlignmentDirectional(0, 0),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -227,7 +227,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                   .setAsset('assets/audios/click.mp3')
                                   .then((_) => _model.soundPlayer1!.play());
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.chevron_left_outlined,
                               color: Color(0xFFE9EEF1),
                               size: 26,
@@ -247,7 +247,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 5),
+                            padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 5),
                             child: Text(
                               'Refer & Earn',
                               style: FlutterFlowTheme.of(context)
@@ -259,7 +259,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFFFBD34D),
+                                    color: const Color(0xFFFBD34D),
                                     fontSize: 24,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
@@ -283,15 +283,15 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                             : 170.0,
                         height: 66.2,
                         decoration: BoxDecoration(
-                          color: Color(0xBB08162C),
-                          borderRadius: BorderRadius.only(
+                          color: const Color(0xBB08162C),
+                          borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.circular(10),
                             bottomRight: Radius.circular(10),
                             topLeft: Radius.circular(10),
                             topRight: Radius.circular(10),
                           ),
                           border: Border.all(
-                            color: Color(0xFF00CFFF),
+                            color: const Color(0xFF00CFFF),
                           ),
                         ),
                         child: Column(
@@ -299,7 +299,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                           children: [
                             Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                                  const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment:
@@ -321,7 +321,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
-                                          color: Color(0xFFD8E6F1),
+                                          color: const Color(0xFFD8E6F1),
                                           letterSpacing: 0.0,
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
@@ -338,7 +338,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                             ),
                             Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                                  const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                               child: Text(
                                 getJsonField(
                                   columnMyRefferalsResponse.jsonBody,
@@ -353,7 +353,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFFEFF4F8),
+                                      color: const Color(0xFFEFF4F8),
                                       fontSize: 16,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
@@ -372,15 +372,15 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                             : 170.0,
                         height: 66.2,
                         decoration: BoxDecoration(
-                          color: Color(0xBB08162C),
-                          borderRadius: BorderRadius.only(
+                          color: const Color(0xBB08162C),
+                          borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.circular(10),
                             bottomRight: Radius.circular(10),
                             topLeft: Radius.circular(10),
                             topRight: Radius.circular(10),
                           ),
                           border: Border.all(
-                            color: Color(0xFF00CFFF),
+                            color: const Color(0xFF00CFFF),
                           ),
                         ),
                         child: Column(
@@ -388,7 +388,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                           children: [
                             Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                                  const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment:
@@ -410,7 +410,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
-                                          color: Color(0xFFD8E6F1),
+                                          color: const Color(0xFFD8E6F1),
                                           letterSpacing: 0.0,
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
@@ -427,7 +427,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                             ),
                             Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                                  const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                               child: Text(
                                 getJsonField(
                                   columnMyRefferalsResponse.jsonBody,
@@ -442,7 +442,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFFEFF4F8),
+                                      color: const Color(0xFFEFF4F8),
                                       fontSize: 16,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
@@ -458,7 +458,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -469,15 +469,15 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                               : 170.0,
                           height: 66.2,
                           decoration: BoxDecoration(
-                            color: Color(0xBB08162C),
-                            borderRadius: BorderRadius.only(
+                            color: const Color(0xBB08162C),
+                            borderRadius: const BorderRadius.only(
                               bottomLeft: Radius.circular(10),
                               bottomRight: Radius.circular(10),
                               topLeft: Radius.circular(10),
                               topRight: Radius.circular(10),
                             ),
                             border: Border.all(
-                              color: Color(0xFF00CFFF),
+                              color: const Color(0xFF00CFFF),
                             ),
                           ),
                           child: Column(
@@ -485,7 +485,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                             children: [
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                                    const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
@@ -507,7 +507,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
-                                            color: Color(0xFFD8E6F1),
+                                            color: const Color(0xFFD8E6F1),
                                             letterSpacing: 0.0,
                                             fontWeight:
                                                 FlutterFlowTheme.of(context)
@@ -524,7 +524,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                               ),
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                                    const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                                 child: Text(
                                   getJsonField(
                                     columnMyRefferalsResponse.jsonBody,
@@ -540,7 +540,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFFEFF4F8),
+                                        color: const Color(0xFFEFF4F8),
                                         fontSize: 16,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
@@ -559,15 +559,15 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                               : 170.0,
                           height: 66.2,
                           decoration: BoxDecoration(
-                            color: Color(0xBB08162C),
-                            borderRadius: BorderRadius.only(
+                            color: const Color(0xBB08162C),
+                            borderRadius: const BorderRadius.only(
                               bottomLeft: Radius.circular(10),
                               bottomRight: Radius.circular(10),
                               topLeft: Radius.circular(10),
                               topRight: Radius.circular(10),
                             ),
                             border: Border.all(
-                              color: Color(0xFF00CFFF),
+                              color: const Color(0xFF00CFFF),
                             ),
                           ),
                           child: Column(
@@ -575,7 +575,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                             children: [
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                                    const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
@@ -597,7 +597,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
-                                            color: Color(0xFFD8E6F1),
+                                            color: const Color(0xFFD8E6F1),
                                             letterSpacing: 0.0,
                                             fontWeight:
                                                 FlutterFlowTheme.of(context)
@@ -614,7 +614,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                               ),
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                                    const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                                 child: Text(
                                   getJsonField(
                                     columnMyRefferalsResponse.jsonBody,
@@ -630,7 +630,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFFEFF4F8),
+                                        color: const Color(0xFFEFF4F8),
                                         fontSize: 16,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
@@ -648,30 +648,30 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                   ),
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(10, 20, 10, 0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(10, 20, 10, 0),
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
-                          color: Color(0xBB08162C),
-                          borderRadius: BorderRadius.only(
+                          color: const Color(0xBB08162C),
+                          borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.circular(10),
                             bottomRight: Radius.circular(10),
                             topLeft: Radius.circular(10),
                             topRight: Radius.circular(10),
                           ),
                           border: Border.all(
-                            color: Color(0xFF00CFFF),
+                            color: const Color(0xFF00CFFF),
                           ),
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                           child: Column(
                             children: [
                               Align(
-                                alignment: Alignment(0, 0),
+                                alignment: const Alignment(0, 0),
                                 child: TabBar(
-                                  labelColor: Color(0xFFEFF0F1),
-                                  unselectedLabelColor: Color(0xFF6E8594),
+                                  labelColor: const Color(0xFFEFF0F1),
+                                  unselectedLabelColor: const Color(0xFF6E8594),
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .titleMedium
                                       .override(
@@ -721,7 +721,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                           ),
                                   indicatorColor:
                                       FlutterFlowTheme.of(context).secondary,
-                                  tabs: [
+                                  tabs: const [
                                     Tab(
                                       text: ' Referral code',
                                     ),
@@ -745,7 +745,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     10, 0, 0, 0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -768,7 +768,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                   .fontStyle,
                                                         ),
                                                         color:
-                                                            Color(0xFFE4E9ED),
+                                                            const Color(0xFFE4E9ED),
                                                         fontSize: 16,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -785,7 +785,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0, 20, 0, 0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -801,9 +801,9 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                           : 324.0,
                                                   height: 100,
                                                   decoration: BoxDecoration(
-                                                    color: Color(0x33FFFFFF),
+                                                    color: const Color(0x33FFFFFF),
                                                     borderRadius:
-                                                        BorderRadius.only(
+                                                        const BorderRadius.only(
                                                       bottomLeft:
                                                           Radius.circular(10),
                                                       bottomRight:
@@ -814,7 +814,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                           Radius.circular(10),
                                                     ),
                                                     border: Border.all(
-                                                      color: Color(0xFF00CFFF),
+                                                      color: const Color(0xFF00CFFF),
                                                     ),
                                                   ),
                                                   child: Column(
@@ -830,7 +830,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10,
                                                                         0,
@@ -857,7 +857,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                           .bodyMedium
                                                                           .fontStyle,
                                                                     ),
-                                                                    color: Color(
+                                                                    color: const Color(
                                                                         0xFFFBFDFF),
                                                                     fontSize:
                                                                         16,
@@ -888,7 +888,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                     5,
                                                                     0,
                                                                     0),
-                                                            child: Icon(
+                                                            child: const Icon(
                                                               Icons
                                                                   .content_copy,
                                                               color: Color(
@@ -898,7 +898,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0,
                                                                         5,
@@ -920,14 +920,14 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                     : 70.0,
                                                                 height: 40,
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0,
                                                                             0,
                                                                             0,
                                                                             0),
                                                                 iconPadding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0,
                                                                             0,
@@ -980,7 +980,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(0, 10,
                                                                     0, 0),
                                                         child: Row(
@@ -992,7 +992,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           10,
                                                                           0,
@@ -1006,7 +1006,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                     : 138.0,
                                                                 height: 34.7,
                                                                 decoration:
-                                                                    BoxDecoration(
+                                                                    const BoxDecoration(
                                                                   color: Color(
                                                                       0xFF22C55E),
                                                                   borderRadius:
@@ -1074,7 +1074,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                         MainAxisSize
                                                                             .max,
                                                                     children: [
-                                                                      Padding(
+                                                                      const Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
                                                                             10,
                                                                             0,
@@ -1091,7 +1091,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                         ),
                                                                       ),
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             10,
                                                                             0,
                                                                             0,
@@ -1106,7 +1106,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                                   fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                   fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                 ),
-                                                                                color: Color(0xFFE8EDF0),
+                                                                                color: const Color(0xFFE8EDF0),
                                                                                 fontSize: MediaQuery.sizeOf(context).width < 350.0 ? 12.0 : 16.0,
                                                                                 letterSpacing: 0.0,
                                                                                 fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
@@ -1130,7 +1130,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                   : 138.0,
                                                               height: 34.7,
                                                               decoration:
-                                                                  BoxDecoration(
+                                                                  const BoxDecoration(
                                                                 color: Color(
                                                                     0xFF3B82F6),
                                                                 borderRadius:
@@ -1155,7 +1155,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                     MainAxisSize
                                                                         .max,
                                                                 children: [
-                                                                  Padding(
+                                                                  const Padding(
                                                                     padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             10,
@@ -1171,7 +1171,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             10,
                                                                             0,
@@ -1189,7 +1189,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                             ),
                                                                             color:
-                                                                                Color(0xFFE8EDF0),
+                                                                                const Color(0xFFE8EDF0),
                                                                             fontSize: MediaQuery.sizeOf(context).width < 350.0
                                                                                 ? 12.0
                                                                                 : 16.0,
@@ -1218,7 +1218,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     10, 30, 0, 0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -1241,7 +1241,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                   .fontStyle,
                                                         ),
                                                         color:
-                                                            Color(0xFFE4E9ED),
+                                                            const Color(0xFFE4E9ED),
                                                         fontSize: 16,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -1258,14 +1258,14 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     20, 10, 20, 0),
                                             child: Container(
                                               width: double.infinity,
                                               height: 87.1,
                                               decoration: BoxDecoration(
-                                                color: Color(0x33FFFFFF),
-                                                borderRadius: BorderRadius.only(
+                                                color: const Color(0x33FFFFFF),
+                                                borderRadius: const BorderRadius.only(
                                                   bottomLeft:
                                                       Radius.circular(10),
                                                   bottomRight:
@@ -1274,13 +1274,13 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                   topRight: Radius.circular(10),
                                                 ),
                                                 border: Border.all(
-                                                  color: Color(0xFF00CFFF),
+                                                  color: const Color(0xFF00CFFF),
                                                 ),
                                               ),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
-                                                  Padding(
+                                                  const Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
@@ -1303,7 +1303,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 0, 5, 0, 0),
                                                     child: Text(
@@ -1325,7 +1325,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                       .bodyMedium
                                                                       .fontStyle,
                                                                 ),
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFFEBF0F4),
                                                                 letterSpacing:
                                                                     0.0,
@@ -1347,14 +1347,14 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     20, 10, 20, 0),
                                             child: Container(
                                               width: double.infinity,
                                               height: 87.1,
                                               decoration: BoxDecoration(
-                                                color: Color(0x33FFFFFF),
-                                                borderRadius: BorderRadius.only(
+                                                color: const Color(0x33FFFFFF),
+                                                borderRadius: const BorderRadius.only(
                                                   bottomLeft:
                                                       Radius.circular(10),
                                                   bottomRight:
@@ -1363,13 +1363,13 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                   topRight: Radius.circular(10),
                                                 ),
                                                 border: Border.all(
-                                                  color: Color(0xFF00CFFF),
+                                                  color: const Color(0xFF00CFFF),
                                                 ),
                                               ),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
-                                                  Padding(
+                                                  const Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
@@ -1392,7 +1392,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 0, 5, 0, 0),
                                                     child: Text(
@@ -1414,7 +1414,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                       .bodyMedium
                                                                       .fontStyle,
                                                                 ),
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFFEBF0F4),
                                                                 letterSpacing:
                                                                     0.0,
@@ -1436,14 +1436,14 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     20, 10, 20, 10),
                                             child: Container(
                                               width: double.infinity,
                                               height: 87.1,
                                               decoration: BoxDecoration(
-                                                color: Color(0x33FFFFFF),
-                                                borderRadius: BorderRadius.only(
+                                                color: const Color(0x33FFFFFF),
+                                                borderRadius: const BorderRadius.only(
                                                   bottomLeft:
                                                       Radius.circular(10),
                                                   bottomRight:
@@ -1452,13 +1452,13 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                   topRight: Radius.circular(10),
                                                 ),
                                                 border: Border.all(
-                                                  color: Color(0xFF00CFFF),
+                                                  color: const Color(0xFF00CFFF),
                                                 ),
                                               ),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
-                                                  Padding(
+                                                  const Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
@@ -1481,7 +1481,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 0, 5, 0, 0),
                                                     child: Text(
@@ -1503,7 +1503,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                       .bodyMedium
                                                                       .fontStyle,
                                                                 ),
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFFEBF0F4),
                                                                 letterSpacing:
                                                                     0.0,
@@ -1534,9 +1534,9 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                           children: [
                                             Expanded(
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(10, 20, 10, 0),
-                                                child: Container(
+                                                child: SizedBox(
                                                   width: double.infinity,
                                                   child: TextFormField(
                                                     controller:
@@ -1564,7 +1564,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                       .labelMedium
                                                                       .fontStyle,
                                                                 ),
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFFF2F7FB),
                                                                 letterSpacing:
                                                                     0.0,
@@ -1595,7 +1595,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                       .labelMedium
                                                                       .fontStyle,
                                                                 ),
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFFEEF4F8),
                                                                 letterSpacing:
                                                                     0.0,
@@ -1610,7 +1610,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: BorderSide(
+                                                        borderSide: const BorderSide(
                                                           color:
                                                               Color(0x00000000),
                                                           width: 1,
@@ -1621,7 +1621,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                       ),
                                                       focusedBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: BorderSide(
+                                                        borderSide: const BorderSide(
                                                           color:
                                                               Color(0x00000000),
                                                           width: 1,
@@ -1656,7 +1656,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                       ),
                                                       filled: true,
                                                       fillColor:
-                                                          Color(0x33FFFFFF),
+                                                          const Color(0x33FFFFFF),
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -1676,7 +1676,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                     .fontStyle,
                                                           ),
                                                           color:
-                                                              Color(0xFFEDF0F3),
+                                                              const Color(0xFFEDF0F3),
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
@@ -1706,7 +1706,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0, 10, 0, 0),
                                           child: Container(
                                             width: MediaQuery.sizeOf(context)
@@ -1715,7 +1715,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                 ? 280.0
                                                 : 348.0,
                                             height: 35.8,
-                                            decoration: BoxDecoration(
+                                            decoration: const BoxDecoration(
                                               color: Color(0x33FFFFFF),
                                               borderRadius: BorderRadius.only(
                                                 bottomLeft: Radius.circular(10),
@@ -1731,7 +1731,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                   MainAxisAlignment.center,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(0, 5, 0, 0),
                                                   child: Row(
                                                     mainAxisSize:
@@ -1758,7 +1758,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                         .bodyMedium
                                                                         .fontStyle,
                                                                   ),
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0xFFE4E9ED),
                                                                   fontSize: 16,
                                                                   letterSpacing:
@@ -1790,7 +1790,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                         .bodyMedium
                                                                         .fontStyle,
                                                                   ),
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0xFFE4E9ED),
                                                                   fontSize: 16,
                                                                   letterSpacing:
@@ -1822,7 +1822,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                         .bodyMedium
                                                                         .fontStyle,
                                                                   ),
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0xFFE4E9ED),
                                                                   fontSize: 16,
                                                                   letterSpacing:
@@ -1854,7 +1854,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                         .bodyMedium
                                                                         .fontStyle,
                                                                   ),
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0xFFE4E9ED),
                                                                   fontSize: 16,
                                                                   letterSpacing:
@@ -1877,7 +1877,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0, 10, 0, 0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
