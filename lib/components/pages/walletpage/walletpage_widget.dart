@@ -12,6 +12,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'walletpage_model.dart';
 export 'walletpage_model.dart';
+import '/index.dart';
 
 /// wallet
 class WalletpageWidget extends StatefulWidget {
@@ -79,7 +80,7 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
             ),
             Padding(
               padding:
-                  const EdgeInsetsDirectional.fromSTEB(10.0, 60.0, 10.0, 0.0),
+                  const EdgeInsetsDirectional.fromSTEB(10.0, 60.0, 10.0, 100.0),
               child: FutureBuilder<ApiCallResponse>(
                 future: ProfileResponse,
                 builder: (context, snapshot) {
@@ -610,6 +611,20 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                       ),
                                       onPressed: () {
                                         print('IconButton pressed ...');
+
+                                        showDialog(
+                                          context: context,
+                                          barrierColor: Colors
+                                              .black54, // background dim effect
+                                          builder: (context) => const Dialog(
+                                            backgroundColor: Colors
+                                                .transparent, // no white box
+                                            insetPadding: EdgeInsets.all(
+                                                10), // optional padding
+                                            child:
+                                                SpinWheelWidget(), // directly show your widget
+                                          ),
+                                        );
                                       },
                                     ),
                                     Text(

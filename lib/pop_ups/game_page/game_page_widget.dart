@@ -506,7 +506,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                               ),
                                         ),
                                         Text(
-                                          'â¹20 â â¹100',
+                                          '20 â â¹100',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(

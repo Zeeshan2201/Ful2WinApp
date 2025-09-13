@@ -2,6 +2,7 @@ import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pop_ups/navbar/navbar_widget.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
@@ -30,16 +31,11 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final animationsMap = <String, AnimationInfo>{};
-  late Future<ApiCallResponse> profileResponse;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => ProfilepageModel());
-    profileResponse = ProfileCall.call(
-      token: FFAppState().token,
-      userId: FFAppState().userId,
-    );
 
     animationsMap.addAll({
       'containerOnPageLoadAnimation1': AnimationInfo(
@@ -47,7 +43,7 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
         effectsBuilder: () => [
           FadeEffect(
             curve: Curves.easeIn,
-            delay: 180.0.ms,
+            delay: 0.0.ms,
             duration: 600.0.ms,
             begin: 0.0,
             end: 1.0,
@@ -117,7 +113,10 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
     context.watch<FFAppState>();
 
     return FutureBuilder<ApiCallResponse>(
-      future: profileResponse,
+      future: ProfileCall.call(
+        token: FFAppState().token,
+        userId: FFAppState().userId,
+      ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {

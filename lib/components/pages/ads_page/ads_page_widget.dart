@@ -1,12 +1,14 @@
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-//import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:math';
+import 'dart:ui';
 import 'package:flutter/material.dart';
-//import 'package:flutter/scheduler.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
-//import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import 'ads_page_model.dart';
@@ -41,7 +43,7 @@ class _AdsPageWidgetState extends State<AdsPageWidget>
         effectsBuilder: () => [
           FadeEffect(
             curve: Curves.easeIn,
-            delay: 180.0.ms,
+            delay: 0.0.ms,
             duration: 600.0.ms,
             begin: 0.0,
             end: 1.0,
@@ -91,7 +93,10 @@ class _AdsPageWidgetState extends State<AdsPageWidget>
               ).image,
             ),
             gradient: LinearGradient(
-              colors: [FlutterFlowTheme.of(context).primary, const Color(0xFF000B33)],
+              colors: [
+                FlutterFlowTheme.of(context).primary,
+                const Color(0xFF000B33)
+              ],
               stops: const [0, 1],
               begin: const AlignmentDirectional(0, -1),
               end: const AlignmentDirectional(0, 1),
@@ -106,7 +111,8 @@ class _AdsPageWidgetState extends State<AdsPageWidget>
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -226,7 +232,7 @@ class _AdsPageWidgetState extends State<AdsPageWidget>
                                   ),
                                   color: const Color(0xFFFBD34D),
                                   fontSize:
-                                      MediaQuery.sizeOf(context).width < 350.0
+                                      MediaQuery.sizeOf(context).width < 370.0
                                           ? 14.0
                                           : 17.0,
                                   letterSpacing: 0.0,

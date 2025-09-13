@@ -2208,10 +2208,10 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                             0, 10, 0, 5),
                                                     child: Row(
                                                       mainAxisSize:
-                                                          MainAxisSize.min,
+                                                          MainAxisSize.max,
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
-                                                              .spaceAround,
+                                                              .spaceEvenly,
                                                       children: [
                                                         Padding(
                                                           padding:
