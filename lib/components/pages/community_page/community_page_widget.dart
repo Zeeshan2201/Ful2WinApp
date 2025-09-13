@@ -2219,7 +2219,12 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                                   .fromSTEB(
                                                                   10, 0, 10, 0),
                                                           child: Container(
-                                                            width: 250,
+                                                            width: MediaQuery.sizeOf(
+                                                                            context)
+                                                                        .width <
+                                                                    370.0
+                                                                ? 200.0
+                                                                : 250.0,
                                                             decoration:
                                                                 BoxDecoration(
                                                               color: FlutterFlowTheme

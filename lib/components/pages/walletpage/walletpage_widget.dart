@@ -60,7 +60,10 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
             ).image,
           ),
           gradient: LinearGradient(
-            colors: [FlutterFlowTheme.of(context).primary, const Color(0xFF000B33)],
+            colors: [
+              FlutterFlowTheme.of(context).primary,
+              const Color(0xFF000B33)
+            ],
             stops: const [0.0, 1.0],
             begin: const AlignmentDirectional(0.17, -1.0),
             end: const AlignmentDirectional(-0.17, 1.0),
@@ -75,7 +78,8 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
               child: const HeaderWidget(),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(10.0, 60.0, 10.0, 0.0),
+              padding:
+                  const EdgeInsetsDirectional.fromSTEB(10.0, 60.0, 10.0, 0.0),
               child: FutureBuilder<ApiCallResponse>(
                 future: ProfileResponse,
                 builder: (context, snapshot) {
@@ -128,8 +132,8 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 30.0, 0.0, 0.0),
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(0.0, 30.0, 0.0, 0.0),
                                         child: Container(
                                           width: 77.0,
                                           height: 77.0,
@@ -167,8 +171,10 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                           Opacity(
                                             opacity: 0.9,
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 5.0, 0.0),
+                                              padding:
+                                                  const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                      0.0, 0.0, 5.0, 0.0),
                                               child: Text(
                                                 'Coins',
                                                 style: FlutterFlowTheme.of(
@@ -184,7 +190,8 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                                                 .bodyMedium
                                                                 .fontStyle,
                                                       ),
-                                                      color: const Color(0xFFF0F0F0),
+                                                      color: const Color(
+                                                          0xFFF0F0F0),
                                                       fontSize: 16.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
@@ -216,45 +223,44 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                             MainAxisAlignment.center,
                                         children: [
                                           Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 10.0, 0.0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(0.0, 0.0, 10.0, 0.0),
                                             child: Text(
                                               getJsonField(
                                                 columnProfileResponse.jsonBody,
                                                 r'''$.coins''',
                                               ).toString(),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        color:
-                                                            const Color(0xFFFFD54A),
-                                                        fontSize: 17.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    font: GoogleFonts.inter(
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                    color:
+                                                        const Color(0xFFFFD54A),
+                                                    fontSize: 17.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
                                             ),
                                           ),
                                           const FaIcon(
@@ -330,36 +336,38 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                                       .jsonBody,
                                                   r'''$.balance''',
                                                 ).toString(),
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      font: GoogleFonts.inter(
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
-                                                      color: const Color(0xFFFFD54A),
-                                                      fontSize: 14.0,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .fontWeight,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .fontStyle,
-                                                    ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          color: const Color(
+                                                              0xFFFFD54A),
+                                                          fontSize: 14.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
                                               ),
                                             ],
                                           ),
@@ -449,8 +457,8 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                         ],
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 10.0, 0.0, 0.0),
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(0.0, 10.0, 0.0, 0.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
@@ -791,7 +799,8 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                 0.0, 15.0, 0.0, 15.0),
                             child: FFButtonWidget(
                               onPressed: () async {
-                                context.pushNamed(HistoryWidget.routeName);
+                                context.pushNamed(
+                                    TransactionHistoryWidget.routeName);
                               },
                               text: 'History',
                               options: FFButtonOptions(
@@ -799,8 +808,9 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                 height: 56.0,
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
+                                iconPadding:
+                                    const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
                                 color: const Color(0xC10B33FF),
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall

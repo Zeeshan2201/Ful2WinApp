@@ -2,16 +2,11 @@ import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:math';
-import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:provider/provider.dart';
 
 import 'leader_board_page_model.dart';
 export 'leader_board_page_model.dart';
@@ -2078,7 +2073,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                   image: DecorationImage(
                                                     fit: BoxFit.fill,
                                                     image: Image.asset(
-                                                      'assets/images/ChatGPT_Image_Aug_28,_2025,_04_21_55_PM-Photoroom_(2).png',
+                                                      'assets/images/leaderboard.png',
                                                     ).image,
                                                   ),
                                                 ),

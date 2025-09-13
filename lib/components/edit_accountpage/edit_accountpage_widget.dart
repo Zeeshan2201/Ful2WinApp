@@ -870,7 +870,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                     image: DecorationImage(
                                       fit: BoxFit.fill,
                                       image: Image.asset(
-                                        'assets/images/3d-illustration-futuristic-glowing-podium-260nw-2473181383-Photoroom_(1)_(1).png',
+                                        'assets/images/bottomPanel.png',
                                       ).image,
                                     ),
                                   ),
