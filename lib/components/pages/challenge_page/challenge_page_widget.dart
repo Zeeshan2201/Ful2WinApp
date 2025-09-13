@@ -45,6 +45,8 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
   List<String> _filteredUserNames = [];
   List<String> _filteredGameNames = [];
   late Future<ApiCallResponse> allUsersResponse;
+  // Track challenge IDs currently being processed to prevent duplicate taps
+  final Set<String> _processingChallengeIds = <String>{};
 
   // Safely resolve profile/remote images, falling back to a local asset when invalid.
   ImageProvider<Object> _safeNetworkOrAsset(String? url) {
@@ -1409,12 +1411,49 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                   snapshot.data!;
                                               return Builder(
                                                 builder: (context) {
-                                                  final challenge =
+                                                  final allChallenges =
                                                       getJsonField(
                                                     listViewGamesResponse
                                                         .jsonBody,
                                                     r'''$.challenges''',
                                                   ).toList();
+                                                  final myUserId = FFAppState().userId;
+                                                  // Filter incoming invites: only where current user is the challenged recipient
+                                                  // and ensure current user is not the challenger.
+                                                  final challenge = allChallenges.where((c) {
+                                                    String challengedId = getJsonField(c, r'''$.challengedUser._id''')?.toString() ?? '';
+                                                    if (challengedId.isEmpty || challengedId == 'null') {
+                                                      challengedId = getJsonField(c, r'''$.challengee._id''')?.toString() ?? '';
+                                                    }
+                                                    if (challengedId.isEmpty || challengedId == 'null') {
+                                                      challengedId = getJsonField(c, r'''$.recipient._id''')?.toString() ?? '';
+                                                    }
+                                                    if (challengedId.isEmpty || challengedId == 'null') {
+                                                      challengedId = getJsonField(c, r'''$.challenged._id''')?.toString() ?? '';
+                                                    }
+                                                    if (challengedId.isEmpty || challengedId == 'null') {
+                                                      challengedId = getJsonField(c, r'''$.challengedUser.id''')?.toString() ?? '';
+                                                    }
+                                                    if (challengedId.isEmpty || challengedId == 'null') {
+                                                      challengedId = getJsonField(c, r'''$.challengee.id''')?.toString() ?? '';
+                                                    }
+                                                    if (challengedId.isEmpty || challengedId == 'null') {
+                                                      challengedId = getJsonField(c, r'''$.recipient.id''')?.toString() ?? '';
+                                                    }
+                                                    if (challengedId.isEmpty || challengedId == 'null') {
+                                                      challengedId = getJsonField(c, r'''$.challenged.id''')?.toString() ?? '';
+                                                    }
+
+                                                    String challengerId = getJsonField(c, r'''$.challenger._id''')?.toString() ?? '';
+                                                    if (challengerId.isEmpty || challengerId == 'null') {
+                                                      challengerId = getJsonField(c, r'''$.challenger.id''')?.toString() ?? '';
+                                                    }
+
+                                                    final isChallengedMe = challengedId == myUserId;
+                                                    final isChallengerMe = challengerId == myUserId;
+                                                    return isChallengedMe && !isChallengerMe;
+                                                  }).toList();
+                                                  debugPrint('[INCOMING] total=' + (allChallenges.length).toString() + ', filtered=' + (challenge.length).toString());
 
                                                   return ListView.separated(
                                                     padding: EdgeInsets.zero,
@@ -1636,59 +1675,78 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                         ),
                                                                         child:
                                                                             FFButtonWidget(
-                                                                          onPressed:
-                                                                              () async {
-                                                                            final apiResult =
-                                                                                await AcceptChallengeCall.call(
-                                                                              token: FFAppState().token,
-                                                                              challengeId: getJsonField(
-                                                                                challenge[challengeIndex],
-                                                                                r'''$._id''',
-                                                                              ).toString(),
-                                                                            );
-                                                                            if ((apiResult.succeeded ??
-                                                                                true)) {
-                                                                              ScaffoldMessenger.of(context).showSnackBar(
-                                                                                SnackBar(
-                                                                                  content: Text(
-                                                                                    'Challenge accepted!',
-                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                          font: GoogleFonts.poppins(
+                                                                          onPressed: () async {
+                                                                            final id = getJsonField(
+                                                                              challenge[challengeIndex],
+                                                                              r'''$._id''',
+                                                                            ).toString();
+                                                                            if (_processingChallengeIds.contains(id)) return;
+                                                                            setState(() {
+                                                                              _processingChallengeIds.add(id);
+                                                                            });
+                                                                            try {
+                                                                              print('[ACCEPT] Starting API call for challengeId=' + id);
+                                                                              final apiResult = await AcceptChallengeCall.call(
+                                                                                token: FFAppState().token,
+                                                                                challengeId: id,
+                                                                              );
+                                                                              print('[ACCEPT] Response: succeeded=' + (apiResult.succeeded == true).toString() +
+                                                                                  ', statusCode=' + (apiResult.statusCode.toString()) +
+                                                                                  ', body=' + apiResult.jsonBody.toString());
+                                                                              if (apiResult.succeeded == true) {
+                                                                                ScaffoldMessenger.of(context).showSnackBar(
+                                                                                  SnackBar(
+                                                                                    content: Text(
+                                                                                      'Challenge accepted!',
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            font: GoogleFonts.poppins(
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                            ),
+                                                                                            color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                            letterSpacing: 0.0,
                                                                                             fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                           ),
-                                                                                          color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                          letterSpacing: 0.0,
-                                                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                        ),
+                                                                                    ),
+                                                                                    duration: const Duration(milliseconds: 2000),
+                                                                                    backgroundColor: const Color(0x00000000),
+                                                                                    behavior: SnackBarBehavior.floating,
                                                                                   ),
-                                                                                  duration: const Duration(milliseconds: 4000),
-                                                                                  backgroundColor: const Color(0x00000000),
-                                                                                  behavior: SnackBarBehavior.floating,
-                                                                                ),
-                                                                              );
-                                                                            } else {
-                                                                              ScaffoldMessenger.of(context).showSnackBar(
-                                                                                SnackBar(
-                                                                                  content: Text(
-                                                                                    'Error accepting challenge',
-                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                          font: GoogleFonts.poppins(
+                                                                                );
+                                                                                // Refresh challenges list
+                                                                                setState(() {
+                                                                                  print('[ACCEPT] Refreshing challenges list after success');
+                                                                                  challengesResponse = GetChallengesCall.call(token: FFAppState().token);
+                                                                                });
+                                                                              } else {
+                                                                                ScaffoldMessenger.of(context).showSnackBar(
+                                                                                  SnackBar(
+                                                                                    content: Text(
+                                                                                      'Error accepting challenge',
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            font: GoogleFonts.poppins(
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                            ),
+                                                                                            color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                            letterSpacing: 0.0,
                                                                                             fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                           ),
-                                                                                          color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                          letterSpacing: 0.0,
-                                                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                        ),
+                                                                                    ),
+                                                                                    duration: const Duration(milliseconds: 2000),
+                                                                                    backgroundColor: const Color(0x00000000),
+                                                                                    behavior: SnackBarBehavior.floating,
                                                                                   ),
-                                                                                  duration: const Duration(milliseconds: 4000),
-                                                                                  backgroundColor: const Color(0x00000000),
-                                                                                  behavior: SnackBarBehavior.floating,
-                                                                                ),
-                                                                              );
+                                                                                );
+                                                                              }
+                                                                            } finally {
+                                                                              if (mounted) {
+                                                                                setState(() {
+                                                                                  _processingChallengeIds.remove(id);
+                                                                                });
+                                                                              }
                                                                             }
                                                                           },
                                                                           text:
@@ -1753,59 +1811,77 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                         ),
                                                                         child:
                                                                             FFButtonWidget(
-                                                                          onPressed:
-                                                                              () async {
-                                                                            final response =
-                                                                                await RejectChallengeCall.call(
-                                                                              challengeId: getJsonField(
-                                                                                challenge[challengeIndex],
-                                                                                r'''$._id''',
-                                                                              ).toString(),
-                                                                              token: FFAppState().token,
-                                                                            );
-                                                                            if ((response.succeeded ??
-                                                                                true)) {
-                                                                              ScaffoldMessenger.of(context).showSnackBar(
-                                                                                SnackBar(
-                                                                                  content: Text(
-                                                                                    'Challenge accepted!',
-                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                          font: GoogleFonts.poppins(
+                                                                          onPressed: () async {
+                                                                            final id = getJsonField(
+                                                                              challenge[challengeIndex],
+                                                                              r'''$._id''',
+                                                                            ).toString();
+                                                                            if (_processingChallengeIds.contains(id)) return;
+                                                                            setState(() {
+                                                                              _processingChallengeIds.add(id);
+                                                                            });
+                                                                            try {
+                                                                              print('[REJECT] Starting API call for challengeId=' + id);
+                                                                              final response = await RejectChallengeCall.call(
+                                                                                challengeId: id,
+                                                                                token: FFAppState().token,
+                                                                              );
+                                                                              print('[REJECT] Response: succeeded=' + (response.succeeded == true).toString() +
+                                                                                  ', statusCode=' + (response.statusCode.toString()) +
+                                                                                  ', body=' + response.jsonBody.toString());
+                                                                              if (response.succeeded == true) {
+                                                                                ScaffoldMessenger.of(context).showSnackBar(
+                                                                                  SnackBar(
+                                                                                    content: Text(
+                                                                                      'Challenge rejected!',
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            font: GoogleFonts.poppins(
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                            ),
+                                                                                            color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                            letterSpacing: 0.0,
                                                                                             fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                           ),
-                                                                                          color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                          letterSpacing: 0.0,
-                                                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                        ),
+                                                                                    ),
+                                                                                    duration: const Duration(milliseconds: 2000),
+                                                                                    backgroundColor: const Color(0x00000000),
+                                                                                    behavior: SnackBarBehavior.floating,
                                                                                   ),
-                                                                                  duration: const Duration(milliseconds: 4000),
-                                                                                  backgroundColor: const Color(0x00000000),
-                                                                                  behavior: SnackBarBehavior.floating,
-                                                                                ),
-                                                                              );
-                                                                            } else {
-                                                                              ScaffoldMessenger.of(context).showSnackBar(
-                                                                                SnackBar(
-                                                                                  content: Text(
-                                                                                    'Error Rejecting challenge',
-                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                          font: GoogleFonts.poppins(
+                                                                                );
+                                                                                // Refresh challenges list
+                                                                                setState(() {
+                                                                                  challengesResponse = GetChallengesCall.call(token: FFAppState().token);
+                                                                                });
+                                                                              } else {
+                                                                                ScaffoldMessenger.of(context).showSnackBar(
+                                                                                  SnackBar(
+                                                                                    content: Text(
+                                                                                      'Error rejecting challenge',
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            font: GoogleFonts.poppins(
+                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                            ),
+                                                                                            color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                            letterSpacing: 0.0,
                                                                                             fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                           ),
-                                                                                          color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                          letterSpacing: 0.0,
-                                                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                        ),
+                                                                                    ),
+                                                                                    duration: const Duration(milliseconds: 2000),
+                                                                                    backgroundColor: const Color(0x00000000),
+                                                                                    behavior: SnackBarBehavior.floating,
                                                                                   ),
-                                                                                  duration: const Duration(milliseconds: 4000),
-                                                                                  backgroundColor: const Color(0x00000000),
-                                                                                  behavior: SnackBarBehavior.floating,
-                                                                                ),
-                                                                              );
+                                                                                );
+                                                                              }
+                                                                            } finally {
+                                                                              if (mounted) {
+                                                                                setState(() {
+                                                                                  _processingChallengeIds.remove(id);
+                                                                                });
+                                                                              }
                                                                             }
                                                                           },
                                                                           text:

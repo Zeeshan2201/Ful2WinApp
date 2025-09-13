@@ -82,7 +82,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                       highlightColor: Colors.transparent,
                       onTap: () async {
                         context.pushNamed(
-                          WalletpageWidget.routeName,
+                          ProfilepageWidget.routeName,
                           extra: <String, dynamic>{
                             kTransitionInfoKey: const TransitionInfo(
                               hasTransition: true,
