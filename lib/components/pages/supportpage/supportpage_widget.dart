@@ -119,16 +119,21 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
               end: AlignmentDirectional(0, 1),
             ),
           ),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
+        child:Align(
+          alignment: AlignmentDirectional(0,0),
+          child: ListView(
+           padding:EdgeInsets.zero,
+           primary:false,
+           shrinkWrap:true,
+           scrollDirection:Axis.vertical,
+           children: [
+              Align(
+                alignment: AlignmentDirectional(0,0),
                 child: Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 10),
                   child: Container(
                     width: double.infinity,
+                    height:750,
                     decoration: BoxDecoration(
                       color: const Color(0xBB08162C),
                       borderRadius: const BorderRadius.only(
@@ -1945,8 +1950,11 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
               ),
             ],
           ),
+        ),
         ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation1']!),
       ),
     );
   }
 }
+
+
