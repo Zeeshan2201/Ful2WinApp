@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:http/http.dart' as http;
 
 import 'supportpage_model.dart';
 export 'supportpage_model.dart';
@@ -30,6 +31,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final animationsMap = <String, AnimationInfo>{};
+  bool _isSubmitting = false;
 
   @override
   void initState() {
@@ -120,7 +122,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
             ),
           ),
         child:Align(
-          alignment: AlignmentDirectional(0,0),
+          alignment: const AlignmentDirectional(0,0),
           child: ListView(
            padding:EdgeInsets.zero,
            primary:false,
@@ -128,7 +130,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
            scrollDirection:Axis.vertical,
            children: [
               Align(
-                alignment: AlignmentDirectional(0,0),
+                alignment: const AlignmentDirectional(0,0),
                 child: Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 10),
                   child: Container(
@@ -1709,8 +1711,68 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(10, 20, 10, 20),
                                               child: FFButtonWidget(
-                                                onPressed: () {
-                                                  print('Button pressed ...');
+                                                onPressed: () async {
+                                                  if (_isSubmitting) return;
+                                                  final name = _model.textController1?.text.trim() ?? '';
+                                                  final email = _model.textController2?.text.trim() ?? '';
+                                                  final category = _model.textController3?.text.trim() ?? '';
+                                                  final subject = _model.textController4?.text.trim() ?? '';
+                                                  final message = _model.textController5?.text.trim() ?? '';
+
+                                                  if (name.isEmpty || email.isEmpty || subject.isEmpty || message.isEmpty) {
+                                                    ScaffoldMessenger.of(context).showSnackBar(
+                                                      const SnackBar(content: Text('Please fill in Name, Email, Subject and Message.')),
+                                                    );
+                                                    return;
+                                                  }
+                                                  if (!email.contains('@')) {
+                                                    ScaffoldMessenger.of(context).showSnackBar(
+                                                      const SnackBar(content: Text('Please enter a valid email address.')),
+                                                    );
+                                                    return;
+                                                  }
+
+                                                  setState(() => _isSubmitting = true);
+                                                  try {
+                                                    final uri = Uri.parse('https://formsubmit.co/support@yourdomain.com');
+                                                    final response = await http.post(
+                                                      uri,
+                                                      headers: {
+                                                        'Content-Type': 'application/x-www-form-urlencoded',
+                                                      },
+                                                      body: {
+                                                        'name': name,
+                                                        'email': email,
+                                                        'category': category,
+                                                        'subject': subject,
+                                                        'message': message,
+                                                        '_captcha': 'false',
+                                                        '_template': 'table',
+                                                      },
+                                                    );
+
+                                                    if (response.statusCode == 200 || response.statusCode == 302) {
+                                                      ScaffoldMessenger.of(context).showSnackBar(
+                                                        const SnackBar(content: Text('Request submitted successfully. We\'ll get back to you soon.')),
+                                                      );
+                                                      // Clear fields on success
+                                                      _model.textController1?.clear();
+                                                      _model.textController2?.clear();
+                                                      _model.textController3?.clear();
+                                                      _model.textController4?.clear();
+                                                      _model.textController5?.clear();
+                                                    } else {
+                                                      ScaffoldMessenger.of(context).showSnackBar(
+                                                        SnackBar(content: Text('Failed to submit (code ${response.statusCode}). Please try again.')),
+                                                      );
+                                                    }
+                                                  } catch (e) {
+                                                    ScaffoldMessenger.of(context).showSnackBar(
+                                                      SnackBar(content: Text('Error submitting request: $e')),
+                                                    );
+                                                  } finally {
+                                                    if (mounted) setState(() => _isSubmitting = false);
+                                                  }
                                                 },
                                                 text: 'Submit request',
                                                 options: FFButtonOptions(
