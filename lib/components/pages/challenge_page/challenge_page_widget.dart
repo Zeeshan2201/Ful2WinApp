@@ -1714,22 +1714,30 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                         crossAxisAlignment:
                                                                             CrossAxisAlignment.start,
                                                                         children: [
-                                                                          Text(
-                                                                            getJsonField(
-                                                                              challenge[challengeIndex],
-                                                                              r'''$.challenger.fullName''',
-                                                                            ).toString(),
-                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  font: GoogleFonts.poppins(
+                                                                          Container(
+                                                                            width: MediaQuery.sizeOf(context).width < 350.0
+                                                                                ? 150.0
+                                                                                : 200.0,
+                                                                            decoration:
+                                                                                BoxDecoration(),
+                                                                            child:
+                                                                                Text(
+                                                                              getJsonField(
+                                                                                challenge[challengeIndex],
+                                                                                r'''$.challenger.fullName''',
+                                                                              ).toString(),
+                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                    font: GoogleFonts.poppins(
+                                                                                      fontWeight: FontWeight.bold,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                    ),
+                                                                                    color: FlutterFlowTheme.of(context).primaryText,
+                                                                                    fontSize: MediaQuery.sizeOf(context).width < 350.0 ? 14.0 : 20.0,
+                                                                                    letterSpacing: 0.0,
                                                                                     fontWeight: FontWeight.bold,
                                                                                     fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                   ),
-                                                                                  color: FlutterFlowTheme.of(context).primaryText,
-                                                                                  fontSize: MediaQuery.sizeOf(context).width < 350.0 ? 14.0 : 20.0,
-                                                                                  letterSpacing: 0.0,
-                                                                                  fontWeight: FontWeight.bold,
-                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                ),
+                                                                            ),
                                                                           ),
                                                                           Row(
                                                                             mainAxisSize:
@@ -1803,8 +1811,9 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                               challenge[challengeIndex],
                                                                               r'''$._id''',
                                                                             ).toString();
-                                                                            if (_processingChallengeIds.contains(id))
+                                                                            if (_processingChallengeIds.contains(id)) {
                                                                               return;
+                                                                            }
                                                                             setState(() {
                                                                               _processingChallengeIds.add(id);
                                                                             });
@@ -1940,8 +1949,9 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                               challenge[challengeIndex],
                                                                               r'''$._id''',
                                                                             ).toString();
-                                                                            if (_processingChallengeIds.contains(id))
+                                                                            if (_processingChallengeIds.contains(id)) {
                                                                               return;
+                                                                            }
                                                                             setState(() {
                                                                               _processingChallengeIds.add(id);
                                                                             });
