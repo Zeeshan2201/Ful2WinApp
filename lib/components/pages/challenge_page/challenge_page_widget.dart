@@ -1190,7 +1190,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                       ),
                                     
                                     Padding(
-                                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                                     padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                                        child:FFButtonWidget(
                                         onPressed: () async {
                                           _model.challenges =
@@ -1332,17 +1332,17 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                             : 350.0,
                                     height: 250,
                                     decoration: BoxDecoration(
-                                      color: Color(0xBB08162C),
+                                      color: const Color(0xBB08162C),
                                       borderRadius: BorderRadius.circular(20),
                                       border: Border.all(
-                                        color: Color(0xFF00CFFF),
+                                        color: const Color(0xFF00CFFF),
                                       ),
                                     ),
                                     child: Stack(
                                       children: [
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0, -1),
+                                              const AlignmentDirectional(0, -1),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             crossAxisAlignment:
@@ -1372,7 +1372,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                   .fontStyle,
                                                         ),
                                                         color:
-                                                            Color(0xFFFBD34D),
+                                                            const Color(0xFFFBD34D),
                                                         fontSize: 24,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -1386,14 +1386,14 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                 ),
                                               ),
                                             ]
-                                                .divide(SizedBox(height: 20))
+                                                .divide(const SizedBox(height: 20))
                                                 .addToStart(
-                                                    SizedBox(height: 10)),
+                                                    const SizedBox(height: 10)),
                                           ),
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0, 50, 0, 0),
                                           child: FutureBuilder<ApiCallResponse>(
                                             future: challengesResponse,
@@ -1463,7 +1463,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                     final isChallengerMe = challengerId == myUserId;
                                                     return isChallengedMe && !isChallengerMe;
                                                   }).toList();
-                                                  debugPrint('[INCOMING] total=' + (allChallenges.length).toString() + ', filtered=' + (challenge.length).toString());
+                                                  debugPrint('[INCOMING] total=${allChallenges.length}, filtered=${challenge.length}');
 
                                                   return ListView.separated(
                                                     padding: EdgeInsets.zero,
@@ -1473,7 +1473,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                         Axis.vertical,
                                                     itemCount: challenge.length,
                                                     separatorBuilder: (_, __) =>
-                                                        SizedBox(height: 10),
+                                                        const SizedBox(height: 10),
                                                     itemBuilder: (context,
                                                         challengeIndex) {
                                                       final status =
@@ -1486,7 +1486,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                           status.toLowerCase();
                                                       return Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     5, 0, 5, 0),
                                                         child: Container(
@@ -1497,7 +1497,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                     .of(context)
                                                                 .secondaryBackground,
                                                             borderRadius:
-                                                                BorderRadius
+                                                                const BorderRadius
                                                                     .only(
                                                               bottomLeft: Radius
                                                                   .circular(10),
@@ -1513,7 +1513,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                           ),
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10,
                                                                         0,
@@ -1533,7 +1533,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                           .max,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional
+                                                                      padding: const EdgeInsetsDirectional
                                                                           .fromSTEB(
                                                                               5,
                                                                               0,
@@ -1548,7 +1548,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              Color(0xFF57636C),
+                                                                              const Color(0xFF57636C),
                                                                           image:
                                                                               DecorationImage(
                                                                             fit:
@@ -1566,7 +1566,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                         ),
                                                                         child:
                                                                             Align(
-                                                                          alignment: AlignmentDirectional(
+                                                                          alignment: const AlignmentDirectional(
                                                                               0,
                                                                               0),
                                                                           child:
@@ -1587,7 +1587,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional
+                                                                      padding: const EdgeInsetsDirectional
                                                                           .fromSTEB(
                                                                               5,
                                                                               0,
@@ -1629,7 +1629,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                                 size: 12,
                                                                               ),
                                                                               Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
+                                                                                padding: const EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                                                                                 child: Text(
                                                                                   getJsonField(
                                                                                     challenge[challengeIndex],
@@ -1665,7 +1665,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           gradient:
-                                                                              LinearGradient(
+                                                                              const LinearGradient(
                                                                             colors: [
                                                                               Color(0xFF13AD07),
                                                                               Color(0xFF267B02)
@@ -1694,14 +1694,12 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                               _processingChallengeIds.add(id);
                                                                             });
                                                                             try {
-                                                                              print('[ACCEPT] Starting API call for challengeId=' + id);
+                                                                              print('[ACCEPT] Starting API call for challengeId=$id');
                                                                               final apiResult = await AcceptChallengeCall.call(
                                                                                 token: FFAppState().token,
                                                                                 challengeId: id,
                                                                               );
-                                                                              print('[ACCEPT] Response: succeeded=' + (apiResult.succeeded == true).toString() +
-                                                                                  ', statusCode=' + (apiResult.statusCode.toString()) +
-                                                                                  ', body=' + apiResult.jsonBody.toString());
+                                                                              print('[ACCEPT] Response: succeeded=${apiResult.succeeded == true}, statusCode=${apiResult.statusCode}, body=${apiResult.jsonBody}');
                                                                               if (apiResult.succeeded == true) {
                                                                                 ScaffoldMessenger.of(context).showSnackBar(
                                                                                   SnackBar(
@@ -1767,12 +1765,12 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                                 : 80.0,
                                                                             height:
                                                                                 30,
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 10,
                                                                                 0,
                                                                                 10,
                                                                                 0),
-                                                                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 0,
                                                                                 0,
                                                                                 0,
@@ -1801,7 +1799,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           gradient:
-                                                                              LinearGradient(
+                                                                              const LinearGradient(
                                                                             colors: [
                                                                               Color(0xFFF21803),
                                                                               Color(0xFF7E0303)
@@ -1830,14 +1828,12 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                               _processingChallengeIds.add(id);
                                                                             });
                                                                             try {
-                                                                              print('[REJECT] Starting API call for challengeId=' + id);
+                                                                              print('[REJECT] Starting API call for challengeId=$id');
                                                                               final response = await RejectChallengeCall.call(
                                                                                 challengeId: id,
                                                                                 token: FFAppState().token,
                                                                               );
-                                                                              print('[REJECT] Response: succeeded=' + (response.succeeded == true).toString() +
-                                                                                  ', statusCode=' + (response.statusCode.toString()) +
-                                                                                  ', body=' + response.jsonBody.toString());
+                                                                              print('[REJECT] Response: succeeded=${response.succeeded == true}, statusCode=${response.statusCode}, body=${response.jsonBody}');
                                                                               if (response.succeeded == true) {
                                                                                 ScaffoldMessenger.of(context).showSnackBar(
                                                                                   SnackBar(
@@ -1902,12 +1898,12 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                                 : 80.0,
                                                                             height:
                                                                                 30,
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 10,
                                                                                 0,
                                                                                 10,
                                                                                 0),
-                                                                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 0,
                                                                                 0,
                                                                                 0,
@@ -1932,10 +1928,10 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                         ),
                                                                       ),
                                                                     ]
-                                                                        .divide(SizedBox(
+                                                                        .divide(const SizedBox(
                                                                             height:
                                                                                 5))
-                                                                        .around(SizedBox(
+                                                                        .around(const SizedBox(
                                                                             height:
                                                                                 5)),
                                                                   )

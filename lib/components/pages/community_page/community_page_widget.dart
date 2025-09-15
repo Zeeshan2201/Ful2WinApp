@@ -18,6 +18,10 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:http/http.dart' as http;
+import 'package:mime_type/mime_type.dart';
+import 'package:cross_file/cross_file.dart';
 
 import 'community_page_model.dart';
 export 'community_page_model.dart';
@@ -124,6 +128,66 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
     _model.dispose();
 
     super.dispose();
+  }
+
+  Future<void> _sharePost(dynamic postDataItem) async {
+    try {
+      final title = getJsonField(
+        postDataItem,
+        r'''$.title''',
+      ).toString();
+      final author = getJsonField(
+        postDataItem,
+        r'''$.author.fullName''',
+      ).toString();
+      final dynamic imageField = getJsonField(
+        postDataItem,
+        r'''$.images[0].url''',
+      );
+      final String imageUrl = imageField == null ? '' : imageField.toString();
+
+      final String message = [
+        if (title.isNotEmpty) '"$title"',
+        if (author.isNotEmpty) '— by $author',
+        'Shared from Ful2Win Community.'
+      ].join(' ');
+
+      if (imageUrl.isNotEmpty) {
+        try {
+          final uri = Uri.tryParse(imageUrl);
+          if (uri != null) {
+            final res = await http.get(uri);
+            if (res.statusCode == 200 && res.bodyBytes.isNotEmpty) {
+              final String fileName =
+                  uri.pathSegments.isNotEmpty ? uri.pathSegments.last : 'image';
+              final String mimeType = mime(fileName) ?? 'image/jpeg';
+              final xFile = XFile.fromData(
+                res.bodyBytes,
+                name: fileName,
+                mimeType: mimeType,
+              );
+              try {
+                await Share.shareXFiles([xFile],
+                    text: message, subject: 'Ful2Win Post');
+              } catch (_) {
+                await Share.share(message, subject: 'Ful2Win Post');
+              }
+              return;
+            }
+          }
+        } catch (_) {
+          // Fallback to text-only share below
+        }
+      }
+
+      await Share.share(message, subject: 'Ful2Win Post');
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Unable to share this post.')),
+        );
+      }
+    }
   }
 
   void _toggleCommentBox(dynamic postDataItem) {
@@ -1869,50 +1933,47 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                         Radius.circular(0),
                                                   ),
                                                 ),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    FaIcon(
-                                                      FontAwesomeIcons.shareAlt,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                      size: 24,
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                              5, 0, 0, 0),
-                                                      child: Text(
-                                                        'Share',
-                                                        style:
+                                                child: InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () =>
+                                                      _sharePost(postDataItem),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      FaIcon(
+                                                        FontAwesomeIcons
+                                                            .shareAlt,
+                                                        color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .inter(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                                  fontSize: 16,
-                                                                  letterSpacing:
-                                                                      0.0,
+                                                                .secondaryText,
+                                                        size: 24,
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                5, 0, 0, 0),
+                                                        child: Text(
+                                                          'Share',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -1922,9 +1983,25 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                                       .bodyMedium
                                                                       .fontStyle,
                                                                 ),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                fontSize: 16,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                        ),
                                                       ),
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
                                             ],
@@ -2247,9 +2324,8 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                           child: FFButtonWidget(
                                                             onPressed:
                                                                 () async {
-                                                              final response =
-                                                                  await AddComment
-                                                                      .call(
+                                                              await AddComment
+                                                                  .call(
                                                                 postId:
                                                                     getJsonField(
                                                                   postDataItem,

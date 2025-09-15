@@ -11,7 +11,8 @@ export 'api_manager.dart' show ApiCallResponse;
 
 class FulWinGroup {
   static String getBaseUrl({
-    String? token = '',
+    String? token =
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NWMzMzBhYjdlMGY0ZDdkZWY3MTcxYiIsInBob25lTnVtYmVyIjoiMTExMTEyMjIyMyIsImlhdCI6MTc1NjM2MjAwMiwiZXhwIjoxNzU4OTU0MDAyfQ.MZkgthzElldrYawIWkF4vj1vCg-VBrhr1DQOboJg31g',
   }) =>
       'https://api.fulboost.fun/api/';
   static Map<String, String> headers = {
@@ -190,7 +191,8 @@ class GetChallengesCall {
 class ChallengesCall {
   static Future<ApiCallResponse> call({
     String? gameId = '',
-    String? token = '',
+    String? token =
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NWMzMzBhYjdlMGY0ZDdkZWY3MTcxYiIsInBob25lTnVtYmVyIjoiMTExMTEyMjIyMyIsImlhdCI6MTc1NjM2MjAwMiwiZXhwIjoxNzU4OTU0MDAyfQ.MZkgthzElldrYawIWkF4vj1vCg-VBrhr1DQOboJg31g',
     String? challengedUserId = '',
     String? message = '',
   }) async {
@@ -226,7 +228,8 @@ class ChallengesCall {
 
 class SpinWheelCall {
   static Future<ApiCallResponse> call({
-    String? token = '',
+    String? token =
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NWMzMzBhYjdlMGY0ZDdkZWY3MTcxYiIsInBob25lTnVtYmVyIjoiMTExMTEyMjIyMyIsImlhdCI6MTc1NjM2MjAwMiwiZXhwIjoxNzU4OTU0MDAyfQ.MZkgthzElldrYawIWkF4vj1vCg-VBrhr1DQOboJg31g',
     int amount = 0,
   }) async {
     final baseUrl = FulWinGroup.getBaseUrl(
@@ -262,7 +265,8 @@ class TournamentRegisterCall {
   Future<ApiCallResponse> call({
     String? tournamentId = '',
     String? userId = '',
-    String? token = '',
+    String? token =
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NWMzMzBhYjdlMGY0ZDdkZWY3MTcxYiIsInBob25lTnVtYmVyIjoiMTExMTEyMjIyMyIsImlhdCI6MTc1NjM2MjAwMiwiZXhwIjoxNzU4OTU0MDAyfQ.MZkgthzElldrYawIWkF4vj1vCg-VBrhr1DQOboJg31g',
   }) async {
     final baseUrl = FulWinGroup.getBaseUrl(
       token: token,
@@ -597,7 +601,8 @@ class TournamentsCall {
 
 class ProfileCall {
   static Future<ApiCallResponse> call({
-    String? token = '',
+    String? token =
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NWMzMzBhYjdlMGY0ZDdkZWY3MTcxYiIsInBob25lTnVtYmVyIjoiMTExMTEyMjIyMyIsImlhdCI6MTc1NjM2MjAwMiwiZXhwIjoxNzU4OTU0MDAyfQ.MZkgthzElldrYawIWkF4vj1vCg-VBrhr1DQOboJg31g',
     String? userId = '',
   }) async {
     return ApiManager.instance.makeApiCall(
@@ -643,7 +648,8 @@ class ProfilePictureCall {
 
 class PostsCall {
   static Future<ApiCallResponse> call({
-    String? token = '',
+    String? token =
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NWMzMzBhYjdlMGY0ZDdkZWY3MTcxYiIsInBob25lTnVtYmVyIjoiMTExMTEyMjIyMyIsImlhdCI6MTc1NjM2MjAwMiwiZXhwIjoxNzU4OTU0MDAyfQ.MZkgthzElldrYawIWkF4vj1vCg-VBrhr1DQOboJg31g',
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'Posts',

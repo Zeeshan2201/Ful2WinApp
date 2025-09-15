@@ -12,7 +12,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'walletpage_model.dart';
 export 'walletpage_model.dart';
-import '/index.dart';
 
 /// wallet
 class WalletpageWidget extends StatefulWidget {

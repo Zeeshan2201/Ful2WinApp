@@ -2,7 +2,6 @@ import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pop_ups/navbar/navbar_widget.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +26,7 @@ class ProfilepageWidget extends StatefulWidget {
 class _ProfilepageWidgetState extends State<ProfilepageWidget>
     with TickerProviderStateMixin {
   late ProfilepageModel _model;
+  late Future<ApiCallResponse> profileResponse;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -36,7 +36,11 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => ProfilepageModel());
-
+    profileResponse = ProfileCall.call(
+      token:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NWMzMzBhYjdlMGY0ZDdkZWY3MTcxYiIsInBob25lTnVtYmVyIjoiMTExMTEyMjIyMyIsImlhdCI6MTc1NjM2MjAwMiwiZXhwIjoxNzU4OTU0MDAyfQ.MZkgthzElldrYawIWkF4vj1vCg-VBrhr1DQOboJg31g',
+      userId: FFAppState().userId,
+    );
     animationsMap.addAll({
       'containerOnPageLoadAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
@@ -113,10 +117,7 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
     context.watch<FFAppState>();
 
     return FutureBuilder<ApiCallResponse>(
-      future: ProfileCall.call(
-        token: FFAppState().token,
-        userId: FFAppState().userId,
-      ),
+      future: profileResponse,
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -136,7 +137,7 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
           );
         }
         final profilepageProfileResponse = snapshot.data!;
-
+        print(profilepageProfileResponse.jsonBody);
         return GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();
@@ -172,8 +173,8 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding:
-                                const EdgeInsetsDirectional.fromSTEB(40, 40, 0, 0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                40, 40, 0, 0),
                             child: Container(
                               width: 62.6,
                               height: 62.6,
@@ -194,8 +195,8 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
                             ),
                           ),
                           Padding(
-                            padding:
-                                const EdgeInsetsDirectional.fromSTEB(5, 40, 0, 0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                5, 40, 0, 0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -269,7 +270,8 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -408,7 +410,8 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -537,7 +540,8 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -570,7 +574,8 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
                                       Align(
-                                        alignment: const AlignmentDirectional(1, 0),
+                                        alignment:
+                                            const AlignmentDirectional(1, 0),
                                         child: Container(
                                           width: 50,
                                           height: 50,
@@ -607,7 +612,8 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  color: const Color(0xFFF4F8FB),
+                                                  color:
+                                                      const Color(0xFFF4F8FB),
                                                   fontSize: 15,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.bold,
@@ -635,7 +641,8 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  color: const Color(0xFFF1F6FA),
+                                                  color:
+                                                      const Color(0xFFF1F6FA),
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
@@ -681,7 +688,8 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
                                         Align(
-                                          alignment: const AlignmentDirectional(1, 0),
+                                          alignment:
+                                              const AlignmentDirectional(1, 0),
                                           child: Container(
                                             width: 50,
                                             height: 50,
@@ -712,62 +720,66 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
                                                       .jsonBody,
                                                   r'''$.gameStats.totalMatches''',
                                                 ).toString(),
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      font: GoogleFonts.inter(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
-                                                      color: const Color(0xFFF4F8FB),
-                                                      fontSize: 10,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .fontStyle,
-                                                    ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          color: const Color(
+                                                              0xFFF4F8FB),
+                                                          fontSize: 10,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
                                               ),
                                               Text(
                                                 'Wins',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      font: GoogleFonts.inter(
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
-                                                      color: const Color(0xFFF1F6FA),
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .fontWeight,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .fontStyle,
-                                                    ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          color: const Color(
+                                                              0xFFF1F6FA),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
                                               ),
                                             ],
                                           ),
@@ -805,7 +817,8 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
                                       Align(
-                                        alignment: const AlignmentDirectional(1, 0),
+                                        alignment:
+                                            const AlignmentDirectional(1, 0),
                                         child: Container(
                                           width: 50,
                                           height: 50,
@@ -842,7 +855,8 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  color: const Color(0xFFF4F8FB),
+                                                  color:
+                                                      const Color(0xFFF4F8FB),
                                                   fontSize: 15,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.bold,
@@ -870,7 +884,8 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  color: const Color(0xFFF1F6FA),
+                                                  color:
+                                                      const Color(0xFFF1F6FA),
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
@@ -916,7 +931,8 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
                                         Align(
-                                          alignment: const AlignmentDirectional(1, 0),
+                                          alignment:
+                                              const AlignmentDirectional(1, 0),
                                           child: Container(
                                             width: 50,
                                             height: 50,
@@ -953,7 +969,8 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
                                                               .bodyMedium
                                                               .fontStyle,
                                                     ),
-                                                    color: const Color(0xFFF4F8FB),
+                                                    color:
+                                                        const Color(0xFFF4F8FB),
                                                     fontSize: 15,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
@@ -966,36 +983,36 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
                                             ),
                                             Text(
                                               'Followers',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        color:
-                                                            const Color(0xFFF1F6FA),
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    font: GoogleFonts.inter(
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                    color:
+                                                        const Color(0xFFF1F6FA),
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
                                             ),
                                           ],
                                         ),
@@ -1009,7 +1026,8 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(10, 20, 10, 0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(10, 20, 10, 0),
                         child: Container(
                           width: double.infinity,
                           height: 304.89,
@@ -1040,7 +1058,8 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
                                     context.pushNamed(
                                       ReferralspageWidget.routeName,
                                       extra: <String, dynamic>{
-                                        kTransitionInfoKey: const TransitionInfo(
+                                        kTransitionInfoKey:
+                                            const TransitionInfo(
                                           hasTransition: true,
                                           transitionType:
                                               PageTransitionType.fade,
@@ -1075,9 +1094,8 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
                                             ),
                                           ),
                                           Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    10, 0, 0, 0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(10, 0, 0, 0),
                                             child: Text(
                                               'Referrals',
                                               style:
@@ -1172,9 +1190,8 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
                                             ),
                                           ),
                                           Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    10, 0, 0, 0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(10, 0, 0, 0),
                                             child: Text(
                                               'KYC Status',
                                               style:
@@ -1268,9 +1285,8 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
                                             ),
                                           ),
                                           Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    10, 0, 0, 0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(10, 0, 0, 0),
                                             child: Text(
                                               'Support',
                                               style:
@@ -1329,39 +1345,63 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
                               Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     10, 20, 10, 0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Container(
-                                          width: 40,
-                                          height: 40,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            shape: BoxShape.circle,
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    FFAppState().token = '';
+                                    FFAppState().userId = '';
+                                    safeSetState(() {});
+                                    context.goNamed(LoginpageWidget.routeName);
+                                  },
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Container(
+                                            width: 40,
+                                            height: 40,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: Icon(
+                                              Icons.login_sharp,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 24,
+                                            ),
                                           ),
-                                          child: Icon(
-                                            Icons.login_sharp,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 24,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  10, 0, 0, 0),
-                                          child: Text(
-                                            'Log Out',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  font: GoogleFonts.inter(
+                                          Padding(
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(10, 0, 0, 0),
+                                            child: Text(
+                                              'Log Out',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    font: GoogleFonts.inter(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                    color:
+                                                        const Color(0xFFDE0D0D),
+                                                    letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
                                                     fontStyle:
                                                         FlutterFlowTheme.of(
@@ -1369,30 +1409,22 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  color: const Color(0xFFDE0D0D),
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
+                                            ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                    const Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Icon(
-                                          Icons.arrow_forward_ios_outlined,
-                                          color: Color(0xFFF8F5F5),
-                                          size: 24,
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                                        ],
+                                      ),
+                                      const Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Icon(
+                                            Icons.arrow_forward_ios_outlined,
+                                            color: Color(0xFFF8F5F5),
+                                            size: 24,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],

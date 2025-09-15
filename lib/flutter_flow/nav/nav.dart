@@ -38,7 +38,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => const HomePageWidget(),
+          builder: (context, _) {
+            final appState = context.read<FFAppState>();
+            final storedToken = appState.prefs.getString('ff_token');
+            final hasToken = (storedToken != null && storedToken.isNotEmpty);
+            return hasToken ? const HomePageWidget() : const LoginpageWidget();
+          },
         ),
         FFRoute(
           name: HomePageWidget.routeName,

@@ -120,7 +120,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
             ),
           ),
         child:Align(
-          alignment: AlignmentDirectional(0,0),
+          alignment: const AlignmentDirectional(0,0),
           child: ListView(
            padding:EdgeInsets.zero,
            primary:false,
@@ -128,7 +128,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
            scrollDirection:Axis.vertical,
            children: [
               Align(
-                alignment: AlignmentDirectional(0,0),
+                alignment: const AlignmentDirectional(0,0),
                 child: Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 10),
                   child: Container(
