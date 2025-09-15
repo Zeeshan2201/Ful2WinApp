@@ -20,11 +20,19 @@ class LeaderBoardPageModel extends FlutterFlowModel<LeaderBoardPageWidget> {
   int get tabBarPreviousIndex =>
       tabBarController != null ? tabBarController!.previousIndex : 0;
 
+  // Scroll controllers for each tab content
+  final ScrollController prizesScrollController = ScrollController();
+  final ScrollController leaderboardScrollController = ScrollController();
+  final ScrollController howToPlayScrollController = ScrollController();
+
   @override
   void initState(BuildContext context) {}
 
   @override
   void dispose() {
     tabBarController?.dispose();
+    prizesScrollController.dispose();
+    leaderboardScrollController.dispose();
+    howToPlayScrollController.dispose();
   }
 }

@@ -180,15 +180,16 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 30, 0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0, 10, 30, 0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding:
-                                    const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    10, 0, 0, 0),
                                 child: Container(
                                   width: 35,
                                   height: 35,
@@ -361,8 +362,8 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                         CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0, 5, 0, 0),
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(0, 5, 0, 0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
@@ -387,8 +388,8 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                           fontStyle:
                                                               FontStyle.italic,
                                                         ),
-                                                        color:
-                                                            const Color(0xFF00CFFF),
+                                                        color: const Color(
+                                                            0xFF00CFFF),
                                                         fontSize: 12,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -413,8 +414,8 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                           fontStyle:
                                                               FontStyle.italic,
                                                         ),
-                                                        color:
-                                                            const Color(0xFF00CFFF),
+                                                        color: const Color(
+                                                            0xFF00CFFF),
                                                         fontSize: 16,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -429,8 +430,8 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0, 5, 0, 0),
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(0, 5, 0, 0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
@@ -455,8 +456,8 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                           fontStyle:
                                                               FontStyle.italic,
                                                         ),
-                                                        color:
-                                                            const Color(0xFF00CFFF),
+                                                        color: const Color(
+                                                            0xFF00CFFF),
                                                         fontSize: 12,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -481,8 +482,8 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                           fontStyle:
                                                               FontStyle.italic,
                                                         ),
-                                                        color:
-                                                            const Color(0xFF00CFFF),
+                                                        color: const Color(
+                                                            0xFF00CFFF),
                                                         fontSize: 16,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -540,7 +541,8 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                         fontStyle:
                                                             FontStyle.italic,
                                                       ),
-                                                      color: const Color(0xFF00CFFF),
+                                                      color: const Color(
+                                                          0xFF00CFFF),
                                                       fontSize: 12,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
@@ -564,7 +566,8 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                         fontStyle:
                                                             FontStyle.italic,
                                                       ),
-                                                      color: const Color(0xFF00CFFF),
+                                                      color: const Color(
+                                                          0xFF00CFFF),
                                                       fontSize: 12,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
@@ -600,7 +603,8 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                         fontStyle:
                                                             FontStyle.italic,
                                                       ),
-                                                      color: const Color(0xFF00CFFF),
+                                                      color: const Color(
+                                                          0xFF00CFFF),
                                                       fontSize: 12,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
@@ -624,7 +628,8 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                         fontStyle:
                                                             FontStyle.italic,
                                                       ),
-                                                      color: const Color(0xFF00CFFF),
+                                                      color: const Color(
+                                                          0xFF00CFFF),
                                                       fontSize: 12,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
@@ -728,8 +733,9 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          10, 5, 10, 0),
+                                      padding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              10, 5, 10, 0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
@@ -745,17 +751,17 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                           ),
                                         ),
                                         child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 0, 15),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(0, 0, 0, 15),
                                           child: ListView(
                                             padding: EdgeInsets.zero,
                                             shrinkWrap: true,
                                             scrollDirection: Axis.vertical,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(10, 5, 0, 5),
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(10, 5, 0, 5),
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -767,7 +773,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                       padding:
                                                           const EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  5, 0, 0, 0),
+                                                              5, 0, 0, 0),
                                                       child: Text(
                                                         'Rank',
                                                         style:
@@ -806,7 +812,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                       padding:
                                                           const EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  5, 0, 15, 0),
+                                                              5, 0, 15, 0),
                                                       child: Text(
                                                         'Prize',
                                                         style:
@@ -851,15 +857,16 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                     padding:
                                                         const EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                8, 0, 8, 10),
+                                                            8, 0, 8, 10),
                                                     child: Container(
                                                       width: double.infinity,
                                                       height: 50,
                                                       decoration: BoxDecoration(
-                                                        color:
-                                                            const Color(0xBB08162C),
+                                                        color: const Color(
+                                                            0xBB08162C),
                                                         borderRadius:
-                                                            const BorderRadius.only(
+                                                            const BorderRadius
+                                                                .only(
                                                           bottomLeft:
                                                               Radius.circular(
                                                                   10),
@@ -874,8 +881,8 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                   10),
                                                         ),
                                                         border: Border.all(
-                                                          color:
-                                                              const Color(0xFF00CFFF),
+                                                          color: const Color(
+                                                              0xFF00CFFF),
                                                         ),
                                                       ),
                                                       child: Row(
@@ -928,10 +935,10 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                         Padding(
                                                                       padding: const EdgeInsetsDirectional
                                                                           .fromSTEB(
-                                                                              10,
-                                                                              0,
-                                                                              0,
-                                                                              0),
+                                                                          10,
+                                                                          0,
+                                                                          0,
+                                                                          0),
                                                                       child:
                                                                           Text(
                                                                         '#1',
@@ -954,8 +961,9 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
-                                                                        .fromSTEB(
+                                                                    padding:
+                                                                        const EdgeInsetsDirectional
+                                                                            .fromSTEB(
                                                                             20,
                                                                             0,
                                                                             0,
@@ -1083,15 +1091,16 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                     padding:
                                                         const EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                8, 0, 8, 10),
+                                                            8, 0, 8, 10),
                                                     child: Container(
                                                       width: double.infinity,
                                                       height: 50,
                                                       decoration: BoxDecoration(
-                                                        color:
-                                                            const Color(0xBB08162C),
+                                                        color: const Color(
+                                                            0xBB08162C),
                                                         borderRadius:
-                                                            const BorderRadius.only(
+                                                            const BorderRadius
+                                                                .only(
                                                           bottomLeft:
                                                               Radius.circular(
                                                                   10),
@@ -1106,8 +1115,8 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                   10),
                                                         ),
                                                         border: Border.all(
-                                                          color:
-                                                              const Color(0xFF00CFFF),
+                                                          color: const Color(
+                                                              0xFF00CFFF),
                                                         ),
                                                       ),
                                                       child: Row(
@@ -1160,10 +1169,10 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                         Padding(
                                                                       padding: const EdgeInsetsDirectional
                                                                           .fromSTEB(
-                                                                              10,
-                                                                              0,
-                                                                              0,
-                                                                              0),
+                                                                          10,
+                                                                          0,
+                                                                          0,
+                                                                          0),
                                                                       child:
                                                                           Text(
                                                                         '#2',
@@ -1269,15 +1278,16 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                     padding:
                                                         const EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                8, 0, 8, 10),
+                                                            8, 0, 8, 10),
                                                     child: Container(
                                                       width: double.infinity,
                                                       height: 50,
                                                       decoration: BoxDecoration(
-                                                        color:
-                                                            const Color(0xBB08162C),
+                                                        color: const Color(
+                                                            0xBB08162C),
                                                         borderRadius:
-                                                            const BorderRadius.only(
+                                                            const BorderRadius
+                                                                .only(
                                                           bottomLeft:
                                                               Radius.circular(
                                                                   10),
@@ -1292,8 +1302,8 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                   10),
                                                         ),
                                                         border: Border.all(
-                                                          color:
-                                                              const Color(0xFF00CFFF),
+                                                          color: const Color(
+                                                              0xFF00CFFF),
                                                         ),
                                                       ),
                                                       child: Row(
@@ -1346,10 +1356,10 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                         Padding(
                                                                       padding: const EdgeInsetsDirectional
                                                                           .fromSTEB(
-                                                                              10,
-                                                                              0,
-                                                                              0,
-                                                                              0),
+                                                                          10,
+                                                                          0,
+                                                                          0,
+                                                                          0),
                                                                       child:
                                                                           Text(
                                                                         '#3',
@@ -1453,15 +1463,16 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                     padding:
                                                         const EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                8, 0, 8, 10),
+                                                            8, 0, 8, 10),
                                                     child: Container(
                                                       width: double.infinity,
                                                       height: 50,
                                                       decoration: BoxDecoration(
-                                                        color:
-                                                            const Color(0xBB08162C),
+                                                        color: const Color(
+                                                            0xBB08162C),
                                                         borderRadius:
-                                                            const BorderRadius.only(
+                                                            const BorderRadius
+                                                                .only(
                                                           bottomLeft:
                                                               Radius.circular(
                                                                   10),
@@ -1476,8 +1487,8 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                   10),
                                                         ),
                                                         border: Border.all(
-                                                          color:
-                                                              const Color(0xFF00CFFF),
+                                                          color: const Color(
+                                                              0xFF00CFFF),
                                                         ),
                                                       ),
                                                       child: Row(
@@ -1530,10 +1541,10 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                         Padding(
                                                                       padding: const EdgeInsetsDirectional
                                                                           .fromSTEB(
-                                                                              10,
-                                                                              0,
-                                                                              0,
-                                                                              0),
+                                                                          10,
+                                                                          0,
+                                                                          0,
+                                                                          0),
                                                                       child:
                                                                           Text(
                                                                         '#4-50',
@@ -1646,8 +1657,9 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          10, 5, 10, 0),
+                                      padding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              10, 5, 10, 0),
                                       child: Container(
                                         width: double.infinity,
                                         decoration: BoxDecoration(
@@ -1663,9 +1675,8 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                           ),
                                         ),
                                         child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0, 5, 0, 25),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(0, 5, 0, 25),
                                           child: ListView(
                                             padding: EdgeInsets.zero,
                                             shrinkWrap: true,
@@ -1673,10 +1684,12 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                             children: [
                                               Align(
                                                 alignment:
-                                                    const AlignmentDirectional(0, -1),
+                                                    const AlignmentDirectional(
+                                                        0, -1),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(0, 5, 0, 0),
+                                                  padding:
+                                                      const EdgeInsetsDirectional
+                                                          .fromSTEB(0, 5, 0, 0),
                                                   child: Text(
                                                     'Your total entries - 1',
                                                     style: FlutterFlowTheme.of(
@@ -1715,8 +1728,9 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(10, 0, 0, 5),
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(10, 0, 0, 5),
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -1728,7 +1742,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                       padding:
                                                           const EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  5, 0, 0, 0),
+                                                              5, 0, 0, 0),
                                                       child: Text(
                                                         'Rank',
                                                         style:
@@ -1767,7 +1781,7 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                       padding:
                                                           const EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  5, 0, 15, 0),
+                                                              5, 0, 15, 0),
                                                       child: Text(
                                                         'Score',
                                                         style:
@@ -1852,10 +1866,10 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                             padding:
                                                                 const EdgeInsetsDirectional
                                                                     .fromSTEB(
-                                                                        10,
-                                                                        5,
-                                                                        10,
-                                                                        10),
+                                                                    10,
+                                                                    5,
+                                                                    10,
+                                                                    10),
                                                             child: Container(
                                                               width: double
                                                                   .infinity,
@@ -1914,7 +1928,8 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                       ),
                                                                       child:
                                                                           Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional
+                                                                            .fromSTEB(
                                                                             10,
                                                                             0,
                                                                             0,
@@ -2056,8 +2071,8 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            10, 10, 10, 70),
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(10, 10, 10, 70),
                                         child: Container(
                                           width: double.infinity,
                                           decoration: const BoxDecoration(),
@@ -2080,14 +2095,18 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                               ),
                                               Align(
                                                 alignment:
-                                                    const AlignmentDirectional(0, 0),
+                                                    const AlignmentDirectional(
+                                                        0, 0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(20, 10, 20, 0),
+                                                  padding:
+                                                      const EdgeInsetsDirectional
+                                                          .fromSTEB(
+                                                          20, 10, 20, 0),
                                                   child: Container(
                                                     width: double.infinity,
                                                     decoration: BoxDecoration(
-                                                      color: const Color(0xBB08162C),
+                                                      color: const Color(
+                                                          0xBB08162C),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               20),
@@ -2095,8 +2114,8 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                     child: Padding(
                                                       padding:
                                                           const EdgeInsetsDirectional
-                                                              .fromSTEB(10, 10,
-                                                                  10, 0),
+                                                              .fromSTEB(
+                                                              10, 10, 10, 0),
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
@@ -2116,10 +2135,10 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                 padding:
                                                                     const EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                            10,
-                                                                            0,
-                                                                            0,
-                                                                            0),
+                                                                        10,
+                                                                        0,
+                                                                        0,
+                                                                        0),
                                                                 child: Text(
                                                                   'How To Play',
                                                                   style: FlutterFlowTheme.of(
@@ -2159,10 +2178,10 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                             padding:
                                                                 const EdgeInsetsDirectional
                                                                     .fromSTEB(
-                                                                        10,
-                                                                        5,
-                                                                        0,
-                                                                        0),
+                                                                    10,
+                                                                    5,
+                                                                    0,
+                                                                    0),
                                                             child: Text(
                                                               'Objective',
                                                               style: FlutterFlowTheme
@@ -2200,10 +2219,10 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                             padding:
                                                                 const EdgeInsetsDirectional
                                                                     .fromSTEB(
-                                                                        25,
-                                                                        10,
-                                                                        25,
-                                                                        10),
+                                                                    25,
+                                                                    10,
+                                                                    25,
+                                                                    10),
                                                             child: Container(
                                                               width: double
                                                                   .infinity,
@@ -2254,10 +2273,10 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                             padding:
                                                                 const EdgeInsetsDirectional
                                                                     .fromSTEB(
-                                                                        10,
-                                                                        5,
-                                                                        0,
-                                                                        5),
+                                                                    10,
+                                                                    5,
+                                                                    0,
+                                                                    5),
                                                             child: Text(
                                                               'Rules',
                                                               style: FlutterFlowTheme
@@ -2294,11 +2313,8 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                           Padding(
                                                             padding:
                                                                 const EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0,
-                                                                        0,
-                                                                        0,
-                                                                        10),
+                                                                    .fromSTEB(0,
+                                                                    0, 0, 10),
                                                             child: Container(
                                                               decoration:
                                                                   const BoxDecoration(),
@@ -2306,10 +2322,10 @@ class _LeaderBoardPageWidgetState extends State<LeaderBoardPageWidget>
                                                                 padding:
                                                                     const EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                            25,
-                                                                            0,
-                                                                            25,
-                                                                            10),
+                                                                        25,
+                                                                        0,
+                                                                        25,
+                                                                        10),
                                                                 child: Builder(
                                                                   builder:
                                                                       (context) {
