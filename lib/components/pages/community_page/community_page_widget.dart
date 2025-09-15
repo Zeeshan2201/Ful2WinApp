@@ -21,7 +21,6 @@ import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:http/http.dart' as http;
 import 'package:mime_type/mime_type.dart';
-import 'package:cross_file/cross_file.dart';
 
 import 'community_page_model.dart';
 export 'community_page_model.dart';
@@ -2338,6 +2337,13 @@ class _CommunityPageWidgetState extends State<CommunityPageWidget>
                                                                     FFAppState()
                                                                         .token,
                                                               );
+                                                              _model
+                                                                  .textController
+                                                                  ?.clear();
+                                                              _model.showCommentBox =
+                                                                  null;
+                                                              safeSetState(
+                                                                  () {});
                                                             },
                                                             text: 'Post',
                                                             options:

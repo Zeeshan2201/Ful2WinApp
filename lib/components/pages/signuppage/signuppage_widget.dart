@@ -1,10 +1,17 @@
 import '/backend/api_requests/api_calls.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:math';
+import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
 import 'signuppage_model.dart';
 export 'signuppage_model.dart';
 
@@ -18,10 +25,13 @@ class SignuppageWidget extends StatefulWidget {
   State<SignuppageWidget> createState() => _SignuppageWidgetState();
 }
 
-class _SignuppageWidgetState extends State<SignuppageWidget> {
+class _SignuppageWidgetState extends State<SignuppageWidget>
+    with TickerProviderStateMixin {
   late SignuppageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -42,6 +52,33 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
 
     _model.textController5 ??= TextEditingController();
     _model.textFieldFocusNode5 ??= FocusNode();
+
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeIn,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'containerOnPageLoadAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ShimmerEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            color: Color(0x80FFFFFF),
+            angle: 0.524,
+          ),
+        ],
+      ),
+    });
   }
 
   @override
@@ -60,7 +97,7 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: Color(0xFF000B33),
         body: Container(
           width: double.infinity,
           height: double.infinity,
@@ -71,66 +108,79 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                 'assets/images/bgimage.png',
               ).image,
             ),
-            gradient: const LinearGradient(
+            gradient: LinearGradient(
               colors: [Color(0xFF0B33FF), Color(0xFF000B33)],
-              stops: [0.0, 1.0],
-              begin: AlignmentDirectional(0.0, -1.0),
-              end: AlignmentDirectional(0, 1.0),
+              stops: [0, 1],
+              begin: AlignmentDirectional(0, -1),
+              end: AlignmentDirectional(0, 1),
             ),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: Image.asset(
-                    'assets/images/logo.png',
-                    width: 250.0,
-                    height: 180.0,
-                    fit: BoxFit.cover,
-                  ),
+              Container(
+                decoration: BoxDecoration(),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Image.asset(
+                          'assets/images/logo.png',
+                          width: 250,
+                          height: 180,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      'Entertainment · Earning · Fame',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            font: GoogleFonts.inter(
+                              fontWeight: FontWeight.bold,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
+                            ),
+                            color: Color(0xFFFFD700),
+                            fontSize: 16,
+                            letterSpacing: 0.0,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
+                          ),
+                    ),
+                  ],
                 ),
               ),
-              Text(
-                'Entertainment · Earning · Fame',
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      font: GoogleFonts.inter(
-                        fontWeight: FontWeight.bold,
-                        fontStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+                  child: Container(
+                    width: double.infinity,
+                    height: double.infinity,
+                    decoration: BoxDecoration(
+                      color: Color(0xBB08162C),
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(0),
+                        bottomRight: Radius.circular(0),
+                        topLeft: Radius.circular(40),
+                        topRight: Radius.circular(40),
                       ),
-                      color: const Color(0xFFFFD700),
-                      fontSize: 16.0,
-                      letterSpacing: 0.0,
-                      fontWeight: FontWeight.bold,
-                      fontStyle:
-                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                      border: Border.all(
+                        color: Color(0xFF00CFFF),
+                      ),
                     ),
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
-                      child: Container(
-                        width: double.infinity,
-                        height: 600.0,
-                        decoration: const BoxDecoration(
-                          color: Color(0x33FFFFFF),
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(0.0),
-                            bottomRight: Radius.circular(0.0),
-                            topLeft: Radius.circular(40.0),
-                            topRight: Radius.circular(40.0),
-                          ),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 10.0, 0.0, 0.0),
+                    child: ListView(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                           child: SingleChildScrollView(
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -141,8 +191,8 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 0.0, 0.0, 0.0),
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          20, 0, 0, 0),
                                       child: Text(
                                         'Welcome!',
                                         style: FlutterFlowTheme.of(context)
@@ -155,8 +205,8 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: const Color(0xFFF3F4F6),
-                                              fontSize: 24.0,
+                                              color: Color(0xFFF3F4F6),
+                                              fontSize: 24,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               fontStyle:
@@ -172,8 +222,8 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 0.0, 0.0, 0.0),
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          20, 0, 0, 0),
                                       child: Text(
                                         'Signup to continue',
                                         style: FlutterFlowTheme.of(context)
@@ -189,8 +239,8 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: const Color(0xFFE5E7EB),
-                                              fontSize: 16.0,
+                                              color: Color(0xFFE5E7EB),
+                                              fontSize: 16,
                                               letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
@@ -209,8 +259,8 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 0.0, 0.0, 0.0),
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          20, 0, 0, 0),
                                       child: Text(
                                         'Full Name',
                                         style: FlutterFlowTheme.of(context)
@@ -226,7 +276,7 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: const Color(0xFFF3F4F6),
+                                              color: Color(0xFFF3F4F6),
                                               letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
@@ -246,10 +296,10 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                   children: [
                                     Expanded(
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            20.0, 0.0, 20.0, 0.0),
-                                        child: SizedBox(
-                                          width: 200.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20, 0, 20, 0),
+                                        child: Container(
+                                          width: 200,
                                           child: TextFormField(
                                             controller: _model.textController1,
                                             focusNode:
@@ -322,30 +372,30 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                                 .fontStyle,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1.0,
+                                                borderSide: BorderSide(
+                                                  color: Color(0xFF00CFFF),
+                                                  width: 1,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                    BorderRadius.circular(8),
                                               ),
                                               focusedBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 1.0,
+                                                  width: 1,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                    BorderRadius.circular(8),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .error,
-                                                  width: 1.0,
+                                                  width: 1,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                    BorderRadius.circular(8),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
@@ -353,13 +403,13 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .error,
-                                                  width: 1.0,
+                                                  width: 1,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                    BorderRadius.circular(8),
                                               ),
                                               filled: true,
-                                              fillColor: const Color(0x33FFFFFF),
+                                              fillColor: Color(0x33FFFFFF),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -378,8 +428,8 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                   ),
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryBackground,
-                                                  fontSize: 20.0,
+                                                      .primaryBackground,
+                                                  fontSize: 20,
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
@@ -410,8 +460,8 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 0.0, 0.0, 0.0),
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          20, 0, 0, 0),
                                       child: Text(
                                         'Phone Number',
                                         style: FlutterFlowTheme.of(context)
@@ -427,7 +477,7 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: const Color(0xFFF3F4F6),
+                                              color: Color(0xFFF3F4F6),
                                               letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
@@ -447,10 +497,10 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                   children: [
                                     Expanded(
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            20.0, 0.0, 20.0, 0.0),
-                                        child: SizedBox(
-                                          width: 200.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20, 0, 20, 0),
+                                        child: Container(
+                                          width: 200,
                                           child: TextFormField(
                                             controller: _model.textController2,
                                             focusNode:
@@ -520,30 +570,30 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                                 .fontStyle,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1.0,
+                                                borderSide: BorderSide(
+                                                  color: Color(0xFF00CFFF),
+                                                  width: 1,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                    BorderRadius.circular(8),
                                               ),
                                               focusedBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 1.0,
+                                                  width: 1,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                    BorderRadius.circular(8),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .error,
-                                                  width: 1.0,
+                                                  width: 1,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                    BorderRadius.circular(8),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
@@ -551,13 +601,13 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .error,
-                                                  width: 1.0,
+                                                  width: 1,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                    BorderRadius.circular(8),
                                               ),
                                               filled: true,
-                                              fillColor: const Color(0x33FFFFFF),
+                                              fillColor: Color(0x33FFFFFF),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -574,7 +624,10 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  fontSize: 20.0,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryBackground,
+                                                  fontSize: 20,
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
@@ -587,6 +640,7 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                           .bodyMedium
                                                           .fontStyle,
                                                 ),
+                                            keyboardType: TextInputType.phone,
                                             cursorColor:
                                                 FlutterFlowTheme.of(context)
                                                     .primaryText,
@@ -604,8 +658,8 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 0.0, 0.0, 0.0),
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          20, 0, 0, 0),
                                       child: Text(
                                         'Email Address',
                                         style: FlutterFlowTheme.of(context)
@@ -621,7 +675,7 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: const Color(0xFFF3F4F6),
+                                              color: Color(0xFFF3F4F6),
                                               letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
@@ -641,10 +695,10 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                   children: [
                                     Expanded(
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            20.0, 0.0, 20.0, 0.0),
-                                        child: SizedBox(
-                                          width: 200.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20, 0, 20, 0),
+                                        child: Container(
+                                          width: 200,
                                           child: TextFormField(
                                             controller: _model.textController3,
                                             focusNode:
@@ -714,30 +768,30 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                                 .fontStyle,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1.0,
+                                                borderSide: BorderSide(
+                                                  color: Color(0xFF00CFFF),
+                                                  width: 1,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                    BorderRadius.circular(8),
                                               ),
                                               focusedBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 1.0,
+                                                  width: 1,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                    BorderRadius.circular(8),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .error,
-                                                  width: 1.0,
+                                                  width: 1,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                    BorderRadius.circular(8),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
@@ -745,13 +799,13 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .error,
-                                                  width: 1.0,
+                                                  width: 1,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                    BorderRadius.circular(8),
                                               ),
                                               filled: true,
-                                              fillColor: const Color(0x33FFFFFF),
+                                              fillColor: Color(0x33FFFFFF),
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -768,6 +822,10 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryBackground,
+                                                  fontSize: 20,
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
@@ -780,6 +838,8 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                           .bodyMedium
                                                           .fontStyle,
                                                 ),
+                                            keyboardType:
+                                                TextInputType.emailAddress,
                                             cursorColor:
                                                 FlutterFlowTheme.of(context)
                                                     .primaryText,
@@ -797,8 +857,8 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 0.0, 0.0, 0.0),
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          20, 0, 0, 0),
                                       child: Text(
                                         'Password',
                                         style: FlutterFlowTheme.of(context)
@@ -814,7 +874,7 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: const Color(0xFFF3F4F6),
+                                              color: Color(0xFFF3F4F6),
                                               letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
@@ -834,10 +894,10 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                   children: [
                                     Expanded(
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            20.0, 0.0, 20.0, 0.0),
-                                        child: SizedBox(
-                                          width: 200.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20, 0, 20, 0),
+                                        child: Container(
+                                          width: 200,
                                           child: TextFormField(
                                             controller: _model.textController4,
                                             focusNode:
@@ -908,30 +968,30 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                                 .fontStyle,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1.0,
+                                                borderSide: BorderSide(
+                                                  color: Color(0xFF00CFFF),
+                                                  width: 1,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                    BorderRadius.circular(8),
                                               ),
                                               focusedBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 1.0,
+                                                  width: 1,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                    BorderRadius.circular(8),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .error,
-                                                  width: 1.0,
+                                                  width: 1,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                    BorderRadius.circular(8),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
@@ -939,13 +999,13 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .error,
-                                                  width: 1.0,
+                                                  width: 1,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                    BorderRadius.circular(8),
                                               ),
                                               filled: true,
-                                              fillColor: const Color(0x33FFFFFF),
+                                              fillColor: Color(0x33FFFFFF),
                                               suffixIcon: InkWell(
                                                 onTap: () => safeSetState(
                                                   () => _model
@@ -961,6 +1021,7 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                           .visibility_outlined
                                                       : Icons
                                                           .visibility_off_outlined,
+                                                  color: Color(0xFF00CFFF),
                                                   size: 22,
                                                 ),
                                               ),
@@ -980,6 +1041,10 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryBackground,
+                                                  fontSize: 20,
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
@@ -1009,8 +1074,8 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 0.0, 0.0, 0.0),
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          20, 0, 0, 0),
                                       child: Text(
                                         'Confirm Password',
                                         style: FlutterFlowTheme.of(context)
@@ -1026,7 +1091,7 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: const Color(0xFFF3F4F6),
+                                              color: Color(0xFFF3F4F6),
                                               letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
@@ -1046,10 +1111,10 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                   children: [
                                     Expanded(
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            20.0, 0.0, 20.0, 0.0),
-                                        child: SizedBox(
-                                          width: 200.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20, 0, 20, 0),
+                                        child: Container(
+                                          width: 200,
                                           child: TextFormField(
                                             controller: _model.textController5,
                                             focusNode:
@@ -1120,30 +1185,30 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                                 .fontStyle,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1.0,
+                                                borderSide: BorderSide(
+                                                  color: Color(0xFF00CFFF),
+                                                  width: 1,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                    BorderRadius.circular(8),
                                               ),
                                               focusedBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0x00000000),
-                                                  width: 1.0,
+                                                  width: 1,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                    BorderRadius.circular(8),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .error,
-                                                  width: 1.0,
+                                                  width: 1,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                    BorderRadius.circular(8),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
@@ -1151,13 +1216,13 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .error,
-                                                  width: 1.0,
+                                                  width: 1,
                                                 ),
                                                 borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                                    BorderRadius.circular(8),
                                               ),
                                               filled: true,
-                                              fillColor: const Color(0x33FFFFFF),
+                                              fillColor: Color(0x33FFFFFF),
                                               suffixIcon: InkWell(
                                                 onTap: () => safeSetState(
                                                   () => _model
@@ -1173,6 +1238,7 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                           .visibility_outlined
                                                       : Icons
                                                           .visibility_off_outlined,
+                                                  color: Color(0xFF00CFFF),
                                                   size: 22,
                                                 ),
                                               ),
@@ -1192,6 +1258,10 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryBackground,
+                                                  fontSize: 20,
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
@@ -1218,8 +1288,8 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                   ],
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      20.0, 0.0, 0.0, 0.0),
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      20, 0, 0, 0),
                                   child: Text(
                                     'Have a referal code ?',
                                     textAlign: TextAlign.start,
@@ -1236,7 +1306,7 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
-                                          color: const Color(0xFF93C5FD),
+                                          color: Color(0xFF93C5FD),
                                           letterSpacing: 0.0,
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
@@ -1254,8 +1324,8 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 0.0, 0.0, 0.0),
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          20, 0, 0, 0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -1271,30 +1341,29 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                         .shrinkWrap,
                                                 shape: RoundedRectangleBorder(
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          4.0),
+                                                      BorderRadius.circular(4),
                                                 ),
                                               ),
                                               unselectedWidgetColor:
                                                   FlutterFlowTheme.of(context)
-                                                      .alternate,
+                                                      .secondaryText,
                                             ),
                                             child: Checkbox(
                                               value: _model.checkboxValue ??=
-                                                  true,
+                                                  false,
                                               onChanged: (newValue) async {
                                                 safeSetState(() => _model
                                                     .checkboxValue = newValue!);
                                               },
                                               side:
                                                   (FlutterFlowTheme.of(context)
-                                                              .alternate !=
+                                                              .secondaryText !=
                                                           null)
                                                       ? BorderSide(
                                                           width: 2,
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .alternate,
+                                                              .secondaryText!,
                                                         )
                                                       : null,
                                               activeColor:
@@ -1322,7 +1391,7 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  color: const Color(0xFFF3F4F6),
+                                                  color: Color(0xFFF3F4F6),
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
@@ -1353,7 +1422,7 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  color: const Color(0xFF93C5FD),
+                                                  color: Color(0xFF93C5FD),
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
@@ -1384,7 +1453,7 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  color: const Color(0xFFF3F4F6),
+                                                  color: Color(0xFFF3F4F6),
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
@@ -1415,7 +1484,7 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  color: const Color(0xFF93C5FD),
+                                                  color: Color(0xFF93C5FD),
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
@@ -1434,70 +1503,84 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                     ),
                                   ],
                                 ),
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      20.0, 0.0, 20.0, 0.0),
-                                  child: FFButtonWidget(
-                                    onPressed: () async {
-                                      _model.signup = await RegisterCall.call(
-                                        fullname: _model.textController1.text,
-                                        phoneNumber: int.tryParse(
-                                            _model.textController2.text),
-                                        password: _model.textController5.text,
-                                        email: _model.textController3.text,
-                                      );
-
-                                      if ((_model.signup?.succeeded ?? true)) {
-                                        context.pushNamed(
-                                            HomePageWidget.routeName);
-
-                                        FFAppState().token = getJsonField(
-                                          (_model.signup?.jsonBody ?? ''),
-                                          r'''$.token''',
-                                        ).toString();
-                                        FFAppState().userId = getJsonField(
-                                          (_model.signup?.jsonBody ?? ''),
-                                          r'''$.user.id''',
-                                        ).toString();
-                                        safeSetState(() {});
-                                      } else {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            content: Text(
-                                              'Provide Valid Information',
-                                              style: TextStyle(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                              ),
-                                            ),
-                                            duration:
-                                                const Duration(milliseconds: 4000),
-                                            backgroundColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondary,
-                                          ),
+                                Align(
+                                  alignment: AlignmentDirectional(0, 0),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        25, 0, 25, 0),
+                                    child: FFButtonWidget(
+                                      onPressed: () async {
+                                        _model.signup = await RegisterCall.call(
+                                          fullname: _model.textController1.text,
+                                          phoneNumber: int.tryParse(
+                                              _model.textController2.text),
+                                          password: _model.textController5.text,
+                                          email: _model.textController3.text,
                                         );
-                                      }
 
-                                      safeSetState(() {});
-                                    },
-                                    text: 'Sign up',
-                                    options: FFButtonOptions(
-                                      width: 350.0,
-                                      height: 40.0,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 16.0, 0.0),
-                                      iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            font: GoogleFonts.poppins(
+                                        if ((_model.signup?.succeeded ??
+                                            true)) {
+                                          context.pushNamed(
+                                              HomePageWidget.routeName);
+
+                                          FFAppState().token = getJsonField(
+                                            (_model.signup?.jsonBody ?? ''),
+                                            r'''$.token''',
+                                          ).toString();
+                                          FFAppState().userId = getJsonField(
+                                            (_model.signup?.jsonBody ?? ''),
+                                            r'''$.user.id''',
+                                          ).toString();
+                                          safeSetState(() {});
+                                        } else {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Provide Valid Information',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
+                                        }
+
+                                        safeSetState(() {});
+                                      },
+                                      text: 'Sign up',
+                                      options: FFButtonOptions(
+                                        width: double.infinity,
+                                        height: 40,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            16, 0, 16, 0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0, 0, 0, 0),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              font: GoogleFonts.poppins(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontStyle,
+                                              ),
+                                              color: Colors.white,
+                                              letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
                                                       .titleSmall
@@ -1507,19 +1590,9 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                       .titleSmall
                                                       .fontStyle,
                                             ),
-                                            color: Colors.white,
-                                            letterSpacing: 0.0,
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .fontStyle,
-                                          ),
-                                      elevation: 0.0,
-                                      borderRadius: BorderRadius.circular(8.0),
+                                        elevation: 0,
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -1549,7 +1622,7 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                           .bodyMedium
                                                           .fontStyle,
                                                 ),
-                                                color: const Color(0xFFD1D5DB),
+                                                color: Color(0xFFD1D5DB),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
@@ -1587,7 +1660,7 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  color: const Color(0xFF93C5FD),
+                                                  color: Color(0xFF93C5FD),
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
@@ -1607,19 +1680,20 @@ class _SignuppageWidgetState extends State<SignuppageWidget> {
                                   ],
                                 ),
                               ]
-                                  .divide(const SizedBox(height: 20.0))
-                                  .around(const SizedBox(height: 20.0)),
+                                  .divide(SizedBox(height: 20))
+                                  .around(SizedBox(height: 20)),
                             ),
                           ),
                         ),
-                      ),
+                      ],
                     ),
-                  ),
-                ],
+                  ).animateOnPageLoad(
+                      animationsMap['containerOnPageLoadAnimation2']!),
+                ),
               ),
             ],
           ),
-        ),
+        ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation1']!),
       ),
     );
   }
