@@ -176,7 +176,7 @@ class _TournamentPageWidgetState extends State<TournamentPageWidget> {
                                                     .labelMedium
                                                     .fontStyle,
                                           ),
-                                      hintText: 'Search games...',
+                                      hintText: 'Search Games...',
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
@@ -392,7 +392,7 @@ class _TournamentPageWidgetState extends State<TournamentPageWidget> {
                                                     Text(
                                                       getJsonField(
                                                         gameItem,
-                                                        r'''$.name''',
+                                                        r'''$.displayName''',
                                                       ).toString(),
                                                       style: FlutterFlowTheme
                                                               .of(context)
@@ -513,6 +513,17 @@ class _TournamentPageWidgetState extends State<TournamentPageWidget> {
                                                                         0),
                                                               ),
                                                             },
+                                                            queryParameters: {
+                                                              'gameId':
+                                                                  serializeParam(
+                                                                getJsonField(
+                                                                  gameItem,
+                                                                  r'''$._id''',
+                                                                ),
+                                                                ParamType
+                                                                    .String,
+                                                              ),
+                                                            }.withoutNulls,
                                                           );
                                                         },
                                                         child: Container(

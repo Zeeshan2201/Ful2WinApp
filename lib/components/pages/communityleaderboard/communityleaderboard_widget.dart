@@ -3,14 +3,10 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pop_ups/header/header_widget.dart';
 import '/pop_ups/navbar/navbar_widget.dart';
-import 'dart:math';
-import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -83,7 +79,7 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFF000B33),
+        backgroundColor: const Color(0xFF000B33),
         body: Container(
           width: double.infinity,
           height: double.infinity,
@@ -95,10 +91,13 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
               ).image,
             ),
             gradient: LinearGradient(
-              colors: [FlutterFlowTheme.of(context).primary, Color(0xFF000B33)],
-              stops: [0, 1],
-              begin: AlignmentDirectional(0, -1),
-              end: AlignmentDirectional(0, 1),
+              colors: [
+                FlutterFlowTheme.of(context).primary,
+                const Color(0xFF000B33)
+              ],
+              stops: const [0, 1],
+              begin: const AlignmentDirectional(0, -1),
+              end: const AlignmentDirectional(0, 1),
             ),
           ),
           child: Column(
@@ -107,7 +106,7 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
               wrapWithModel(
                 model: _model.headerModel,
                 updateCallback: () => safeSetState(() {}),
-                child: HeaderWidget(),
+                child: const HeaderWidget(),
               ),
               Column(
                 mainAxisSize: MainAxisSize.max,
@@ -117,7 +116,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -129,7 +129,7 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                               children: [
                                 Container(
                                   decoration: BoxDecoration(
-                                    gradient: LinearGradient(
+                                    gradient: const LinearGradient(
                                       colors: [
                                         Color(0xFF0BC1FF),
                                         Color(0xFF0A2472)
@@ -164,11 +164,11 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       5, 0, 0, 0),
                                   child: Container(
                                     decoration: BoxDecoration(
-                                      gradient: LinearGradient(
+                                      gradient: const LinearGradient(
                                         colors: [
                                           Color(0xFF0BC1FF),
                                           Color(0xFF0A2472)
@@ -204,10 +204,10 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                       Container(
                         width: 150,
                         decoration: BoxDecoration(
-                          color: Color(0x33FFFFFF),
+                          color: const Color(0x33FFFFFF),
                           borderRadius: BorderRadius.circular(40),
                         ),
-                        alignment: AlignmentDirectional(0, 0),
+                        alignment: const AlignmentDirectional(0, 0),
                         child: Text(
                           'Leaderboard',
                           style:
@@ -218,7 +218,7 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFFFBD34D),
+                                    color: const Color(0xFFFBD34D),
                                     fontSize: 22,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
@@ -237,7 +237,7 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                             children: [
                               Container(
                                 decoration: BoxDecoration(
-                                  gradient: LinearGradient(
+                                  gradient: const LinearGradient(
                                     colors: [
                                       Color(0xFF0BC1FF),
                                       Color(0xFF0A2472)
@@ -264,11 +264,11 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                 ),
                               ),
                               Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    5, 0, 0, 0),
                                 child: Container(
                                   decoration: BoxDecoration(
-                                    gradient: LinearGradient(
+                                    gradient: const LinearGradient(
                                       colors: [
                                         Color(0xFFF3E2C2),
                                         Color(0xFFE1B769)
@@ -307,10 +307,10 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                 child: Column(
                   children: [
                     Align(
-                      alignment: Alignment(0, 0),
+                      alignment: const Alignment(0, 0),
                       child: TabBar(
                         labelColor: FlutterFlowTheme.of(context).secondary,
-                        unselectedLabelColor: Color(0xFF77A6E8),
+                        unselectedLabelColor: const Color(0xFF77A6E8),
                         labelStyle:
                             FlutterFlowTheme.of(context).titleMedium.override(
                                   font: GoogleFonts.poppins(
@@ -350,7 +350,7 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                       .fontStyle,
                                 ),
                         indicatorColor: FlutterFlowTheme.of(context).primary,
-                        tabs: [
+                        tabs: const [
                           Tab(
                             text: '💵 Most Wins',
                           ),
@@ -369,13 +369,13 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                         controller: _model.tabBarController,
                         children: [
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(15, 0, 15, 0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                15, 0, 15, 0),
                             child: SingleChildScrollView(
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Divider(
+                                  const Divider(
                                     thickness: 1,
                                     color: Color(0xFF77A6E8),
                                   ),
@@ -385,13 +385,13 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                     scrollDirection: Axis.vertical,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 5, 0, 0),
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(0, 5, 0, 0),
                                         child: Container(
                                           width: double.infinity,
                                           decoration: BoxDecoration(
-                                            color: Color(0x17FFFFFF),
-                                            boxShadow: [
+                                            color: const Color(0x17FFFFFF),
+                                            boxShadow: const [
                                               BoxShadow(
                                                 blurRadius: 4,
                                                 color: Color(0x33000000),
@@ -404,13 +404,12 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                             borderRadius:
                                                 BorderRadius.circular(20),
                                             border: Border.all(
-                                              color: Color(0x3DFFFFFF),
+                                              color: const Color(0x3DFFFFFF),
                                             ),
                                           ),
                                           child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0, 0, 0, 20),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(0, 0, 0, 20),
                                             child:
                                                 FutureBuilder<ApiCallResponse>(
                                               future: AllUsersCall.call(
@@ -458,12 +457,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                               users[usersIndex];
                                                           return Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
-                                                                        0,
-                                                                        5,
-                                                                        0,
-                                                                        0),
+                                                                    0, 5, 0, 0),
                                                             child: Row(
                                                               mainAxisSize:
                                                                   MainAxisSize
@@ -475,8 +471,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                 Expanded(
                                                                   child:
                                                                       Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
+                                                                    padding:
+                                                                        const EdgeInsetsDirectional
+                                                                            .fromSTEB(
                                                                             10,
                                                                             0,
                                                                             10,
@@ -489,9 +486,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                           86.1,
                                                                       decoration:
                                                                           BoxDecoration(
-                                                                        color: Color(
+                                                                        color: const Color(
                                                                             0xFF1A3996),
-                                                                        boxShadow: [
+                                                                        boxShadow: const [
                                                                           BoxShadow(
                                                                             blurRadius:
                                                                                 4,
@@ -509,7 +506,7 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                         border:
                                                                             Border.all(
                                                                           color:
-                                                                              Color(0x3DFFFFFF),
+                                                                              const Color(0x3DFFFFFF),
                                                                         ),
                                                                       ),
                                                                       child:
@@ -520,7 +517,7 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                             MainAxisAlignment.spaceBetween,
                                                                         children: [
                                                                           Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 5,
                                                                                 0,
                                                                                 0,
@@ -531,7 +528,7 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                               children: [
                                                                                 Align(
-                                                                                  alignment: AlignmentDirectional(0, 0),
+                                                                                  alignment: const AlignmentDirectional(0, 0),
                                                                                   child: FaIcon(
                                                                                     FontAwesomeIcons.trophy,
                                                                                     color: FlutterFlowTheme.of(context).secondary,
@@ -539,7 +536,7 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                                   ),
                                                                                 ),
                                                                                 Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(10, 10, 0, 0),
+                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(10, 10, 0, 0),
                                                                                   child: Container(
                                                                                     width: 40,
                                                                                     height: 40,
@@ -559,7 +556,7 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                                   ),
                                                                                 ),
                                                                                 Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
+                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                                                                                   child: Text(
                                                                                     getJsonField(
                                                                                       usersItem,
@@ -582,7 +579,7 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                             ),
                                                                           ),
                                                                           Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 0,
                                                                                 0,
                                                                                 10,
@@ -631,13 +628,13 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                             ),
                           ),
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(15, 0, 15, 0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                15, 0, 15, 0),
                             child: SingleChildScrollView(
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Divider(
+                                  const Divider(
                                     thickness: 1,
                                     color: Color(0xFF77A6E8),
                                   ),
@@ -647,13 +644,13 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                     scrollDirection: Axis.vertical,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 5, 0, 0),
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(0, 5, 0, 0),
                                         child: Container(
                                           width: double.infinity,
                                           decoration: BoxDecoration(
-                                            color: Color(0x17FFFFFF),
-                                            boxShadow: [
+                                            color: const Color(0x17FFFFFF),
+                                            boxShadow: const [
                                               BoxShadow(
                                                 blurRadius: 4,
                                                 color: Color(0x33000000),
@@ -666,22 +663,21 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                             borderRadius:
                                                 BorderRadius.circular(20),
                                             border: Border.all(
-                                              color: Color(0x3DFFFFFF),
+                                              color: const Color(0x3DFFFFFF),
                                             ),
                                           ),
                                           child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10, 0, 10, 20),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(10, 0, 10, 20),
                                             child: SingleChildScrollView(
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                0, 8, 0, 0),
+                                                            0, 8, 0, 0),
                                                     child: Row(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -696,9 +692,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                             height: 86.1,
                                                             decoration:
                                                                 BoxDecoration(
-                                                              color: Color(
+                                                              color: const Color(
                                                                   0xFF1A3996),
-                                                              boxShadow: [
+                                                              boxShadow: const [
                                                                 BoxShadow(
                                                                   blurRadius: 4,
                                                                   color: Color(
@@ -716,18 +712,18 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                           20),
                                                               border:
                                                                   Border.all(
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0x3DFFFFFF),
                                                               ),
                                                             ),
                                                             child: Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                          10,
-                                                                          0,
-                                                                          0,
-                                                                          0),
+                                                                      10,
+                                                                      0,
+                                                                      0,
+                                                                      0),
                                                               child: Row(
                                                                 mainAxisSize:
                                                                     MainAxisSize
@@ -737,8 +733,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                         .spaceBetween,
                                                                 children: [
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
+                                                                    padding:
+                                                                        const EdgeInsetsDirectional
+                                                                            .fromSTEB(
                                                                             5,
                                                                             0,
                                                                             0,
@@ -752,7 +749,7 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                               .spaceBetween,
                                                                       children: [
                                                                         Align(
-                                                                          alignment: AlignmentDirectional(
+                                                                          alignment: const AlignmentDirectional(
                                                                               0,
                                                                               0),
                                                                           child:
@@ -765,7 +762,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                           ),
                                                                         ),
                                                                         Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional
+                                                                              .fromSTEB(
                                                                               10,
                                                                               10,
                                                                               0,
@@ -809,8 +807,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
+                                                                    padding:
+                                                                        const EdgeInsetsDirectional
+                                                                            .fromSTEB(
                                                                             0,
                                                                             0,
                                                                             10,
@@ -850,9 +849,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                0, 10, 0, 0),
+                                                            0, 10, 0, 0),
                                                     child: Row(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -863,21 +862,18 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
-                                                                        0,
-                                                                        5,
-                                                                        0,
-                                                                        0),
+                                                                    0, 5, 0, 0),
                                                             child: Container(
                                                               width: double
                                                                   .infinity,
                                                               height: 86.1,
                                                               decoration:
                                                                   BoxDecoration(
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFF1A3996),
-                                                                boxShadow: [
+                                                                boxShadow: const [
                                                                   BoxShadow(
                                                                     blurRadius:
                                                                         4,
@@ -896,7 +892,7 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                             20),
                                                                 border:
                                                                     Border.all(
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0x3DFFFFFF),
                                                                 ),
                                                               ),
@@ -909,8 +905,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                         .spaceBetween,
                                                                 children: [
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
+                                                                    padding:
+                                                                        const EdgeInsetsDirectional
+                                                                            .fromSTEB(
                                                                             10,
                                                                             0,
                                                                             0,
@@ -924,7 +921,7 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                               .spaceBetween,
                                                                       children: [
                                                                         Align(
-                                                                          alignment: AlignmentDirectional(
+                                                                          alignment: const AlignmentDirectional(
                                                                               0,
                                                                               0),
                                                                           child:
@@ -937,7 +934,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                           ),
                                                                         ),
                                                                         Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional
+                                                                              .fromSTEB(
                                                                               10,
                                                                               10,
                                                                               0,
@@ -981,8 +979,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
+                                                                    padding:
+                                                                        const EdgeInsetsDirectional
+                                                                            .fromSTEB(
                                                                             0,
                                                                             0,
                                                                             10,
@@ -1022,9 +1021,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                0, 10, 0, 0),
+                                                            0, 10, 0, 0),
                                                     child: Row(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -1039,9 +1038,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                             height: 86.1,
                                                             decoration:
                                                                 BoxDecoration(
-                                                              color: Color(
+                                                              color: const Color(
                                                                   0xFF1A3996),
-                                                              boxShadow: [
+                                                              boxShadow: const [
                                                                 BoxShadow(
                                                                   blurRadius: 4,
                                                                   color: Color(
@@ -1059,7 +1058,7 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                           20),
                                                               border:
                                                                   Border.all(
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0x3DFFFFFF),
                                                               ),
                                                             ),
@@ -1072,8 +1071,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                       .spaceBetween,
                                                               children: [
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
+                                                                  padding:
+                                                                      const EdgeInsetsDirectional
+                                                                          .fromSTEB(
                                                                           10,
                                                                           0,
                                                                           0,
@@ -1086,7 +1086,7 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                         MainAxisAlignment
                                                                             .spaceBetween,
                                                                     children: [
-                                                                      Align(
+                                                                      const Align(
                                                                         alignment: AlignmentDirectional(
                                                                             0,
                                                                             0),
@@ -1101,7 +1101,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                         ),
                                                                       ),
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional
+                                                                            .fromSTEB(
                                                                             10,
                                                                             10,
                                                                             0,
@@ -1148,8 +1149,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
+                                                                  padding:
+                                                                      const EdgeInsetsDirectional
+                                                                          .fromSTEB(
                                                                           0,
                                                                           0,
                                                                           10,
@@ -1192,9 +1194,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                0, 10, 0, 0),
+                                                            0, 10, 0, 0),
                                                     child: Row(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -1205,21 +1207,18 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
-                                                                        0,
-                                                                        5,
-                                                                        0,
-                                                                        0),
+                                                                    0, 5, 0, 0),
                                                             child: Container(
                                                               width: double
                                                                   .infinity,
                                                               height: 86.1,
                                                               decoration:
                                                                   BoxDecoration(
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFF1A3996),
-                                                                boxShadow: [
+                                                                boxShadow: const [
                                                                   BoxShadow(
                                                                     blurRadius:
                                                                         4,
@@ -1238,7 +1237,7 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                             20),
                                                                 border:
                                                                     Border.all(
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0x3DFFFFFF),
                                                                 ),
                                                               ),
@@ -1251,8 +1250,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                         .spaceBetween,
                                                                 children: [
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
+                                                                    padding:
+                                                                        const EdgeInsetsDirectional
+                                                                            .fromSTEB(
                                                                             10,
                                                                             0,
                                                                             0,
@@ -1266,7 +1266,7 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                               .spaceBetween,
                                                                       children: [
                                                                         Align(
-                                                                          alignment: AlignmentDirectional(
+                                                                          alignment: const AlignmentDirectional(
                                                                               0,
                                                                               0),
                                                                           child:
@@ -1279,7 +1279,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                           ),
                                                                         ),
                                                                         Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional
+                                                                              .fromSTEB(
                                                                               10,
                                                                               10,
                                                                               0,
@@ -1323,8 +1324,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
+                                                                    padding:
+                                                                        const EdgeInsetsDirectional
+                                                                            .fromSTEB(
                                                                             0,
                                                                             0,
                                                                             10,
@@ -1364,9 +1366,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                0, 10, 0, 0),
+                                                            0, 10, 0, 0),
                                                     child: Row(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -1377,21 +1379,18 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
-                                                                        0,
-                                                                        5,
-                                                                        0,
-                                                                        0),
+                                                                    0, 5, 0, 0),
                                                             child: Container(
                                                               width: double
                                                                   .infinity,
                                                               height: 86.1,
                                                               decoration:
                                                                   BoxDecoration(
-                                                                color: Color(
+                                                                color: const Color(
                                                                     0xFF1A3996),
-                                                                boxShadow: [
+                                                                boxShadow: const [
                                                                   BoxShadow(
                                                                     blurRadius:
                                                                         4,
@@ -1410,7 +1409,7 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                             20),
                                                                 border:
                                                                     Border.all(
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0x3DFFFFFF),
                                                                 ),
                                                               ),
@@ -1423,8 +1422,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                         .spaceBetween,
                                                                 children: [
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
+                                                                    padding:
+                                                                        const EdgeInsetsDirectional
+                                                                            .fromSTEB(
                                                                             10,
                                                                             0,
                                                                             0,
@@ -1438,7 +1438,7 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                               .spaceBetween,
                                                                       children: [
                                                                         Align(
-                                                                          alignment: AlignmentDirectional(
+                                                                          alignment: const AlignmentDirectional(
                                                                               0,
                                                                               0),
                                                                           child:
@@ -1451,7 +1451,8 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                           ),
                                                                         ),
                                                                         Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional
+                                                                              .fromSTEB(
                                                                               10,
                                                                               10,
                                                                               0,
@@ -1495,8 +1496,9 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
+                                                                    padding:
+                                                                        const EdgeInsetsDirectional
+                                                                            .fromSTEB(
                                                                             0,
                                                                             0,
                                                                             10,
@@ -1555,7 +1557,7 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
               wrapWithModel(
                 model: _model.navbarModel,
                 updateCallback: () => safeSetState(() {}),
-                child: NavbarWidget(
+                child: const NavbarWidget(
                   pageNav: 'CommunityPage',
                 ),
               ),

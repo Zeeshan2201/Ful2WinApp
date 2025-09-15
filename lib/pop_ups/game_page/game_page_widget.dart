@@ -506,7 +506,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                               ),
                                         ),
                                         Text(
-                                          '20 â â¹100',
+                                          '₹ 20 - ₹ 100',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -668,7 +668,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                             ),
                                       ),
                                       Text(
-                                        'â¹20 â â¹100',
+                                        '₹ 20 - ₹ 100',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -827,7 +827,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                             ),
                                       ),
                                       Text(
-                                        'â¹10 â â¹50',
+                                        '₹ 10 - ₹ 50',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(

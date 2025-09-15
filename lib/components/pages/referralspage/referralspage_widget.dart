@@ -30,7 +30,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
   late ReferralspageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-   late Future<ApiCallResponse> myRefferalsCall;
+  late Future<ApiCallResponse> myRefferalsCall;
   final animationsMap = <String, AnimationInfo>{};
 
   @override
@@ -38,8 +38,8 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
     super.initState();
     _model = createModel(context, () => ReferralspageModel());
     myRefferalsCall = MyReferrals.call(
-              token: FFAppState().token,
-            );
+      token: FFAppState().token,
+    );
 
     _model.tabBarController = TabController(
       vsync: this,
@@ -175,7 +175,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
             ),
           ),
           child: FutureBuilder<ApiCallResponse>(
-            future:  myRefferalsCall,
+            future: myRefferalsCall,
             builder: (context, snapshot) {
               // Customize what your widget looks like when it's loading.
               if (!snapshot.hasData) {
@@ -246,7 +246,8 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 5),
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0, 0, 0, 5),
                             child: Text(
                               'Refer & Earn',
                               style: FlutterFlowTheme.of(context)
@@ -297,8 +298,8 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding:
-                                  const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0, 15, 0, 0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment:
@@ -336,8 +337,8 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                               ),
                             ),
                             Padding(
-                              padding:
-                                  const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0, 5, 0, 0),
                               child: Text(
                                 getJsonField(
                                   columnMyRefferalsResponse.jsonBody,
@@ -386,8 +387,8 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding:
-                                  const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0, 15, 0, 0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment:
@@ -425,8 +426,8 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                               ),
                             ),
                             Padding(
-                              padding:
-                                  const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0, 5, 0, 0),
                               child: Text(
                                 getJsonField(
                                   columnMyRefferalsResponse.jsonBody,
@@ -483,8 +484,8 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding:
-                                    const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0, 15, 0, 0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
@@ -522,8 +523,8 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                 ),
                               ),
                               Padding(
-                                padding:
-                                    const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0, 5, 0, 0),
                                 child: Text(
                                   getJsonField(
                                     columnMyRefferalsResponse.jsonBody,
@@ -573,8 +574,8 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding:
-                                    const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0, 15, 0, 0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
@@ -612,8 +613,8 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                 ),
                               ),
                               Padding(
-                                padding:
-                                    const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0, 5, 0, 0),
                                 child: Text(
                                   getJsonField(
                                     columnMyRefferalsResponse.jsonBody,
@@ -647,7 +648,8 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                   ),
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(10, 20, 10, 0),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(10, 20, 10, 0),
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
@@ -663,7 +665,8 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                           ),
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                           child: Column(
                             children: [
                               Align(
@@ -743,9 +746,8 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    10, 0, 0, 0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(10, 0, 0, 0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -766,8 +768,8 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                   .bodyMedium
                                                                   .fontStyle,
                                                         ),
-                                                        color:
-                                                            const Color(0xFFE4E9ED),
+                                                        color: const Color(
+                                                            0xFFE4E9ED),
                                                         fontSize: 16,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -783,13 +785,11 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                             ),
                                           ),
                                           Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0, 20, 0, 0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(0, 20, 0, 0),
                                             child: Row(
-                                              mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.spaceAround,
+                                                  MainAxisAlignment.center,
                                               children: [
                                                 Container(
                                                   width:
@@ -798,55 +798,59 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                               350.0
                                                           ? 270.0
                                                           : 324.0,
-                                                  height: 100,
+                                                  height: 140,
                                                   decoration: BoxDecoration(
-                                                    color: const Color(0x33FFFFFF),
+                                                    color:
+                                                        const Color(0x33FFFFFF),
                                                     borderRadius:
-                                                        const BorderRadius.only(
-                                                      bottomLeft:
-                                                          Radius.circular(10),
-                                                      bottomRight:
-                                                          Radius.circular(10),
-                                                      topLeft:
-                                                          Radius.circular(10),
-                                                      topRight:
-                                                          Radius.circular(10),
-                                                    ),
+                                                        const BorderRadius.all(
+                                                            Radius.circular(
+                                                                10)),
                                                     border: Border.all(
-                                                      color: const Color(0xFF00CFFF),
-                                                    ),
+                                                        color: const Color(
+                                                            0xFF00CFFF)),
                                                   ),
                                                   child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
                                                     children: [
-                                                      Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceEvenly,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10,
-                                                                        0,
-                                                                        0,
-                                                                        0),
-                                                            child: Text(
-                                                              getJsonField(
-                                                                columnMyRefferalsResponse
-                                                                    .jsonBody,
-                                                                r'''$.referralCode''',
-                                                              ).toString(),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    font: GoogleFonts
-                                                                        .inter(
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                10, 0, 10, 0),
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
+                                                          children: [
+                                                            Expanded(
+                                                              child: Text(
+                                                                getJsonField(
+                                                                  columnMyRefferalsResponse
+                                                                      .jsonBody,
+                                                                  r'''$.referralCode''',
+                                                                ).toString(),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      font: GoogleFonts
+                                                                          .inter(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
+                                                                      color: const Color(
+                                                                          0xFFFBFDFF),
+                                                                      fontSize:
+                                                                          16,
+                                                                      letterSpacing:
+                                                                          0.0,
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyMedium
@@ -856,58 +860,71 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                           .bodyMedium
                                                                           .fontStyle,
                                                                     ),
-                                                                    color: const Color(
-                                                                        0xFFFBFDFF),
-                                                                    fontSize:
-                                                                        16,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .ellipsis,
+                                                              ),
                                                             ),
-                                                          ),
-                                                          Padding(
-                                                            padding: EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    valueOrDefault<
-                                                                        double>(
-                                                                      MediaQuery.sizeOf(context).width <
-                                                                              330.0
-                                                                          ? 20.0
-                                                                          : 50.0,
-                                                                      0.0,
+                                                            const SizedBox(
+                                                                width: 8),
+                                                            const Icon(
+                                                                Icons
+                                                                    .content_copy,
+                                                                color: Color(
+                                                                    0xFFF6FBFE),
+                                                                size: 24),
+                                                            const SizedBox(
+                                                                width: 8),
+                                                            FFButtonWidget(
+                                                              onPressed:
+                                                                  () async {
+                                                                await actions
+                                                                    .copyToClipboard(
+                                                                  getJsonField(
+                                                                    columnMyRefferalsResponse
+                                                                        .jsonBody,
+                                                                    r'''$.referralCode''',
+                                                                  ).toString(),
+                                                                );
+                                                                ScaffoldMessenger.of(
+                                                                        context)
+                                                                    .showSnackBar(
+                                                                  SnackBar(
+                                                                    content:
+                                                                        Text(
+                                                                      'Referral code copied to clipboard',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            font:
+                                                                                GoogleFonts.inter(
+                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                            ),
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primary,
+                                                                            fontSize:
+                                                                                16,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                          ),
                                                                     ),
-                                                                    5,
-                                                                    0,
-                                                                    0),
-                                                            child: const Icon(
-                                                              Icons
-                                                                  .content_copy,
-                                                              color: Color(
-                                                                  0xFFF6FBFE),
-                                                              size: 24,
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0,
-                                                                        5,
-                                                                        5,
-                                                                        0),
-                                                            child:
-                                                                FFButtonWidget(
-                                                              onPressed: () {
-                                                                print(
-                                                                    'Button pressed ...');
+                                                                    duration: const Duration(
+                                                                        milliseconds:
+                                                                            2000),
+                                                                    backgroundColor:
+                                                                        Colors
+                                                                            .black,
+                                                                    behavior:
+                                                                        SnackBarBehavior
+                                                                            .floating,
+                                                                  ),
+                                                                );
                                                               },
                                                               text: 'copy',
                                                               options:
@@ -921,17 +938,17 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                 padding:
                                                                     const EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                            0,
-                                                                            0,
-                                                                            0,
-                                                                            0),
+                                                                        0,
+                                                                        0,
+                                                                        0,
+                                                                        0),
                                                                 iconPadding:
                                                                     const EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                            0,
-                                                                            0,
-                                                                            0,
-                                                                            0),
+                                                                        0,
+                                                                        0,
+                                                                        0,
+                                                                        0),
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primary,
@@ -972,187 +989,81 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                             8),
                                                               ),
                                                             ).animateOnPageLoad(
-                                                                    animationsMap[
-                                                                        'buttonOnPageLoadAnimation']!),
-                                                          ),
-                                                        ],
+                                                                animationsMap[
+                                                                    'buttonOnPageLoadAnimation']!),
+                                                          ],
+                                                        ),
                                                       ),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(0, 10,
-                                                                    0, 0),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceAround,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          10,
-                                                                          0,
-                                                                          0,
-                                                                          0),
-                                                              child: Container(
-                                                                width: MediaQuery.sizeOf(context)
-                                                                            .width <
-                                                                        350.0
-                                                                    ? 120.0
-                                                                    : 138.0,
-                                                                height: 34.7,
-                                                                decoration:
-                                                                    const BoxDecoration(
-                                                                  color: Color(
-                                                                      0xFF22C55E),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .only(
-                                                                    bottomLeft:
-                                                                        Radius.circular(
-                                                                            10),
-                                                                    bottomRight:
-                                                                        Radius.circular(
-                                                                            10),
-                                                                    topLeft: Radius
-                                                                        .circular(
-                                                                            10),
-                                                                    topRight: Radius
-                                                                        .circular(
-                                                                            10),
-                                                                  ),
-                                                                ),
-                                                                child: InkWell(
-                                                                  splashColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  focusColor: Colors
-                                                                      .transparent,
-                                                                  hoverColor: Colors
-                                                                      .transparent,
-                                                                  highlightColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  onTap:
-                                                                      () async {
-                                                                    await actions
-                                                                        .shareToPlatform(
-                                                                      'whatsapp',
-                                                                      getJsonField(
-                                                                        columnMyRefferalsResponse
-                                                                            .jsonBody,
-                                                                        r'''$.referralCode''',
-                                                                      ).toString(),
-                                                                    );
-                                                                    _model.soundPlayer2 ??=
-                                                                        AudioPlayer();
-                                                                    if (_model
-                                                                        .soundPlayer2!
-                                                                        .playing) {
-                                                                      await _model
-                                                                          .soundPlayer2!
-                                                                          .stop();
-                                                                    }
-                                                                    _model
-                                                                        .soundPlayer2!
-                                                                        .setVolume(
-                                                                            1);
-                                                                    _model
-                                                                        .soundPlayer2!
-                                                                        .setAsset(
-                                                                            'assets/audios/click.mp3')
-                                                                        .then((_) => _model
-                                                                            .soundPlayer2!
-                                                                            .play());
-                                                                  },
-                                                                  child: Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      const Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            10,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                        child:
-                                                                            Icon(
-                                                                          Icons
-                                                                              .wechat_outlined,
-                                                                          color:
-                                                                              Color(0xFFE7F2FA),
-                                                                          size:
-                                                                              24,
-                                                                        ),
-                                                                      ),
-                                                                      Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                            10,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                        child:
-                                                                            Text(
-                                                                          'Whatsapp',
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .override(
-                                                                                font: GoogleFonts.inter(
-                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                ),
-                                                                                color: const Color(0xFFE8EDF0),
-                                                                                fontSize: MediaQuery.sizeOf(context).width < 350.0 ? 12.0 : 16.0,
-                                                                                letterSpacing: 0.0,
-                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                              ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                ),
-                                                              ).animateOnPageLoad(
-                                                                  animationsMap[
-                                                                      'containerOnPageLoadAnimation2']!),
+                                                      const SizedBox(
+                                                          height: 10),
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceAround,
+                                                        children: [
+                                                          // WhatsApp button
+                                                          Container(
+                                                            width: MediaQuery.sizeOf(
+                                                                            context)
+                                                                        .width <
+                                                                    350.0
+                                                                ? 120.0
+                                                                : 138.0,
+                                                            height: 34.7,
+                                                            decoration:
+                                                                const BoxDecoration(
+                                                              color: Color(
+                                                                  0xFF22C55E),
+                                                              borderRadius: BorderRadius
+                                                                  .all(Radius
+                                                                      .circular(
+                                                                          10)),
                                                             ),
-                                                            Container(
-                                                              width: MediaQuery.sizeOf(
-                                                                              context)
-                                                                          .width <
-                                                                      350.0
-                                                                  ? 120.0
-                                                                  : 138.0,
-                                                              height: 34.7,
-                                                              decoration:
-                                                                  const BoxDecoration(
-                                                                color: Color(
-                                                                    0xFF3B82F6),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .only(
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          10),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          10),
-                                                                  topLeft: Radius
-                                                                      .circular(
-                                                                          10),
-                                                                  topRight: Radius
-                                                                      .circular(
-                                                                          10),
-                                                                ),
-                                                              ),
+                                                            child: InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              onTap: () async {
+                                                                await actions
+                                                                    .shareToPlatform(
+                                                                  'whatsapp',
+                                                                  getJsonField(
+                                                                    columnMyRefferalsResponse
+                                                                        .jsonBody,
+                                                                    r'''$.referralCode''',
+                                                                  ).toString(),
+                                                                );
+                                                                _model.soundPlayer2 ??=
+                                                                    AudioPlayer();
+                                                                if (_model
+                                                                    .soundPlayer2!
+                                                                    .playing) {
+                                                                  await _model
+                                                                      .soundPlayer2!
+                                                                      .stop();
+                                                                }
+                                                                _model
+                                                                    .soundPlayer2!
+                                                                    .setVolume(
+                                                                        1);
+                                                                _model
+                                                                    .soundPlayer2!
+                                                                    .setAsset(
+                                                                        'assets/audios/click.mp3')
+                                                                    .then((_) => _model
+                                                                        .soundPlayer2!
+                                                                        .play());
+                                                              },
                                                               child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
                                                                 children: [
                                                                   const Padding(
                                                                     padding: EdgeInsetsDirectional
@@ -1162,16 +1073,135 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                             0,
                                                                             0),
                                                                     child: Icon(
-                                                                      Icons
-                                                                          .telegram_sharp,
-                                                                      color: Color(
-                                                                          0xFFEDF3F8),
-                                                                      size: 24,
-                                                                    ),
+                                                                        Icons
+                                                                            .wechat_outlined,
+                                                                        color: Color(
+                                                                            0xFFE7F2FA),
+                                                                        size:
+                                                                            24),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding:
+                                                                        const EdgeInsetsDirectional
+                                                                            .fromSTEB(
+                                                                            10,
+                                                                            0,
+                                                                            0,
+                                                                            0),
+                                                                    child: Text(
+                                                                      'Whatsapp',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            font:
+                                                                                GoogleFonts.inter(
+                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                            ),
+                                                                            color:
+                                                                                const Color(0xFFE8EDF0),
+                                                                            fontSize: MediaQuery.sizeOf(context).width < 350.0
+                                                                                ? 12.0
+                                                                                : 16.0,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                          ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ).animateOnPageLoad(
+                                                              animationsMap[
+                                                                  'containerOnPageLoadAnimation2']!),
+                                                          // Telegram button
+                                                          Container(
+                                                            width: MediaQuery.sizeOf(
+                                                                            context)
+                                                                        .width <
+                                                                    350.0
+                                                                ? 120.0
+                                                                : 138.0,
+                                                            height: 34.7,
+                                                            decoration:
+                                                                const BoxDecoration(
+                                                              color: Color(
+                                                                  0xFF3B82F6),
+                                                              borderRadius: BorderRadius
+                                                                  .all(Radius
+                                                                      .circular(
+                                                                          10)),
+                                                            ),
+                                                            child: InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              onTap: () async {
+                                                                await actions
+                                                                    .shareToPlatform(
+                                                                  'telegram',
+                                                                  getJsonField(
+                                                                    columnMyRefferalsResponse
+                                                                        .jsonBody,
+                                                                    r'''$.referralCode''',
+                                                                  ).toString(),
+                                                                );
+                                                                _model.soundPlayer2 ??=
+                                                                    AudioPlayer();
+                                                                if (_model
+                                                                    .soundPlayer2!
+                                                                    .playing) {
+                                                                  await _model
+                                                                      .soundPlayer2!
+                                                                      .stop();
+                                                                }
+                                                                _model
+                                                                    .soundPlayer2!
+                                                                    .setVolume(
+                                                                        1);
+                                                                _model
+                                                                    .soundPlayer2!
+                                                                    .setAsset(
+                                                                        'assets/audios/click.mp3')
+                                                                    .then((_) => _model
+                                                                        .soundPlayer2!
+                                                                        .play());
+                                                              },
+                                                              child: Row(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
+                                                                children: [
+                                                                  const Padding(
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
+                                                                            10,
+                                                                            0,
+                                                                            0,
+                                                                            0),
+                                                                    child: Icon(
+                                                                        Icons
+                                                                            .telegram_sharp,
+                                                                        color: Color(
+                                                                            0xFFEDF3F8),
+                                                                        size:
+                                                                            24),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding:
+                                                                        const EdgeInsetsDirectional
+                                                                            .fromSTEB(
                                                                             10,
                                                                             0,
                                                                             0,
@@ -1203,11 +1233,11 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                   ),
                                                                 ],
                                                               ),
-                                                            ).animateOnPageLoad(
-                                                                animationsMap[
-                                                                    'containerOnPageLoadAnimation3']!),
-                                                          ],
-                                                        ),
+                                                            ),
+                                                          ).animateOnPageLoad(
+                                                              animationsMap[
+                                                                  'containerOnPageLoadAnimation3']!),
+                                                        ],
                                                       ),
                                                     ],
                                                   ),
@@ -1216,9 +1246,8 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                             ),
                                           ),
                                           Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    10, 30, 0, 0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(10, 30, 0, 0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -1239,8 +1268,8 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                   .bodyMedium
                                                                   .fontStyle,
                                                         ),
-                                                        color:
-                                                            const Color(0xFFE4E9ED),
+                                                        color: const Color(
+                                                            0xFFE4E9ED),
                                                         fontSize: 16,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -1256,15 +1285,15 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                             ),
                                           ),
                                           Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    20, 10, 20, 0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(20, 10, 20, 0),
                                             child: Container(
                                               width: double.infinity,
                                               height: 87.1,
                                               decoration: BoxDecoration(
                                                 color: const Color(0x33FFFFFF),
-                                                borderRadius: const BorderRadius.only(
+                                                borderRadius:
+                                                    const BorderRadius.only(
                                                   bottomLeft:
                                                       Radius.circular(10),
                                                   bottomRight:
@@ -1273,7 +1302,8 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                   topRight: Radius.circular(10),
                                                 ),
                                                 border: Border.all(
-                                                  color: const Color(0xFF00CFFF),
+                                                  color:
+                                                      const Color(0xFF00CFFF),
                                                 ),
                                               ),
                                               child: Column(
@@ -1304,7 +1334,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                     padding:
                                                         const EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                0, 5, 0, 0),
+                                                            0, 5, 0, 0),
                                                     child: Text(
                                                       'Share your referral code',
                                                       style:
@@ -1345,15 +1375,15 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                 'containerOnPageLoadAnimation4']!),
                                           ),
                                           Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    20, 10, 20, 0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(20, 10, 20, 0),
                                             child: Container(
                                               width: double.infinity,
                                               height: 87.1,
                                               decoration: BoxDecoration(
                                                 color: const Color(0x33FFFFFF),
-                                                borderRadius: const BorderRadius.only(
+                                                borderRadius:
+                                                    const BorderRadius.only(
                                                   bottomLeft:
                                                       Radius.circular(10),
                                                   bottomRight:
@@ -1362,7 +1392,8 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                   topRight: Radius.circular(10),
                                                 ),
                                                 border: Border.all(
-                                                  color: const Color(0xFF00CFFF),
+                                                  color:
+                                                      const Color(0xFF00CFFF),
                                                 ),
                                               ),
                                               child: Column(
@@ -1393,7 +1424,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                     padding:
                                                         const EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                0, 5, 0, 0),
+                                                            0, 5, 0, 0),
                                                     child: Text(
                                                       'Friends sign up',
                                                       style:
@@ -1434,15 +1465,15 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                 'containerOnPageLoadAnimation5']!),
                                           ),
                                           Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    20, 10, 20, 10),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(20, 10, 20, 10),
                                             child: Container(
                                               width: double.infinity,
                                               height: 87.1,
                                               decoration: BoxDecoration(
                                                 color: const Color(0x33FFFFFF),
-                                                borderRadius: const BorderRadius.only(
+                                                borderRadius:
+                                                    const BorderRadius.only(
                                                   bottomLeft:
                                                       Radius.circular(10),
                                                   bottomRight:
@@ -1451,7 +1482,8 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                   topRight: Radius.circular(10),
                                                 ),
                                                 border: Border.all(
-                                                  color: const Color(0xFF00CFFF),
+                                                  color:
+                                                      const Color(0xFF00CFFF),
                                                 ),
                                               ),
                                               child: Column(
@@ -1482,7 +1514,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                     padding:
                                                         const EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                0, 5, 0, 0),
+                                                            0, 5, 0, 0),
                                                     child: Text(
                                                       'Earn â¹200 on first deposit',
                                                       style:
@@ -1533,8 +1565,10 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                           children: [
                                             Expanded(
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(10, 20, 10, 0),
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                        10, 20, 10, 0),
                                                 child: SizedBox(
                                                   width: double.infinity,
                                                   child: TextFormField(
@@ -1609,7 +1643,8 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                               ),
                                                       enabledBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide:
+                                                            const BorderSide(
                                                           color:
                                                               Color(0x00000000),
                                                           width: 1,
@@ -1620,7 +1655,8 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                       ),
                                                       focusedBorder:
                                                           OutlineInputBorder(
-                                                        borderSide: const BorderSide(
+                                                        borderSide:
+                                                            const BorderSide(
                                                           color:
                                                               Color(0x00000000),
                                                           width: 1,
@@ -1654,8 +1690,8 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                 .circular(8),
                                                       ),
                                                       filled: true,
-                                                      fillColor:
-                                                          const Color(0x33FFFFFF),
+                                                      fillColor: const Color(
+                                                          0x33FFFFFF),
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -1674,8 +1710,8 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                                     .bodyMedium
                                                                     .fontStyle,
                                                           ),
-                                                          color:
-                                                              const Color(0xFFEDF0F3),
+                                                          color: const Color(
+                                                              0xFFEDF0F3),
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
@@ -1704,9 +1740,8 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                           ],
                                         ),
                                         Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0, 10, 0, 0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(0, 10, 0, 0),
                                           child: Container(
                                             width: MediaQuery.sizeOf(context)
                                                         .width <
@@ -1730,8 +1765,9 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                                   MainAxisAlignment.center,
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(0, 5, 0, 0),
+                                                  padding:
+                                                      const EdgeInsetsDirectional
+                                                          .fromSTEB(0, 5, 0, 0),
                                                   child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -1875,9 +1911,8 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
                                           ),
                                         ),
                                         Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0, 10, 0, 0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(0, 10, 0, 0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:

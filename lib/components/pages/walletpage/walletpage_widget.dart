@@ -12,7 +12,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'walletpage_model.dart';
 export 'walletpage_model.dart';
-import '/index.dart';
 
 /// wallet
 class WalletpageWidget extends StatefulWidget {
@@ -29,13 +28,15 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
   late WalletpageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  late Future<ApiCallResponse> ProfileResponse;
+  late Future<ApiCallResponse> profileResponse;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => WalletpageModel());
-    ProfileResponse = ProfileCall.call();
+    profileResponse = ProfileCall.call(
+      userId: FFAppState().userId,
+    );
   }
 
   @override
@@ -82,7 +83,7 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
               padding:
                   const EdgeInsetsDirectional.fromSTEB(10.0, 60.0, 10.0, 100.0),
               child: FutureBuilder<ApiCallResponse>(
-                future: ProfileResponse,
+                future: profileResponse,
                 builder: (context, snapshot) {
                   // Customize what your widget looks like when it's loading.
                   if (!snapshot.hasData) {
