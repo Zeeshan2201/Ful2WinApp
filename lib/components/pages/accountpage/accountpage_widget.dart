@@ -515,7 +515,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget>
                                             child: Padding(
                                               padding:
                                                   const EdgeInsetsDirectional
-                                                      .fromSTEB(0, 5, 0, 0),
+                                                      .fromSTEB(20, 5, 0, 0),
                                               child: SizedBox(
                                                 width:
                                                     MediaQuery.sizeOf(context)
