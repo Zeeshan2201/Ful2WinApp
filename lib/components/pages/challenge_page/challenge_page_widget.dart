@@ -1719,7 +1719,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                                 ? 150.0
                                                                                 : 200.0,
                                                                             decoration:
-                                                                                BoxDecoration(),
+                                                                                const BoxDecoration(),
                                                                             child:
                                                                                 Text(
                                                                               getJsonField(
