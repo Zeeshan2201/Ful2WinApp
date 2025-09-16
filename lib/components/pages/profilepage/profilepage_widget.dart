@@ -165,7 +165,10 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
               ),
               child: Stack(
                 children: [
-                  Column(
+                 Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 60),
+                  child: SingleChildScrollView(
+                  child:Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -1027,7 +1030,7 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(10, 20, 10, 0),
+                            const EdgeInsetsDirectional.fromSTEB(10, 20, 10, 50),
                         child: Container(
                           width: double.infinity,
                           height: 304.89,
@@ -1432,6 +1435,8 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
                         ),
                       ),
                     ],
+                  ),
+                  ),
                   ),
                   wrapWithModel(
                     model: _model.navbarModel,
