@@ -281,7 +281,7 @@ class _TournamentPageWidgetState extends State<TournamentPageWidget> {
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsetsDirectional.fromSTEB(
-                            10.0, 20.0, 10.0, 40.0),
+                            10.0, 20.0, 10.0, 90.0),
                         child: FutureBuilder<ApiCallResponse>(
                           future: gameRespose,
                           builder: (context, snapshot) {
