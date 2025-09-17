@@ -25,7 +25,6 @@ class TournamentLobbyWidget extends StatefulWidget {
     super.key,
     required this.gameId,
   });
-
   final String? gameId;
 
   static String routeName = 'TournamentLobby';
@@ -44,6 +43,9 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
   final animationsMap = <String, AnimationInfo>{};
   late Future<ApiCallResponse> gameResponse;
   late Future<ApiCallResponse> tournamentResponse;
+  final Set<String> _updatedToLive = <String>{};
+  final Set<String> _updatedToCompleted = <String>{};
+  final Set<String> _updateInFlight = <String>{};
   @override
   void initState() {
     super.initState();
@@ -250,6 +252,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                       focusNode: _model.textFieldFocusNode,
                                       autofocus: false,
                                       obscureText: false,
+                                      onChanged: (_) => setState(() {}),
                                       decoration: InputDecoration(
                                         isDense: true,
                                         labelStyle: FlutterFlowTheme.of(context)
@@ -278,7 +281,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                       .labelMedium
                                                       .fontStyle,
                                             ),
-                                        hintText: 'Search games...',
+                                        hintText: 'Search tournaments...',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
@@ -656,10 +659,84 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
 
                             return Builder(
                               builder: (context) {
-                                final tournaments = getJsonField(
+                                final allTournaments = getJsonField(
                                   listViewTournamentBygameResponse.jsonBody,
                                   r'''$.data''',
-                                ).toList().take(8).toList();
+                                ).toList();
+
+                                DateTime? _parseDate(dynamic obj, String path) {
+                                  final val = getJsonField(obj, path);
+                                  if (val == null) return null;
+                                  final str = val.toString();
+                                  final iso = DateTime.tryParse(str);
+                                  if (iso != null) return iso;
+                                  try {
+                                    final ms = int.parse(str);
+                                    return DateTime.fromMillisecondsSinceEpoch(
+                                      ms,
+                                      isUtc: true,
+                                    );
+                                  } catch (_) {
+                                    return null;
+                                  }
+                                }
+
+                                String _computeStatus(dynamic t) {
+                                  final raw = getJsonField(t, r'''$.status''');
+                                  if (raw != null) {
+                                    final s =
+                                        raw.toString().trim().toLowerCase();
+                                    if (s.contains('upcoming'))
+                                      return 'Upcoming';
+                                    if (s.contains('live') ||
+                                        s.contains('running')) return 'Live';
+                                    if (s.contains('complete'))
+                                      return 'Completed';
+                                  }
+                                  final now = DateTime.now().toUtc();
+                                  final start =
+                                      _parseDate(t, r'''$.startTime''') ??
+                                          _parseDate(t, r'''$.startDate''') ??
+                                          _parseDate(t, r'''$.start''') ??
+                                          _parseDate(t, r'''$.startAt''');
+                                  final end = _parseDate(t, r'''$.endTime''') ??
+                                      _parseDate(t, r'''$.endDate''') ??
+                                      _parseDate(t, r'''$.end''') ??
+                                      _parseDate(t, r'''$.endAt''');
+                                  if (start != null &&
+                                      now.isBefore(start.toUtc())) {
+                                    return 'Upcoming';
+                                  }
+                                  if (end != null && now.isAfter(end.toUtc())) {
+                                    return 'Completed';
+                                  }
+                                  return 'Live';
+                                }
+
+                                final query =
+                                    (_model.textController?.text ?? '')
+                                        .trim()
+                                        .toLowerCase();
+                                final filtered = allTournaments.where((t) {
+                                  final name = getJsonField(t, r'''$.name''')
+                                      .toString()
+                                      .toLowerCase();
+                                  final displayName = getJsonField(
+                                    t,
+                                    r'''$.displayName''',
+                                  ).toString().toLowerCase();
+                                  final matchesQuery = query.isEmpty ||
+                                      name.contains(query) ||
+                                      displayName.contains(query);
+                                  if (!matchesQuery) return false;
+                                  final cat = _model.selectedCategory;
+                                  if (cat == 'All' || cat.isEmpty) return true;
+                                  final status =
+                                      _computeStatus(t).toLowerCase();
+                                  return status == cat.toLowerCase();
+                                }).toList();
+
+                                final tournaments = filtered.take(8).toList();
 
                                 return ListView.separated(
                                   padding:
@@ -740,7 +817,8 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                               .fromSTEB(
                                                               5, 5, 5, 5),
                                                       child: Text(
-                                                        'Live',
+                                                        _computeStatus(
+                                                            tournamentsItem),
                                                         style: FlutterFlowTheme
                                                                 .of(context)
                                                             .bodyMedium
@@ -775,30 +853,27 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                     mainAxisSize:
                                                         MainAxisSize.max,
                                                     children: [
-                                                      Text(
-                                                        'Ends in:',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .inter(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                                  letterSpacing:
-                                                                      0.0,
+                                                      Builder(
+                                                          builder: (context) {
+                                                        final status =
+                                                            _computeStatus(
+                                                                tournamentsItem);
+                                                        final label = status ==
+                                                                'Upcoming'
+                                                            ? 'Starts in:'
+                                                            : status ==
+                                                                    'Completed'
+                                                                ? 'Ended'
+                                                                : 'Ends in:';
+                                                        return Text(
+                                                          label,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -808,12 +883,226 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                                       .bodyMedium
                                                                       .fontStyle,
                                                                 ),
-                                                      ),
-                                                      Text(
-                                                        ' 00:00',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                        );
+                                                      }),
+                                                      StreamBuilder<DateTime>(
+                                                        stream: Stream.periodic(
+                                                            const Duration(
+                                                                seconds: 1),
+                                                            (_) =>
+                                                                DateTime.now()
+                                                                    .toUtc()),
+                                                        builder: (context, _) {
+                                                          // Determine which timestamp to use based on status
+                                                          final status =
+                                                              _computeStatus(
+                                                                  tournamentsItem);
+                                                          final useStart =
+                                                              status ==
+                                                                  'Upcoming';
+                                                          final rawTarget = useStart
+                                                              ? (_parseDate(
+                                                                      tournamentsItem,
+                                                                      r'''$.startTime''') ??
+                                                                  _parseDate(
+                                                                      tournamentsItem,
+                                                                      r'''$.startDate''') ??
+                                                                  _parseDate(
+                                                                      tournamentsItem,
+                                                                      r'''$.start''') ??
+                                                                  _parseDate(
+                                                                      tournamentsItem,
+                                                                      r'''$.startAt'''))
+                                                              : (_parseDate(
+                                                                      tournamentsItem,
+                                                                      r'''$.endTime''') ??
+                                                                  _parseDate(
+                                                                      tournamentsItem,
+                                                                      r'''$.endDate''') ??
+                                                                  _parseDate(
+                                                                      tournamentsItem,
+                                                                      r'''$.end''') ??
+                                                                  _parseDate(
+                                                                      tournamentsItem,
+                                                                      r'''$.endAt'''));
+                                                          // Auto-update server status transitions with guards
+                                                          final tId = getJsonField(
+                                                                  tournamentsItem,
+                                                                  r'$._id')
+                                                              .toString();
+                                                          if (tId.isNotEmpty &&
+                                                              rawTarget !=
+                                                                  null) {
+                                                            final nowUtc =
+                                                                DateTime.now()
+                                                                    .toUtc();
+                                                            if (status ==
+                                                                'Upcoming') {
+                                                              final startUtc =
+                                                                  rawTarget
+                                                                      .toUtc();
+                                                              if (!startUtc
+                                                                  .isAfter(
+                                                                      nowUtc)) {
+                                                                if (!_updateInFlight
+                                                                        .contains(
+                                                                            tId) &&
+                                                                    !_updatedToLive
+                                                                        .contains(
+                                                                            tId)) {
+                                                                  _updateInFlight
+                                                                      .add(tId);
+                                                                  UpdateStatusCall
+                                                                      .call(
+                                                                    token: FFAppState()
+                                                                        .token,
+                                                                    status:
+                                                                        'live',
+                                                                    tournamentId:
+                                                                        tId,
+                                                                  ).then((res) {
+                                                                    _updateInFlight
+                                                                        .remove(
+                                                                            tId);
+                                                                    if (res
+                                                                        .succeeded) {
+                                                                      _updatedToLive
+                                                                          .add(
+                                                                              tId);
+                                                                      safeSetState(
+                                                                          () {});
+                                                                    }
+                                                                  }).catchError(
+                                                                      (_) {
+                                                                    _updateInFlight
+                                                                        .remove(
+                                                                            tId);
+                                                                  });
+                                                                }
+                                                              }
+                                                            } else if (status ==
+                                                                'Live') {
+                                                              final endUtc =
+                                                                  rawTarget
+                                                                      .toUtc();
+                                                              if (!endUtc
+                                                                  .isAfter(
+                                                                      nowUtc)) {
+                                                                if (!_updateInFlight
+                                                                        .contains(
+                                                                            tId) &&
+                                                                    !_updatedToCompleted
+                                                                        .contains(
+                                                                            tId)) {
+                                                                  _updateInFlight
+                                                                      .add(tId);
+                                                                  UpdateStatusCall
+                                                                      .call(
+                                                                    token: FFAppState()
+                                                                        .token,
+                                                                    status:
+                                                                        'completed',
+                                                                    tournamentId:
+                                                                        tId,
+                                                                  ).then((res) {
+                                                                    _updateInFlight
+                                                                        .remove(
+                                                                            tId);
+                                                                    if (res
+                                                                        .succeeded) {
+                                                                      _updatedToCompleted
+                                                                          .add(
+                                                                              tId);
+                                                                      safeSetState(
+                                                                          () {});
+                                                                    }
+                                                                  }).catchError(
+                                                                      (_) {
+                                                                    _updateInFlight
+                                                                        .remove(
+                                                                            tId);
+                                                                  });
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                          String remainingStr;
+                                                          if (status ==
+                                                              'Completed') {
+                                                            remainingStr = '';
+                                                          } else if (rawTarget ==
+                                                              null) {
+                                                            remainingStr = ' —';
+                                                          } else {
+                                                            // Convert to IST (UTC+5:30) for display semantics
+                                                            final targetIst =
+                                                                rawTarget
+                                                                    .toUtc()
+                                                                    .add(const Duration(
+                                                                        hours:
+                                                                            5,
+                                                                        minutes:
+                                                                            30));
+                                                            final nowIst = DateTime
+                                                                    .now()
+                                                                .toUtc()
+                                                                .add(const Duration(
+                                                                    hours: 5,
+                                                                    minutes:
+                                                                        30));
+                                                            final diff =
+                                                                targetIst
+                                                                    .difference(
+                                                                        nowIst);
+                                                            if (diff
+                                                                .isNegative) {
+                                                              remainingStr =
+                                                                  useStart
+                                                                      ? ' Started'
+                                                                      : ' Ended';
+                                                            } else {
+                                                              final days =
+                                                                  diff.inDays;
+                                                              final hours =
+                                                                  diff.inHours %
+                                                                      24;
+                                                              final minutes =
+                                                                  diff.inMinutes %
+                                                                      60;
+                                                              final seconds =
+                                                                  diff.inSeconds %
+                                                                      60;
+                                                              if (days > 0) {
+                                                                remainingStr =
+                                                                    ' ${days}d ${hours}h ${minutes}m';
+                                                              } else {
+                                                                String two(int n) => n
+                                                                    .toString()
+                                                                    .padLeft(
+                                                                        2, '0');
+                                                                remainingStr =
+                                                                    ' ${two(hours)}:${two(minutes)}:${two(seconds)}';
+                                                              }
+                                                            }
+                                                          }
+                                                          return Text(
+                                                            remainingStr,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .bodyMedium
                                                                 .override(
                                                                   font:
@@ -840,6 +1129,8 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                                       .bodyMedium
                                                                       .fontStyle,
                                                                 ),
+                                                          );
+                                                        },
                                                       ),
                                                     ],
                                                   ),

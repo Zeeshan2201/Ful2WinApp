@@ -191,7 +191,6 @@ List<dynamic>? filterUnlimitedGames(List<dynamic>? allGames) {
   return allGames?.where((game) => game['type'] == 'Unlimited').toList();
 }
 
-<<<<<<< HEAD
 List<dynamic>? searchGame(List<dynamic>? allGames, String query) {
   if (allGames == null) return null;
   final q = query.trim().toLowerCase();
@@ -200,7 +199,8 @@ List<dynamic>? searchGame(List<dynamic>? allGames, String query) {
   try {
     return allGames.where((raw) {
       if (raw is Map) {
-        final name = (raw['displayName'] ?? raw['name'] ?? '').toString().toLowerCase();
+        final name =
+            (raw['displayName'] ?? raw['name'] ?? '').toString().toLowerCase();
         return name.contains(q);
       }
       return false;
@@ -209,7 +209,8 @@ List<dynamic>? searchGame(List<dynamic>? allGames, String query) {
     // Silently fail; optionally log with debugPrint if needed
     return <dynamic>[];
   }
-=======
+}
+
 String gameImg(
   List<dynamic> games,
   String? gameName,
@@ -239,7 +240,6 @@ String gameImg(
   return '';
 
   /// MODIFY CODE ONLY ABOVE THIS LINE
->>>>>>> 5cdc4943fe2e177659543ab1805924922690b471
 }
 
 String? getRemainingTime(DateTime targetDate) {
