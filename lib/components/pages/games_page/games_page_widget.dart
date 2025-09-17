@@ -536,7 +536,7 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsetsDirectional.fromSTEB(
-                            10, 20, 10, 40),
+                            10, 20, 10, 80),
                         child: FutureBuilder<ApiCallResponse>(
                           future: gameResponse,
                           builder: (context, snapshot) {

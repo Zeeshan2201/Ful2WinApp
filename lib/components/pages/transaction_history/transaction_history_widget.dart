@@ -88,7 +88,7 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget>
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFF000B33),
+      backgroundColor: const Color(0xFF000B33),
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -100,16 +100,16 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget>
             ).image,
           ),
           gradient: LinearGradient(
-            colors: [FlutterFlowTheme.of(context).primary, Color(0xFF000B33)],
-            stops: [0, 1],
-            begin: AlignmentDirectional(0, -1),
-            end: AlignmentDirectional(0, 1),
+            colors: [FlutterFlowTheme.of(context).primary, const Color(0xFF000B33)],
+            stops: const [0, 1],
+            begin: const AlignmentDirectional(0, -1),
+            end: const AlignmentDirectional(0, 1),
           ),
         ),
         child: Stack(
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+              padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
               child: FutureBuilder<ApiCallResponse>(
                 future: ProfileCall.call(
                   token: FFAppState().token,
@@ -136,7 +136,7 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget>
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -160,7 +160,7 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget>
                               child: Container(
                                 width: 42.5,
                                 height: 40,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Color(0x33FFFFFF),
                                   borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(40),
@@ -206,7 +206,7 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget>
                             Container(
                               width: 42.5,
                               height: 40,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color(0x33FFFFFF),
                                 borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(40),
@@ -261,12 +261,12 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget>
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                         child: Container(
                           width: double.infinity,
                           height: 78.4,
                           decoration: BoxDecoration(
-                            color: Color(0xC10B33FF),
+                            color: const Color(0xC10B33FF),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Row(
@@ -277,7 +277,7 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget>
                                 width: 60,
                                 height: 60,
                                 clipBehavior: Clip.antiAlias,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                 ),
                                 child: Image.network(
@@ -307,7 +307,7 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget>
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
-                                          color: Color(0xFFF7FAFC),
+                                          color: const Color(0xFFF7FAFC),
                                           fontSize: 15,
                                           letterSpacing: 0.0,
                                           fontWeight:
@@ -335,7 +335,7 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget>
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
-                                          color: Color(0xFFF7FAFC),
+                                          color: const Color(0xFFF7FAFC),
                                           fontSize: 15,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
@@ -366,7 +366,7 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget>
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
-                                          color: Color(0xFFF7FAFC),
+                                          color: const Color(0xFFF7FAFC),
                                           letterSpacing: 0.0,
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
@@ -396,7 +396,7 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget>
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFFF7FAFC),
+                                              color: const Color(0xFFF7FAFC),
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
                                               fontStyle:
@@ -405,7 +405,7 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget>
                                                       .fontStyle,
                                             ),
                                       ),
-                                      FaIcon(
+                                      const FaIcon(
                                         FontAwesomeIcons.coins,
                                         color: Color(0xFFFFD54A),
                                         size: 18,
@@ -469,13 +469,13 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget>
                           ),
                         ],
                       ),
-                    ].divide(SizedBox(height: 10)).around(SizedBox(height: 10)),
+                    ].divide(const SizedBox(height: 10)).around(const SizedBox(height: 10)),
                   );
                 },
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 200, 0, 10),
+              padding: const EdgeInsetsDirectional.fromSTEB(0, 200, 0, 10),
               child: FutureBuilder<ApiCallResponse>(
                 future: ProfileCall.call(
                   token: FFAppState().token,
@@ -501,9 +501,9 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget>
                   return Container(
                     width: double.infinity,
                     height: double.infinity,
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                       child: Builder(
                         builder: (context) {
                           final coinsH = getJsonField(
@@ -512,7 +512,7 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget>
                           ).toList();
 
                           return ListView.separated(
-                            padding: EdgeInsets.fromLTRB(
+                            padding: const EdgeInsets.fromLTRB(
                               0,
                               0,
                               0,
@@ -522,7 +522,7 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget>
                             shrinkWrap: true,
                             scrollDirection: Axis.vertical,
                             itemCount: coinsH.length,
-                            separatorBuilder: (_, __) => SizedBox(height: 15),
+                            separatorBuilder: (_, __) => const SizedBox(height: 15),
                             itemBuilder: (context, coinsHIndex) {
                               final coinsHItem = coinsH[coinsHIndex];
                               return Container(
@@ -531,7 +531,7 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget>
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
                                       .primaryBackground,
-                                  borderRadius: BorderRadius.only(
+                                  borderRadius: const BorderRadius.only(
                                     bottomLeft: Radius.circular(10),
                                     bottomRight: Radius.circular(10),
                                     topLeft: Radius.circular(10),
@@ -547,7 +547,7 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget>
                                       width: 40,
                                       height: 40,
                                       clipBehavior: Clip.antiAlias,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                       ),
                                       child: Image.network(
@@ -662,7 +662,7 @@ class _TransactionHistoryWidgetState extends State<TransactionHistoryWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   1, 0, 0, 0),
                                           child: Text(
                                             'Coins',

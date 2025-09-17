@@ -10,11 +10,48 @@ String findgameId(
   String gameName,
 ) {
   /// MODIFY CODE ONLY BELOW THIS LINE
+  final target = (gameName).trim().toLowerCase();
+  if (games.isEmpty || target.isEmpty) return '';
+  try {
+    for (final raw in games) {
+      if (raw is Map) {
+        final dn = raw['displayName']?.toString().trim().toLowerCase();
+        final n = raw['name']?.toString().trim().toLowerCase();
+        if (dn == target || n == target) {
+          final id = (raw['_id'] ?? raw['id'])?.toString();
+          return id ?? '';
+        }
+      }
+    }
+  } catch (_) {
+    // ignore
+  }
+  return '';
+}
 
-  final game =
-      games.firstWhere((g) => g['displayName'] == gameName, orElse: () => null);
-
-  return game != null ? game['_id'].toString() : '';
+String findgameFromName(
+  List<dynamic> games,
+  String gameName,
+) {
+  /// MODIFY CODE ONLY BELOW THIS LINE
+  // Same as findgameId but prefers matching against 'name' field.
+  final target = (gameName).trim().toLowerCase();
+  if (games.isEmpty || target.isEmpty) return '';
+  try {
+    for (final raw in games) {
+      if (raw is Map) {
+        final n = raw['name']?.toString().trim().toLowerCase();
+        final dn = raw['displayName']?.toString().trim().toLowerCase();
+        if (n == target || dn == target) {
+          final id = (raw['_id'] ?? raw['id'])?.toString();
+          return id ?? '';
+        }
+      }
+    }
+  } catch (_) {
+    // ignore
+  }
+  return '';
 }
 
 String challangeTo(
@@ -154,6 +191,7 @@ List<dynamic>? filterUnlimitedGames(List<dynamic>? allGames) {
   return allGames?.where((game) => game['type'] == 'Unlimited').toList();
 }
 
+<<<<<<< HEAD
 List<dynamic>? searchGame(List<dynamic>? allGames, String query) {
   if (allGames == null) return null;
   final q = query.trim().toLowerCase();
@@ -171,6 +209,37 @@ List<dynamic>? searchGame(List<dynamic>? allGames, String query) {
     // Silently fail; optionally log with debugPrint if needed
     return <dynamic>[];
   }
+=======
+String gameImg(
+  List<dynamic> games,
+  String? gameName,
+) {
+  /// MODIFY CODE ONLY BELOW THIS LINE
+  final target = (gameName ?? '').trim().toLowerCase();
+  if (games.isEmpty || target.isEmpty) return '';
+  try {
+    for (final raw in games) {
+      if (raw is Map) {
+        final n = raw['name']?.toString().trim().toLowerCase();
+        final dn = raw['displayName']?.toString().trim().toLowerCase();
+        if (n == target || dn == target) {
+          final assets = raw['assets'];
+          if (assets is Map && assets['thumbnail'] != null) {
+            return assets['thumbnail'].toString();
+          }
+          // Fallbacks
+          final thumb = raw['thumbnail'] ?? raw['image'];
+          return thumb?.toString() ?? '';
+        }
+      }
+    }
+  } catch (_) {
+    // ignore
+  }
+  return '';
+
+  /// MODIFY CODE ONLY ABOVE THIS LINE
+>>>>>>> 5cdc4943fe2e177659543ab1805924922690b471
 }
 
 String? getRemainingTime(DateTime targetDate) {
