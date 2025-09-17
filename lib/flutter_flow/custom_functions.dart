@@ -154,6 +154,25 @@ List<dynamic>? filterUnlimitedGames(List<dynamic>? allGames) {
   return allGames?.where((game) => game['type'] == 'Unlimited').toList();
 }
 
+List<dynamic>? searchGame(List<dynamic>? allGames, String query) {
+  if (allGames == null) return null;
+  final q = query.trim().toLowerCase();
+  if (q.isEmpty) return allGames;
+
+  try {
+    return allGames.where((raw) {
+      if (raw is Map) {
+        final name = (raw['displayName'] ?? raw['name'] ?? '').toString().toLowerCase();
+        return name.contains(q);
+      }
+      return false;
+    }).toList();
+  } catch (e) {
+    // Silently fail; optionally log with debugPrint if needed
+    return <dynamic>[];
+  }
+}
+
 String? getRemainingTime(DateTime targetDate) {
   final now = DateTime.now().toUtc();
   final remaining = targetDate.toUtc().difference(now);
