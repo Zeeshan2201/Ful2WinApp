@@ -128,8 +128,10 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: const Color(0xFF000B33),
-      body: Container(
+      backgroundColor: Color(0xFF1565C0),
+       body: SafeArea(
+          top: true,
+          child: Container(
         width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(
@@ -730,6 +732,6 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
           ],
         ),
       ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation1']!),
-    );
+    ),);
   }
 }

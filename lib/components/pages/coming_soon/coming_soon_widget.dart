@@ -46,8 +46,10 @@ class _ComingSoonWidgetState extends State<ComingSoonWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: Container(
+          backgroundColor: Color(0xFF1565C0),
+         body: SafeArea(
+          top: true,
+          child: Container(
           width: double.infinity,
           height: double.infinity,
           decoration: BoxDecoration(
@@ -229,6 +231,7 @@ class _ComingSoonWidgetState extends State<ComingSoonWidget> {
             ],
           ),
         ),
+      ),
       ),
     );
   }

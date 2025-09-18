@@ -154,8 +154,10 @@ String truncateWithEllipsisEnd(String text, {int maxLength = 10}) {
           },
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: const Color(0xFF000B33),
-            body: Container(
+            backgroundColor: Color(0xFF1565C0),
+            body: SafeArea(
+            top: true,
+             child: Container(
               width: double.infinity,
               height: double.infinity,
               decoration: BoxDecoration(
@@ -2076,6 +2078,7 @@ String truncateWithEllipsisEnd(String text, {int maxLength = 10}) {
               ),
             ).animateOnPageLoad(
                 animationsMap['containerOnPageLoadAnimation1']!),
+          ),
           ),
         );
       },
