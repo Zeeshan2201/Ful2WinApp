@@ -65,7 +65,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
         effectsBuilder: () => [
           FadeEffect(
             curve: Curves.easeIn,
-            delay: 180.0.ms,
+            delay: 0.0.ms,
             duration: 600.0.ms,
             begin: 0.0,
             end: 1.0,
