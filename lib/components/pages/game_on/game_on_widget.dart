@@ -1,8 +1,8 @@
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 //import '/flutter_flow/flutter_flow_widgets.dart';
 //import 'dart:ui';
 import '/custom_code/widgets/index.dart' as custom_widgets;
+import '/components/loading/loading_screen_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -32,11 +32,19 @@ class _GameOnWidgetState extends State<GameOnWidget> {
   late GameOnModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  bool _showLoading = true;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => GameOnModel());
+    Future.delayed(const Duration(seconds: 3), () {
+      if (mounted) {
+        setState(() {
+          _showLoading = false;
+        });
+      }
+    });
   }
 
   @override
@@ -49,7 +57,9 @@ class _GameOnWidgetState extends State<GameOnWidget> {
   @override
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
-
+    if (_showLoading) {
+      return const LoadingScreenWidget();
+    }
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -58,13 +68,6 @@ class _GameOnWidgetState extends State<GameOnWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: const Color(0xFF000B33),
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primary,
-          automaticallyImplyLeading: false,
-          actions: const [],
-          centerTitle: false,
-          elevation: 2,
-        ),
         body: SafeArea(
           top: true,
           child: Column(

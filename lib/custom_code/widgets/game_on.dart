@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:webview_flutter/webview_flutter.dart';
-import 'dart:convert';
 import '/backend/api_requests/api_calls.dart';
 import '/pop_ups/play_again/play_again_widget.dart';
 
@@ -164,20 +163,34 @@ class _GameOnState extends State<GameOn> {
 
           if (apiResult.succeeded) {
             print("✅ Score submitted!");
+
             if (mounted && !_playAgainShown) {
               _playAgainShown = true;
+              final outerContext = context;
               await showDialog(
                 context: context,
                 barrierDismissible: false,
                 builder: (dialogContext) {
-                  return Dialog(
-                    backgroundColor: Colors.transparent,
-                    insetPadding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: PlayAgainWidget(
-                      score: score,
-                      tournamentId: widget.tournamentId,
-                      gameName: widget.gameName,
-                      gameUrl: widget.gameUrl,
+                  return WillPopScope(
+                    onWillPop: () async {
+                      // Close the dialog and remove the GameOn page from stack
+                      if (Navigator.of(dialogContext).canPop()) {
+                        Navigator.of(dialogContext).pop();
+                      }
+                      if (Navigator.of(outerContext).canPop()) {
+                        Navigator.of(outerContext).pop();
+                      }
+                      return false;
+                    },
+                    child: Dialog(
+                      backgroundColor: Colors.transparent,
+                      insetPadding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: PlayAgainWidget(
+                        score: score,
+                        tournamentId: widget.tournamentId,
+                        gameName: widget.gameName,
+                        gameUrl: widget.gameUrl,
+                      ),
                     ),
                   );
                 },
