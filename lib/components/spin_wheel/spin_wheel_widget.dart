@@ -198,9 +198,7 @@ class _SpinWheelWidgetState extends State<SpinWheelWidget>
     setState(() {
       isSpinning = true;
       // Anchor window at the first spin if not already set
-      if (windowStartMs == null) {
-        windowStartMs = DateTime.now().millisecondsSinceEpoch;
-      }
+      windowStartMs ??= DateTime.now().millisecondsSinceEpoch;
       spinsLeft--;
     });
     _saveData();
