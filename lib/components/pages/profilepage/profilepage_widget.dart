@@ -604,7 +604,7 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
                                             getJsonField(
                                               profilepageProfileResponse
                                                   .jsonBody,
-                                              r'''$.balance''',
+                                              r'''$.coins''',
                                             ).toString(),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium

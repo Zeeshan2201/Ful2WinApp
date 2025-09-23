@@ -338,7 +338,7 @@ class _WalletpageWidgetState extends State<WalletpageWidget> {
                                                 getJsonField(
                                                   columnProfileResponse
                                                       .jsonBody,
-                                                  r'''$.balance''',
+                                                  r'''$.coins''',
                                                 ).toString(),
                                                 style:
                                                     FlutterFlowTheme.of(context)

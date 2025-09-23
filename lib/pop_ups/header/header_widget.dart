@@ -166,7 +166,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                                     Text(
                                       getJsonField(
                                         containerProfileResponse.jsonBody,
-                                        r'''$.balance''',
+                                        r'''$.coins''',
                                       ).toString(),
                                       style: FlutterFlowTheme.of(context)
                                           .headlineLarge
