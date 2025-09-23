@@ -53,7 +53,7 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
         effectsBuilder: () => [
           FadeEffect(
             curve: Curves.easeIn,
-            delay: 180.0.ms,
+            delay: 0.0.ms,
             duration: 600.0.ms,
             begin: 0.0,
             end: 1.0,
@@ -81,8 +81,10 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFF000B33),
-        body: Container(
+        backgroundColor: Color(0xFF1565C0),
+         body: SafeArea(
+          top: true,
+          child: Container(
           width: double.infinity,
           height: double.infinity,
           decoration: BoxDecoration(
@@ -150,6 +152,7 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
                                     focusNode: _model.textFieldFocusNode,
                                     autofocus: false,
                                     obscureText: false,
+                                    onChanged: (value) => setState(() {}),
                                     decoration: InputDecoration(
                                       isDense: true,
                                       labelStyle: FlutterFlowTheme.of(context)
@@ -559,13 +562,35 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
                             return Builder(
                               builder: (context) {
                                 final eachGame = functions
-                                        .filterGames(getJsonField(
-                                          gridViewGamesResponse.jsonBody,
-                                          r'''$.data''',
-                                          true,
-                                        ))
+                                        .filterGames(
+                                          getJsonField(
+                                            gridViewGamesResponse.jsonBody,
+                                            r'''$.data''',
+                                            true,
+                                          ),
+                                        )
                                         ?.toList() ??
                                     [];
+
+                                // Apply search filter by displayName/name
+                                final query =
+                                    (_model.textController?.text ?? '')
+                                        .trim()
+                                        .toLowerCase();
+                                final filteredGames = query.isEmpty
+                                    ? eachGame
+                                    : eachGame.where((g) {
+                                        final dn = getJsonField(
+                                          g,
+                                          r'''$.displayName''',
+                                        ).toString().toLowerCase();
+                                        final n = getJsonField(
+                                          g,
+                                          r'''$.name''',
+                                        ).toString().toLowerCase();
+                                        return dn.contains(query) ||
+                                            n.contains(query);
+                                      }).toList();
 
                                 return RefreshIndicator(
                                   onRefresh: () async {
@@ -591,10 +616,10 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
                                               : 0.55,
                                     ),
                                     scrollDirection: Axis.vertical,
-                                    itemCount: eachGame.length,
+                                    itemCount: filteredGames.length,
                                     itemBuilder: (context, eachGameIndex) {
                                       final eachGameItem =
-                                          eachGame[eachGameIndex];
+                                          filteredGames[eachGameIndex];
                                       return InkWell(
                                         splashColor: Colors.transparent,
                                         focusColor: Colors.transparent,
@@ -754,6 +779,7 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
             ],
           ),
         ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!),
+      ),
       ),
     );
   }

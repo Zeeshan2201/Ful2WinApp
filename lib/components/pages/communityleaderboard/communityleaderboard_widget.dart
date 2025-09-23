@@ -79,8 +79,10 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFF000B33),
-        body: Container(
+         backgroundColor: Color(0xFF1565C0),
+         body: SafeArea(
+          top: true,
+          child: Container(
           width: double.infinity,
           height: double.infinity,
           decoration: BoxDecoration(
@@ -100,15 +102,19 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
               end: const AlignmentDirectional(0, 1),
             ),
           ),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              wrapWithModel(
-                model: _model.headerModel,
-                updateCallback: () => safeSetState(() {}),
-                child: const HeaderWidget(),
+          child: Stack(
+          children: [
+              Align(
+                alignment: AlignmentDirectional(0, -1),
+                child: wrapWithModel(
+                  model: _model.headerModel,
+                  updateCallback: () => safeSetState(() {}),
+                  child: HeaderWidget(),
+                ),
               ),
-              Column(
+            Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 70, 0, 0),
+                child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Row(
@@ -303,7 +309,10 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                   ),
                 ],
               ),
+            ),
               Expanded(
+                child:Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 120, 0, 0),
                 child: Column(
                   children: [
                     Align(
@@ -1419,16 +1428,21 @@ class _CommunityleaderboardWidgetState extends State<CommunityleaderboardWidget>
                   ],
                 ),
               ),
-              wrapWithModel(
-                model: _model.navbarModel,
-                updateCallback: () => safeSetState(() {}),
-                child: const NavbarWidget(
-                  pageNav: 'CommunityPage',
+              ),
+              Align(
+                alignment: AlignmentDirectional(0, 1),
+                child: wrapWithModel(
+                  model: _model.navbarModel,
+                  updateCallback: () => safeSetState(() {}),
+                  child: NavbarWidget(
+                    pageNav: 'CommunityPage',
+                  ),
                 ),
               ),
             ],
           ),
         ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!),
+      ),
       ),
     );
   }

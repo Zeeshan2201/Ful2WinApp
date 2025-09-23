@@ -64,7 +64,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget>
         effectsBuilder: () => [
           FadeEffect(
             curve: Curves.easeIn,
-            delay: 180.0.ms,
+            delay: 0.0.ms,
             duration: 600.0.ms,
             begin: 0.0,
             end: 1.0,
@@ -104,9 +104,11 @@ class _AccountpageWidgetState extends State<AccountpageWidget>
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFF000B33),
-        body: Stack(
-          children: [
+         backgroundColor: Color(0xFF1565C0),
+            body:SafeArea(
+              top: true,
+              child:Stack(
+             children: [
             FutureBuilder<ApiCallResponse>(
               future: profileResponse,
               builder: (context, snapshot) {
@@ -2030,6 +2032,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget>
             ),
           ],
         ).animateOnPageLoad(animationsMap['stackOnPageLoadAnimation']!),
+      ),
       ),
     );
   }

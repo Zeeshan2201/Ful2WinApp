@@ -52,8 +52,10 @@ class _TournamentPageWidgetState extends State<TournamentPageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: Container(
+          backgroundColor: Color(0xFF1565C0),
+          body: SafeArea(
+          top: true,
+          child: Container(
           width: double.infinity,
           height: double.infinity,
           decoration: BoxDecoration(
@@ -149,6 +151,7 @@ class _TournamentPageWidgetState extends State<TournamentPageWidget> {
                                     focusNode: _model.textFieldFocusNode,
                                     autofocus: false,
                                     obscureText: false,
+                                    onChanged: (value) => setState(() {}),
                                     decoration: InputDecoration(
                                       isDense: true,
                                       labelStyle: FlutterFlowTheme.of(context)
@@ -303,10 +306,31 @@ class _TournamentPageWidgetState extends State<TournamentPageWidget> {
 
                             return Builder(
                               builder: (context) {
-                                final game = getJsonField(
+                                // Full games list from API
+                                final games = getJsonField(
                                   gridViewGamesResponse.jsonBody,
                                   r'''$.data''',
                                 ).toList();
+
+                                // Apply search filter by displayName/name
+                                final query =
+                                    (_model.textController?.text ?? '')
+                                        .trim()
+                                        .toLowerCase();
+                                final filteredGames = query.isEmpty
+                                    ? games
+                                    : games.where((g) {
+                                        final dn = getJsonField(
+                                          g,
+                                          r'''$.displayName''',
+                                        ).toString().toLowerCase();
+                                        final n = getJsonField(
+                                          g,
+                                          r'''$.name''',
+                                        ).toString().toLowerCase();
+                                        return dn.contains(query) ||
+                                            n.contains(query);
+                                      }).toList();
 
                                 return GridView.builder(
                                   padding: EdgeInsets.zero,
@@ -322,9 +346,9 @@ class _TournamentPageWidgetState extends State<TournamentPageWidget> {
                                             : 0.45,
                                   ),
                                   scrollDirection: Axis.vertical,
-                                  itemCount: game.length,
+                                  itemCount: filteredGames.length,
                                   itemBuilder: (context, gameIndex) {
-                                    final gameItem = game[gameIndex];
+                                    final gameItem = filteredGames[gameIndex];
                                     return InkWell(
                                       splashColor: Colors.transparent,
                                       focusColor: Colors.transparent,
@@ -622,6 +646,7 @@ class _TournamentPageWidgetState extends State<TournamentPageWidget> {
             ],
           ),
         ),
+          ),
       ),
     );
   }

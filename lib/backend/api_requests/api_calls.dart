@@ -226,6 +226,41 @@ class ChallengesCall {
   }
 }
 
+class UpdateStatusCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    String? status = '',
+    String? tournamentId = '',
+  }) async {
+    final baseUrl = FulWinGroup.getBaseUrl(
+      token: token,
+    );
+    final apiRequestBody = '''
+{
+  "status": "$status"
+}''';
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'updateStatus',
+      apiUrl: '${baseUrl}tournaments/$tournamentId/status',
+      callType: ApiCallType.PUT,
+      headers: {
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: apiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class SpinWheelCall {
   static Future<ApiCallResponse> call({
     String? token =

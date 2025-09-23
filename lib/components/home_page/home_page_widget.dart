@@ -56,7 +56,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        body: Container(
+        backgroundColor: Color(0xFF1565C0),
+       body: SafeArea(
+          top: true,
+          child:
+          Container(
           width: double.infinity,
           height: double.infinity,
           decoration: BoxDecoration(
@@ -88,7 +92,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ),
               Padding(
                 padding:
-                    const EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 80.0),
+                    const EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 63.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -1143,6 +1147,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             ],
           ),
         ),
+       ),
       ),
     );
   }

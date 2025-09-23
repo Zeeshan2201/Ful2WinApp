@@ -1368,16 +1368,12 @@ class _SignuppageWidgetState extends State<SignuppageWidget>
                                                 safeSetState(() => _model
                                                     .checkboxValue = newValue!);
                                               },
-                                              side:
-                                                  (FlutterFlowTheme.of(context)
-                                                              .secondaryText != null)
-                                                      ? BorderSide(
-                                                          width: 2,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryText,
-                                                        )
-                                                      : null,
+                                              side: BorderSide(
+                                                width: 2,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                              ),
                                               activeColor:
                                                   FlutterFlowTheme.of(context)
                                                       .primary,
@@ -1528,7 +1524,6 @@ class _SignuppageWidgetState extends State<SignuppageWidget>
                                     child: FFButtonWidget(
                                       onPressed: () async {
                                         _model.signup = await RegisterCall.call(
-                                          fullname: _model.textController1.text,
                                           phoneNumber: int.tryParse(
                                               _model.textController2.text),
                                           password: _model.textController5.text,
