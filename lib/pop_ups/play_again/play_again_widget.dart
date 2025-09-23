@@ -177,7 +177,8 @@ class _PlayAgainWidgetState extends State<PlayAgainWidget>
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(25, 0, 0, 0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(25, 0, 0, 0),
                         child: Container(
                           width: 60,
                           height: 60,
@@ -198,7 +199,8 @@ class _PlayAgainWidgetState extends State<PlayAgainWidget>
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                         child: Text(
                           valueOrDefault<String>(widget.gameName, 'Game'),
                           textAlign: TextAlign.center,
@@ -236,8 +238,8 @@ class _PlayAgainWidgetState extends State<PlayAgainWidget>
                         Align(
                           alignment: const AlignmentDirectional(0, 0),
                           child: Padding(
-                            padding:
-                                const EdgeInsetsDirectional.fromSTEB(40, 0, 0, 0),
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                40, 0, 0, 0),
                             child: Text(
                               'Your Score:',
                               textAlign: TextAlign.center,
@@ -267,7 +269,8 @@ class _PlayAgainWidgetState extends State<PlayAgainWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                           child: Text(
                             valueOrDefault<String>(
                                 widget.score?.toString(), '0'),
@@ -411,20 +414,16 @@ class _PlayAgainWidgetState extends State<PlayAgainWidget>
                                 .setAsset('assets/audios/click.mp3')
                                 .then((_) => _model.soundPlayer2!.play());
 
-                            Navigator.of(context).pop();
-                            context.pushNamed(
-                              TournamentLobbyWidget.routeName,
-                              queryParameters: {
-                                'gameId': serializeParam(
-                                    functions.findgameFromName(
-                                        getJsonField(
-                                            columnGameResponse.jsonBody,
-                                            r'''$.data'''),
-                                        valueOrDefault<String>(
-                                            widget.gameName, '')),
-                                    ParamType.String),
-                              }.withoutNulls,
-                            );
+                            // Close the dialog and also remove GameOn page from the stack
+                            final rootNav =
+                                Navigator.of(context, rootNavigator: true);
+                            // Pop PlayAgain dialog
+                            rootNav.pop();
+                            // Pop GameOn route so back won't return to it
+                            if (rootNav.canPop()) {
+                              rootNav.pop();
+                            }
+                            // After popping, we land on the previous page (typically Tournament Lobby)
                           },
                           child: Container(
                             width: MediaQuery.sizeOf(context).width < 350.0

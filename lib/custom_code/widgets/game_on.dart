@@ -166,19 +166,19 @@ class _GameOnState extends State<GameOn> {
 
             if (mounted && !_playAgainShown) {
               _playAgainShown = true;
-              final outerContext = context;
               await showDialog(
                 context: context,
                 barrierDismissible: false,
                 builder: (dialogContext) {
                   return WillPopScope(
                     onWillPop: () async {
-                      // Close the dialog and remove the GameOn page from stack
-                      if (Navigator.of(dialogContext).canPop()) {
-                        Navigator.of(dialogContext).pop();
-                      }
-                      if (Navigator.of(outerContext).canPop()) {
-                        Navigator.of(outerContext).pop();
+                      final rootNav =
+                          Navigator.of(dialogContext, rootNavigator: true);
+                      // Close dialog
+                      rootNav.pop();
+                      // Pop GameOn page so it can't be returned via back
+                      if (rootNav.canPop()) {
+                        rootNav.pop();
                       }
                       return false;
                     },

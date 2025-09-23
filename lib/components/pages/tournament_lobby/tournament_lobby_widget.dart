@@ -65,7 +65,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
         effectsBuilder: () => [
           FadeEffect(
             curve: Curves.easeIn,
-            delay: 0.0.ms,
+            delay: 180.0.ms,
             duration: 600.0.ms,
             begin: 0.0,
             end: 1.0,
@@ -105,7 +105,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFF1565C0),
+        backgroundColor: const Color(0xFF1565C0),
         body: SafeArea(
           top: true,
           child: Container(
@@ -689,7 +689,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                     r'''$.data''',
                                   ).toList();
 
-                                  DateTime? _parseDate(
+                                  DateTime? parseDate(
                                       dynamic obj, String path) {
                                     final val = getJsonField(obj, path);
                                     if (val == null) return null;
@@ -708,30 +708,34 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                     }
                                   }
 
-                                  String _computeStatus(dynamic t) {
+                                  String computeStatus(dynamic t) {
                                     final raw =
                                         getJsonField(t, r'''$.status''');
                                     if (raw != null) {
                                       final s =
                                           raw.toString().trim().toLowerCase();
-                                      if (s.contains('upcoming'))
+                                      if (s.contains('upcoming')) {
                                         return 'Upcoming';
+                                      }
                                       if (s.contains('live') ||
-                                          s.contains('running')) return 'Live';
-                                      if (s.contains('complete'))
+                                          s.contains('running')) {
+                                        return 'Live';
+                                      }
+                                      if (s.contains('complete')) {
                                         return 'Completed';
+                                      }
                                     }
                                     final now = DateTime.now().toUtc();
                                     final start =
-                                        _parseDate(t, r'''$.startTime''') ??
-                                            _parseDate(t, r'''$.startDate''') ??
-                                            _parseDate(t, r'''$.start''') ??
-                                            _parseDate(t, r'''$.startAt''');
+                                        parseDate(t, r'''$.startTime''') ??
+                                            parseDate(t, r'''$.startDate''') ??
+                                            parseDate(t, r'''$.start''') ??
+                                            parseDate(t, r'''$.startAt''');
                                     final end =
-                                        _parseDate(t, r'''$.endTime''') ??
-                                            _parseDate(t, r'''$.endDate''') ??
-                                            _parseDate(t, r'''$.end''') ??
-                                            _parseDate(t, r'''$.endAt''');
+                                        parseDate(t, r'''$.endTime''') ??
+                                            parseDate(t, r'''$.endDate''') ??
+                                            parseDate(t, r'''$.end''') ??
+                                            parseDate(t, r'''$.endAt''');
                                     if (start != null &&
                                         now.isBefore(start.toUtc())) {
                                       return 'Upcoming';
@@ -760,10 +764,11 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                         displayName.contains(query);
                                     if (!matchesQuery) return false;
                                     final cat = _model.selectedCategory;
-                                    if (cat == 'All' || cat.isEmpty)
+                                    if (cat == 'All' || cat.isEmpty) {
                                       return true;
+                                    }
                                     final status =
-                                        _computeStatus(t).toLowerCase();
+                                        computeStatus(t).toLowerCase();
                                     return status == cat.toLowerCase();
                                   }).toList();
 
@@ -848,7 +853,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                                 .fromSTEB(
                                                                 5, 5, 5, 5),
                                                         child: Text(
-                                                          _computeStatus(
+                                                          computeStatus(
                                                               tournamentsItem),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -887,7 +892,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                         Builder(
                                                             builder: (context) {
                                                           final status =
-                                                              _computeStatus(
+                                                              computeStatus(
                                                                   tournamentsItem);
                                                           final label = status ==
                                                                   'Upcoming'
@@ -941,34 +946,34 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                               (context, _) {
                                                             // Determine which timestamp to use based on status
                                                             final status =
-                                                                _computeStatus(
+                                                                computeStatus(
                                                                     tournamentsItem);
                                                             final useStart =
                                                                 status ==
                                                                     'Upcoming';
                                                             final rawTarget = useStart
-                                                                ? (_parseDate(
+                                                                ? (parseDate(
                                                                         tournamentsItem,
                                                                         r'''$.startTime''') ??
-                                                                    _parseDate(
+                                                                    parseDate(
                                                                         tournamentsItem,
                                                                         r'''$.startDate''') ??
-                                                                    _parseDate(
+                                                                    parseDate(
                                                                         tournamentsItem,
                                                                         r'''$.start''') ??
-                                                                    _parseDate(
+                                                                    parseDate(
                                                                         tournamentsItem,
                                                                         r'''$.startAt'''))
-                                                                : (_parseDate(
+                                                                : (parseDate(
                                                                         tournamentsItem,
                                                                         r'''$.endTime''') ??
-                                                                    _parseDate(
+                                                                    parseDate(
                                                                         tournamentsItem,
                                                                         r'''$.endDate''') ??
-                                                                    _parseDate(
+                                                                    parseDate(
                                                                         tournamentsItem,
                                                                         r'''$.end''') ??
-                                                                    _parseDate(
+                                                                    parseDate(
                                                                         tournamentsItem,
                                                                         r'''$.endAt'''));
                                                             // Auto-update server status transitions with guards
