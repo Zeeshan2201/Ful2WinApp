@@ -3,10 +3,8 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
@@ -51,7 +49,8 @@ class _PlayAgainWidgetState extends State<PlayAgainWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => PlayAgainModel());
-    gameResponse = GameCall.call();
+    // Fetch all games to resolve image/name references reliably
+    gameResponse = GamesCall.call();
     animationsMap.addAll({
       'containerOnPageLoadAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,

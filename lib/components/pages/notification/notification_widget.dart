@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'notification_model.dart';
 export 'notification_model.dart';
 import '/backend/api_requests/api_calls.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 
 class NotificationWidget extends StatefulWidget {
   const NotificationWidget({super.key});
@@ -21,17 +22,20 @@ class _NotificationWidgetState extends State<NotificationWidget> {
   late NotificationModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  late Future<ApiCallResponse> _notificationsFuture;
+  late Future<ApiCallResponse> _gamesFuture;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => NotificationModel());
+    _notificationsFuture = NotificationCall.call(token: FFAppState().token);
+    _gamesFuture = GamesCall.call();
   }
 
   @override
   void dispose() {
     _model.dispose();
-
     super.dispose();
   }
 
@@ -46,9 +50,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
         decoration: BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: Image.asset(
-              'assets/images/bgimage.png',
-            ).image,
+            image: Image.asset('assets/images/bgimage.png').image,
           ),
           gradient: LinearGradient(
             colors: [
@@ -60,13 +62,14 @@ class _NotificationWidgetState extends State<NotificationWidget> {
             end: const AlignmentDirectional(0, 1.0),
           ),
         ),
-        child: SingleChildScrollView(
+        child: SafeArea(
+          top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
                 padding:
-                    const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                    const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -74,10 +77,6 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                       padding: const EdgeInsetsDirectional.fromSTEB(
                           16.0, 0.0, 0.0, 0.0),
                       child: InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
                         onTap: () async {
                           context.safePop();
                         },
@@ -86,31 +85,21 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                           height: 40.0,
                           decoration: const BoxDecoration(
                             color: Color(0x33FFFFFF),
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(40.0),
-                              bottomRight: Radius.circular(40.0),
-                              topLeft: Radius.circular(40.0),
-                              topRight: Radius.circular(40.0),
-                            ),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(40.0)),
                           ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Icon(
-                                Icons.chevron_left_rounded,
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                size: 24.0,
-                              ),
-                            ],
+                          child: Icon(
+                            Icons.chevron_left_rounded,
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            size: 24.0,
                           ),
                         ),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsetsDirectional.fromSTEB(
-                          16.0, 10.0, 0.0, 0.0),
+                          16.0, 0.0, 0.0, 0.0),
                       child: Text(
                         'NOTIFICATIONS',
                         style:
@@ -138,1119 +127,300 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                   ],
                 ),
               ),
+
+              // Filter chips row
               Padding(
                 padding:
-                    const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
-                child: Container(
-                  width: double.infinity,
-                  height: 30.0,
-                  decoration: const BoxDecoration(),
-                  child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(
-                        10.0, 0.0, 0.0, 0.0),
-                    child: ListView(
-                      padding: EdgeInsets.zero,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 10.0, 0.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              _model.selectedButton = 'All';
-                              safeSetState(() {});
-                            },
-                            child: Container(
-                              width: 70.0,
-                              height: 30.0,
-                              decoration: BoxDecoration(
-                                color: _model.selectedButton == 'All'
-                                    ? FlutterFlowTheme.of(context)
-                                        .secondaryBackground
-                                    : const Color(0x0014181B),
-                                borderRadius: const BorderRadius.only(
-                                  bottomLeft: Radius.circular(20.0),
-                                  bottomRight: Radius.circular(20.0),
-                                  topLeft: Radius.circular(20.0),
-                                  topRight: Radius.circular(20.0),
-                                ),
-                                border: Border.all(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  width: 2.0,
-                                ),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    5.0, 0.0, 0.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    FaIcon(
-                                      FontAwesomeIcons.alignJustify,
-                                      color: _model.selectedButton == 'All'
-                                          ? FlutterFlowTheme.of(context)
-                                              .primaryText
-                                          : FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                      size: 20.0,
-                                    ),
-                                    Padding(
-                                      padding:
-                                          const EdgeInsetsDirectional.fromSTEB(
-                                              5.0, 0.0, 0.0, 0.0),
-                                      child: Text(
-                                        'All',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              font: GoogleFonts.poppins(
-                                                fontWeight: FontWeight.bold,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                              color: _model.selectedButton ==
-                                                      'All'
-                                                  ? FlutterFlowTheme.of(context)
-                                                      .primaryText
-                                                  : FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.bold,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                            ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 10.0, 0.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              _model.selectedButton = 'Game';
-                              safeSetState(() {});
-                            },
-                            child: Container(
-                              width: 90.0,
-                              height: 30.0,
-                              decoration: BoxDecoration(
-                                color: _model.selectedButton == 'Game'
-                                    ? FlutterFlowTheme.of(context)
-                                        .secondaryBackground
-                                    : const Color(0x0014181B),
-                                borderRadius: const BorderRadius.only(
-                                  bottomLeft: Radius.circular(20.0),
-                                  bottomRight: Radius.circular(20.0),
-                                  topLeft: Radius.circular(20.0),
-                                  topRight: Radius.circular(20.0),
-                                ),
-                                border: Border.all(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  width: 2.0,
-                                ),
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Icon(
-                                    Icons.sports_esports_rounded,
-                                    color: _model.selectedButton == 'Game'
-                                        ? FlutterFlowTheme.of(context)
-                                            .primaryText
-                                        : FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                    size: 20.0,
-                                  ),
-                                  Text(
-                                    'Game',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          font: GoogleFonts.poppins(
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
-                                          ),
-                                          color: _model.selectedButton == 'Game'
-                                              ? FlutterFlowTheme.of(context)
-                                                  .primaryText
-                                              : FlutterFlowTheme.of(context)
-                                                  .secondaryBackground,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 10.0, 0.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              _model.selectedButton = 'Followers';
-                              safeSetState(() {});
-                            },
-                            child: Container(
-                              width: 110.0,
-                              height: 30.0,
-                              decoration: BoxDecoration(
-                                color: _model.selectedButton == 'Followers'
-                                    ? FlutterFlowTheme.of(context)
-                                        .secondaryBackground
-                                    : const Color(0x0014181B),
-                                borderRadius: const BorderRadius.only(
-                                  bottomLeft: Radius.circular(20.0),
-                                  bottomRight: Radius.circular(20.0),
-                                  topLeft: Radius.circular(20.0),
-                                  topRight: Radius.circular(20.0),
-                                ),
-                                border: Border.all(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  width: 2.0,
-                                ),
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Icon(
-                                    Icons.groups_outlined,
-                                    color: _model.selectedButton == 'Followers'
-                                        ? FlutterFlowTheme.of(context)
-                                            .primaryText
-                                        : FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                    size: 20.0,
-                                  ),
-                                  Text(
-                                    'Followers',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          font: GoogleFonts.poppins(
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
-                                          ),
-                                          color: _model.selectedButton ==
-                                                  'Followers'
-                                              ? FlutterFlowTheme.of(context)
-                                                  .primaryText
-                                              : FlutterFlowTheme.of(context)
-                                                  .secondaryBackground,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 10.0, 0.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              _model.selectedButton = 'Tournaments';
-                              safeSetState(() {});
-                            },
-                            child: Container(
-                              width: 140.0,
-                              height: 30.0,
-                              decoration: BoxDecoration(
-                                color: _model.selectedButton == 'Tournaments'
-                                    ? FlutterFlowTheme.of(context)
-                                        .secondaryBackground
-                                    : const Color(0x0014181B),
-                                borderRadius: const BorderRadius.only(
-                                  bottomLeft: Radius.circular(20.0),
-                                  bottomRight: Radius.circular(20.0),
-                                  topLeft: Radius.circular(20.0),
-                                  topRight: Radius.circular(20.0),
-                                ),
-                                border: Border.all(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  width: 2.0,
-                                ),
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  FaIcon(
-                                    FontAwesomeIcons.trophy,
-                                    color:
-                                        _model.selectedButton == 'Tournaments'
-                                            ? FlutterFlowTheme.of(context)
-                                                .primaryText
-                                            : FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                    size: 20.0,
-                                  ),
-                                  Text(
-                                    'Tournaments',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          font: GoogleFonts.poppins(
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
-                                          ),
-                                          color: _model.selectedButton ==
-                                                  'Tournaments'
-                                              ? FlutterFlowTheme.of(context)
-                                                  .primaryText
-                                              : FlutterFlowTheme.of(context)
-                                                  .secondaryBackground,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 10.0, 0.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              _model.selectedButton = 'Challenges';
-                              safeSetState(() {});
-                            },
-                            child: Container(
-                              width: 135.0,
-                              height: 30.0,
-                              decoration: BoxDecoration(
-                                color: _model.selectedButton == 'Challenges'
-                                    ? FlutterFlowTheme.of(context)
-                                        .secondaryBackground
-                                    : const Color(0x0014181B),
-                                borderRadius: const BorderRadius.only(
-                                  bottomLeft: Radius.circular(20.0),
-                                  bottomRight: Radius.circular(20.0),
-                                  topLeft: Radius.circular(20.0),
-                                  topRight: Radius.circular(20.0),
-                                ),
-                                border: Border.all(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  width: 2.0,
-                                ),
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Icon(
-                                    Icons.sensor_occupied,
-                                    color: _model.selectedButton == 'Challenges'
-                                        ? FlutterFlowTheme.of(context)
-                                            .primaryText
-                                        : FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                    size: 20.0,
-                                  ),
-                                  Text(
-                                    'Challenges',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          font: GoogleFonts.poppins(
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
-                                          ),
-                                          color: _model.selectedButton ==
-                                                  'Challenges'
-                                              ? FlutterFlowTheme.of(context)
-                                                  .primaryText
-                                              : FlutterFlowTheme.of(context)
-                                                  .secondaryBackground,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                child: Container(
-                  width: double.infinity,
-                  decoration: const BoxDecoration(),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    const EdgeInsetsDirectional.fromSTEB(10.0, 8.0, 0.0, 0.0),
+                child: SizedBox(
+                  height: 32.0,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
                     children: [
-                      ListView(
-                        padding: EdgeInsets.zero,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                10.0, 0.0, 0.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  width: 100.0,
-                                  height: 30.0,
-                                  decoration: const BoxDecoration(),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Align(
-                                        alignment: const AlignmentDirectional(
-                                            -1.0, 0.0),
-                                        child: Text(
-                                          'Unread',
-                                          style: FlutterFlowTheme.of(context)
-                                              .displaySmall
-                                              .override(
-                                                font: GoogleFonts.poppins(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .displaySmall
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .displaySmall
-                                                          .fontStyle,
-                                                ),
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .displaySmall
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .displaySmall
-                                                        .fontStyle,
-                                              ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional
-                                            .fromSTEB(5.0, 0.0, 0.0, 0.0),
-                                        child: Container(
-                                          width: 20.0,
-                                          height: 20.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            shape: BoxShape.circle,
-                                          ),
-                                          child: Align(
-                                            alignment:
-                                                const AlignmentDirectional(
-                                                    0.0, 0.0),
-                                            child: Text(
-                                              '1',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .displaySmall
-                                                  .override(
-                                                    font: GoogleFonts.poppins(
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .displaySmall
-                                                              .fontStyle,
-                                                    ),
-                                                    fontSize: 14.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.w600,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .displaySmall
-                                                            .fontStyle,
-                                                  ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 0.0, 10.0, 2.0),
-                                  child: Container(
-                                    width: double.infinity,
-                                    height: 80.0,
-                                    decoration: BoxDecoration(
-                                      gradient: const LinearGradient(
-                                        colors: [
-                                          Color(0x16FFFFFF),
-                                          Color(0x0DFFFFFF)
-                                        ],
-                                        stops: [0.0, 1.0],
-                                        begin: AlignmentDirectional(0.0, -1.0),
-                                        end: AlignmentDirectional(0, 1.0),
-                                      ),
-                                      borderRadius: BorderRadius.circular(20.0),
-                                    ),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                      10.0, 0.0, 0.0, 0.0),
-                                              child: Container(
-                                                width: 60.0,
-                                                height: 60.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  image: DecorationImage(
-                                                    fit: BoxFit.cover,
-                                                    image: Image.asset(
-                                                      'assets/images/snake-and-ladder.png',
-                                                    ).image,
-                                                  ),
-                                                  borderRadius:
-                                                      const BorderRadius.only(
-                                                    bottomLeft:
-                                                        Radius.circular(10.0),
-                                                    bottomRight:
-                                                        Radius.circular(10.0),
-                                                    topLeft:
-                                                        Radius.circular(10.0),
-                                                    topRight:
-                                                        Radius.circular(10.0),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsetsDirectional
-                                              .fromSTEB(10.0, 0.0, 0.0, 0.0),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Text(
-                                                    'Ready, Set, Play!',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .displaySmall
-                                                        .override(
-                                                          font: GoogleFonts
-                                                              .poppins(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .displaySmall
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .displaySmall
-                                                                    .fontStyle,
-                                                          ),
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .displaySmall
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .displaySmall
-                                                                  .fontStyle,
-                                                        ),
-                                                  ),
-                                                ],
-                                              ),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Text(
-                                                    'Snake & Ladder is now downloaded and \nready to play!',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .displaySmall
-                                                        .override(
-                                                          font: GoogleFonts
-                                                              .poppins(
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .normal,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .displaySmall
-                                                                    .fontStyle,
-                                                          ),
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          fontSize: 10.14,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .displaySmall
-                                                                  .fontStyle,
-                                                        ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                10.0, 0.0, 0.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  width: 100.0,
-                                  height: 30.0,
-                                  decoration: const BoxDecoration(),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Align(
-                                        alignment: const AlignmentDirectional(
-                                            -1.0, 0.0),
-                                        child: Text(
-                                          'Read',
-                                          style: FlutterFlowTheme.of(context)
-                                              .displaySmall
-                                              .override(
-                                                font: GoogleFonts.poppins(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .displaySmall
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .displaySmall
-                                                          .fontStyle,
-                                                ),
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .displaySmall
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .displaySmall
-                                                        .fontStyle,
-                                              ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional
-                                            .fromSTEB(5.0, 0.0, 0.0, 0.0),
-                                        child: Container(
-                                          width: 20.0,
-                                          height: 20.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            shape: BoxShape.circle,
-                                          ),
-                                          child: Align(
-                                            alignment:
-                                                const AlignmentDirectional(
-                                                    0.0, 0.0),
-                                            child: Text(
-                                              '2',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .displaySmall
-                                                  .override(
-                                                    font: GoogleFonts.poppins(
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .displaySmall
-                                                              .fontStyle,
-                                                    ),
-                                                    fontSize: 14.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.w600,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .displaySmall
-                                                            .fontStyle,
-                                                  ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 0.0, 10.0, 5.0),
-                                  child: Container(
-                                    width: double.infinity,
-                                    height: 80.0,
-                                    decoration: BoxDecoration(
-                                      gradient: const LinearGradient(
-                                        colors: [
-                                          Color(0x16FFFFFF),
-                                          Color(0x0DFFFFFF)
-                                        ],
-                                        stops: [0.0, 1.0],
-                                        begin: AlignmentDirectional(0.0, -1.0),
-                                        end: AlignmentDirectional(0, 1.0),
-                                      ),
-                                      borderRadius: BorderRadius.circular(20.0),
-                                    ),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                      10.0, 0.0, 0.0, 0.0),
-                                              child: Container(
-                                                width: 60.0,
-                                                height: 60.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  image: DecorationImage(
-                                                    fit: BoxFit.cover,
-                                                    image: Image.asset(
-                                                      'assets/images/snake-and-ladder.png',
-                                                    ).image,
-                                                  ),
-                                                  borderRadius:
-                                                      const BorderRadius.only(
-                                                    bottomLeft:
-                                                        Radius.circular(10.0),
-                                                    bottomRight:
-                                                        Radius.circular(10.0),
-                                                    topLeft:
-                                                        Radius.circular(10.0),
-                                                    topRight:
-                                                        Radius.circular(10.0),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsetsDirectional
-                                              .fromSTEB(10.0, 0.0, 0.0, 0.0),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Text(
-                                                    'Ready, Set, Play!',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .displaySmall
-                                                        .override(
-                                                          font: GoogleFonts
-                                                              .poppins(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .displaySmall
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .displaySmall
-                                                                    .fontStyle,
-                                                          ),
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .displaySmall
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .displaySmall
-                                                                  .fontStyle,
-                                                        ),
-                                                  ),
-                                                ],
-                                              ),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Text(
-                                                    'Snake & Ladder is now downloaded and \nready to play!',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .displaySmall
-                                                        .override(
-                                                          font: GoogleFonts
-                                                              .poppins(
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .normal,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .displaySmall
-                                                                    .fontStyle,
-                                                          ),
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          fontSize: 10.14,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .displaySmall
-                                                                  .fontStyle,
-                                                        ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 0.0, 10.0, 5.0),
-                                  child: Container(
-                                    width: double.infinity,
-                                    height: 80.0,
-                                    decoration: BoxDecoration(
-                                      gradient: const LinearGradient(
-                                        colors: [
-                                          Color(0x16FFFFFF),
-                                          Color(0x0DFFFFFF)
-                                        ],
-                                        stops: [0.0, 1.0],
-                                        begin: AlignmentDirectional(0.0, -1.0),
-                                        end: AlignmentDirectional(0, 1.0),
-                                      ),
-                                      borderRadius: BorderRadius.circular(20.0),
-                                    ),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                      10.0, 0.0, 0.0, 0.0),
-                                              child: Container(
-                                                width: 60.0,
-                                                height: 60.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  image: DecorationImage(
-                                                    fit: BoxFit.cover,
-                                                    image: Image.asset(
-                                                      'assets/images/snake-and-ladder.png',
-                                                    ).image,
-                                                  ),
-                                                  borderRadius:
-                                                      const BorderRadius.only(
-                                                    bottomLeft:
-                                                        Radius.circular(10.0),
-                                                    bottomRight:
-                                                        Radius.circular(10.0),
-                                                    topLeft:
-                                                        Radius.circular(10.0),
-                                                    topRight:
-                                                        Radius.circular(10.0),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsetsDirectional
-                                              .fromSTEB(10.0, 0.0, 0.0, 0.0),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Text(
-                                                    'Ready, Set, Play!',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .displaySmall
-                                                        .override(
-                                                          font: GoogleFonts
-                                                              .poppins(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .displaySmall
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .displaySmall
-                                                                    .fontStyle,
-                                                          ),
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .displaySmall
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .displaySmall
-                                                                  .fontStyle,
-                                                        ),
-                                                  ),
-                                                ],
-                                              ),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Text(
-                                                    'Snake & Ladder is now downloaded and\nready to play!',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .displaySmall
-                                                        .override(
-                                                          font: GoogleFonts
-                                                              .poppins(
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .normal,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .displaySmall
-                                                                    .fontStyle,
-                                                          ),
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          fontSize: 10.14,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .displaySmall
-                                                                  .fontStyle,
-                                                        ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+                      _FilterChip(
+                        label: 'All',
+                        icon: const FaIcon(FontAwesomeIcons.alignJustify,
+                            size: 18),
+                        selected: _model.selectedButton == 'All',
+                        onTap: () =>
+                            setState(() => _model.selectedButton = 'All'),
                       ),
+                      const SizedBox(width: 8),
+                      _FilterChip(
+                        label: 'Game',
+                        icon:
+                            const Icon(Icons.sports_esports_rounded, size: 18),
+                        selected: _model.selectedButton == 'Game',
+                        onTap: () =>
+                            setState(() => _model.selectedButton = 'Game'),
+                      ),
+                      const SizedBox(width: 8),
+                      _FilterChip(
+                        label: 'Followers',
+                        icon: const Icon(Icons.groups_outlined, size: 18),
+                        selected: _model.selectedButton == 'Followers',
+                        onTap: () =>
+                            setState(() => _model.selectedButton = 'Followers'),
+                      ),
+                      const SizedBox(width: 8),
+                      _FilterChip(
+                        label: 'Tournaments',
+                        icon: const FaIcon(FontAwesomeIcons.trophy, size: 18),
+                        selected: _model.selectedButton == 'Tournaments',
+                        onTap: () => setState(
+                            () => _model.selectedButton = 'Tournaments'),
+                      ),
+                      const SizedBox(width: 8),
+                      _FilterChip(
+                        label: 'Challenges',
+                        icon: const Icon(Icons.sensor_occupied, size: 18),
+                        selected: _model.selectedButton == 'Challenges',
+                        onTap: () => setState(
+                            () => _model.selectedButton = 'Challenges'),
+                      ),
+                      const SizedBox(width: 8),
                     ],
                   ),
                 ),
               ),
+
+              const SizedBox(height: 8),
+              Expanded(
+                child: FutureBuilder<ApiCallResponse>(
+                  future: _notificationsFuture,
+                  builder: (context, notifSnap) {
+                    if (!notifSnap.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50,
+                          height: 50,
+                          child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              FlutterFlowTheme.of(context).primary,
+                            ),
+                          ),
+                        ),
+                      );
+                    }
+
+                    final notifications = getJsonField(
+                      notifSnap.data!.jsonBody,
+                      r'$.notifications',
+                    );
+
+                    final List<dynamic> notifList =
+                        notifications is List ? notifications : [];
+
+                    return FutureBuilder<ApiCallResponse>(
+                      future: _gamesFuture,
+                      builder: (context, gamesSnap) {
+                        final gamesJson = gamesSnap.data?.jsonBody;
+                        final gamesList = (gamesJson != null)
+                            ? getJsonField(gamesJson, r'$.data')
+                            : null;
+                        final List<dynamic> games =
+                            gamesList is List ? gamesList : const [];
+
+                        if (notifList.isEmpty) {
+                          return Center(
+                            child: Text(
+                              'No notifications',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    font: GoogleFonts.poppins(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                            ),
+                          );
+                        }
+
+                        return ListView.separated(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              10, 0, 10, 12),
+                          itemCount: notifList.length,
+                          separatorBuilder: (_, __) =>
+                              const SizedBox(height: 8),
+                          itemBuilder: (context, index) {
+                            final item = notifList[index];
+                            final title =
+                                getJsonField(item, r'$.title').toString();
+                            final message =
+                                getJsonField(item, r'$.message').toString();
+                            final gameName =
+                                getJsonField(item, r'$.data.game').toString();
+                            final thumb = functions.gameImg(games, gameName);
+
+                            return Container(
+                              height: 80,
+                              decoration: BoxDecoration(
+                                gradient: const LinearGradient(
+                                  colors: [
+                                    Color(0x16FFFFFF),
+                                    Color(0x0DFFFFFF)
+                                  ],
+                                  stops: [0.0, 1.0],
+                                  begin: AlignmentDirectional(0.0, -1.0),
+                                  end: AlignmentDirectional(0, 1.0),
+                                ),
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
+                              child: Row(
+                                children: [
+                                  const SizedBox(width: 10),
+                                  Container(
+                                    width: 60,
+                                    height: 60,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      borderRadius: BorderRadius.circular(10),
+                                      image: thumb.isNotEmpty
+                                          ? DecorationImage(
+                                              image: NetworkImage(thumb),
+                                              fit: BoxFit.cover,
+                                            )
+                                          : null,
+                                    ),
+                                    child: thumb.isEmpty
+                                        ? Icon(
+                                            Icons.notifications,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                          )
+                                        : null,
+                                  ),
+                                  const SizedBox(width: 10),
+                                  Expanded(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          title,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: FlutterFlowTheme.of(context)
+                                              .displaySmall
+                                              .override(
+                                                font: GoogleFonts.poppins(),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                        const SizedBox(height: 4),
+                                        Text(
+                                          message,
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodySmall
+                                              .override(
+                                                font: GoogleFonts.poppins(),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  const SizedBox(width: 10),
+                                ],
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _FilterChip extends StatelessWidget {
+  final String label;
+  final Widget icon;
+  final bool selected;
+  final VoidCallback onTap;
+
+  const _FilterChip({
+    required this.label,
+    required this.icon,
+    required this.selected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final bg = selected
+        ? FlutterFlowTheme.of(context).secondaryBackground
+        : const Color(0x0014181B);
+    final fg = selected
+        ? FlutterFlowTheme.of(context).primaryText
+        : FlutterFlowTheme.of(context).secondaryBackground;
+
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsetsDirectional.fromSTEB(10, 6, 12, 6),
+        decoration: BoxDecoration(
+          color: bg,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+            color: FlutterFlowTheme.of(context).secondaryBackground,
+            width: 2,
+          ),
+        ),
+        child: Row(
+          children: [
+            IconTheme(
+              data: IconThemeData(color: fg, size: 18),
+              child: icon,
+            ),
+            const SizedBox(width: 6),
+            Text(
+              label,
+              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    font: GoogleFonts.poppins(
+                      fontWeight: FontWeight.bold,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                    ),
+                    color: fg,
+                    letterSpacing: 0.0,
+                    fontWeight: FontWeight.bold,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                  ),
+            ),
+          ],
         ),
       ),
     );

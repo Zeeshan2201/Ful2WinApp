@@ -45,7 +45,8 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
-    gameResponse = GameCall.call();
+    // Fetch all games for the grid
+    gameResponse = GamesCall.call();
 
     animationsMap.addAll({
       'containerOnPageLoadAnimation': AnimationInfo(
@@ -82,162 +83,440 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Color(0xFF1565C0),
-         body: SafeArea(
+        body: SafeArea(
           top: true,
           child: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: Image.asset(
-                'assets/images/bgimage.png',
-              ).image,
-            ),
-            gradient: LinearGradient(
-              colors: [
-                FlutterFlowTheme.of(context).primary,
-                const Color(0xFF000B33)
-              ],
-              stops: const [0, 1],
-              begin: const AlignmentDirectional(0, -1),
-              end: const AlignmentDirectional(0, 1),
-            ),
-          ),
-          child: Stack(
-            children: [
-              wrapWithModel(
-                model: _model.headerModel,
-                updateCallback: () => safeSetState(() {}),
-                child: const HeaderWidget(),
+            width: double.infinity,
+            height: double.infinity,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: Image.asset(
+                  'assets/images/bgimage.png',
+                ).image,
               ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0, 80, 0, 0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
-                      child: Container(
-                        width: double.infinity,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: const Color(0x85FFFFFF),
+              gradient: LinearGradient(
+                colors: [
+                  FlutterFlowTheme.of(context).primary,
+                  const Color(0xFF000B33)
+                ],
+                stops: const [0, 1],
+                begin: const AlignmentDirectional(0, -1),
+                end: const AlignmentDirectional(0, 1),
+              ),
+            ),
+            child: Stack(
+              children: [
+                wrapWithModel(
+                  model: _model.headerModel,
+                  updateCallback: () => safeSetState(() {}),
+                  child: const HeaderWidget(),
+                ),
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0, 80, 0, 0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                        child: Container(
+                          width: double.infinity,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                              color: const Color(0x85FFFFFF),
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    5, 0, 5, 0),
+                                child: Icon(
+                                  Icons.search_sharp,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  size: 24,
+                                ),
+                              ),
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0, 0, 10, 0),
+                                  child: SizedBox(
+                                    width: 200,
+                                    child: TextFormField(
+                                      controller: _model.textController,
+                                      focusNode: _model.textFieldFocusNode,
+                                      autofocus: false,
+                                      obscureText: false,
+                                      onChanged: (value) => setState(() {}),
+                                      decoration: InputDecoration(
+                                        isDense: true,
+                                        labelStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .override(
+                                              font: GoogleFonts.inter(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .fontStyle,
+                                              ),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
+                                            ),
+                                        hintText: 'Search games...',
+                                        hintStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .override(
+                                              font: GoogleFonts.inter(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .fontStyle,
+                                              ),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
+                                            ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                        errorBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                        focusedErrorBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                        filled: true,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                      cursorColor: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      enableInteractiveSelection: true,
+                                      validator: _model.textControllerValidator
+                                          .asValidator(context),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ]
+                                .divide(const SizedBox(width: 0))
+                                .around(const SizedBox(width: 0)),
                           ),
                         ),
+                      ),
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(10, 10, 0, 0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  5, 0, 5, 0),
-                              child: Icon(
-                                Icons.search_sharp,
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                size: 24,
+                            FFButtonWidget(
+                              onPressed: () async {
+                                _model.selectedCategory = 'All Games';
+                                safeSetState(() {});
+                              },
+                              text: 'All Games',
+                              options: FFButtonOptions(
+                                height: 35,
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    16, 0, 16, 0),
+                                iconPadding:
+                                    const EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 0, 0),
+                                color: _model.selectedCategory == 'All Games'
+                                    ? const Color(0xFFFFD600)
+                                    : const Color(0xFF191A47),
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      font: GoogleFonts.poppins(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontStyle,
+                                      ),
+                                      color:
+                                          _model.selectedCategory == 'All Games'
+                                              ? FlutterFlowTheme.of(context)
+                                                  .primaryText
+                                              : FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                      fontSize: 12,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
+                                elevation: 0,
+                                borderRadius: BorderRadius.circular(10),
                               ),
                             ),
-                            Expanded(
-                              child: Padding(
+                            FFButtonWidget(
+                              onPressed: () async {
+                                _model.selectedCategory = 'Card';
+                                safeSetState(() {});
+                              },
+                              text: 'Card',
+                              options: FFButtonOptions(
+                                height: 35,
                                 padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0, 0, 10, 0),
-                                child: SizedBox(
-                                  width: 200,
-                                  child: TextFormField(
-                                    controller: _model.textController,
-                                    focusNode: _model.textFieldFocusNode,
-                                    autofocus: false,
-                                    obscureText: false,
-                                    onChanged: (value) => setState(() {}),
-                                    decoration: InputDecoration(
-                                      isDense: true,
-                                      labelStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .override(
-                                            font: GoogleFonts.inter(
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .fontStyle,
-                                            ),
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            letterSpacing: 0.0,
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .fontStyle,
-                                          ),
-                                      hintText: 'Search games...',
-                                      hintStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .override(
-                                            font: GoogleFonts.inter(
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .fontStyle,
-                                            ),
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            letterSpacing: 0.0,
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .fontStyle,
-                                          ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: const BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1,
-                                        ),
-                                        borderRadius: BorderRadius.circular(8),
+                                    16, 0, 16, 0),
+                                iconPadding:
+                                    const EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 0, 0),
+                                color: _model.selectedCategory == 'Card'
+                                    ? const Color(0xFFFFD600)
+                                    : const Color(0xFF191A47),
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      font: GoogleFonts.poppins(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontStyle,
                                       ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: const BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1,
-                                        ),
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 1,
-                                        ),
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 1,
-                                        ),
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                      filled: true,
+                                      color: _model.selectedCategory == 'Card'
+                                          ? FlutterFlowTheme.of(context)
+                                              .primaryText
+                                          : FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                      fontSize: 12,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
                                     ),
+                                elevation: 0,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                            FFButtonWidget(
+                              onPressed: () async {
+                                _model.selectedCategory = 'Board';
+                                safeSetState(() {});
+                              },
+                              text: 'Board',
+                              options: FFButtonOptions(
+                                height: 35,
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    16, 0, 16, 0),
+                                iconPadding:
+                                    const EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 0, 0),
+                                color: _model.selectedCategory == 'Board'
+                                    ? const Color(0xFFFFD600)
+                                    : const Color(0xFF191A47),
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      font: GoogleFonts.poppins(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontStyle,
+                                      ),
+                                      color: _model.selectedCategory == 'Board'
+                                          ? FlutterFlowTheme.of(context)
+                                              .primaryText
+                                          : FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                      fontSize: 12,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
+                                elevation: 0,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                            FFButtonWidget(
+                              onPressed: () async {
+                                _model.selectedCategory = 'Action';
+                                safeSetState(() {});
+                              },
+                              text: 'Action',
+                              options: FFButtonOptions(
+                                height: 35,
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    16, 0, 16, 0),
+                                iconPadding:
+                                    const EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 0, 0),
+                                color: _model.selectedCategory == 'Action'
+                                    ? const Color(0xFFFFD600)
+                                    : const Color(0xFF191A47),
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      font: GoogleFonts.poppins(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontStyle,
+                                      ),
+                                      color: _model.selectedCategory == 'Action'
+                                          ? FlutterFlowTheme.of(context)
+                                              .primaryText
+                                          : FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                      fontSize: 12,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
+                                elevation: 0,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ].divide(const SizedBox(width: 2)),
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(10, 10, 10, 0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              _model.selectedCategory,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    fontSize: 20,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                            ),
+                            Align(
+                              alignment: const AlignmentDirectional(0, 0),
+                              child: Container(
+                                height: 30,
+                                decoration: BoxDecoration(
+                                  color: const Color(0x7EEABBBB),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                alignment: const AlignmentDirectional(0, 0),
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      10, 0, 10, 0),
+                                  child: Text(
+                                    'Games found',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -263,482 +542,204 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
-                                    cursorColor: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    enableInteractiveSelection: true,
-                                    validator: _model.textControllerValidator
-                                        .asValidator(context),
                                   ),
                                 ),
                               ),
                             ),
-                          ]
-                              .divide(const SizedBox(width: 0))
-                              .around(const SizedBox(width: 0)),
+                          ],
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(10, 10, 0, 0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          FFButtonWidget(
-                            onPressed: () async {
-                              _model.selectedCategory = 'All Games';
-                              safeSetState(() {});
-                            },
-                            text: 'All Games',
-                            options: FFButtonOptions(
-                              height: 35,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  16, 0, 16, 0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                  0, 0, 0, 0),
-                              color: _model.selectedCategory == 'All Games'
-                                  ? const Color(0xFFFFD600)
-                                  : const Color(0xFF191A47),
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    font: GoogleFonts.poppins(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                    color:
-                                        _model.selectedCategory == 'All Games'
-                                            ? FlutterFlowTheme.of(context)
-                                                .primaryText
-                                            : FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                    fontSize: 12,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontStyle,
-                                  ),
-                              elevation: 0,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                          FFButtonWidget(
-                            onPressed: () async {
-                              _model.selectedCategory = 'Card';
-                              safeSetState(() {});
-                            },
-                            text: 'Card',
-                            options: FFButtonOptions(
-                              height: 35,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  16, 0, 16, 0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                  0, 0, 0, 0),
-                              color: _model.selectedCategory == 'Card'
-                                  ? const Color(0xFFFFD600)
-                                  : const Color(0xFF191A47),
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    font: GoogleFonts.poppins(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                    color: _model.selectedCategory == 'Card'
-                                        ? FlutterFlowTheme.of(context)
-                                            .primaryText
-                                        : FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                    fontSize: 12,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontStyle,
-                                  ),
-                              elevation: 0,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                          FFButtonWidget(
-                            onPressed: () async {
-                              _model.selectedCategory = 'Board';
-                              safeSetState(() {});
-                            },
-                            text: 'Board',
-                            options: FFButtonOptions(
-                              height: 35,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  16, 0, 16, 0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                  0, 0, 0, 0),
-                              color: _model.selectedCategory == 'Board'
-                                  ? const Color(0xFFFFD600)
-                                  : const Color(0xFF191A47),
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    font: GoogleFonts.poppins(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                    color: _model.selectedCategory == 'Board'
-                                        ? FlutterFlowTheme.of(context)
-                                            .primaryText
-                                        : FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                    fontSize: 12,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontStyle,
-                                  ),
-                              elevation: 0,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                          FFButtonWidget(
-                            onPressed: () async {
-                              _model.selectedCategory = 'Action';
-                              safeSetState(() {});
-                            },
-                            text: 'Action',
-                            options: FFButtonOptions(
-                              height: 35,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  16, 0, 16, 0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                  0, 0, 0, 0),
-                              color: _model.selectedCategory == 'Action'
-                                  ? const Color(0xFFFFD600)
-                                  : const Color(0xFF191A47),
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    font: GoogleFonts.poppins(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                    color: _model.selectedCategory == 'Action'
-                                        ? FlutterFlowTheme.of(context)
-                                            .primaryText
-                                        : FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                    fontSize: 12,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontStyle,
-                                  ),
-                              elevation: 0,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                        ].divide(const SizedBox(width: 2)),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(10, 10, 10, 0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            _model.selectedCategory,
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  font: GoogleFonts.inter(
-                                    fontWeight: FontWeight.bold,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
-                                  ),
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  fontSize: 20,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
-                                ),
-                          ),
-                          Align(
-                            alignment: const AlignmentDirectional(0, 0),
-                            child: Container(
-                              height: 30,
-                              decoration: BoxDecoration(
-                                color: const Color(0x7EEABBBB),
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              alignment: const AlignmentDirectional(0, 0),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    10, 0, 10, 0),
-                                child: Text(
-                                  'Games found',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        font: GoogleFonts.inter(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
-                                        ),
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              10, 20, 10, 80),
+                          child: FutureBuilder<ApiCallResponse>(
+                            future: gameResponse,
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50,
+                                    height: 50,
+                                    child: CircularProgressIndicator(
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                        FlutterFlowTheme.of(context).primary,
                                       ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            10, 20, 10, 80),
-                        child: FutureBuilder<ApiCallResponse>(
-                          future: gameResponse,
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50,
-                                  height: 50,
-                                  child: CircularProgressIndicator(
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                      FlutterFlowTheme.of(context).primary,
                                     ),
                                   ),
-                                ),
-                              );
-                            }
-                            final gridViewGamesResponse = snapshot.data!;
+                                );
+                              }
+                              final gridViewGamesResponse = snapshot.data!;
 
-                            return Builder(
-                              builder: (context) {
-                                final eachGame = functions
-                                        .filterGames(
-                                          getJsonField(
-                                            gridViewGamesResponse.jsonBody,
-                                            r'''$.data''',
-                                            true,
-                                          ),
-                                        )
-                                        ?.toList() ??
-                                    [];
+                              return Builder(
+                                builder: (context) {
+                                  final eachGame = functions
+                                          .filterGames(
+                                            getJsonField(
+                                              gridViewGamesResponse.jsonBody,
+                                              r'''$.data''',
+                                              true,
+                                            ),
+                                          )
+                                          ?.toList() ??
+                                      [];
 
-                                // Apply search filter by displayName/name
-                                final query =
-                                    (_model.textController?.text ?? '')
-                                        .trim()
-                                        .toLowerCase();
-                                final filteredGames = query.isEmpty
-                                    ? eachGame
-                                    : eachGame.where((g) {
-                                        final dn = getJsonField(
-                                          g,
-                                          r'''$.displayName''',
-                                        ).toString().toLowerCase();
-                                        final n = getJsonField(
-                                          g,
-                                          r'''$.name''',
-                                        ).toString().toLowerCase();
-                                        return dn.contains(query) ||
-                                            n.contains(query);
-                                      }).toList();
+                                  // Apply search filter by displayName/name
+                                  final query =
+                                      (_model.textController?.text ?? '')
+                                          .trim()
+                                          .toLowerCase();
+                                  final filteredGames = query.isEmpty
+                                      ? eachGame
+                                      : eachGame.where((g) {
+                                          final dn = getJsonField(
+                                            g,
+                                            r'''$.displayName''',
+                                          ).toString().toLowerCase();
+                                          final n = getJsonField(
+                                            g,
+                                            r'''$.name''',
+                                          ).toString().toLowerCase();
+                                          return dn.contains(query) ||
+                                              n.contains(query);
+                                        }).toList();
 
-                                return RefreshIndicator(
-                                  onRefresh: () async {
-                                    safeSetState(() =>
-                                        _model.apiRequestCompleter = null);
-                                    await _model.waitForApiRequestCompleted();
-                                  },
-                                  child: GridView.builder(
-                                    padding: EdgeInsets.zero,
-                                    gridDelegate:
-                                        SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 4,
-                                      crossAxisSpacing:
-                                          MediaQuery.sizeOf(context).width >=
-                                                  390.0
-                                              ? 15.0
-                                              : 3.0,
-                                      mainAxisSpacing: 20,
-                                      childAspectRatio:
-                                          MediaQuery.sizeOf(context).width >=
-                                                  390.0
-                                              ? 0.6
-                                              : 0.55,
-                                    ),
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: filteredGames.length,
-                                    itemBuilder: (context, eachGameIndex) {
-                                      final eachGameItem =
-                                          filteredGames[eachGameIndex];
-                                      return InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          await showModalBottomSheet(
-                                            isScrollControlled: true,
-                                            backgroundColor: Colors.transparent,
-                                            enableDrag: false,
-                                            context: context,
-                                            builder: (context) {
-                                              return GestureDetector(
-                                                onTap: () {
-                                                  FocusScope.of(context)
-                                                      .unfocus();
-                                                  FocusManager
-                                                      .instance.primaryFocus
-                                                      ?.unfocus();
-                                                },
-                                                child: Padding(
-                                                  padding:
-                                                      MediaQuery.viewInsetsOf(
-                                                          context),
-                                                  child: SizedBox(
-                                                    height: double.infinity,
-                                                    child: GamePageWidget(
-                                                      gameId: getJsonField(
-                                                        eachGameItem,
-                                                        r'''$._id''',
-                                                      ).toString(),
+                                  return RefreshIndicator(
+                                    onRefresh: () async {
+                                      safeSetState(() =>
+                                          _model.apiRequestCompleter = null);
+                                      await _model.waitForApiRequestCompleted();
+                                    },
+                                    child: GridView.builder(
+                                      key: const PageStorageKey('games_grid'),
+                                      padding: EdgeInsets.zero,
+                                      gridDelegate:
+                                          SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 4,
+                                        crossAxisSpacing:
+                                            MediaQuery.sizeOf(context).width >=
+                                                    390.0
+                                                ? 15.0
+                                                : 3.0,
+                                        mainAxisSpacing: 20,
+                                        childAspectRatio:
+                                            MediaQuery.sizeOf(context).width >=
+                                                    390.0
+                                                ? 0.6
+                                                : 0.55,
+                                      ),
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: filteredGames.length,
+                                      itemBuilder: (context, eachGameIndex) {
+                                        final eachGameItem =
+                                            filteredGames[eachGameIndex];
+                                        return InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            await showModalBottomSheet(
+                                              isScrollControlled: true,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              enableDrag: false,
+                                              context: context,
+                                              builder: (context) {
+                                                return GestureDetector(
+                                                  onTap: () {
+                                                    FocusScope.of(context)
+                                                        .unfocus();
+                                                    FocusManager
+                                                        .instance.primaryFocus
+                                                        ?.unfocus();
+                                                  },
+                                                  child: Padding(
+                                                    padding:
+                                                        MediaQuery.viewInsetsOf(
+                                                            context),
+                                                    child: SizedBox(
+                                                      height: double.infinity,
+                                                      child: GamePageWidget(
+                                                        gameId: getJsonField(
+                                                          eachGameItem,
+                                                          r'''$._id''',
+                                                        ).toString(),
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                              );
-                                            },
-                                          ).then(
-                                              (value) => safeSetState(() {}));
+                                                );
+                                              },
+                                            );
 
-                                          FFAppState().gameId = getJsonField(
-                                            eachGameItem,
-                                            r'''$._id''',
-                                          ).toString();
-                                          safeSetState(() {});
-                                        },
-                                        child: Container(
-                                          width: 100,
-                                          height: 130,
-                                          decoration: BoxDecoration(
-                                            color: const Color(0x672A2A2A),
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            border: Border.all(
-                                              color: const Color(0xFF00CFFF),
+                                            FFAppState().gameId = getJsonField(
+                                              eachGameItem,
+                                              r'''$._id''',
+                                            ).toString();
+                                            safeSetState(() {});
+                                          },
+                                          child: Container(
+                                            width: 100,
+                                            height: 130,
+                                            decoration: BoxDecoration(
+                                              color: const Color(0x672A2A2A),
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              border: Border.all(
+                                                color: const Color(0xFF00CFFF),
+                                              ),
                                             ),
-                                          ),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              if (FFAppState().gameType !=
-                                                  getJsonField(
-                                                    eachGameItem,
-                                                    r'''$.type''',
-                                                  ).toString())
-                                                ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(8),
-                                                  child: Image.network(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                if (FFAppState().gameType !=
                                                     getJsonField(
                                                       eachGameItem,
-                                                      r'''$.assets.thumbnail''',
-                                                    ).toString(),
-                                                    width: 100,
-                                                    height: 90,
-                                                    fit: BoxFit.cover,
+                                                      r'''$.type''',
+                                                    ).toString())
+                                                  ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8),
+                                                    child: Image.network(
+                                                      getJsonField(
+                                                        eachGameItem,
+                                                        r'''$.assets.thumbnail''',
+                                                      ).toString(),
+                                                      width: 100,
+                                                      height: 90,
+                                                      fit: BoxFit.cover,
+                                                    ),
                                                   ),
-                                                ),
-                                              Expanded(
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                              0, 0, 0, 5),
-                                                      child: Text(
-                                                        getJsonField(
-                                                          eachGameItem,
-                                                          r'''$.displayName''',
-                                                        ).toString(),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .inter(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                                  fontSize: 12,
-                                                                  letterSpacing:
-                                                                      0.0,
+                                                Expanded(
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                0, 0, 0, 5),
+                                                        child: Text(
+                                                          getJsonField(
+                                                            eachGameItem,
+                                                            r'''$.displayName''',
+                                                          ).toString(),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -748,38 +749,53 @@ class _GamesPageWidgetState extends State<GamesPageWidget>
                                                                       .bodyMedium
                                                                       .fontStyle,
                                                                 ),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                                fontSize: 12,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                        ),
                                                       ),
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                );
-                              },
-                            );
-                          },
+                                        );
+                                      },
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              wrapWithModel(
-                model: _model.navbarModel,
-                updateCallback: () => safeSetState(() {}),
-                child: const NavbarWidget(
-                  pageNav: 'GamesPage',
+                wrapWithModel(
+                  model: _model.navbarModel,
+                  updateCallback: () => safeSetState(() {}),
+                  child: const NavbarWidget(
+                    pageNav: 'GamesPage',
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!),
-      ),
+              ],
+            ),
+          ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!),
+        ),
       ),
     );
   }
