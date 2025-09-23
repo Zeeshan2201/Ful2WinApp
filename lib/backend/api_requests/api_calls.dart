@@ -77,6 +77,33 @@ class ReferralCode {
   }
 }
 
+class NotificationCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+  }) async {
+    final baseUrl = FulWinGroup.getBaseUrl(
+      token: token,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'notifications',
+      apiUrl: '${baseUrl}notifications',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer $token',
+      },
+      params: {},
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class StatusCall {
   Future<ApiCallResponse> call({
     String? tournamentId = '',

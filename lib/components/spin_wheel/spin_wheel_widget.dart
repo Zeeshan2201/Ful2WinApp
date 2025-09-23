@@ -32,11 +32,13 @@ class _SpinWheelWidgetState extends State<SpinWheelWidget>
   static final labels = List.generate(colors.length, (i) => "${(i + 1) * 50}");
 
   static const spinsKey = "spinWheel_spinsLeft";
-  static const timerKey = "spinWheel_timer";
-  static const refillTime = 120;
+  static const windowStartKey =
+      "spinWheel_windowStartMs"; // epoch ms of first spin in current window
+  static const windowDurationMs = 24 * 60 * 60 * 1000; // 24 hours
 
   int spinsLeft = 5;
-  int timer = refillTime;
+  int? windowStartMs; // when the 24h window started (first spin time)
+  int remainingSeconds = 0; // UI-only countdown when spins are exhausted
   bool isSpinning = false;
   String currentReward = "";
 
@@ -111,31 +113,71 @@ class _SpinWheelWidgetState extends State<SpinWheelWidget>
 
   Future<void> _loadData() async {
     final prefs = await SharedPreferences.getInstance();
+    final savedSpins = prefs.getInt(spinsKey);
+    final savedWindowStart = prefs.getInt(windowStartKey);
+
+    final nowMs = DateTime.now().millisecondsSinceEpoch;
+    int? startMs = savedWindowStart;
+    int newSpins = savedSpins ?? 5;
+
+    if (startMs != null) {
+      final resetAt = startMs + windowDurationMs;
+      if (nowMs >= resetAt) {
+        // Window elapsed -> reset to full spins and clear window anchor
+        startMs = null;
+        newSpins = 5;
+      }
+    }
+
+    // Migration from legacy logic: if no window anchor exists but stored spins < 5,
+    // recover by resetting to 5 so users are not stuck without a countdown.
+    if (startMs == null && (savedSpins != null && savedSpins < 5)) {
+      newSpins = 5;
+    }
+
     setState(() {
-      spinsLeft = prefs.getInt(spinsKey) ?? 5;
-      timer = prefs.getInt(timerKey) ?? refillTime;
+      spinsLeft = newSpins;
+      windowStartMs = startMs;
+      remainingSeconds = _computeRemainingSeconds(nowMs);
     });
   }
 
   Future<void> _saveData() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setInt(spinsKey, spinsLeft);
-    await prefs.setInt(timerKey, timer);
+    if (windowStartMs == null) {
+      await prefs.remove(windowStartKey);
+    } else {
+      await prefs.setInt(windowStartKey, windowStartMs!);
+    }
   }
 
   void _startTimer() {
     _timer?.cancel();
     _timer = Timer.periodic(const Duration(seconds: 1), (t) {
-      if (spinsLeft >= 5) return;
-      if (timer > 0) {
-        setState(() => timer--);
-      } else {
+      final nowMs = DateTime.now().millisecondsSinceEpoch;
+
+      // If there is an active window, check for reset
+      if (windowStartMs != null) {
+        final resetAt = windowStartMs! + windowDurationMs;
+        if (nowMs >= resetAt) {
+          setState(() {
+            spinsLeft = 5;
+            windowStartMs = null; // cleared; next spin will anchor new window
+            remainingSeconds = 0;
+          });
+          _saveData();
+          return;
+        }
+      }
+
+      // Update countdown only when all spins are used
+      final rs = _computeRemainingSeconds(nowMs);
+      if (rs != remainingSeconds) {
         setState(() {
-          spinsLeft++;
-          timer = refillTime;
+          remainingSeconds = rs;
         });
       }
-      _saveData();
     });
   }
 
@@ -155,8 +197,13 @@ class _SpinWheelWidgetState extends State<SpinWheelWidget>
 
     setState(() {
       isSpinning = true;
+      // Anchor window at the first spin if not already set
+      if (windowStartMs == null) {
+        windowStartMs = DateTime.now().millisecondsSinceEpoch;
+      }
       spinsLeft--;
     });
+    _saveData();
 
     _controller.reset();
     _controller.forward();
@@ -176,6 +223,15 @@ class _SpinWheelWidgetState extends State<SpinWheelWidget>
       _saveData();
       _showRewardDialog();
     });
+  }
+
+  int _computeRemainingSeconds(int nowMs) {
+    if (windowStartMs == null) return 0;
+    final resetAt = windowStartMs! + windowDurationMs;
+    final msLeft = resetAt - nowMs;
+    if (msLeft <= 0) return 0;
+    // Only show countdown when no spins are left
+    return spinsLeft == 0 ? (msLeft / 1000).ceil() : 0;
   }
 
   void _showRewardDialog() {
@@ -282,10 +338,14 @@ class _SpinWheelWidgetState extends State<SpinWheelWidget>
     super.dispose();
   }
 
-  String _formatTime(int seconds) {
-    final m = seconds ~/ 60;
+  String _formatHMS(int seconds) {
+    final h = seconds ~/ 3600;
+    final m = (seconds % 3600) ~/ 60;
     final s = seconds % 60;
-    return "${m.toString().padLeft(2, "0")}:${s.toString().padLeft(2, "0")}";
+    final hh = h.toString().padLeft(2, "0");
+    final mm = m.toString().padLeft(2, "0");
+    final ss = s.toString().padLeft(2, "0");
+    return "$hh:$mm:$ss";
   }
 
   @override
@@ -452,10 +512,10 @@ class _SpinWheelWidgetState extends State<SpinWheelWidget>
 
                       SizedBox(height: wheelSize * 0.04),
 
-                      // Timer
-                      if (spinsLeft < 5)
+                      // Countdown: show only when all spins are used
+                      if (spinsLeft == 0 && remainingSeconds > 0)
                         Text(
-                          "Next spin in: ${_formatTime(timer)}",
+                          "Next five spins in: ${_formatHMS(remainingSeconds)}",
                           style: TextStyle(
                               color: Colors.amber,
                               fontSize: wheelSize * 0.048,

@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'notification_model.dart';
 export 'notification_model.dart';
+import '/backend/api_requests/api_calls.dart';
 
 class NotificationWidget extends StatefulWidget {
   const NotificationWidget({super.key});
@@ -50,7 +51,10 @@ class _NotificationWidgetState extends State<NotificationWidget> {
             ).image,
           ),
           gradient: LinearGradient(
-            colors: [FlutterFlowTheme.of(context).primary, const Color(0xFF000B33)],
+            colors: [
+              FlutterFlowTheme.of(context).primary,
+              const Color(0xFF000B33)
+            ],
             stops: const [0.0, 1.0],
             begin: const AlignmentDirectional(0.0, -1.0),
             end: const AlignmentDirectional(0, 1.0),
@@ -61,13 +65,14 @@ class _NotificationWidgetState extends State<NotificationWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          16.0, 0.0, 0.0, 0.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -104,8 +109,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                       ),
                     ),
                     Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 10.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          16.0, 10.0, 0.0, 0.0),
                       child: Text(
                         'NOTIFICATIONS',
                         style:
@@ -134,14 +139,15 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   height: 30.0,
                   decoration: const BoxDecoration(),
                   child: Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        10.0, 0.0, 0.0, 0.0),
                     child: ListView(
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
@@ -197,8 +203,9 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                       size: 20.0,
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          5.0, 0.0, 0.0, 0.0),
+                                      padding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              5.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         'All',
                                         style: FlutterFlowTheme.of(context)
@@ -546,7 +553,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   decoration: const BoxDecoration(),
@@ -574,8 +582,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Align(
-                                        alignment:
-                                            const AlignmentDirectional(-1.0, 0.0),
+                                        alignment: const AlignmentDirectional(
+                                            -1.0, 0.0),
                                         child: Text(
                                           'Unread',
                                           style: FlutterFlowTheme.of(context)
@@ -609,8 +617,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 0.0, 0.0, 0.0),
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(5.0, 0.0, 0.0, 0.0),
                                         child: Container(
                                           width: 20.0,
                                           height: 20.0,
@@ -621,7 +629,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                           ),
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                const AlignmentDirectional(
+                                                    0.0, 0.0),
                                             child: Text(
                                               '1',
                                               style: FlutterFlowTheme.of(
@@ -687,8 +696,9 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
+                                              padding:
+                                                  const EdgeInsetsDirectional
+                                                      .fromSTEB(
                                                       10.0, 0.0, 0.0, 0.0),
                                               child: Container(
                                                 width: 60.0,
@@ -720,9 +730,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                           ],
                                         ),
                                         Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 0.0, 0.0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(10.0, 0.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
@@ -831,8 +840,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Align(
-                                        alignment:
-                                            const AlignmentDirectional(-1.0, 0.0),
+                                        alignment: const AlignmentDirectional(
+                                            -1.0, 0.0),
                                         child: Text(
                                           'Read',
                                           style: FlutterFlowTheme.of(context)
@@ -866,8 +875,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 0.0, 0.0, 0.0),
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(5.0, 0.0, 0.0, 0.0),
                                         child: Container(
                                           width: 20.0,
                                           height: 20.0,
@@ -878,7 +887,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                           ),
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                const AlignmentDirectional(
+                                                    0.0, 0.0),
                                             child: Text(
                                               '2',
                                               style: FlutterFlowTheme.of(
@@ -944,8 +954,9 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
+                                              padding:
+                                                  const EdgeInsetsDirectional
+                                                      .fromSTEB(
                                                       10.0, 0.0, 0.0, 0.0),
                                               child: Container(
                                                 width: 60.0,
@@ -977,9 +988,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                           ],
                                         ),
                                         Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 0.0, 0.0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(10.0, 0.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
@@ -1104,8 +1114,9 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
+                                              padding:
+                                                  const EdgeInsetsDirectional
+                                                      .fromSTEB(
                                                       10.0, 0.0, 0.0, 0.0),
                                               child: Container(
                                                 width: 60.0,
@@ -1137,9 +1148,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                           ],
                                         ),
                                         Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 0.0, 0.0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(10.0, 0.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
