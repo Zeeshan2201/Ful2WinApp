@@ -203,13 +203,12 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                       );
                     }
 
-                    final notifications = getJsonField(
-                      notifSnap.data!.jsonBody,
-                      r'$.notifications',
-                    );
-
-                    final List<dynamic> notifList =
-                        notifications is List ? notifications : [];
+                    // UPDATED: support both { notifications: [...] } and top-level array
+                    final raw = notifSnap.data!.jsonBody;
+                    final extracted = getJsonField(raw, r'$.notifications');
+                    final List<dynamic> notifList = extracted is List
+                        ? extracted
+                        : (raw is List ? raw : []);
 
                     return FutureBuilder<ApiCallResponse>(
                       future: _gamesFuture,
@@ -258,8 +257,18 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                               const SizedBox(height: 8),
                           itemBuilder: (context, index) {
                             final item = notifList[index];
-                            final title =
-                                getJsonField(item, r'$.title').toString();
+
+                            // UPDATED: title falls back to $.data.title if $.title is missing
+                            final t1 = getJsonField(item, r'$.title');
+                            final t2 = getJsonField(item, r'$.data.title');
+                            final title = (t1 != null &&
+                                    t1.toString() != 'null' &&
+                                    t1.toString().trim().isNotEmpty)
+                                ? t1.toString()
+                                : (t2 != null && t2.toString() != 'null'
+                                    ? t2.toString()
+                                    : '');
+
                             final message =
                                 getJsonField(item, r'$.message').toString();
                             final gameName =
@@ -290,12 +299,13 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       borderRadius: BorderRadius.circular(10),
-                                      image: thumb.isNotEmpty
-                                          ? DecorationImage(
-                                              image: NetworkImage(thumb),
-                                              fit: BoxFit.cover,
-                                            )
-                                          : null,
+                                      image:
+                                          title.isNotEmpty && thumb.isNotEmpty
+                                              ? DecorationImage(
+                                                  image: NetworkImage(thumb),
+                                                  fit: BoxFit.cover,
+                                                )
+                                              : null,
                                     ),
                                     child: thumb.isEmpty
                                         ? Icon(
@@ -314,7 +324,9 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          title,
+                                          title.isNotEmpty
+                                              ? title
+                                              : 'Notification',
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
                                           style: FlutterFlowTheme.of(context)
