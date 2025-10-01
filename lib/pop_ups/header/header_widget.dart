@@ -109,7 +109,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          context.pushNamed(HomePageCopyCopyWidget.routeName);
+                          context.pushNamed(HomePageWidget.routeName);
                         },
                         child: Container(
                           width: 60.0,

@@ -421,9 +421,9 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                 },
                                 text: 'All',
                                 options: FFButtonOptions(
-                                  height: 35,
+                                  height: 44, // increased from 35
                                   padding: const EdgeInsetsDirectional.fromSTEB(
-                                      16, 0, 16, 0),
+                                      20, 0, 20, 0), // a bit wider
                                   iconPadding:
                                       const EdgeInsetsDirectional.fromSTEB(
                                           0, 0, 0, 0),
@@ -448,7 +448,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                 .primaryText
                                             : FlutterFlowTheme.of(context)
                                                 .secondaryBackground,
-                                        fontSize: 8,
+                                        fontSize: 12, // increased from 8
                                         letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .titleSmall
@@ -458,7 +458,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                             .fontStyle,
                                       ),
                                   elevation: 0,
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(24),
                                 ),
                               ),
                               FFButtonWidget(
@@ -476,9 +476,9 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                 },
                                 text: 'Upcoming',
                                 options: FFButtonOptions(
-                                  height: 35,
+                                  height: 44,
                                   padding: const EdgeInsetsDirectional.fromSTEB(
-                                      16, 0, 16, 0),
+                                      20, 0, 20, 0),
                                   iconPadding:
                                       const EdgeInsetsDirectional.fromSTEB(
                                           0, 0, 0, 0),
@@ -504,7 +504,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                 .primaryText
                                             : FlutterFlowTheme.of(context)
                                                 .secondaryBackground,
-                                        fontSize: 8,
+                                        fontSize: 12,
                                         letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .titleSmall
@@ -514,7 +514,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                             .fontStyle,
                                       ),
                                   elevation: 0,
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(24),
                                 ),
                               ),
                               FFButtonWidget(
@@ -532,9 +532,9 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                 },
                                 text: 'Live',
                                 options: FFButtonOptions(
-                                  height: 35,
+                                  height: 44,
                                   padding: const EdgeInsetsDirectional.fromSTEB(
-                                      16, 0, 16, 0),
+                                      20, 0, 20, 0),
                                   iconPadding:
                                       const EdgeInsetsDirectional.fromSTEB(
                                           0, 0, 0, 0),
@@ -559,7 +559,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                 .primaryText
                                             : FlutterFlowTheme.of(context)
                                                 .secondaryBackground,
-                                        fontSize: 8,
+                                        fontSize: 12,
                                         letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .titleSmall
@@ -569,7 +569,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                             .fontStyle,
                                       ),
                                   elevation: 0,
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(24),
                                 ),
                               ),
                               FFButtonWidget(
@@ -587,9 +587,9 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                 },
                                 text: 'Completed',
                                 options: FFButtonOptions(
-                                  height: 35,
+                                  height: 44,
                                   padding: const EdgeInsetsDirectional.fromSTEB(
-                                      16, 0, 16, 0),
+                                      20, 0, 20, 0),
                                   iconPadding:
                                       const EdgeInsetsDirectional.fromSTEB(
                                           0, 0, 0, 0),
@@ -615,7 +615,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                 .primaryText
                                             : FlutterFlowTheme.of(context)
                                                 .secondaryBackground,
-                                        fontSize: 8,
+                                        fontSize: 12,
                                         letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .titleSmall
@@ -625,7 +625,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                             .fontStyle,
                                       ),
                                   elevation: 0,
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(24),
                                 ),
                               ),
                             ].divide(const SizedBox(width: 2)),
@@ -638,8 +638,8 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                 Align(
                   alignment: const AlignmentDirectional(0, -1),
                   child: Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0, 280, 0, 10),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 230, 0,
+                        10), // was 220, tightened to leave ~5-6px visual gap below buttons
                     child: FutureBuilder<ApiCallResponse>(
                       future: gameResponse,
                       builder: (context, snapshot) {

@@ -571,7 +571,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Tournament',
+                                        'coming soon',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -730,7 +730,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Classic',
+                                        'Coming soon',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -887,7 +887,7 @@ class _GamePageWidgetState extends State<GamePageWidget>
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            'Classic',
+                                            'Coming soon',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(

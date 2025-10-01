@@ -1,5 +1,3 @@
-import 'package:http/http.dart';
-
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_autocomplete_options_list.dart';
@@ -176,104 +174,226 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFF1565C0),
-       body: SafeArea(
-          top: true,
-          child: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: Image.asset(
-              'assets/images/bgimage.png',
-            ).image,
-          ),
-          gradient: LinearGradient(
-            colors: [
-              FlutterFlowTheme.of(context).primary,
-              const Color(0xFF000B33)
-            ],
-            stops: const [0, 1],
-            begin: const AlignmentDirectional(0, -1),
-            end: const AlignmentDirectional(0, 1),
-          ),
-        ),
-        alignment: const AlignmentDirectional(0, 0),
-        child: Stack(
-          children: [
-            Align(
-              alignment: const AlignmentDirectional(0, -1),
-              child: wrapWithModel(
-                model: _model.headerModel,
-                updateCallback: () => safeSetState(() {}),
-                child: const HeaderWidget(),
-              ),
+      backgroundColor: const Color(0xFF1565C0),
+      body: SafeArea(
+        top: true,
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: Image.asset(
+                'assets/images/bgimage.png',
+              ).image,
             ),
-            Align(
-              alignment: const AlignmentDirectional(0, -1),
-              child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0, 60, 0, 70),
-                child: Container(
-                  decoration: const BoxDecoration(),
-                  child: FutureBuilder<ApiCallResponse>(
-                    future: allUsersResponse,
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50,
-                            height: 50,
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                FlutterFlowTheme.of(context).primary,
+            gradient: LinearGradient(
+              colors: [
+                FlutterFlowTheme.of(context).primary,
+                const Color(0xFF000B33)
+              ],
+              stops: const [0, 1],
+              begin: const AlignmentDirectional(0, -1),
+              end: const AlignmentDirectional(0, 1),
+            ),
+          ),
+          alignment: const AlignmentDirectional(0, 0),
+          child: Stack(
+            children: [
+              Align(
+                alignment: const AlignmentDirectional(0, -1),
+                child: wrapWithModel(
+                  model: _model.headerModel,
+                  updateCallback: () => safeSetState(() {}),
+                  child: const HeaderWidget(),
+                ),
+              ),
+              Align(
+                alignment: const AlignmentDirectional(0, -1),
+                child: Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0, 60, 0, 70),
+                  child: Container(
+                    decoration: const BoxDecoration(),
+                    child: FutureBuilder<ApiCallResponse>(
+                      future: allUsersResponse,
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50,
+                              height: 50,
+                              child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  FlutterFlowTheme.of(context).primary,
+                                ),
                               ),
                             ),
-                          ),
-                        );
-                      }
-                      final columnAllUsersResponse = snapshot.data!;
+                          );
+                        }
+                        final columnAllUsersResponse = snapshot.data!;
 
-                      return SingleChildScrollView(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Container(
-                              width: MediaQuery.sizeOf(context).width < 350.0
-                                  ? 300.0
-                                  : 350.0,
-                              height: 40,
-                              decoration: const BoxDecoration(
-                                color: Colors.transparent,
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding:
-                                        const EdgeInsetsDirectional.fromSTEB(
-                                            5, 0, 0, 0),
-                                    child: Column(
+                        return SingleChildScrollView(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Container(
+                                width: MediaQuery.sizeOf(context).width < 350.0
+                                    ? 300.0
+                                    : 350.0,
+                                height: 40,
+                                decoration: const BoxDecoration(
+                                  color: Colors.transparent,
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Padding(
+                                      padding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              5, 0, 0, 0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.end,
+                                            children: [
+                                              Container(
+                                                decoration: BoxDecoration(
+                                                  gradient:
+                                                      const LinearGradient(
+                                                    colors: [
+                                                      Color(0xFF0BC1FF),
+                                                      Color(0xFF0A2472)
+                                                    ],
+                                                    stops: [0, 1],
+                                                    begin: AlignmentDirectional(
+                                                        0, -1),
+                                                    end: AlignmentDirectional(
+                                                        0, 1),
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(50),
+                                                ),
+                                                child: FlutterFlowIconButton(
+                                                  borderRadius: 50,
+                                                  buttonSize: 36,
+                                                  fillColor: Colors.transparent,
+                                                  icon: Icon(
+                                                    Icons.home_outlined,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryBackground,
+                                                    size: 20,
+                                                  ),
+                                                  onPressed: () async {
+                                                    context.pushNamed(
+                                                        CommunityPageWidget
+                                                            .routeName);
+                                                  },
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(5, 0, 0, 0),
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                    gradient:
+                                                        const LinearGradient(
+                                                      colors: [
+                                                        Color(0xFF0BC1FF),
+                                                        Color(0xFF0A2472)
+                                                      ],
+                                                      stops: [0, 1],
+                                                      begin:
+                                                          AlignmentDirectional(
+                                                              0, -1),
+                                                      end: AlignmentDirectional(
+                                                          0, 1),
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            50),
+                                                  ),
+                                                  child: FlutterFlowIconButton(
+                                                    borderRadius: 50,
+                                                    buttonSize: 36,
+                                                    fillColor:
+                                                        Colors.transparent,
+                                                    icon: Icon(
+                                                      Icons.chat_bubble_outline,
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .primaryBackground,
+                                                      size: 20,
+                                                    ),
+                                                    onPressed: () async {
+                                                      context.pushNamed(
+                                                          CommunitymembersWidget
+                                                              .routeName);
+                                                    },
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 120,
+                                      decoration: BoxDecoration(
+                                        color: const Color(0x33FFFFFF),
+                                        borderRadius: BorderRadius.circular(40),
+                                      ),
+                                      alignment:
+                                          const AlignmentDirectional(0, 0),
+                                      child: Text(
+                                        'Challenge',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              font: GoogleFonts.inter(
+                                                fontWeight: FontWeight.bold,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
+                                              color: const Color(0xFFFBD34D),
+                                              fontSize: 20,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                      ),
+                                    ),
+                                    Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
                                           children: [
                                             Container(
                                               decoration: BoxDecoration(
                                                 gradient: const LinearGradient(
                                                   colors: [
-                                                    Color(0xFF0BC1FF),
-                                                    Color(0xFF0A2472)
+                                                    Color(0xFFF3E2C2),
+                                                    Color(0xFFE1B769)
                                                   ],
                                                   stops: [0, 1],
                                                   begin: AlignmentDirectional(
@@ -289,16 +409,15 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                 buttonSize: 36,
                                                 fillColor: Colors.transparent,
                                                 icon: Icon(
-                                                  Icons.home_outlined,
+                                                  Icons.sensor_occupied,
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .primaryBackground,
+                                                      .primaryText,
                                                   size: 20,
                                                 ),
-                                                onPressed: () async {
-                                                  context.pushNamed(
-                                                      CommunityPageWidget
-                                                          .routeName);
+                                                onPressed: () {
+                                                  print(
+                                                      'IconButton pressed ...');
                                                 },
                                               ),
                                             ),
@@ -328,15 +447,15 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                   buttonSize: 36,
                                                   fillColor: Colors.transparent,
                                                   icon: Icon(
-                                                    Icons.chat_bubble_outline,
+                                                    Icons.leaderboard_outlined,
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .primaryBackground,
+                                                        .info,
                                                     size: 20,
                                                   ),
                                                   onPressed: () async {
                                                     context.pushNamed(
-                                                        CommunitymembersWidget
+                                                        CommunityPageWidget
                                                             .routeName);
                                                   },
                                                 ),
@@ -346,168 +465,70 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                         ),
                                       ],
                                     ),
-                                  ),
-                                  Container(
-                                    width: 120,
-                                    decoration: BoxDecoration(
-                                      color: const Color(0x33FFFFFF),
-                                      borderRadius: BorderRadius.circular(40),
-                                    ),
-                                    alignment: const AlignmentDirectional(0, 0),
-                                    child: Text(
-                                      'Challenge',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            font: GoogleFonts.inter(
-                                              fontWeight: FontWeight.bold,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                            ),
-                                            color: const Color(0xFFFBD34D),
-                                            fontSize: 20,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
-                                          ),
-                                    ),
-                                  ),
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Container(
-                                            decoration: BoxDecoration(
-                                              gradient: const LinearGradient(
-                                                colors: [
-                                                  Color(0xFFF3E2C2),
-                                                  Color(0xFFE1B769)
-                                                ],
-                                                stops: [0, 1],
-                                                begin:
-                                                    AlignmentDirectional(0, -1),
-                                                end: AlignmentDirectional(0, 1),
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(50),
-                                            ),
-                                            child: FlutterFlowIconButton(
-                                              borderRadius: 50,
-                                              buttonSize: 36,
-                                              fillColor: Colors.transparent,
-                                              icon: Icon(
-                                                Icons.sensor_occupied,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                size: 20,
-                                              ),
-                                              onPressed: () {
-                                                print('IconButton pressed ...');
-                                              },
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsetsDirectional
-                                                .fromSTEB(5, 0, 0, 0),
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                gradient: const LinearGradient(
-                                                  colors: [
-                                                    Color(0xFF0BC1FF),
-                                                    Color(0xFF0A2472)
-                                                  ],
-                                                  stops: [0, 1],
-                                                  begin: AlignmentDirectional(
-                                                      0, -1),
-                                                  end: AlignmentDirectional(
-                                                      0, 1),
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(50),
-                                              ),
-                                              child: FlutterFlowIconButton(
-                                                borderRadius: 50,
-                                                buttonSize: 36,
-                                                fillColor: Colors.transparent,
-                                                icon: Icon(
-                                                  Icons.leaderboard_outlined,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .info,
-                                                  size: 20,
-                                                ),
-                                                onPressed: () async {
-                                                  context.pushNamed(
-                                                      CommunityPageWidget
-                                                          .routeName);
-                                                },
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: MediaQuery.sizeOf(context).width < 350.0
-                                  ? 280.0
-                                  : 350.0,
-                              height: 400,
-                              decoration: BoxDecoration(
-                                color: const Color(0xBB08162C),
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(
-                                  color: const Color(0xFF00CFFF),
+                                  ],
                                 ),
                               ),
-                              child: FutureBuilder<ApiCallResponse>(
-                                future: gamesResponse,
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50,
-                                        height: 50,
-                                        child: CircularProgressIndicator(
-                                          valueColor:
-                                              AlwaysStoppedAnimation<Color>(
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
+                              Container(
+                                width: MediaQuery.sizeOf(context).width < 350.0
+                                    ? 280.0
+                                    : 350.0,
+                                height: 400,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xBB08162C),
+                                  borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(
+                                    color: const Color(0xFF00CFFF),
+                                  ),
+                                ),
+                                child: FutureBuilder<ApiCallResponse>(
+                                  future: gamesResponse,
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50,
+                                          height: 50,
+                                          child: CircularProgressIndicator(
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    );
-                                  }
-                                  final columnGamesResponse = snapshot.data!;
-                                  return SingleChildScrollView(
-                                    primary: false,
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsetsDirectional
-                                              .fromSTEB(0, 10, 0, 10),
-                                          child: Text(
-                                            'Challenge a Friend',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  font: GoogleFonts.roboto(
+                                      );
+                                    }
+                                    final columnGamesResponse = snapshot.data!;
+                                    return SingleChildScrollView(
+                                      primary: false,
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(0, 10, 0, 10),
+                                            child: Text(
+                                              'Challenge a Friend',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    font: GoogleFonts.roboto(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                    color:
+                                                        const Color(0xFFFBD34D),
+                                                    fontSize: 24,
+                                                    letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
                                                     fontStyle:
                                                         FlutterFlowTheme.of(
@@ -515,1732 +536,614 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  color:
-                                                      const Color(0xFFFBD34D),
-                                                  fontSize: 24,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width:
-                                              MediaQuery.sizeOf(context).width <
-                                                      350.0
-                                                  ? 250.0
-                                                  : 300.0,
-                                          child: Autocomplete<String>(
-                                            initialValue:
-                                                const TextEditingValue(),
-                                            optionsBuilder: (textEditingValue) {
-                                              // When empty, show a capped list (first 20) for quick discovery
-                                              if (textEditingValue
-                                                  .text.isEmpty) {
-                                                return _filteredUserNames
-                                                    .take(20);
-                                              }
-                                              final lower = textEditingValue
-                                                  .text
-                                                  .toLowerCase();
-                                              return _userNames
-                                                  .where((o) => o
-                                                      .toLowerCase()
-                                                      .contains(lower))
-                                                  .take(20);
-                                            },
-                                            optionsViewBuilder:
-                                                (context, onSelected, options) {
-                                              return AutocompleteOptionsList(
-                                                textFieldKey:
-                                                    _model.textFieldKey1,
-                                                textController:
-                                                    _model.textController1!,
-                                                options: options.toList(),
-                                                onSelected: onSelected,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          font:
-                                                              GoogleFonts.inter(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                          ),
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                textHighlightStyle:
-                                                    const TextStyle(),
-                                                elevation: 4,
-                                                optionBackgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
-                                                optionHighlightColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                maxHeight: 200,
-                                              );
-                                            },
-                                            onSelected: (String selection) {
-                                              safeSetState(() => _model
-                                                      .textFieldSelectedOption1 =
-                                                  selection);
-                                              FocusScope.of(context).unfocus();
-                                            },
-                                            fieldViewBuilder: (
-                                              context,
-                                              textEditingController,
-                                              focusNode,
-                                              onEditingComplete,
-                                            ) {
-                                              _model.textFieldFocusNode1 =
-                                                  focusNode;
-
-                                              _model.textController1 =
-                                                  textEditingController;
-                                              return TextFormField(
-                                                key: _model.textFieldKey1,
-                                                controller:
-                                                    textEditingController,
-                                                focusNode: focusNode,
-                                                onEditingComplete:
-                                                    onEditingComplete,
-                                                onChanged: (val) {
-                                                  // Local filter; no extra rebuilds outside options list
-                                                  final l = val.toLowerCase();
-                                                  print(_userNames);
-                                                  setState(() {
-                                                    _filteredUserNames =
-                                                        _userNames
-                                                            .where((n) => n
-                                                                .toLowerCase()
-                                                                .contains(l))
-                                                            .take(50)
-                                                            .toList();
-                                                  });
-                                                },
-                                                autofocus: false,
-                                                obscureText: false,
-                                                decoration: InputDecoration(
-                                                  isDense: true,
-                                                  labelStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium
-                                                                .fontStyle,
-                                                      ),
-                                                  hintText:
-                                                      'Enter Friend\'s Name',
-                                                  hintStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .primaryBackground,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium
-                                                                .fontStyle,
-                                                        lineHeight: 2,
-                                                      ),
-                                                  enabledBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide:
-                                                        const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 1,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                  ),
-                                                  focusedBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide:
-                                                        const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 1,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                  ),
-                                                  errorBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                      width: 1,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                  ),
-                                                  focusedErrorBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                      width: 1,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                  ),
-                                                  filled: true,
-                                                  fillColor:
-                                                      const Color(0x33FFFFFF),
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          font:
-                                                              GoogleFonts.inter(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                          ),
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                cursorColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                enableInteractiveSelection:
-                                                    true,
-                                                validator: _model
-                                                    .textController1Validator
-                                                    .asValidator(context),
-                                              );
-                                            },
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width:
-                                              MediaQuery.sizeOf(context).width <
-                                                      350.0
-                                                  ? 250.0
-                                                  : 300.0,
-                                          child: Autocomplete<String>(
-                                            initialValue:
-                                                const TextEditingValue(),
-                                            optionsBuilder: (textEditingValue) {
-                                              if (textEditingValue
-                                                  .text.isEmpty) {
-                                                return _filteredGameNames
-                                                    .take(20);
-                                              }
-                                              final lower = textEditingValue
-                                                  .text
-                                                  .toLowerCase();
-                                              return _gameNames
-                                                  .where((o) => o
-                                                      .toLowerCase()
-                                                      .contains(lower))
-                                                  .take(20);
-                                            },
-                                            optionsViewBuilder:
-                                                (context, onSelected, options) {
-                                              return AutocompleteOptionsList(
-                                                textFieldKey:
-                                                    _model.textFieldKey2,
-                                                textController:
-                                                    _model.textController2!,
-                                                options: options.toList(),
-                                                onSelected: onSelected,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          font:
-                                                              GoogleFonts.inter(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                          ),
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                textHighlightStyle:
-                                                    const TextStyle(),
-                                                elevation: 4,
-                                                optionBackgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
-                                                optionHighlightColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                maxHeight: 200,
-                                              );
-                                            },
-                                            onSelected: (String selection) {
-                                              safeSetState(() => _model
-                                                      .textFieldSelectedOption2 =
-                                                  selection);
-                                              FocusScope.of(context).unfocus();
-                                            },
-                                            fieldViewBuilder: (
-                                              context,
-                                              textEditingController,
-                                              focusNode,
-                                              onEditingComplete,
-                                            ) {
-                                              _model.textFieldFocusNode2 =
-                                                  focusNode;
-
-                                              _model.textController2 =
-                                                  textEditingController;
-                                              return TextFormField(
-                                                key: _model.textFieldKey2,
-                                                controller:
-                                                    textEditingController,
-                                                focusNode: focusNode,
-                                                onEditingComplete:
-                                                    onEditingComplete,
-                                                onChanged: (val) {
-                                                  final l = val.toLowerCase();
-                                                  setState(() {
-                                                    _filteredGameNames =
-                                                        _gameNames
-                                                            .where((n) => n
-                                                                .toLowerCase()
-                                                                .contains(l))
-                                                            .take(50)
-                                                            .toList();
-                                                  });
-                                                },
-                                                autofocus: false,
-                                                obscureText: false,
-                                                decoration: InputDecoration(
-                                                  isDense: true,
-                                                  labelStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium
-                                                                .fontStyle,
-                                                      ),
-                                                  hintText: 'Enter game name',
-                                                  hintStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .primaryBackground,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium
-                                                                .fontStyle,
-                                                        lineHeight: 2,
-                                                      ),
-                                                  enabledBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide:
-                                                        const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 1,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                  ),
-                                                  focusedBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide:
-                                                        const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 1,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                  ),
-                                                  errorBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                      width: 1,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                  ),
-                                                  focusedErrorBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                      width: 1,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                  ),
-                                                  filled: true,
-                                                  fillColor:
-                                                      const Color(0x33FFFFFF),
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          font:
-                                                              GoogleFonts.inter(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                          ),
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                cursorColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                enableInteractiveSelection:
-                                                    true,
-                                                validator: _model
-                                                    .textController2Validator
-                                                    .asValidator(context),
-                                              );
-                                            },
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width:
-                                              MediaQuery.sizeOf(context).width <
-                                                      350.0
-                                                  ? 250.0
-                                                  : 300.0,
-                                          child: TextFormField(
-                                            controller: _model.textController3,
-                                            focusNode:
-                                                _model.textFieldFocusNode3,
-                                            autofocus: false,
-                                            obscureText: false,
-                                            decoration: InputDecoration(
-                                              isDense: true,
-                                              labelStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium
-                                                                .fontStyle,
-                                                      ),
-                                              hintText:
-                                                  'Optional message (max 200 characters)',
-                                              hintStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .primaryBackground,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
-                                                  color: Color.fromARGB(
-                                                      0, 249, 243, 243),
-                                                  width: 1,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
-                                              errorBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .error,
-                                                  width: 1,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
-                                              focusedErrorBorder:
-                                                  OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .error,
-                                                  width: 1,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
-                                              filled: true,
-                                              fillColor:
-                                                  const Color(0x33FFFFFF),
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  font: GoogleFonts.inter(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                            maxLines: 5,
-                                            cursorColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryText,
-                                            enableInteractiveSelection: true,
-                                            validator: _model
-                                                .textController3Validator
-                                                .asValidator(context),
                                           ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsetsDirectional
-                                              .fromSTEB(0, 0, 0, 10),
-                                          child: FFButtonWidget(
-                                            onPressed: () async {
-                                              _model.challenges =
-                                                  await ChallengesCall.call(
-                                                challengedUserId:
-                                                    functions.challangeTo(
-                                                        getJsonField(
-                                                          columnAllUsersResponse
-                                                              .jsonBody,
-                                                          r'''$.data''',
-                                                          true,
-                                                        )!,
-                                                        _model.textController1
-                                                            .text),
-                                                gameId: functions.findgameId(
-                                                    getJsonField(
-                                                      columnGamesResponse
-                                                          .jsonBody,
-                                                      r'''$.data''',
-                                                      true,
-                                                    )!,
-                                                    _model
-                                                        .textController2.text),
-                                                message:
-                                                    _model.textController3.text,
-                                                token: FFAppState().token,
-                                              );
-                                              print(
-                                                  _model.challenges?.jsonBody);
-                                              if ((_model
-                                                      .challenges?.succeeded ??
-                                                  true)) {
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(
-                                                  SnackBar(
-                                                    content: Text(
-                                                      'Challenge send',
-                                                      style: TextStyle(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                      ),
-                                                    ),
-                                                    duration: const Duration(
-                                                        milliseconds: 4000),
-                                                    backgroundColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .secondary,
-                                                  ),
-                                                );
-                                              } else {
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(
-                                                  SnackBar(
-                                                    content: Text(
-                                                      "error occurs",
-                                                      style: TextStyle(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                      ),
-                                                    ),
-                                                    duration: const Duration(
-                                                        milliseconds: 4000),
-                                                    backgroundColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .secondary,
-                                                  ),
-                                                );
-                                              }
-
-                                              safeSetState(() {});
-                                            },
-                                            text: 'Send challenge',
-                                            options: FFButtonOptions(
-                                              width: MediaQuery.sizeOf(context)
-                                                          .width <
-                                                      350.0
-                                                  ? 250.0
-                                                  : 300.0,
-                                              height: 40,
-                                              padding:
-                                                  const EdgeInsetsDirectional
-                                                      .fromSTEB(16, 0, 16, 0),
-                                              iconPadding:
-                                                  const EdgeInsetsDirectional
-                                                      .fromSTEB(0, 0, 0, 0),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        font:
-                                                            GoogleFonts.poppins(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .fontStyle,
-                                                        ),
-                                                        color: Colors.white,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleSmall
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleSmall
-                                                                .fontStyle,
-                                                      ),
-                                              elevation: 0,
-                                              borderRadius:
-                                                  const BorderRadius.only(
-                                                bottomLeft: Radius.circular(20),
-                                                bottomRight:
-                                                    Radius.circular(20),
-                                                topLeft: Radius.circular(20),
-                                                topRight: Radius.circular(20),
-                                              ),
-                                            ),
-                                          ).animateOnPageLoad(animationsMap[
-                                              'buttonOnPageLoadAnimation']!),
-                                        ),
-                                      ]
-                                          .divide(const SizedBox(height: 20))
-                                          .addToStart(
-                                              const SizedBox(height: 10)),
-                                    ),
-                                  );
-                                },
-                              ),
-                            ),
-                            Builder(
-                              builder: (context) {
-                                if (_model.availChallenges) {
-                                  return Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width < 350.0
-                                            ? 280.0
-                                            : 350.0,
-                                    height: 250,
-                                    decoration: BoxDecoration(
-                                      color: const Color(0xBB08162C),
-                                      borderRadius: BorderRadius.circular(20),
-                                      border: Border.all(
-                                        color: const Color(0xFF00CFFF),
-                                      ),
-                                    ),
-                                    child: Stack(
-                                      children: [
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(0, -1),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              GestureDetector(
-                                                onTap: () {
-                                                  setState(() {
-                                                    _model.availChallenges =
-                                                        false;
-                                                  });
-                                                },
-                                                child: Text(
-                                                  'Incoming Invites',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        font:
-                                                            GoogleFonts.roboto(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        color: const Color(
-                                                            0xFFFBD34D),
-                                                        fontSize: 24,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
-                                                ),
-                                              ),
-                                            ]
-                                                .divide(
-                                                    const SizedBox(height: 20))
-                                                .addToStart(
-                                                    const SizedBox(height: 10)),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsetsDirectional
-                                              .fromSTEB(0, 50, 0, 0),
-                                          child: FutureBuilder<ApiCallResponse>(
-                                            future: challengesResponse,
-                                            builder: (context, snapshot) {
-                                              // Customize what your widget looks like when it's loading.
-                                              if (!snapshot.hasData) {
-                                                return Center(
-                                                  child: SizedBox(
-                                                    width: 50,
-                                                    height: 50,
-                                                    child:
-                                                        CircularProgressIndicator(
-                                                      valueColor:
-                                                          AlwaysStoppedAnimation<
-                                                              Color>(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .primary,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                );
-                                              }
-                                              final listViewGamesResponse =
-                                                  snapshot.data!;
-                                              return Builder(
-                                                builder: (context) {
-                                                  final allChallenges =
-                                                      getJsonField(
-                                                    listViewGamesResponse
-                                                        .jsonBody,
-                                                    r'''$.challenges''',
-                                                  ).toList();
-                                                  final myUserId =
-                                                      FFAppState().userId;
-                                                  // Filter incoming invites: only where current user is the challenged recipient
-                                                  // and ensure current user is not the challenger.
-                                                  final challenge =
-                                                      allChallenges.where((c) {
-                                                    String challengedId =
-                                                        getJsonField(c,
-                                                                    r'''$.challengedUser._id''')
-                                                                ?.toString() ??
-                                                            '';
-                                                    if (challengedId.isEmpty ||
-                                                        challengedId ==
-                                                            'null') {
-                                                      challengedId = getJsonField(
-                                                                  c,
-                                                                  r'''$.challengee._id''')
-                                                              ?.toString() ??
-                                                          '';
-                                                    }
-                                                    if (challengedId.isEmpty ||
-                                                        challengedId ==
-                                                            'null') {
-                                                      challengedId = getJsonField(
-                                                                  c,
-                                                                  r'''$.recipient._id''')
-                                                              ?.toString() ??
-                                                          '';
-                                                    }
-                                                    if (challengedId.isEmpty ||
-                                                        challengedId ==
-                                                            'null') {
-                                                      challengedId = getJsonField(
-                                                                  c,
-                                                                  r'''$.challenged._id''')
-                                                              ?.toString() ??
-                                                          '';
-                                                    }
-                                                    if (challengedId.isEmpty ||
-                                                        challengedId ==
-                                                            'null') {
-                                                      challengedId = getJsonField(
-                                                                  c,
-                                                                  r'''$.challengedUser.id''')
-                                                              ?.toString() ??
-                                                          '';
-                                                    }
-                                                    if (challengedId.isEmpty ||
-                                                        challengedId ==
-                                                            'null') {
-                                                      challengedId = getJsonField(
-                                                                  c,
-                                                                  r'''$.challengee.id''')
-                                                              ?.toString() ??
-                                                          '';
-                                                    }
-                                                    if (challengedId.isEmpty ||
-                                                        challengedId ==
-                                                            'null') {
-                                                      challengedId = getJsonField(
-                                                                  c,
-                                                                  r'''$.recipient.id''')
-                                                              ?.toString() ??
-                                                          '';
-                                                    }
-                                                    if (challengedId.isEmpty ||
-                                                        challengedId ==
-                                                            'null') {
-                                                      challengedId = getJsonField(
-                                                                  c,
-                                                                  r'''$.challenged.id''')
-                                                              ?.toString() ??
-                                                          '';
-                                                    }
-
-                                                    String challengerId =
-                                                        getJsonField(c,
-                                                                    r'''$.challenger._id''')
-                                                                ?.toString() ??
-                                                            '';
-                                                    if (challengerId.isEmpty ||
-                                                        challengerId ==
-                                                            'null') {
-                                                      challengerId = getJsonField(
-                                                                  c,
-                                                                  r'''$.challenger.id''')
-                                                              ?.toString() ??
-                                                          '';
-                                                    }
-
-                                                    final isChallengedMe =
-                                                        challengedId ==
-                                                            myUserId;
-                                                    final isChallengerMe =
-                                                        challengerId ==
-                                                            myUserId;
-                                                    return isChallengedMe &&
-                                                        !isChallengerMe;
-                                                  }).toList();
-                                                  debugPrint(
-                                                      '[INCOMING] total=${allChallenges.length}, filtered=${challenge.length}');
-
-                                                  return ListView.separated(
-                                                    padding: EdgeInsets.zero,
-                                                    primary: false,
-                                                    shrinkWrap: true,
-                                                    scrollDirection:
-                                                        Axis.vertical,
-                                                    itemCount: challenge.length,
-                                                    separatorBuilder: (_, __) =>
-                                                        const SizedBox(
-                                                            height: 10),
-                                                    itemBuilder: (context,
-                                                        challengeIndex) {
-                                                      final status =
-                                                          getJsonField(
-                                                        challenge[
-                                                            challengeIndex],
-                                                        r'''$.status''',
-                                                      ).toString();
-                                                      final statusLower =
-                                                          status.toLowerCase();
-                                                      return Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                5, 0, 5, 0),
-                                                        child: Container(
-                                                          height: 80,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                            borderRadius:
-                                                                const BorderRadius
-                                                                    .only(
-                                                              bottomLeft: Radius
-                                                                  .circular(10),
-                                                              bottomRight:
-                                                                  Radius
-                                                                      .circular(
-                                                                          10),
-                                                              topLeft: Radius
-                                                                  .circular(10),
-                                                              topRight: Radius
-                                                                  .circular(10),
-                                                            ),
-                                                          ),
-                                                          child: Padding(
-                                                            padding:
-                                                                const EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                    10,
-                                                                    0,
-                                                                    10,
-                                                                    0),
-                                                            child: Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .spaceBetween,
-                                                              children: [
-                                                                Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Padding(
-                                                                      padding: const EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                          5,
-                                                                          0,
-                                                                          5,
-                                                                          0),
-                                                                      child:
-                                                                          Container(
-                                                                        width:
-                                                                            35,
-                                                                        height:
-                                                                            35,
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          color:
-                                                                              const Color(0xFF57636C),
-                                                                          image:
-                                                                              DecorationImage(
-                                                                            fit:
-                                                                                BoxFit.cover,
-                                                                            image:
-                                                                                _safeNetworkOrAsset(
-                                                                              getJsonField(
-                                                                                challenge[challengeIndex],
-                                                                                r'''$.challenger.profilePicture''',
-                                                                              ).toString(),
-                                                                            ),
-                                                                          ),
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(50),
-                                                                        ),
-                                                                        child:
-                                                                            Align(
-                                                                          alignment: const AlignmentDirectional(
-                                                                              0,
-                                                                              0),
-                                                                          child:
-                                                                              Text(
-                                                                            '',
-                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  font: GoogleFonts.inter(
-                                                                                    fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                  ),
-                                                                                  color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                  letterSpacing: 0.0,
-                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                ),
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                    Padding(
-                                                                      padding: const EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                          5,
-                                                                          0,
-                                                                          0,
-                                                                          0),
-                                                                      child:
-                                                                          Column(
-                                                                        mainAxisSize:
-                                                                            MainAxisSize.max,
-                                                                        mainAxisAlignment:
-                                                                            MainAxisAlignment.center,
-                                                                        crossAxisAlignment:
-                                                                            CrossAxisAlignment.start,
-                                                                        children: [
-                                                                          Container(
-                                                                            width: MediaQuery.sizeOf(context).width < 350.0
-                                                                                ? 150.0
-                                                                                : 200.0,
-                                                                            decoration:
-                                                                                const BoxDecoration(),
-                                                                            child:
-                                                                                Text(
-                                                                              getJsonField(
-                                                                                challenge[challengeIndex],
-                                                                                r'''$.challenger.fullName''',
-                                                                              ).toString(),
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    font: GoogleFonts.poppins(
-                                                                                      fontWeight: FontWeight.bold,
-                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                    ),
-                                                                                    color: FlutterFlowTheme.of(context).primaryText,
-                                                                                    fontSize: MediaQuery.sizeOf(context).width < 350.0 ? 14.0 : 20.0,
-                                                                                    letterSpacing: 0.0,
-                                                                                    fontWeight: FontWeight.bold,
-                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                  ),
-                                                                            ),
-                                                                          ),
-                                                                          Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.max,
-                                                                            children: [
-                                                                              FaIcon(
-                                                                                FontAwesomeIcons.solidCircle,
-                                                                                color: FlutterFlowTheme.of(context).tertiary,
-                                                                                size: 12,
-                                                                              ),
-                                                                              Padding(
-                                                                                padding: const EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
-                                                                                child: Text(
-                                                                                  getJsonField(
-                                                                                    challenge[challengeIndex],
-                                                                                    r'''$.game.displayName''',
-                                                                                  ).toString(),
-                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        font: GoogleFonts.poppins(
-                                                                                          fontWeight: FontWeight.w600,
-                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                        ),
-                                                                                        fontSize: MediaQuery.sizeOf(context).width < 350.0 ? 10.0 : 14.0,
-                                                                                        letterSpacing: 0.0,
-                                                                                        fontWeight: FontWeight.w600,
-                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                      ),
-                                                                                ),
-                                                                              ),
-                                                                            ],
-                                                                          ),
-                                                                        ],
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                                if (statusLower ==
-                                                                    'pending')
-                                                                  Column(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      Container(
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          gradient:
-                                                                              const LinearGradient(
-                                                                            colors: [
-                                                                              Color(0xFF13AD07),
-                                                                              Color(0xFF267B02)
-                                                                            ],
-                                                                            stops: [
-                                                                              0,
-                                                                              1
-                                                                            ],
-                                                                            begin:
-                                                                                AlignmentDirectional(0, -1),
-                                                                            end:
-                                                                                AlignmentDirectional(0, 1),
-                                                                          ),
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(10),
-                                                                        ),
-                                                                        child:
-                                                                            FFButtonWidget(
-                                                                          onPressed:
-                                                                              () async {
-                                                                            final id =
-                                                                                getJsonField(
-                                                                              challenge[challengeIndex],
-                                                                              r'''$._id''',
-                                                                            ).toString();
-                                                                            if (_processingChallengeIds.contains(id)) {
-                                                                              return;
-                                                                            }
-                                                                            setState(() {
-                                                                              _processingChallengeIds.add(id);
-                                                                            });
-                                                                            try {
-                                                                              print('[ACCEPT] Starting API call for challengeId=$id');
-                                                                              final apiResult = await AcceptChallengeCall.call(
-                                                                                token: FFAppState().token,
-                                                                                challengeId: id,
-                                                                              );
-                                                                              print('[ACCEPT] Response: succeeded=${apiResult.succeeded == true}, statusCode=${apiResult.statusCode}, body=${apiResult.jsonBody}');
-                                                                              if (apiResult.succeeded == true) {
-                                                                                ScaffoldMessenger.of(context).showSnackBar(
-                                                                                  SnackBar(
-                                                                                    content: Text(
-                                                                                      'Challenge accepted!',
-                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            font: GoogleFonts.poppins(
-                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                            ),
-                                                                                            color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                            letterSpacing: 0.0,
-                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                          ),
-                                                                                    ),
-                                                                                    duration: const Duration(milliseconds: 2000),
-                                                                                    backgroundColor: const Color(0x00000000),
-                                                                                    behavior: SnackBarBehavior.floating,
-                                                                                  ),
-                                                                                );
-                                                                                // Refresh challenges list
-                                                                                setState(() {
-                                                                                  print('[ACCEPT] Refreshing challenges list after success');
-                                                                                  challengesResponse = GetChallengesCall.call(token: FFAppState().token);
-                                                                                });
-                                                                              } else {
-                                                                                ScaffoldMessenger.of(context).showSnackBar(
-                                                                                  SnackBar(
-                                                                                    content: Text(
-                                                                                      'Error accepting challenge',
-                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            font: GoogleFonts.poppins(
-                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                            ),
-                                                                                            color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                            letterSpacing: 0.0,
-                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                          ),
-                                                                                    ),
-                                                                                    duration: const Duration(milliseconds: 2000),
-                                                                                    backgroundColor: const Color(0x00000000),
-                                                                                    behavior: SnackBarBehavior.floating,
-                                                                                  ),
-                                                                                );
-                                                                              }
-                                                                            } finally {
-                                                                              if (mounted) {
-                                                                                setState(() {
-                                                                                  _processingChallengeIds.remove(id);
-                                                                                });
-                                                                              }
-                                                                            }
-                                                                          },
-                                                                          text:
-                                                                              'Accept',
-                                                                          options:
-                                                                              FFButtonOptions(
-                                                                            width: MediaQuery.sizeOf(context).width < 350.0
-                                                                                ? 75.0
-                                                                                : 80.0,
-                                                                            height:
-                                                                                30,
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                                10,
-                                                                                0,
-                                                                                10,
-                                                                                0),
-                                                                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                                                                0,
-                                                                                0,
-                                                                                0,
-                                                                                0),
-                                                                            color:
-                                                                                Colors.transparent,
-                                                                            textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                  font: GoogleFonts.poppins(
-                                                                                    fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
-                                                                                    fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
-                                                                                  ),
-                                                                                  color: Colors.white,
-                                                                                  fontSize: MediaQuery.sizeOf(context).width < 350.0 ? 14.0 : 16.0,
-                                                                                  letterSpacing: 0.0,
-                                                                                  fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
-                                                                                  fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
-                                                                                ),
-                                                                            elevation:
-                                                                                0,
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(10),
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                      Container(
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          gradient:
-                                                                              const LinearGradient(
-                                                                            colors: [
-                                                                              Color(0xFFF21803),
-                                                                              Color(0xFF7E0303)
-                                                                            ],
-                                                                            stops: [
-                                                                              0,
-                                                                              1
-                                                                            ],
-                                                                            begin:
-                                                                                AlignmentDirectional(0, -1),
-                                                                            end:
-                                                                                AlignmentDirectional(0, 1),
-                                                                          ),
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(10),
-                                                                        ),
-                                                                        child:
-                                                                            FFButtonWidget(
-                                                                          onPressed:
-                                                                              () async {
-                                                                            final id =
-                                                                                getJsonField(
-                                                                              challenge[challengeIndex],
-                                                                              r'''$._id''',
-                                                                            ).toString();
-                                                                            if (_processingChallengeIds.contains(id)) {
-                                                                              return;
-                                                                            }
-                                                                            setState(() {
-                                                                              _processingChallengeIds.add(id);
-                                                                            });
-                                                                            try {
-                                                                              print('[REJECT] Starting API call for challengeId=$id');
-                                                                              final response = await RejectChallengeCall.call(
-                                                                                challengeId: id,
-                                                                                token: FFAppState().token,
-                                                                              );
-                                                                              print('[REJECT] Response: succeeded=${response.succeeded == true}, statusCode=${response.statusCode}, body=${response.jsonBody}');
-                                                                              if (response.succeeded == true) {
-                                                                                ScaffoldMessenger.of(context).showSnackBar(
-                                                                                  SnackBar(
-                                                                                    content: Text(
-                                                                                      'Challenge rejected!',
-                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            font: GoogleFonts.poppins(
-                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                            ),
-                                                                                            color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                            letterSpacing: 0.0,
-                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                          ),
-                                                                                    ),
-                                                                                    duration: const Duration(milliseconds: 2000),
-                                                                                    backgroundColor: const Color(0x00000000),
-                                                                                    behavior: SnackBarBehavior.floating,
-                                                                                  ),
-                                                                                );
-                                                                                // Refresh challenges list
-                                                                                setState(() {
-                                                                                  challengesResponse = GetChallengesCall.call(token: FFAppState().token);
-                                                                                });
-                                                                              } else {
-                                                                                ScaffoldMessenger.of(context).showSnackBar(
-                                                                                  SnackBar(
-                                                                                    content: Text(
-                                                                                      'Error rejecting challenge',
-                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                            font: GoogleFonts.poppins(
-                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                            ),
-                                                                                            color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                            letterSpacing: 0.0,
-                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                          ),
-                                                                                    ),
-                                                                                    duration: const Duration(milliseconds: 2000),
-                                                                                    backgroundColor: const Color(0x00000000),
-                                                                                    behavior: SnackBarBehavior.floating,
-                                                                                  ),
-                                                                                );
-                                                                              }
-                                                                            } finally {
-                                                                              if (mounted) {
-                                                                                setState(() {
-                                                                                  _processingChallengeIds.remove(id);
-                                                                                });
-                                                                              }
-                                                                            }
-                                                                          },
-                                                                          text:
-                                                                              'Reject',
-                                                                          options:
-                                                                              FFButtonOptions(
-                                                                            width: MediaQuery.sizeOf(context).width < 350.0
-                                                                                ? 75.0
-                                                                                : 80.0,
-                                                                            height:
-                                                                                30,
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                                10,
-                                                                                0,
-                                                                                10,
-                                                                                0),
-                                                                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                                                                0,
-                                                                                0,
-                                                                                0,
-                                                                                0),
-                                                                            color:
-                                                                                Colors.transparent,
-                                                                            textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                                                                                  font: GoogleFonts.poppins(
-                                                                                    fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
-                                                                                    fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
-                                                                                  ),
-                                                                                  color: Colors.white,
-                                                                                  letterSpacing: 0.0,
-                                                                                  fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
-                                                                                  fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
-                                                                                ),
-                                                                            elevation:
-                                                                                0,
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(10),
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    ]
-                                                                        .divide(const SizedBox(
-                                                                            height:
-                                                                                5))
-                                                                        .around(const SizedBox(
-                                                                            height:
-                                                                                5)),
-                                                                  )
-                                                                else
-                                                                  Text(
-                                                                    statusLower ==
-                                                                            'accepted'
-                                                                        ? 'Accepted'
-                                                                        : 'Rejected',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          font:
-                                                                              GoogleFonts.poppins(
-                                                                            fontWeight:
-                                                                                FontWeight.bold,
-                                                                            fontStyle:
-                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                          ),
-                                                                          color: statusLower == 'accepted'
-                                                                              ? const Color(0xFF2ECC71)
-                                                                              : const Color(0xFFE74C3C),
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .fontStyle,
-                                                                        ),
-                                                                  ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      );
-                                                    },
-                                                  );
-                                                },
-                                              );
-                                            },
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                } else {
-                                  // Sent Challenges (outgoing)
-                                  return Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width < 350.0
-                                            ? 280.0
-                                            : 350.0,
-                                    height: 250,
-                                    decoration: BoxDecoration(
-                                      color: const Color(0xBB08162C),
-                                      borderRadius: BorderRadius.circular(20),
-                                      border: Border.all(
-                                        color: const Color(0xFF00CFFF),
-                                      ),
-                                    ),
-                                    child: Stack(
-                                      children: [
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(0, -1),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              GestureDetector(
-                                                onTap: () {
-                                                  setState(() {
-                                                    _model.availChallenges =
-                                                        true;
-                                                  });
-                                                },
-                                                child: Text(
-                                                  'Sent Challenges',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        font:
-                                                            GoogleFonts.roboto(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        color: const Color(
-                                                            0xFFFBD34D),
-                                                        fontSize: 24,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
-                                                ),
-                                              ),
-                                            ]
-                                                .divide(
-                                                    const SizedBox(height: 20))
-                                                .addToStart(
-                                                    const SizedBox(height: 10)),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsetsDirectional
-                                              .fromSTEB(0, 50, 0, 0),
-                                          child: FutureBuilder<ApiCallResponse>(
-                                            future: challengesResponse,
-                                            builder: (context, snapshot) {
-                                              if (!snapshot.hasData) {
-                                                return Center(
-                                                  child: SizedBox(
-                                                    width: 50,
-                                                    height: 50,
-                                                    child:
-                                                        CircularProgressIndicator(
-                                                      valueColor:
-                                                          AlwaysStoppedAnimation<
-                                                              Color>(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .primary,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                );
-                                              }
-                                              final resp = snapshot.data!;
-                                              final allChallenges =
-                                                  (getJsonField(
-                                                        resp.jsonBody,
-                                                        r'''$.challenges''',
-                                                      ) as List?)
-                                                          ?.toList() ??
-                                                      [];
-
-                                              // Filter to challenges sent by current user (challenger.id == current user)
-                                              final myUserId =
-                                                  FFAppState().userId;
-                                              final sentChallenges =
-                                                  allChallenges.where((c) {
-                                                String challengerId = getJsonField(
-                                                            c,
-                                                            r'''$.challenger._id''')
-                                                        ?.toString() ??
-                                                    '';
-                                                if (challengerId.isEmpty ||
-                                                    challengerId == 'null') {
-                                                  challengerId = getJsonField(c,
-                                                              r'''$.challenger.id''')
-                                                          ?.toString() ??
-                                                      '';
+                                          SizedBox(
+                                            width: MediaQuery.sizeOf(context)
+                                                        .width <
+                                                    350.0
+                                                ? 250.0
+                                                : 300.0,
+                                            child: Autocomplete<String>(
+                                              initialValue:
+                                                  const TextEditingValue(),
+                                              optionsBuilder:
+                                                  (textEditingValue) {
+                                                // When empty, show a capped list (first 20) for quick discovery
+                                                if (textEditingValue
+                                                    .text.isEmpty) {
+                                                  return _filteredUserNames
+                                                      .take(20);
                                                 }
-                                                return challengerId == myUserId;
-                                              }).toList();
+                                                final lower = textEditingValue
+                                                    .text
+                                                    .toLowerCase();
+                                                return _userNames
+                                                    .where((o) => o
+                                                        .toLowerCase()
+                                                        .contains(lower))
+                                                    .take(20);
+                                              },
+                                              optionsViewBuilder: (context,
+                                                  onSelected, options) {
+                                                return AutocompleteOptionsList(
+                                                  textFieldKey:
+                                                      _model.textFieldKey1,
+                                                  textController:
+                                                      _model.textController1!,
+                                                  options: options.toList(),
+                                                  onSelected: onSelected,
+                                                  textStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                  textHighlightStyle:
+                                                      const TextStyle(),
+                                                  elevation: 4,
+                                                  optionBackgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryBackground,
+                                                  optionHighlightColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  maxHeight: 200,
+                                                );
+                                              },
+                                              onSelected: (String selection) {
+                                                safeSetState(() => _model
+                                                        .textFieldSelectedOption1 =
+                                                    selection);
+                                                FocusScope.of(context)
+                                                    .unfocus();
+                                              },
+                                              fieldViewBuilder: (
+                                                context,
+                                                textEditingController,
+                                                focusNode,
+                                                onEditingComplete,
+                                              ) {
+                                                _model.textFieldFocusNode1 =
+                                                    focusNode;
 
-                                              if (sentChallenges.isEmpty) {
-                                                return Center(
-                                                  child: Text(
-                                                    'No sent challenges yet.',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
+                                                _model.textController1 =
+                                                    textEditingController;
+                                                return TextFormField(
+                                                  key: _model.textFieldKey1,
+                                                  controller:
+                                                      textEditingController,
+                                                  focusNode: focusNode,
+                                                  onEditingComplete:
+                                                      onEditingComplete,
+                                                  onChanged: (val) {
+                                                    // Local filter; no extra rebuilds outside options list
+                                                    final l = val.toLowerCase();
+                                                    print(_userNames);
+                                                    setState(() {
+                                                      _filteredUserNames =
+                                                          _userNames
+                                                              .where((n) => n
+                                                                  .toLowerCase()
+                                                                  .contains(l))
+                                                              .take(50)
+                                                              .toList();
+                                                    });
+                                                  },
+                                                  autofocus: false,
+                                                  obscureText: false,
+                                                  decoration: InputDecoration(
+                                                    isDense: true,
+                                                    labelStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                    hintText:
+                                                        'Enter Friend\'s Name',
+                                                    hintStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryBackground,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontStyle,
+                                                          lineHeight: 2,
+                                                        ),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide:
+                                                          const BorderSide(
+                                                        color:
+                                                            Color(0x00000000),
+                                                        width: 1,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide:
+                                                          const BorderSide(
+                                                        color:
+                                                            Color(0x00000000),
+                                                        width: 1,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8),
+                                                    ),
+                                                    errorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 1,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8),
+                                                    ),
+                                                    focusedErrorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 1,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8),
+                                                    ),
+                                                    filled: true,
+                                                    fillColor:
+                                                        const Color(0x33FFFFFF),
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                  cursorColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryText,
+                                                  enableInteractiveSelection:
+                                                      true,
+                                                  validator: _model
+                                                      .textController1Validator
+                                                      .asValidator(context),
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: MediaQuery.sizeOf(context)
+                                                        .width <
+                                                    350.0
+                                                ? 250.0
+                                                : 300.0,
+                                            child: Autocomplete<String>(
+                                              initialValue:
+                                                  const TextEditingValue(),
+                                              optionsBuilder:
+                                                  (textEditingValue) {
+                                                if (textEditingValue
+                                                    .text.isEmpty) {
+                                                  return _filteredGameNames
+                                                      .take(20);
+                                                }
+                                                final lower = textEditingValue
+                                                    .text
+                                                    .toLowerCase();
+                                                return _gameNames
+                                                    .where((o) => o
+                                                        .toLowerCase()
+                                                        .contains(lower))
+                                                    .take(20);
+                                              },
+                                              optionsViewBuilder: (context,
+                                                  onSelected, options) {
+                                                return AutocompleteOptionsList(
+                                                  textFieldKey:
+                                                      _model.textFieldKey2,
+                                                  textController:
+                                                      _model.textController2!,
+                                                  options: options.toList(),
+                                                  onSelected: onSelected,
+                                                  textStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                  textHighlightStyle:
+                                                      const TextStyle(),
+                                                  elevation: 4,
+                                                  optionBackgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryBackground,
+                                                  optionHighlightColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  maxHeight: 200,
+                                                );
+                                              },
+                                              onSelected: (String selection) {
+                                                safeSetState(() => _model
+                                                        .textFieldSelectedOption2 =
+                                                    selection);
+                                                FocusScope.of(context)
+                                                    .unfocus();
+                                              },
+                                              fieldViewBuilder: (
+                                                context,
+                                                textEditingController,
+                                                focusNode,
+                                                onEditingComplete,
+                                              ) {
+                                                _model.textFieldFocusNode2 =
+                                                    focusNode;
+
+                                                _model.textController2 =
+                                                    textEditingController;
+                                                return TextFormField(
+                                                  key: _model.textFieldKey2,
+                                                  controller:
+                                                      textEditingController,
+                                                  focusNode: focusNode,
+                                                  onEditingComplete:
+                                                      onEditingComplete,
+                                                  onChanged: (val) {
+                                                    final l = val.toLowerCase();
+                                                    setState(() {
+                                                      _filteredGameNames =
+                                                          _gameNames
+                                                              .where((n) => n
+                                                                  .toLowerCase()
+                                                                  .contains(l))
+                                                              .take(50)
+                                                              .toList();
+                                                    });
+                                                  },
+                                                  autofocus: false,
+                                                  obscureText: false,
+                                                  decoration: InputDecoration(
+                                                    isDense: true,
+                                                    labelStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                    hintText: 'Enter game name',
+                                                    hintStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryBackground,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontStyle,
+                                                          lineHeight: 2,
+                                                        ),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide:
+                                                          const BorderSide(
+                                                        color:
+                                                            Color(0x00000000),
+                                                        width: 1,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide:
+                                                          const BorderSide(
+                                                        color:
+                                                            Color(0x00000000),
+                                                        width: 1,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8),
+                                                    ),
+                                                    errorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 1,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8),
+                                                    ),
+                                                    focusedErrorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 1,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8),
+                                                    ),
+                                                    filled: true,
+                                                    fillColor:
+                                                        const Color(0x33FFFFFF),
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                  cursorColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryText,
+                                                  enableInteractiveSelection:
+                                                      true,
+                                                  validator: _model
+                                                      .textController2Validator
+                                                      .asValidator(context),
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: MediaQuery.sizeOf(context)
+                                                        .width <
+                                                    350.0
+                                                ? 250.0
+                                                : 300.0,
+                                            child: TextFormField(
+                                              controller:
+                                                  _model.textController3,
+                                              focusNode:
+                                                  _model.textFieldFocusNode3,
+                                              autofocus: false,
+                                              obscureText: false,
+                                              decoration: InputDecoration(
+                                                isDense: true,
+                                                labelStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                hintText:
+                                                    'Optional message (max 200 characters)',
+                                                hintStyle:
+                                                    FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          font: GoogleFonts
-                                                              .poppins(
+                                                          font:
+                                                              GoogleFonts.inter(
                                                             fontWeight:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -2267,235 +1170,1219 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                   .bodyMedium
                                                                   .fontStyle,
                                                         ),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: const BorderSide(
+                                                    color: Color.fromARGB(
+                                                        0, 249, 243, 243),
+                                                    width: 1,
                                                   ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: const BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 1,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                ),
+                                                errorBorder: OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .error,
+                                                    width: 1,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                ),
+                                                focusedErrorBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .error,
+                                                    width: 1,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                ),
+                                                filled: true,
+                                                fillColor:
+                                                    const Color(0x33FFFFFF),
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                              maxLines: 5,
+                                              cursorColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              enableInteractiveSelection: true,
+                                              validator: _model
+                                                  .textController3Validator
+                                                  .asValidator(context),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(0, 0, 0, 10),
+                                            child: FFButtonWidget(
+                                              onPressed: () async {
+                                                _model.challenges =
+                                                    await ChallengesCall.call(
+                                                  challengedUserId:
+                                                      functions.challangeTo(
+                                                          getJsonField(
+                                                            columnAllUsersResponse
+                                                                .jsonBody,
+                                                            r'''$.data''',
+                                                            true,
+                                                          )!,
+                                                          _model.textController1
+                                                              .text),
+                                                  gameId: functions.findgameId(
+                                                      getJsonField(
+                                                        columnGamesResponse
+                                                            .jsonBody,
+                                                        r'''$.data''',
+                                                        true,
+                                                      )!,
+                                                      _model.textController2
+                                                          .text),
+                                                  message: _model
+                                                      .textController3.text,
+                                                  token: FFAppState().token,
                                                 );
-                                              }
-
-                                              return ListView.separated(
-                                                padding: EdgeInsets.zero,
-                                                primary: false,
-                                                shrinkWrap: true,
-                                                itemCount:
-                                                    sentChallenges.length,
-                                                separatorBuilder: (_, __) =>
-                                                    const SizedBox(height: 10),
-                                                itemBuilder: (context, idx) {
-                                                  final c = sentChallenges[idx];
-                                                  final status = (getJsonField(
-                                                                  c,
-                                                                  r'''$.status''')
-                                                              ?.toString() ??
-                                                          '')
-                                                      .toLowerCase();
-
-                                                  // Try to pick challenged user's details from common keys
-                                                  String targetName = '';
-                                                  for (final p in const [
-                                                    r'''$.challengedUser.fullName''',
-                                                    r'''$.challengee.fullName''',
-                                                    r'''$.recipient.fullName''',
-                                                    r'''$.challenged.fullName''',
-                                                  ]) {
-                                                    final v =
-                                                        getJsonField(c, p);
-                                                    if (v != null) {
-                                                      final s = v.toString();
-                                                      if (s.isNotEmpty &&
-                                                          s != 'null') {
-                                                        targetName = s;
-                                                        break;
-                                                      }
-                                                    }
-                                                  }
-                                                  if (targetName.isEmpty) {
-                                                    targetName = 'Opponent';
-                                                  }
-
-                                                  String avatarUrl = '';
-                                                  for (final p in const [
-                                                    r'''$.challengedUser.profilePicture''',
-                                                    r'''$.challengee.profilePicture''',
-                                                    r'''$.recipient.profilePicture''',
-                                                    r'''$.challenged.profilePicture''',
-                                                  ]) {
-                                                    final v =
-                                                        getJsonField(c, p);
-                                                    if (v != null) {
-                                                      final s = v.toString();
-                                                      if (s.isNotEmpty &&
-                                                          s != 'null') {
-                                                        avatarUrl = s;
-                                                        break;
-                                                      }
-                                                    }
-                                                  }
-
-                                                  final gameName = getJsonField(
-                                                              c,
-                                                              r'''$.game.displayName''')
-                                                          ?.toString() ??
-                                                      '';
-                                                  Color statusColor;
-                                                  String statusLabel;
-                                                  if (status == 'accepted') {
-                                                    statusColor =
-                                                        const Color(0xFF2ECC71);
-                                                    statusLabel = 'Accepted';
-                                                  } else if (status ==
-                                                      'rejected') {
-                                                    statusColor =
-                                                        const Color(0xFFE74C3C);
-                                                    statusLabel = 'Rejected';
-                                                  } else {
-                                                    statusColor =
-                                                        const Color(0xFFE74C3C);
-                                                    statusLabel = 'Cancel';
-                                                  }
-
-                                                  return Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                            5, 0, 5, 0),
-                                                    child: Container(
-                                                      height: 80,
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        borderRadius:
-                                                            const BorderRadius
-                                                                .only(
-                                                          bottomLeft:
-                                                              Radius.circular(
-                                                                  10),
-                                                          bottomRight:
-                                                              Radius.circular(
-                                                                  10),
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  10),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  10),
+                                                print(_model
+                                                    .challenges?.jsonBody);
+                                                if ((_model.challenges
+                                                        ?.succeeded ??
+                                                    true)) {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    SnackBar(
+                                                      content: Text(
+                                                        'Challenge send',
+                                                        style: TextStyle(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
                                                         ),
                                                       ),
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                10, 0, 10, 0),
-                                                        child: Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
-                                                          children: [
-                                                            Row(
-                                                              children: [
-                                                                Padding(
-                                                                  padding:
-                                                                      const EdgeInsetsDirectional
-                                                                          .fromSTEB(
-                                                                          5,
-                                                                          0,
-                                                                          5,
-                                                                          0),
-                                                                  child:
-                                                                      Container(
-                                                                    width: 35,
-                                                                    height: 35,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: const Color(
-                                                                          0xFF57636C),
+                                                      duration: const Duration(
+                                                          milliseconds: 4000),
+                                                      backgroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondary,
+                                                    ),
+                                                  );
+                                                } else {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    SnackBar(
+                                                      content: Text(
+                                                        "error occurs",
+                                                        style: TextStyle(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                                      ),
+                                                      duration: const Duration(
+                                                          milliseconds: 4000),
+                                                      backgroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondary,
+                                                    ),
+                                                  );
+                                                }
+
+                                                safeSetState(() {});
+                                              },
+                                              text: 'Send challenge',
+                                              options: FFButtonOptions(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                                .width <
+                                                            350.0
+                                                        ? 250.0
+                                                        : 300.0,
+                                                height: 40,
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(16, 0, 16, 0),
+                                                iconPadding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(0, 0, 0, 0),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                textStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .titleSmall
+                                                    .override(
+                                                      font: GoogleFonts.poppins(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .fontStyle,
+                                                      ),
+                                                      color: Colors.white,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .fontStyle,
+                                                    ),
+                                                elevation: 0,
+                                                borderRadius:
+                                                    const BorderRadius.only(
+                                                  bottomLeft:
+                                                      Radius.circular(20),
+                                                  bottomRight:
+                                                      Radius.circular(20),
+                                                  topLeft: Radius.circular(20),
+                                                  topRight: Radius.circular(20),
+                                                ),
+                                              ),
+                                            ).animateOnPageLoad(animationsMap[
+                                                'buttonOnPageLoadAnimation']!),
+                                          ),
+                                        ]
+                                            .divide(const SizedBox(height: 20))
+                                            .addToStart(
+                                                const SizedBox(height: 10)),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                              Builder(
+                                builder: (context) {
+                                  if (_model.availChallenges) {
+                                    return Container(
+                                      width: MediaQuery.sizeOf(context).width <
+                                              350.0
+                                          ? 280.0
+                                          : 350.0,
+                                      height: 250,
+                                      decoration: BoxDecoration(
+                                        color: const Color(0xBB08162C),
+                                        borderRadius: BorderRadius.circular(20),
+                                        border: Border.all(
+                                          color: const Color(0xFF00CFFF),
+                                        ),
+                                      ),
+                                      child: Stack(
+                                        children: [
+                                          Align(
+                                            alignment:
+                                                const AlignmentDirectional(
+                                                    0, -1),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                GestureDetector(
+                                                  onTap: () {
+                                                    setState(() {
+                                                      _model.availChallenges =
+                                                          false;
+                                                    });
+                                                  },
+                                                  child: Text(
+                                                    'Incoming Invites',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .roboto(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          color: const Color(
+                                                              0xFFFBD34D),
+                                                          fontSize: 24,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ]
+                                                  .divide(const SizedBox(
+                                                      height: 20))
+                                                  .addToStart(const SizedBox(
+                                                      height: 10)),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(0, 50, 0, 0),
+                                            child:
+                                                FutureBuilder<ApiCallResponse>(
+                                              future: challengesResponse,
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 50,
+                                                      height: 50,
+                                                      child:
+                                                          CircularProgressIndicator(
+                                                        valueColor:
+                                                            AlwaysStoppedAnimation<
+                                                                Color>(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                }
+                                                final listViewGamesResponse =
+                                                    snapshot.data!;
+                                                return Builder(
+                                                  builder: (context) {
+                                                    final allChallenges =
+                                                        getJsonField(
+                                                      listViewGamesResponse
+                                                          .jsonBody,
+                                                      r'''$.challenges''',
+                                                    ).toList();
+                                                    final myUserId =
+                                                        FFAppState().userId;
+                                                    // Filter incoming invites: only where current user is the challenged recipient
+                                                    // and ensure current user is not the challenger.
+                                                    final challenge =
+                                                        allChallenges
+                                                            .where((c) {
+                                                      String challengedId =
+                                                          getJsonField(c,
+                                                                      r'''$.challengedUser._id''')
+                                                                  ?.toString() ??
+                                                              '';
+                                                      if (challengedId
+                                                              .isEmpty ||
+                                                          challengedId ==
+                                                              'null') {
+                                                        challengedId = getJsonField(
+                                                                    c,
+                                                                    r'''$.challengee._id''')
+                                                                ?.toString() ??
+                                                            '';
+                                                      }
+                                                      if (challengedId
+                                                              .isEmpty ||
+                                                          challengedId ==
+                                                              'null') {
+                                                        challengedId = getJsonField(
+                                                                    c,
+                                                                    r'''$.recipient._id''')
+                                                                ?.toString() ??
+                                                            '';
+                                                      }
+                                                      if (challengedId
+                                                              .isEmpty ||
+                                                          challengedId ==
+                                                              'null') {
+                                                        challengedId = getJsonField(
+                                                                    c,
+                                                                    r'''$.challenged._id''')
+                                                                ?.toString() ??
+                                                            '';
+                                                      }
+                                                      if (challengedId
+                                                              .isEmpty ||
+                                                          challengedId ==
+                                                              'null') {
+                                                        challengedId = getJsonField(
+                                                                    c,
+                                                                    r'''$.challengedUser.id''')
+                                                                ?.toString() ??
+                                                            '';
+                                                      }
+                                                      if (challengedId
+                                                              .isEmpty ||
+                                                          challengedId ==
+                                                              'null') {
+                                                        challengedId = getJsonField(
+                                                                    c,
+                                                                    r'''$.challengee.id''')
+                                                                ?.toString() ??
+                                                            '';
+                                                      }
+                                                      if (challengedId
+                                                              .isEmpty ||
+                                                          challengedId ==
+                                                              'null') {
+                                                        challengedId = getJsonField(
+                                                                    c,
+                                                                    r'''$.recipient.id''')
+                                                                ?.toString() ??
+                                                            '';
+                                                      }
+                                                      if (challengedId
+                                                              .isEmpty ||
+                                                          challengedId ==
+                                                              'null') {
+                                                        challengedId = getJsonField(
+                                                                    c,
+                                                                    r'''$.challenged.id''')
+                                                                ?.toString() ??
+                                                            '';
+                                                      }
+
+                                                      String challengerId =
+                                                          getJsonField(c,
+                                                                      r'''$.challenger._id''')
+                                                                  ?.toString() ??
+                                                              '';
+                                                      if (challengerId
+                                                              .isEmpty ||
+                                                          challengerId ==
+                                                              'null') {
+                                                        challengerId = getJsonField(
+                                                                    c,
+                                                                    r'''$.challenger.id''')
+                                                                ?.toString() ??
+                                                            '';
+                                                      }
+
+                                                      final isChallengedMe =
+                                                          challengedId ==
+                                                              myUserId;
+                                                      final isChallengerMe =
+                                                          challengerId ==
+                                                              myUserId;
+                                                      return isChallengedMe &&
+                                                          !isChallengerMe;
+                                                    }).toList();
+                                                    debugPrint(
+                                                        '[INCOMING] total=${allChallenges.length}, filtered=${challenge.length}');
+                                                    return ListView.separated(
+                                                      padding: EdgeInsets.zero,
+                                                      primary: false,
+                                                      shrinkWrap: true,
+                                                      itemCount:
+                                                          challenge.length,
+                                                      separatorBuilder:
+                                                          (_, __) =>
+                                                              const SizedBox(
+                                                                  height: 10),
+                                                      itemBuilder: (context,
+                                                          challengeIndex) {
+                                                        final status =
+                                                            getJsonField(
+                                                          challenge[
+                                                              challengeIndex],
+                                                          r'''$.status''',
+                                                        )
+                                                                .toString()
+                                                                .toLowerCase();
+                                                        final challengerName =
+                                                            getJsonField(
+                                                          challenge[
+                                                              challengeIndex],
+                                                          r'''$.challenger.fullName''',
+                                                        ).toString();
+                                                        final gameName =
+                                                            getJsonField(
+                                                          challenge[
+                                                              challengeIndex],
+                                                          r'''$.game.displayName''',
+                                                        ).toString();
+                                                        return Container(
+                                                          height: 80,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10),
+                                                          ),
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                  10, 0, 10, 0),
+                                                          child: Row(
+                                                            children: [
+                                                              // Avatar
+                                                              Padding(
+                                                                padding:
+                                                                    const EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                        5,
+                                                                        0,
+                                                                        10,
+                                                                        0),
+                                                                child:
+                                                                    Container(
+                                                                  width: 35,
+                                                                  height: 35,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: const Color(
+                                                                        0xFF57636C),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            50),
+                                                                    image:
+                                                                        DecorationImage(
+                                                                      fit: BoxFit
+                                                                          .cover,
                                                                       image:
-                                                                          DecorationImage(
-                                                                        fit: BoxFit
-                                                                            .cover,
-                                                                        image: _safeNetworkOrAsset(
-                                                                            avatarUrl),
+                                                                          _safeNetworkOrAsset(
+                                                                        getJsonField(
+                                                                          challenge[
+                                                                              challengeIndex],
+                                                                          r'''$.challenger.profilePicture''',
+                                                                        ).toString(),
                                                                       ),
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              50),
                                                                     ),
                                                                   ),
                                                                 ),
+                                                              ),
+                                                              // Names & game
+                                                              Expanded(
+                                                                child: Column(
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .center,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Text(
+                                                                      challengerName,
+                                                                      maxLines:
+                                                                          1,
+                                                                      overflow:
+                                                                          TextOverflow
+                                                                              .ellipsis,
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            font:
+                                                                                GoogleFonts.poppins(
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                            ),
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primaryText,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                          ),
+                                                                    ),
+                                                                    const SizedBox(
+                                                                        height:
+                                                                            2),
+                                                                    Row(
+                                                                      children: [
+                                                                        FaIcon(
+                                                                          FontAwesomeIcons
+                                                                              .solidCircle,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).tertiary,
+                                                                          size:
+                                                                              10,
+                                                                        ),
+                                                                        const SizedBox(
+                                                                            width:
+                                                                                4),
+                                                                        Expanded(
+                                                                          child:
+                                                                              Text(
+                                                                            gameName,
+                                                                            maxLines:
+                                                                                1,
+                                                                            overflow:
+                                                                                TextOverflow.ellipsis,
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  font: GoogleFonts.poppins(
+                                                                                    fontWeight: FontWeight.w600,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                  ),
+                                                                                  letterSpacing: 0.0,
+                                                                                  fontWeight: FontWeight.w600,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                              // Actions / status
+                                                              if (status ==
+                                                                  'pending')
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .min,
+                                                                  children: [
+                                                                    FFButtonWidget(
+                                                                      onPressed:
+                                                                          () async {
+                                                                        final id =
+                                                                            getJsonField(
+                                                                          challenge[
+                                                                              challengeIndex],
+                                                                          r'''$._id''',
+                                                                        ).toString();
+                                                                        if (_processingChallengeIds
+                                                                            .contains(id)) {
+                                                                          return;
+                                                                        }
+                                                                        setState(
+                                                                            () {
+                                                                          _processingChallengeIds
+                                                                              .add(id);
+                                                                        });
+                                                                        try {
+                                                                          final apiResult =
+                                                                              await AcceptChallengeCall.call(
+                                                                            token:
+                                                                                FFAppState().token,
+                                                                            challengeId:
+                                                                                id,
+                                                                          );
+                                                                          if (apiResult.succeeded ==
+                                                                              true) {
+                                                                            ScaffoldMessenger.of(context).showSnackBar(
+                                                                              SnackBar(
+                                                                                content: Text('Challenge accepted!', style: FlutterFlowTheme.of(context).bodyMedium),
+                                                                                duration: const Duration(milliseconds: 1500),
+                                                                                backgroundColor: const Color(0x00000000),
+                                                                                behavior: SnackBarBehavior.floating,
+                                                                              ),
+                                                                            );
+                                                                            setState(() {
+                                                                              challengesResponse = GetChallengesCall.call(token: FFAppState().token);
+                                                                            });
+                                                                          }
+                                                                        } finally {
+                                                                          if (mounted) {
+                                                                            setState(() {
+                                                                              _processingChallengeIds.remove(id);
+                                                                            });
+                                                                          }
+                                                                        }
+                                                                      },
+                                                                      text:
+                                                                          'Accept',
+                                                                      options:
+                                                                          FFButtonOptions(
+                                                                        height:
+                                                                            30,
+                                                                        padding: const EdgeInsetsDirectional
+                                                                            .fromSTEB(
+                                                                            10,
+                                                                            0,
+                                                                            10,
+                                                                            0),
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        textStyle:
+                                                                            FlutterFlowTheme.of(context).titleSmall,
+                                                                        elevation:
+                                                                            0,
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(10),
+                                                                      ),
+                                                                    ),
+                                                                    const SizedBox(
+                                                                        width:
+                                                                            6),
+                                                                    FFButtonWidget(
+                                                                      onPressed:
+                                                                          () async {
+                                                                        final id =
+                                                                            getJsonField(
+                                                                          challenge[
+                                                                              challengeIndex],
+                                                                          r'''$._id''',
+                                                                        ).toString();
+                                                                        if (_processingChallengeIds
+                                                                            .contains(id)) {
+                                                                          return;
+                                                                        }
+                                                                        setState(
+                                                                            () {
+                                                                          _processingChallengeIds
+                                                                              .add(id);
+                                                                        });
+                                                                        try {
+                                                                          final response =
+                                                                              await RejectChallengeCall.call(
+                                                                            challengeId:
+                                                                                id,
+                                                                            token:
+                                                                                FFAppState().token,
+                                                                          );
+                                                                          if (response.succeeded ==
+                                                                              true) {
+                                                                            ScaffoldMessenger.of(context).showSnackBar(
+                                                                              SnackBar(
+                                                                                content: Text('Challenge rejected!', style: FlutterFlowTheme.of(context).bodyMedium),
+                                                                                duration: const Duration(milliseconds: 1500),
+                                                                                backgroundColor: const Color(0x00000000),
+                                                                                behavior: SnackBarBehavior.floating,
+                                                                              ),
+                                                                            );
+                                                                            setState(() {
+                                                                              challengesResponse = GetChallengesCall.call(token: FFAppState().token);
+                                                                            });
+                                                                          }
+                                                                        } finally {
+                                                                          if (mounted) {
+                                                                            setState(() {
+                                                                              _processingChallengeIds.remove(id);
+                                                                            });
+                                                                          }
+                                                                        }
+                                                                      },
+                                                                      text:
+                                                                          'Reject',
+                                                                      options:
+                                                                          FFButtonOptions(
+                                                                        height:
+                                                                            30,
+                                                                        padding: const EdgeInsetsDirectional
+                                                                            .fromSTEB(
+                                                                            10,
+                                                                            0,
+                                                                            10,
+                                                                            0),
+                                                                        color: Colors
+                                                                            .transparent,
+                                                                        textStyle:
+                                                                            FlutterFlowTheme.of(context).titleSmall,
+                                                                        elevation:
+                                                                            0,
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(10),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                )
+                                                              else
                                                                 Padding(
                                                                   padding:
                                                                       const EdgeInsetsDirectional
                                                                           .fromSTEB(
-                                                                          5,
+                                                                          8,
                                                                           0,
                                                                           0,
                                                                           0),
-                                                                  child: Column(
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .center,
-                                                                    crossAxisAlignment:
-                                                                        CrossAxisAlignment
-                                                                            .start,
-                                                                    children: [
-                                                                      Text(
-                                                                        targetName,
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              font: GoogleFonts.poppins(
+                                                                  child: Text(
+                                                                    status ==
+                                                                            'accepted'
+                                                                        ? 'Accepted'
+                                                                        : 'Rejected',
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          font: GoogleFonts.poppins(
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle),
+                                                                          color: status == 'accepted'
+                                                                              ? const Color(0xFF2ECC71)
+                                                                              : const Color(0xFFE74C3C),
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                            ],
+                                                          ),
+                                                        );
+                                                      },
+                                                    );
+                                                  },
+                                                ); // end incoming invites inner ListView builder
+                                              }, // end FutureBuilder builder
+                                            ),
+                                          ),
+                                        ],
+                                      ), // end Incoming Invites stack
+                                    ); // close Incoming Invites Container
+                                    // close if branch container
+                                  } else {
+                                    // Sent Challenges (outgoing)
+                                    return Container(
+                                      width: MediaQuery.sizeOf(context).width <
+                                              350.0
+                                          ? 280.0
+                                          : 350.0,
+                                      height: 250,
+                                      decoration: BoxDecoration(
+                                        color: const Color(0xBB08162C),
+                                        borderRadius: BorderRadius.circular(20),
+                                        border: Border.all(
+                                          color: const Color(0xFF00CFFF),
+                                        ),
+                                      ),
+                                      child: Stack(
+                                        children: [
+                                          Align(
+                                            alignment:
+                                                const AlignmentDirectional(
+                                                    0, -1),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                GestureDetector(
+                                                  onTap: () {
+                                                    setState(() {
+                                                      _model.availChallenges =
+                                                          true;
+                                                    });
+                                                  },
+                                                  child: Text(
+                                                    'Sent Challenges',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .roboto(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          color: const Color(
+                                                              0xFFFBD34D),
+                                                          fontSize: 24,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ]
+                                                  .divide(const SizedBox(
+                                                      height: 20))
+                                                  .addToStart(const SizedBox(
+                                                      height: 10)),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(0, 50, 0, 0),
+                                            child:
+                                                FutureBuilder<ApiCallResponse>(
+                                              future: challengesResponse,
+                                              builder: (context, snapshot) {
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 50,
+                                                      height: 50,
+                                                      child:
+                                                          CircularProgressIndicator(
+                                                        valueColor:
+                                                            AlwaysStoppedAnimation<
+                                                                Color>(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                }
+                                                final resp = snapshot.data!;
+                                                final allChallenges =
+                                                    (getJsonField(
+                                                          resp.jsonBody,
+                                                          r'''$.challenges''',
+                                                        ) as List?)
+                                                            ?.toList() ??
+                                                        [];
+
+                                                // Filter to challenges sent by current user (challenger.id == current user)
+                                                final myUserId =
+                                                    FFAppState().userId;
+                                                final sentChallenges =
+                                                    allChallenges.where((c) {
+                                                  String challengerId =
+                                                      getJsonField(c,
+                                                                  r'''$.challenger._id''')
+                                                              ?.toString() ??
+                                                          '';
+                                                  if (challengerId.isEmpty ||
+                                                      challengerId == 'null') {
+                                                    challengerId = getJsonField(
+                                                                c,
+                                                                r'''$.challenger.id''')
+                                                            ?.toString() ??
+                                                        '';
+                                                  }
+                                                  return challengerId ==
+                                                      myUserId;
+                                                }).toList();
+
+                                                if (sentChallenges.isEmpty) {
+                                                  return Center(
+                                                    child: Text(
+                                                      'No sent challenges yet.',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font: GoogleFonts
+                                                                    .poppins(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryBackground,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                    ),
+                                                  );
+                                                }
+
+                                                return ListView.separated(
+                                                  padding: EdgeInsets.zero,
+                                                  primary: false,
+                                                  shrinkWrap: true,
+                                                  itemCount:
+                                                      sentChallenges.length,
+                                                  separatorBuilder: (_, __) =>
+                                                      const SizedBox(
+                                                          height: 10),
+                                                  itemBuilder: (context, idx) {
+                                                    final c =
+                                                        sentChallenges[idx];
+                                                    final status = (getJsonField(
+                                                                    c,
+                                                                    r'''$.status''')
+                                                                ?.toString() ??
+                                                            '')
+                                                        .toLowerCase();
+
+                                                    // Try to pick challenged user's details from common keys
+                                                    String targetName = '';
+                                                    for (final p in const [
+                                                      r'''$.challengedUser.fullName''',
+                                                      r'''$.challengee.fullName''',
+                                                      r'''$.recipient.fullName''',
+                                                      r'''$.challenged.fullName''',
+                                                    ]) {
+                                                      final v =
+                                                          getJsonField(c, p);
+                                                      if (v != null) {
+                                                        final s = v.toString();
+                                                        if (s.isNotEmpty &&
+                                                            s != 'null') {
+                                                          targetName = s;
+                                                          break;
+                                                        }
+                                                      }
+                                                    }
+                                                    if (targetName.isEmpty) {
+                                                      targetName = 'Opponent';
+                                                    }
+
+                                                    String avatarUrl = '';
+                                                    for (final p in const [
+                                                      r'''$.challengedUser.profilePicture''',
+                                                      r'''$.challengee.profilePicture''',
+                                                      r'''$.recipient.profilePicture''',
+                                                      r'''$.challenged.profilePicture''',
+                                                    ]) {
+                                                      final v =
+                                                          getJsonField(c, p);
+                                                      if (v != null) {
+                                                        final s = v.toString();
+                                                        if (s.isNotEmpty &&
+                                                            s != 'null') {
+                                                          avatarUrl = s;
+                                                          break;
+                                                        }
+                                                      }
+                                                    }
+
+                                                    final gameName = getJsonField(
+                                                                c,
+                                                                r'''$.game.displayName''')
+                                                            ?.toString() ??
+                                                        '';
+                                                    Color statusColor;
+                                                    String statusLabel;
+                                                    if (status == 'accepted') {
+                                                      statusColor = const Color(
+                                                          0xFF2ECC71);
+                                                      statusLabel = 'Accepted';
+                                                    } else if (status ==
+                                                        'rejected') {
+                                                      statusColor = const Color(
+                                                          0xFFE74C3C);
+                                                      statusLabel = 'Rejected';
+                                                    } else {
+                                                      statusColor = const Color(
+                                                          0xFFE74C3C);
+                                                      statusLabel = 'Cancel';
+                                                    }
+
+                                                    return Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                              5, 0, 5, 0),
+                                                      child: Container(
+                                                        height: 80,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          borderRadius:
+                                                              const BorderRadius
+                                                                  .only(
+                                                            bottomLeft:
+                                                                Radius.circular(
+                                                                    10),
+                                                            bottomRight:
+                                                                Radius.circular(
+                                                                    10),
+                                                            topLeft:
+                                                                Radius.circular(
+                                                                    10),
+                                                            topRight:
+                                                                Radius.circular(
+                                                                    10),
+                                                          ),
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                  10, 0, 10, 0),
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Row(
+                                                                children: [
+                                                                  Padding(
+                                                                    padding:
+                                                                        const EdgeInsetsDirectional
+                                                                            .fromSTEB(
+                                                                            5,
+                                                                            0,
+                                                                            5,
+                                                                            0),
+                                                                    child:
+                                                                        Container(
+                                                                      width: 35,
+                                                                      height:
+                                                                          35,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: const Color(
+                                                                            0xFF57636C),
+                                                                        image:
+                                                                            DecorationImage(
+                                                                          fit: BoxFit
+                                                                              .cover,
+                                                                          image:
+                                                                              _safeNetworkOrAsset(avatarUrl),
+                                                                        ),
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(50),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding:
+                                                                        const EdgeInsetsDirectional
+                                                                            .fromSTEB(
+                                                                            5,
+                                                                            0,
+                                                                            0,
+                                                                            0),
+                                                                    child:
+                                                                        Column(
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .center,
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .start,
+                                                                      children: [
+                                                                        Text(
+                                                                          targetName,
+                                                                          maxLines:
+                                                                              1,
+                                                                          overflow:
+                                                                              TextOverflow.ellipsis,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                font: GoogleFonts.poppins(
+                                                                                  fontWeight: FontWeight.bold,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                ),
+                                                                                color: FlutterFlowTheme.of(context).primaryText,
+                                                                                fontSize: MediaQuery.sizeOf(context).width < 350.0 ? 14.0 : 20.0,
+                                                                                letterSpacing: 0.0,
                                                                                 fontWeight: FontWeight.bold,
                                                                                 fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                               ),
-                                                                              color: FlutterFlowTheme.of(context).primaryText,
-                                                                              fontSize: MediaQuery.sizeOf(context).width < 350.0 ? 14.0 : 20.0,
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FontWeight.bold,
-                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                        ),
+                                                                        Row(
+                                                                          children: [
+                                                                            const FaIcon(
+                                                                              FontAwesomeIcons.solidCircle,
+                                                                              size: 12,
                                                                             ),
-                                                                      ),
-                                                                      Row(
-                                                                        children: [
-                                                                          const FaIcon(
-                                                                            FontAwesomeIcons.solidCircle,
-                                                                            size:
-                                                                                12,
-                                                                          ),
-                                                                          Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                                5,
-                                                                                0,
-                                                                                0,
-                                                                                0),
-                                                                            child:
-                                                                                Text(
-                                                                              gameName,
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    font: GoogleFonts.poppins(
+                                                                            Padding(
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
+                                                                              child: Text(
+                                                                                gameName,
+                                                                                maxLines: 1,
+                                                                                overflow: TextOverflow.ellipsis,
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                      font: GoogleFonts.poppins(
+                                                                                        fontWeight: FontWeight.w600,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                      ),
+                                                                                      fontSize: MediaQuery.sizeOf(context).width < 350.0 ? 10.0 : 14.0,
+                                                                                      letterSpacing: 0.0,
                                                                                       fontWeight: FontWeight.w600,
                                                                                       fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                     ),
-                                                                                    fontSize: MediaQuery.sizeOf(context).width < 350.0 ? 10.0 : 14.0,
-                                                                                    letterSpacing: 0.0,
-                                                                                    fontWeight: FontWeight.w600,
-                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                  ),
+                                                                              ),
                                                                             ),
-                                                                          ),
-                                                                        ],
-                                                                      ),
-                                                                    ],
+                                                                          ],
+                                                                        ),
+                                                                      ],
+                                                                    ),
                                                                   ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            Text(
-                                                              statusLabel,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    font: GoogleFonts
-                                                                        .poppins(
+                                                                ],
+                                                              ),
+                                                              Text(
+                                                                statusLabel,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      font: GoogleFonts
+                                                                          .poppins(
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
+                                                                      color:
+                                                                          statusColor,
+                                                                      letterSpacing:
+                                                                          0.0,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,
@@ -2504,55 +2391,44 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                           .bodyMedium
                                                                           .fontStyle,
                                                                     ),
-                                                                    color:
-                                                                        statusColor,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                            ),
-                                                          ],
+                                                              ),
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  );
-                                                },
-                                              );
-                                            },
+                                                    );
+                                                  },
+                                                ); // END sent challenges listview
+                                              },
+                                            ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                }
-                              },
-                            ),
-                          ]
-                              .divide(const SizedBox(height: 10))
-                              .addToStart(const SizedBox(height: 20)),
-                        ),
-                      );
-                    },
+                                        ],
+                                      ), // end Sent Challenges stack
+                                    ); // close Sent Challenges Container
+                                  }
+                                },
+                              ), // end outer Builder for challenges toggle
+                            ]
+                                .divide(const SizedBox(height: 10))
+                                .addToStart(const SizedBox(height: 20)),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),
-            ),
-            wrapWithModel(
-              model: _model.navbarModel,
-              updateCallback: () => safeSetState(() {}),
-              child: const NavbarWidget(
-                pageNav: 'CommunityPage',
+              wrapWithModel(
+                model: _model.navbarModel,
+                updateCallback: () => safeSetState(() {}),
+                child: const NavbarWidget(
+                  pageNav: 'CommunityPage',
+                ),
               ),
-            ),
-          ],
-        ),
-      ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!),
-    ),);
+            ],
+          ),
+        ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!),
+      ),
+    );
   }
 }

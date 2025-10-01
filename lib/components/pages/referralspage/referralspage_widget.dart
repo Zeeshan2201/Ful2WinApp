@@ -156,7 +156,7 @@ class _ReferralspageWidgetState extends State<ReferralspageWidget>
       },
       child: Scaffold(
         key: scaffoldKey,
-          backgroundColor: Color(0xFF1565C0),
+          backgroundColor: const Color(0xFF1565C0),
           body: SafeArea(
           top: true,
           child: Container(

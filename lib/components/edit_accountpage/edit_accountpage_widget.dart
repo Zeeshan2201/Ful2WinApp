@@ -9,7 +9,6 @@ import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -1246,7 +1245,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                   ),
                                 ),
                             child:Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 6, 0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 6, 0),
                                 child: SingleChildScrollView(
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -1288,7 +1287,7 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
                                       ),
                                       
                                    Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                                        padding: const EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                                         child:Container(
                                         width:
                                             MediaQuery.sizeOf(context).width <
@@ -2002,11 +2001,11 @@ class _EditAccountpageWidgetState extends State<EditAccountpageWidget>
             filled: true,
             fillColor: FlutterFlowTheme.of(context).primaryBackground,
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.transparent, width: 1),
+              borderSide: const BorderSide(color: Colors.transparent, width: 1),
               borderRadius: BorderRadius.circular(8),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.transparent, width: 1),
+              borderSide: const BorderSide(color: Colors.transparent, width: 1),
               borderRadius: BorderRadius.circular(8),
             ),
           ),

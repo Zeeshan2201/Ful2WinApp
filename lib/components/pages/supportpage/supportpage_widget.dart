@@ -103,7 +103,7 @@ class _SupportpageWidgetState extends State<SupportpageWidget>
       },
       child: Scaffold(
         key: scaffoldKey,
-          backgroundColor: Color(0xFF1565C0),
+          backgroundColor: const Color(0xFF1565C0),
           body: SafeArea(
           top: true,
           child: Container(

@@ -97,9 +97,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     focusColor: Colors.transparent,
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
-                    onTap: () async {
-                      context.pushNamed(LoginpageWidget.routeName);
-                    },
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,

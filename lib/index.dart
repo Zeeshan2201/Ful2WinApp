@@ -54,8 +54,9 @@ export '/components/pages/home_page_copy2/home_page_copy2_widget.dart'
     show HomePageCopy2Widget;
 export '/components/pages/community_page/community_page_widget.dart'
     show CommunityPageWidget;
+export '/components/pages/profile_page/profile_page_widget.dart'
+    show UserProfileWidget;
 export '/components/pages/leader_board_page_n_e_w_copy/leader_board_page_n_e_w_copy_widget.dart'
     show LeaderBoardPageNEWCopyWidget;
 
-    export '/components/spin_wheel/spin_wheel_widget.dart'
-    show SpinWheelWidget;
+export '/components/spin_wheel/spin_wheel_widget.dart' show SpinWheelWidget;

@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -62,6 +63,34 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
     _model.dispose();
 
     super.dispose();
+  }
+
+  // Helper function to get and send device token
+  Future<void> _sendDeviceToken() async {
+    try {
+      // Get FCM device token
+      String? deviceToken = await FirebaseMessaging.instance.getToken();
+      print("FCM Device Token: $deviceToken");
+
+      if (deviceToken != null &&
+          FFAppState().token.isNotEmpty &&
+          FFAppState().userId.isNotEmpty) {
+        // Send device token to backend
+        final deviceTokenResponse = await DeviceToken.call(
+          token: FFAppState().token,
+          userId: FFAppState().userId,
+          deviceToken: deviceToken,
+        );
+
+        if (deviceTokenResponse.succeeded) {
+          print("Device token sent successfully to backend");
+        } else {
+          print("Failed to send device token to backend");
+        }
+      }
+    } catch (e) {
+      print("Error getting/sending device token: $e");
+    }
   }
 
   @override
@@ -966,10 +995,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                   if ((_model
                                                           .logIn?.succeeded ??
                                                       true)) {
-                                                    context.pushNamed(
-                                                        HomePageWidget
-                                                            .routeName);
-
+                                                    // Save token and user data to app state
                                                     FFAppState().token =
                                                         getJsonField(
                                                       (_model.logIn?.jsonBody ??
@@ -989,6 +1015,14 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
                                                       r'''$.data.username''',
                                                     ).toString();
                                                     safeSetState(() {});
+
+                                                    // Send device token to backend after successful login
+                                                    await _sendDeviceToken();
+
+                                                    // Navigate to home page
+                                                    context.pushNamed(
+                                                        HomePageWidget
+                                                            .routeName);
                                                   } else {
                                                     ScaffoldMessenger.of(
                                                             context)

@@ -244,6 +244,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
+          name: UserProfileWidget.routeName,
+          path: UserProfileWidget.routePath,
+          builder: (context, params) => UserProfileWidget(
+            userId: params.getParam(
+              'userId',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
           name: LeaderBoardPageNEWCopyWidget.routeName,
           path: LeaderBoardPageNEWCopyWidget.routePath,
           builder: (context, params) => const LeaderBoardPageNEWCopyWidget(),

@@ -1,6 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
@@ -152,24 +151,24 @@ class _PlayAgainWidgetState extends State<PlayAgainWidget>
               return Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 5, 0),
+                  const Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 5, 5, 0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        FlutterFlowIconButton(
-                          borderRadius: 8,
-                          buttonSize: 40,
-                          icon: Icon(
-                            Icons.cancel_outlined,
-                            color: FlutterFlowTheme.of(context).info,
-                            size: 24,
-                          ),
-                          onPressed: () => Navigator.of(context).pop(),
-                        ),
-                      ],
+                      // children: [
+                      //   FlutterFlowIconButton(
+                      //     borderRadius: 8,
+                      //     buttonSize: 40,
+                      //     icon: Icon(
+                      //       Icons.cancel_outlined,
+                      //       color: FlutterFlowTheme.of(context).info,
+                      //       size: 24,
+                      //     ),
+                      //     onPressed: () => Navigator.of(context).pop(),
+                      //   ),
+                      // ],
                     ),
                   ),
                   Row(

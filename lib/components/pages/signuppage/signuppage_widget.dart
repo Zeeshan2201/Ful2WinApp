@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
+import '/pop_ups/confirm_otp/confirm_otp_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -1523,33 +1524,19 @@ class _SignuppageWidgetState extends State<SignuppageWidget>
                                             25, 0, 25, 0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
-                                        _model.signup = await RegisterCall.call(
-                                          phoneNumber: int.tryParse(
-                                              _model.textController2.text),
-                                          password: _model.textController5.text,
-                                          email: _model.textController3.text,
-                                        );
-
-                                        if ((_model.signup?.succeeded ??
-                                            true)) {
-                                          context.pushNamed(
-                                              HomePageWidget.routeName);
-
-                                          FFAppState().token = getJsonField(
-                                            (_model.signup?.jsonBody ?? ''),
-                                            r'''$.token''',
-                                          ).toString();
-                                          FFAppState().userId = getJsonField(
-                                            (_model.signup?.jsonBody ?? ''),
-                                            r'''$.user.id''',
-                                          ).toString();
-                                          safeSetState(() {});
-                                        } else {
+                                        // Validate form fields first
+                                        if (_model.textController1.text.isEmpty ||
+                                            _model
+                                                .textController2.text.isEmpty ||
+                                            _model
+                                                .textController3.text.isEmpty ||
+                                            _model
+                                                .textController5.text.isEmpty) {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
                                             SnackBar(
                                               content: Text(
-                                                'Provide Valid Information',
+                                                'Please fill all required fields',
                                                 style: TextStyle(
                                                   color: FlutterFlowTheme.of(
                                                           context)
@@ -1558,9 +1545,184 @@ class _SignuppageWidgetState extends State<SignuppageWidget>
                                               ),
                                               duration: const Duration(
                                                   milliseconds: 4000),
-                                              backgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondary,
+                                              backgroundColor: Colors.red,
+                                            ),
+                                          );
+                                          return;
+                                        }
+
+                                        // Send OTP
+                                        final sendOtpResponse =
+                                            await SendOTP.call(
+                                          phoneNumber:
+                                              _model.textController2.text,
+                                        );
+
+                                        if (sendOtpResponse.succeeded) {
+                                          // Show OTP popup
+                                          showDialog(
+                                            context: context,
+                                            barrierDismissible: false,
+                                            builder: (BuildContext context) {
+                                              return Dialog(
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                child: ConfirmOtpWidget(
+                                                  phoneNumber:
+                                                      '+91 ${_model.textController2.text}',
+                                                  onOtpVerified: (otp) async {
+                                                    Navigator.pop(
+                                                        context); // Close OTP dialog
+
+                                                    // Verify OTP
+                                                    final verifyOtpResponse =
+                                                        await VerifyOTP.call(
+                                                      phoneNumber: _model
+                                                          .textController2.text,
+                                                      otp: otp,
+                                                    );
+
+                                                    if (verifyOtpResponse
+                                                        .succeeded) {
+                                                      // Register user after OTP verification
+                                                      _model.signup =
+                                                          await RegisterCall
+                                                              .call(
+                                                        fullname: _model
+                                                            .textController1
+                                                            .text,
+                                                        phoneNumber:
+                                                            int.tryParse(_model
+                                                                .textController2
+                                                                .text),
+                                                        password: _model
+                                                            .textController5
+                                                            .text,
+                                                        email: _model
+                                                            .textController3
+                                                            .text,
+                                                      );
+
+                                                      if ((_model.signup
+                                                              ?.succeeded ??
+                                                          false)) {
+                                                        // Save token and user data to app state
+                                                        FFAppState().token =
+                                                            getJsonField(
+                                                          (_model.signup
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                          r'''$.token''',
+                                                        ).toString();
+                                                        FFAppState().userId =
+                                                            getJsonField(
+                                                          (_model.signup
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                          r'''$.user.id''',
+                                                        ).toString();
+                                                        FFAppState().userName =
+                                                            getJsonField(
+                                                          (_model.signup
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                          r'''$.user.fullName''',
+                                                        ).toString();
+
+                                                        safeSetState(() {});
+
+                                                        // Navigate to home page
+                                                        context.pushNamed(
+                                                            HomePageWidget
+                                                                .routeName);
+
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          const SnackBar(
+                                                            content: Text(
+                                                                'Registration successful!'),
+                                                            backgroundColor:
+                                                                Colors.green,
+                                                          ),
+                                                        );
+                                                      } else {
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          const SnackBar(
+                                                            content: Text(
+                                                                'Registration failed. Please try again.'),
+                                                            backgroundColor:
+                                                                Colors.red,
+                                                          ),
+                                                        );
+                                                      }
+                                                    } else {
+                                                      ScaffoldMessenger.of(
+                                                              context)
+                                                          .showSnackBar(
+                                                        const SnackBar(
+                                                          content: Text(
+                                                              'Invalid OTP. Please try again.'),
+                                                          backgroundColor:
+                                                              Colors.red,
+                                                        ),
+                                                      );
+                                                    }
+                                                  },
+                                                  onResendOtp: () async {
+                                                    // Resend OTP
+                                                    final resendResponse =
+                                                        await SendOTP.call(
+                                                      phoneNumber: _model
+                                                          .textController2.text,
+                                                    );
+
+                                                    if (resendResponse
+                                                        .succeeded) {
+                                                      ScaffoldMessenger.of(
+                                                              context)
+                                                          .showSnackBar(
+                                                        const SnackBar(
+                                                          content: Text(
+                                                              'OTP sent successfully'),
+                                                          backgroundColor:
+                                                              Colors.green,
+                                                        ),
+                                                      );
+                                                    } else {
+                                                      ScaffoldMessenger.of(
+                                                              context)
+                                                          .showSnackBar(
+                                                        const SnackBar(
+                                                          content: Text(
+                                                              'Failed to send OTP. Please try again.'),
+                                                          backgroundColor:
+                                                              Colors.red,
+                                                        ),
+                                                      );
+                                                    }
+                                                  },
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        } else {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Failed to send OTP. Please check your phone number.',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration: const Duration(
+                                                  milliseconds: 4000),
+                                              backgroundColor: Colors.red,
                                             ),
                                           );
                                         }

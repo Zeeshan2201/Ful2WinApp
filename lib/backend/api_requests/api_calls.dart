@@ -104,6 +104,101 @@ class NotificationCall {
   }
 }
 
+class DeviceToken {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    String? userId = '',
+    String? deviceToken = '',
+  }) async {
+    final baseUrl = FulWinGroup.getBaseUrl(
+      token: token,
+    );
+    final apiRequestBody = '''
+{
+  "deviceToken": "$deviceToken",
+  "userId": "$userId"
+}''';
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'deviceToken',
+      apiUrl: '${baseUrl}users/device-token',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer $token',
+      },
+      params: {},
+      body: apiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class SendOTP {
+  static Future<ApiCallResponse> call({
+    String? phoneNumber = '',
+  }) async {
+    const baseUrl = 'https://api.fulboost.fun/api/';
+
+    final apiRequestBody = '''
+{
+  "phoneNumber": "+91$phoneNumber"
+}''';
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'OTP',
+      apiUrl: '${baseUrl}otp/send-otp',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: apiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class VerifyOTP {
+  static Future<ApiCallResponse> call({
+    String? phoneNumber = '',
+    String? otp = '',
+  }) async {
+    const baseUrl = 'https://api.fulboost.fun/api/';
+
+    final apiRequestBody = '''
+{
+  "phoneNumber": "$phoneNumber",
+  "otp": "$otp"
+}''';
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'Verify OTP',
+      apiUrl: '${baseUrl}otp/verify-otp',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: apiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class StatusCall {
   Future<ApiCallResponse> call({
     String? tournamentId = '',
@@ -576,13 +671,12 @@ class RegisterCall {
     String? password = '',
     String? email = '',
   }) async {
-    const ffApiRequestBody = '''
+    final apiRequestBody = '''
 {
-"fullName":"sanskruti",
-"phoneNumber":9022975788,
-"password":"sp@12345",
-"email":"sp@gmail.com"
-
+  "fullName": "$fullname",
+  "phoneNumber": $phoneNumber,
+  "password": "$password",
+  "email": "$email"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Register',
@@ -590,7 +684,7 @@ class RegisterCall {
       callType: ApiCallType.POST,
       headers: {},
       params: {},
-      body: ffApiRequestBody,
+      body: apiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,

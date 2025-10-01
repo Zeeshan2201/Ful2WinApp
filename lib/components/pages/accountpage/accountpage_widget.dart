@@ -104,7 +104,7 @@ class _AccountpageWidgetState extends State<AccountpageWidget>
       },
       child: Scaffold(
         key: scaffoldKey,
-         backgroundColor: Color(0xFF1565C0),
+         backgroundColor: const Color(0xFF1565C0),
             body:SafeArea(
               top: true,
               child:Stack(
