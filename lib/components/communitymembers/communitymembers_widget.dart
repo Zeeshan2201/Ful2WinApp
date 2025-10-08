@@ -36,6 +36,9 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => CommunitymembersModel());
+    _model.searchTextController ??= TextEditingController();
+    _model.searchFocusNode ??= FocusNode();
+
     allUsersResponse = AllUsersCall.call(
       token: FFAppState().token,
     );
@@ -441,6 +444,70 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
                         ),
                       ],
                     ),
+                    // Search Bar
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(20, 15, 20, 10),
+                      child: Container(
+                        width: MediaQuery.sizeOf(context).width < 350.0
+                            ? 310.0
+                            : 360.0,
+                        decoration: BoxDecoration(
+                          color: const Color(0x33FFFFFF),
+                          borderRadius: BorderRadius.circular(25),
+                          border: Border.all(
+                            color: const Color(0xFF00CFFF),
+                            width: 1,
+                          ),
+                        ),
+                        child: TextField(
+                          controller: _model.searchTextController,
+                          focusNode: _model.searchFocusNode,
+                          onChanged: (_) => safeSetState(() {}),
+                          decoration: InputDecoration(
+                            hintText: 'Search users...',
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  font: GoogleFonts.poppins(),
+                                  color: const Color(0xB3FFFFFF),
+                                  fontSize: 14,
+                                  letterSpacing: 0.0,
+                                ),
+                            prefixIcon: const Icon(
+                              Icons.search,
+                              color: Color(0xFF00CFFF),
+                              size: 20,
+                            ),
+                            suffixIcon:
+                                _model.searchTextController!.text.isNotEmpty
+                                    ? InkWell(
+                                        onTap: () async {
+                                          _model.searchTextController?.clear();
+                                          safeSetState(() {});
+                                        },
+                                        child: const Icon(
+                                          Icons.clear,
+                                          color: Color(0xFF00CFFF),
+                                          size: 20,
+                                        ),
+                                      )
+                                    : null,
+                            border: InputBorder.none,
+                            contentPadding:
+                                const EdgeInsetsDirectional.fromSTEB(
+                                    15, 12, 15, 12),
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    font: GoogleFonts.poppins(),
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    letterSpacing: 0.0,
+                                  ),
+                        ),
+                      ),
+                    ),
                     Expanded(
                       child: FutureBuilder<ApiCallResponse>(
                         future: allUsersResponse,
@@ -463,10 +530,49 @@ class _CommunitymembersWidgetState extends State<CommunitymembersWidget>
 
                           return Builder(
                             builder: (context) {
-                              final chatUsers = getJsonField(
+                              final allUsers = getJsonField(
                                 listViewAllUsersResponse.jsonBody,
                                 r'''$.data''',
                               ).toList();
+
+                              // Filter users based on search text
+                              final searchQuery = _model
+                                  .searchTextController.text
+                                  .toLowerCase();
+                              final chatUsers = allUsers.where((user) {
+                                if (searchQuery.isEmpty) return true;
+
+                                final fullName =
+                                    getJsonField(user, r'''$.fullName''')
+                                        .toString()
+                                        .toLowerCase();
+                                final email = getJsonField(user, r'''$.email''')
+                                    .toString()
+                                    .toLowerCase();
+
+                                return fullName.contains(searchQuery) ||
+                                    email.contains(searchQuery);
+                              }).toList();
+
+                              // Show message if no results
+                              if (chatUsers.isEmpty) {
+                                return Center(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(20.0),
+                                    child: Text(
+                                      'No users found',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            font: GoogleFonts.poppins(),
+                                            color: Colors.white,
+                                            fontSize: 16,
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ),
+                                );
+                              }
 
                               return ListView.builder(
                                 padding: const EdgeInsets.only(

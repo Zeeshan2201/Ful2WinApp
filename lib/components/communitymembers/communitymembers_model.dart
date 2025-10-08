@@ -8,6 +8,11 @@ import 'package:flutter/material.dart';
 class CommunitymembersModel extends FlutterFlowModel<CommunitymembersWidget> {
   ///  State fields for stateful widgets in this page.
 
+  // State field(s) for search text field.
+  FocusNode? searchFocusNode;
+  TextEditingController? searchTextController;
+  String? Function(BuildContext, String?)? searchTextControllerValidator;
+
   // Model for Header component.
   late HeaderModel headerModel;
   // Model for Navbar component.
@@ -21,6 +26,9 @@ class CommunitymembersModel extends FlutterFlowModel<CommunitymembersWidget> {
 
   @override
   void dispose() {
+    searchFocusNode?.dispose();
+    searchTextController?.dispose();
+
     headerModel.dispose();
     navbarModel.dispose();
   }

@@ -4,7 +4,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_web_plugins/url_strategy.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/firebase_messaging_service.dart';
 import 'flutter_flow/device_token_service.dart';
@@ -35,7 +34,6 @@ void main() async {
   }
 
   GoRouter.optionURLReflectsImperativeAPIs = true;
-  usePathUrlStrategy();
 
   final appState = FFAppState(); // Initialize FFAppState
   await appState.initializePersistedState();

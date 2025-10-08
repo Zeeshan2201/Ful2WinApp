@@ -1,3 +1,5 @@
+//import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -26,6 +28,13 @@ class _UserProfileWidgetState extends State<UserProfileWidget>
     with TickerProviderStateMixin {
   late ProfilePageModel _model;
   late Future<ApiCallResponse> profileResponse;
+  late Future<ApiCallResponse> userPostsResponse;
+
+  // Local state for immediate UI updates
+  bool? _isFollowingOverride;
+
+  // Counter to force FutureBuilder rebuild
+  int _rebuildCounter = 0;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -36,6 +45,10 @@ class _UserProfileWidgetState extends State<UserProfileWidget>
     super.initState();
     _model = createModel(context, () => ProfilePageModel());
     profileResponse = ProfileCall.call(
+      token: FFAppState().token,
+      userId: widget.userId,
+    );
+    userPostsResponse = UsersPosts.call(
       token: FFAppState().token,
       userId: widget.userId,
     );
@@ -66,6 +79,7 @@ class _UserProfileWidgetState extends State<UserProfileWidget>
     context.watch<FFAppState>();
 
     return FutureBuilder<ApiCallResponse>(
+      key: ValueKey(_rebuildCounter),
       future: profileResponse,
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
@@ -86,7 +100,7 @@ class _UserProfileWidgetState extends State<UserProfileWidget>
           );
         }
         final profilePageResponse = snapshot.data!;
-        print(profilePageResponse.jsonBody);
+        // print(profilePageResponse.jsonBody);
         return GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();
@@ -209,11 +223,12 @@ class _UserProfileWidgetState extends State<UserProfileWidget>
                                         const EdgeInsetsDirectional.fromSTEB(
                                             0, 15, 0, 0),
                                     child: Row(
+                                      key: ValueKey(_isFollowingOverride),
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         FFButtonWidget(
                                           onPressed: () async {
-                                            // Add follow/unfollow logic here
+                                            // Play sound
                                             _model.soundPlayer1 ??=
                                                 AudioPlayer();
                                             if (_model.soundPlayer1!.playing) {
@@ -226,17 +241,217 @@ class _UserProfileWidgetState extends State<UserProfileWidget>
                                                 .then((_) => _model
                                                     .soundPlayer1!
                                                     .play());
+
+                                            // Check current follow status from followers array
+                                            final followersList = getJsonField(
+                                              profilePageResponse.jsonBody,
+                                              r'''$.followers''',
+                                            );
+
+                                            bool isFollowing = false;
+                                            if (followersList != null) {
+                                              // Extract the 'id' field from each follower object
+                                              final followers = (followersList
+                                                      as List)
+                                                  .map((follower) {
+                                                    if (follower is Map) {
+                                                      // Try 'id' first, then '_id'
+                                                      return follower['id']
+                                                              ?.toString() ??
+                                                          follower['_id']
+                                                              ?.toString() ??
+                                                          '';
+                                                    }
+                                                    return follower.toString();
+                                                  })
+                                                  .where((id) => id.isNotEmpty)
+                                                  .toList();
+
+                                              isFollowing = followers.contains(
+                                                  FFAppState().userId);
+                                            }
+
+                                            // Determine current state: use override if exists, otherwise use API data
+                                            final currentlyFollowing =
+                                                _isFollowingOverride ??
+                                                    isFollowing;
+
+                                            print(
+                                                "=== FOLLOW/UNFOLLOW DEBUG ===");
+                                            print(
+                                                "Current button state (before click): ${currentlyFollowing ? 'UNFOLLOW' : 'FOLLOW'}");
+                                            print(
+                                                "Will call: ${currentlyFollowing ? 'UNFOLLOW' : 'FOLLOW'} API");
+
+                                            // Optimistically toggle UI state
+                                            setState(() {
+                                              _isFollowingOverride =
+                                                  !currentlyFollowing;
+                                            });
+
+                                            print(
+                                                "New button state (after click): ${!currentlyFollowing ? 'UNFOLLOW' : 'FOLLOW'}");
+                                            print(
+                                                "================================");
+
+                                            // Call appropriate API based on CURRENT state
+                                            if (currentlyFollowing) {
+                                              // Currently following (button shows Unfollow) → Call Unfollow
+                                              print("Calling UNFOLLOW API...");
+                                              final unfollowResponse =
+                                                  await UnFollow.call(
+                                                token: FFAppState().token,
+                                                userId: widget.userId,
+                                              );
+
+                                              print(
+                                                  "=== UNFOLLOW RESPONSE ===");
+                                              print(
+                                                  "Status Code: ${unfollowResponse.statusCode}");
+                                              print(
+                                                  "Succeeded: ${unfollowResponse.succeeded}");
+                                              print(
+                                                  "Response Body: ${unfollowResponse.jsonBody}");
+                                              print(
+                                                  "Response Body Type: ${unfollowResponse.jsonBody.runtimeType}");
+                                              print("========================");
+
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                const SnackBar(
+                                                  content: Text(
+                                                    'Unfollowed successfully',
+                                                    style: TextStyle(
+                                                        color: Colors.white),
+                                                  ),
+                                                  backgroundColor:
+                                                      Color(0xFF6C757D),
+                                                  duration:
+                                                      Duration(seconds: 2),
+                                                ),
+                                              );
+                                            } else {
+                                              // Currently not following (button shows Follow) → Call Follow
+                                              print("Calling FOLLOW API...");
+                                              final followResponse =
+                                                  await Follow.call(
+                                                token: FFAppState().token,
+                                                userId: widget.userId,
+                                              );
+
+                                              print("=== FOLLOW RESPONSE ===");
+                                              print(
+                                                  "Status Code: ${followResponse.statusCode}");
+                                              print(
+                                                  "Succeeded: ${followResponse.succeeded}");
+                                              print(
+                                                  "Response Body: ${followResponse.jsonBody}");
+                                              print(
+                                                  "Response Body Type: ${followResponse.jsonBody.runtimeType}");
+                                              print("======================");
+
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                const SnackBar(
+                                                  content: Text(
+                                                    'Followed successfully',
+                                                    style: TextStyle(
+                                                        color: Colors.white),
+                                                  ),
+                                                  backgroundColor:
+                                                      Color(0xFF00CFFF),
+                                                  duration:
+                                                      Duration(seconds: 2),
+                                                ),
+                                              );
+                                            }
                                           },
-                                          text: 'Follow',
+                                          text: () {
+                                            // Check if we have an override state (from local toggle)
+                                            if (_isFollowingOverride != null) {
+                                              return _isFollowingOverride!
+                                                  ? 'Unfollow'
+                                                  : 'Follow';
+                                            }
+
+                                            // Otherwise check the API data
+                                            final followersList = getJsonField(
+                                              profilePageResponse.jsonBody,
+                                              r'''$.followers''',
+                                            );
+
+                                            if (followersList != null) {
+                                              final followers = (followersList
+                                                      as List)
+                                                  .map((follower) {
+                                                    if (follower is Map) {
+                                                      return follower['id']
+                                                              ?.toString() ??
+                                                          follower['_id']
+                                                              ?.toString() ??
+                                                          '';
+                                                    }
+                                                    return follower.toString();
+                                                  })
+                                                  .where((id) => id.isNotEmpty)
+                                                  .toList();
+
+                                              return followers.contains(
+                                                      FFAppState().userId)
+                                                  ? 'Unfollow'
+                                                  : 'Follow';
+                                            }
+                                            return 'Follow';
+                                          }(),
                                           options: FFButtonOptions(
-                                            width: 100,
-                                            height: 36,
+                                            height: 40,
                                             padding: const EdgeInsetsDirectional
-                                                .fromSTEB(0, 0, 0, 0),
+                                                .fromSTEB(24, 0, 24, 0),
                                             iconPadding:
                                                 const EdgeInsetsDirectional
                                                     .fromSTEB(0, 0, 0, 0),
-                                            color: const Color(0xFF00CFFF),
+                                            color: () {
+                                              // Check if we have an override state
+                                              if (_isFollowingOverride !=
+                                                  null) {
+                                                return _isFollowingOverride!
+                                                    ? const Color(0xFF6C757D)
+                                                    : const Color(0xFF00CFFF);
+                                              }
+
+                                              // Check if current user is in the followers list
+                                              final followersList =
+                                                  getJsonField(
+                                                profilePageResponse.jsonBody,
+                                                r'''$.followers''',
+                                              );
+
+                                              if (followersList != null) {
+                                                // Extract the 'id' field from each follower object
+                                                final followers = (followersList
+                                                        as List)
+                                                    .map((follower) {
+                                                      if (follower is Map) {
+                                                        return follower['id']
+                                                                ?.toString() ??
+                                                            follower['_id']
+                                                                ?.toString() ??
+                                                            '';
+                                                      }
+                                                      return follower
+                                                          .toString();
+                                                    })
+                                                    .where(
+                                                        (id) => id.isNotEmpty)
+                                                    .toList();
+
+                                                return followers.contains(
+                                                        FFAppState().userId)
+                                                    ? const Color(0xFF6C757D)
+                                                    : const Color(0xFF00CFFF);
+                                              }
+                                              return const Color(0xFF00CFFF);
+                                            }(),
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .titleSmall
@@ -289,10 +504,63 @@ class _UserProfileWidgetState extends State<UserProfileWidget>
                                             MainAxisAlignment.center,
                                         children: [
                                           Text(
-                                            getJsonField(
-                                              profilePageResponse.jsonBody,
-                                              r'''$.followersCount''',
-                                            ).toString(),
+                                            () {
+                                              final followersList =
+                                                  getJsonField(
+                                                profilePageResponse.jsonBody,
+                                                r'''$.followers''',
+                                              );
+
+                                              int baseCount = 0;
+                                              bool userIsInList = false;
+
+                                              if (followersList != null) {
+                                                final followerList =
+                                                    followersList as List;
+                                                baseCount = followerList.length;
+
+                                                // Check if current user is in the followers list
+                                                final followers = followerList
+                                                    .map((follower) {
+                                                      if (follower is Map) {
+                                                        return follower['id']
+                                                                ?.toString() ??
+                                                            follower['_id']
+                                                                ?.toString() ??
+                                                            '';
+                                                      }
+                                                      return follower
+                                                          .toString();
+                                                    })
+                                                    .where(
+                                                        (id) => id.isNotEmpty)
+                                                    .toList();
+
+                                                userIsInList =
+                                                    followers.contains(
+                                                        FFAppState().userId);
+                                              }
+
+                                              // Adjust count based on local override
+                                              if (_isFollowingOverride !=
+                                                  null) {
+                                                // If override says following but not in list, add 1
+                                                if (_isFollowingOverride! &&
+                                                    !userIsInList) {
+                                                  baseCount++;
+                                                }
+                                                // If override says not following but in list, subtract 1
+                                                else if (!_isFollowingOverride! &&
+                                                    userIsInList) {
+                                                  baseCount--;
+                                                }
+                                              }
+
+                                              // Ensure count doesn't go below 0
+                                              if (baseCount < 0) baseCount = 0;
+
+                                              return baseCount.toString();
+                                            }(),
                                             style: FlutterFlowTheme.of(context)
                                                 .headlineMedium
                                                 .override(
@@ -336,10 +604,19 @@ class _UserProfileWidgetState extends State<UserProfileWidget>
                                             MainAxisAlignment.center,
                                         children: [
                                           Text(
-                                            getJsonField(
-                                              profilePageResponse.jsonBody,
-                                              r'''$.followingCount''',
-                                            ).toString(),
+                                            () {
+                                              final followingList =
+                                                  getJsonField(
+                                                profilePageResponse.jsonBody,
+                                                r'''$.following''',
+                                              );
+                                              if (followingList != null) {
+                                                return (followingList as List)
+                                                    .length
+                                                    .toString();
+                                              }
+                                              return '0';
+                                            }(),
                                             style: FlutterFlowTheme.of(context)
                                                 .headlineMedium
                                                 .override(
@@ -423,120 +700,304 @@ class _UserProfileWidgetState extends State<UserProfileWidget>
                             Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   20, 30, 20, 10),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'Posts',
-                                    style: FlutterFlowTheme.of(context)
-                                        .headlineSmall
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: Colors.white,
-                                          fontSize: 18,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                  ),
-                                  Text(
-                                    '12 posts', // You can replace with actual post count
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: Colors.white70,
-                                          fontSize: 12,
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                ],
+                              child: FutureBuilder<ApiCallResponse>(
+                                future: userPostsResponse,
+                                builder: (context, postsSnapshot) {
+                                  final postsCount = postsSnapshot.hasData
+                                      ? (getJsonField(
+                                            postsSnapshot.data!.jsonBody,
+                                            r'''$.length''',
+                                          ) ??
+                                          0)
+                                      : 0;
+                                  return Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        'Posts',
+                                        style: FlutterFlowTheme.of(context)
+                                            .headlineSmall
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color: Colors.white,
+                                              fontSize: 18,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                      ),
+                                      Text(
+                                        '$postsCount posts',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color: Colors.white70,
+                                              fontSize: 12,
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ],
+                                  );
+                                },
                               ),
                             ),
 
-                            // Posts ListView (Future Implementation)
-                            Container(
-                              width: double.infinity,
-                              height: 400, // Fixed height for ListView
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  10, 0, 10, 0),
-                              child: ListView.builder(
-                                itemCount: 5, // Placeholder count
-                                itemBuilder: (context, index) {
-                                  return Padding(
-                                    padding:
-                                        const EdgeInsetsDirectional.fromSTEB(
-                                            0, 0, 0, 10),
-                                    child: Container(
-                                      width: double.infinity,
-                                      height: 120,
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xBB08162C),
-                                        borderRadius: BorderRadius.circular(15),
-                                        border: Border.all(
-                                          color: const Color(0xFF00CFFF)
-                                              .withOpacity(0.3),
+                            // Posts ListView
+                            FutureBuilder<ApiCallResponse>(
+                              future: userPostsResponse,
+                              builder: (context, postsSnapshot) {
+                                // Show loading indicator while fetching posts
+                                if (!postsSnapshot.hasData) {
+                                  return SizedBox(
+                                    width: double.infinity,
+                                    height: 400,
+                                    child: Center(
+                                      child: SizedBox(
+                                        width: 40,
+                                        height: 40,
+                                        child: CircularProgressIndicator(
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                          ),
                                         ),
                                       ),
-                                      child: Padding(
+                                    ),
+                                  );
+                                }
+
+                                final postsData = getJsonField(
+                                      postsSnapshot.data!.jsonBody,
+                                      r'''$''',
+                                      true,
+                                    ) as List? ??
+                                    [];
+
+                                if (postsData.isEmpty) {
+                                  return SizedBox(
+                                    width: double.infinity,
+                                    height: 200,
+                                    child: Center(
+                                      child: Text(
+                                        'No posts yet',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color: Colors.white70,
+                                              fontSize: 14,
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ),
+                                  );
+                                }
+
+                                return Container(
+                                  width: double.infinity,
+                                  height: 400,
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      10, 0, 10, 0),
+                                  child: ListView.builder(
+                                    itemCount: postsData.length,
+                                    itemBuilder: (context, index) {
+                                      final postItem = postsData[index];
+                                      final likeCount = getJsonField(
+                                            postItem,
+                                            r'''$.likeCount''',
+                                          ) ??
+                                          0;
+                                      final commentCount = getJsonField(
+                                            postItem,
+                                            r'''$.commentCount''',
+                                          ) ??
+                                          0;
+                                      final content = getJsonField(
+                                        postItem,
+                                        r'''$.content''',
+                                      ).toString();
+                                      final createdAt = getJsonField(
+                                        postItem,
+                                        r'''$.createdAt''',
+                                      ).toString();
+                                      final postImage = getJsonField(
+                                        postItem,
+                                        r'''$.image''',
+                                      )?.toString();
+
+                                      return Padding(
                                         padding: const EdgeInsetsDirectional
-                                            .fromSTEB(15, 15, 15, 15),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Row(
+                                            .fromSTEB(0, 0, 0, 10),
+                                        child: Container(
+                                          width: double.infinity,
+                                          decoration: BoxDecoration(
+                                            color: const Color(0xBB08162C),
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                            border: Border.all(
+                                              color: const Color(0xFF00CFFF)
+                                                  .withOpacity(0.3),
+                                            ),
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(15, 15, 15, 15),
+                                            child: Column(
                                               mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               children: [
-                                                Container(
-                                                  width: 40,
-                                                  height: 40,
-                                                  decoration:
-                                                      const BoxDecoration(
-                                                    color: Color(0xFFE0E5E9),
-                                                    shape: BoxShape.circle,
-                                                  ),
-                                                  child: const Icon(
-                                                    Icons.image,
-                                                    color: Color(0xFF57636C),
-                                                    size: 20,
-                                                  ),
+                                                // Post header with profile picture
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Container(
+                                                      width: 40,
+                                                      height: 40,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        image: DecorationImage(
+                                                          fit: BoxFit.cover,
+                                                          image: Image.network(
+                                                            getJsonField(
+                                                              profilePageResponse
+                                                                  .jsonBody,
+                                                              r'''$.profilePicture''',
+                                                            ).toString(),
+                                                          ).image,
+                                                        ),
+                                                        shape: BoxShape.circle,
+                                                      ),
+                                                    ),
+                                                    Expanded(
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                10, 0, 0, 0),
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
+                                                              getJsonField(
+                                                                profilePageResponse
+                                                                    .jsonBody,
+                                                                r'''$.fullName''',
+                                                              ).toString(),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    color: Colors
+                                                                        .white,
+                                                                    fontSize:
+                                                                        14,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                  ),
+                                                            ),
+                                                            Text(
+                                                              _formatTimeAgo(
+                                                                  createdAt),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    color: Colors
+                                                                        .white70,
+                                                                    fontSize:
+                                                                        10,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
-                                                Expanded(
-                                                  child: Padding(
+                                                // Post content
+                                                if (content.isNotEmpty)
+                                                  Padding(
                                                     padding:
                                                         const EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                            10, 0, 0, 0),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          'Post Title ${index + 1}',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                color: Colors
-                                                                    .white,
-                                                                fontSize: 14,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                              ),
-                                                        ),
-                                                        Text(
-                                                          '2 hours ago',
+                                                            0, 10, 0, 0),
+                                                    child: Text(
+                                                      content,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Poppins',
+                                                            color: Colors.white,
+                                                            fontSize: 13,
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                // Post image
+                                                if (postImage != null &&
+                                                    postImage.isNotEmpty)
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                            0, 10, 0, 0),
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                      child: Image.network(
+                                                        postImage,
+                                                        width: double.infinity,
+                                                        height: 200,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                // Like and comment counts
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsetsDirectional
+                                                          .fromSTEB(
+                                                          0, 10, 0, 0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      const Icon(
+                                                        Icons.favorite,
+                                                        color:
+                                                            Color(0xFFFF0000),
+                                                        size: 18,
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                5, 0, 15, 0),
+                                                        child: Text(
+                                                          likeCount.toString(),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodySmall
@@ -544,104 +1005,52 @@ class _UserProfileWidgetState extends State<UserProfileWidget>
                                                                 fontFamily:
                                                                     'Poppins',
                                                                 color: Colors
-                                                                    .white70,
-                                                                fontSize: 10,
+                                                                    .white,
+                                                                fontSize: 12,
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
                                                         ),
-                                                      ],
-                                                    ),
+                                                      ),
+                                                      const Icon(
+                                                        Icons.comment_outlined,
+                                                        color: Colors.white70,
+                                                        size: 18,
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                5, 0, 0, 0),
+                                                        child: Text(
+                                                          commentCount
+                                                              .toString(),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodySmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: Colors
+                                                                    .white,
+                                                                fontSize: 12,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
                                               ],
                                             ),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsetsDirectional
-                                                      .fromSTEB(0, 10, 0, 0),
-                                              child: Text(
-                                                'This is a placeholder for post content. Future implementation will show actual user posts here.',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color: Colors.white70,
-                                                          fontSize: 12,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                maxLines: 2,
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsetsDirectional
-                                                      .fromSTEB(0, 10, 0, 0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Icon(
-                                                    Icons.favorite_border,
-                                                    color: Colors.white70,
-                                                    size: 16,
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                            5, 0, 15, 0),
-                                                    child: Text(
-                                                      '${(index + 1) * 12}',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodySmall
-                                                          .override(
-                                                            fontFamily:
-                                                                'Poppins',
-                                                            color:
-                                                                Colors.white70,
-                                                            fontSize: 10,
-                                                            letterSpacing: 0.0,
-                                                          ),
-                                                    ),
-                                                  ),
-                                                  Icon(
-                                                    Icons.comment_outlined,
-                                                    color: Colors.white70,
-                                                    size: 16,
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                            5, 0, 0, 0),
-                                                    child: Text(
-                                                      '${(index + 1) * 3}',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodySmall
-                                                          .override(
-                                                            fontFamily:
-                                                                'Poppins',
-                                                            color:
-                                                                Colors.white70,
-                                                            fontSize: 10,
-                                                            letterSpacing: 0.0,
-                                                          ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
+                                          ),
                                         ),
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
+                                      );
+                                    },
+                                  ),
+                                );
+                              },
                             ),
                           ],
                         ),
@@ -664,5 +1073,27 @@ class _UserProfileWidgetState extends State<UserProfileWidget>
         );
       },
     );
+  }
+
+  String _formatTimeAgo(String dateTimeString) {
+    try {
+      final dateTime = DateTime.parse(dateTimeString);
+      final now = DateTime.now();
+      final difference = now.difference(dateTime);
+
+      if (difference.inDays > 7) {
+        return '${difference.inDays ~/ 7} week${difference.inDays ~/ 7 > 1 ? 's' : ''} ago';
+      } else if (difference.inDays > 0) {
+        return '${difference.inDays} day${difference.inDays > 1 ? 's' : ''} ago';
+      } else if (difference.inHours > 0) {
+        return '${difference.inHours} hour${difference.inHours > 1 ? 's' : ''} ago';
+      } else if (difference.inMinutes > 0) {
+        return '${difference.inMinutes} minute${difference.inMinutes > 1 ? 's' : ''} ago';
+      } else {
+        return 'Just now';
+      }
+    } catch (e) {
+      return 'Recently';
+    }
   }
 }

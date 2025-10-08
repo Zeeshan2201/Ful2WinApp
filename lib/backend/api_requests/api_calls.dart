@@ -50,6 +50,90 @@ class MyReferrals {
   }
 }
 
+class Follow {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    String? userId = '',
+  }) async {
+    final baseUrl = FulWinGroup.getBaseUrl(
+      token: token,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'Follow',
+      apiUrl: '${baseUrl}follow/$userId/follow',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer $token',
+      },
+      params: {},
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class UnFollow {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    String? userId = '',
+  }) async {
+    final baseUrl = FulWinGroup.getBaseUrl(
+      token: token,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'UnFollow',
+      apiUrl: '${baseUrl}follow/$userId/unfollow',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer $token',
+      },
+      params: {},
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class UsersPosts {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    String? userId = '',
+  }) async {
+    final baseUrl = FulWinGroup.getBaseUrl(
+      token: token,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'usersPosts',
+      apiUrl: '${baseUrl}posts/users/$userId',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer $token',
+      },
+      params: {},
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ReferralCode {
   Future<ApiCallResponse> call({
     String? token = '',
