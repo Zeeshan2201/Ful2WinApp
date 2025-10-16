@@ -1,9 +1,24 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 class FirebaseMessagingService {
   static final FirebaseMessaging _firebaseMessaging =
       FirebaseMessaging.instance;
+
+  // Stream controller for notifications
+  static final StreamController<RemoteMessage> _notificationStreamController =
+      StreamController<RemoteMessage>.broadcast();
+
+  // Expose the stream for listeners
+  static Stream<RemoteMessage> get notificationStream =>
+      _notificationStreamController.stream;
+
+  // List to store recent notifications (in-memory cache)
+  static final List<RemoteMessage> _recentNotifications = [];
+
+  // Get recent notifications
+  static List<RemoteMessage> get recentNotifications => _recentNotifications;
 
   // Initialize Firebase Messaging
   static Future<void> initialize() async {
@@ -71,9 +86,47 @@ class FirebaseMessagingService {
         // Navigate to challenge page
         print('Navigate to challenge page');
         break;
+      case 'follow':
+        // Navigate to profile page
+        print('Navigate to profile page');
+        break;
+      case 'like':
+        // Navigate to post/community page
+        print('Navigate to community page');
+        break;
+      case 'comment':
+        // Navigate to post page
+        print('Navigate to post page');
+        break;
       default:
         print('Unknown notification type: ${data['type']}');
     }
+  }
+
+  // Add notification to recent list and broadcast to stream
+  static void addNotification(RemoteMessage message) {
+    _recentNotifications.insert(0, message);
+
+    // Keep only last 50 notifications
+    if (_recentNotifications.length > 50) {
+      _recentNotifications.removeLast();
+    }
+
+    // Broadcast to stream
+    _notificationStreamController.add(message);
+
+    print('✅ Notification added to stream: ${message.notification?.title}');
+  }
+
+  // Clear all notifications
+  static void clearNotifications() {
+    _recentNotifications.clear();
+    print('🗑️ All notifications cleared');
+  }
+
+  // Dispose stream controller
+  static void dispose() {
+    _notificationStreamController.close();
   }
 
   // Show custom notification banner

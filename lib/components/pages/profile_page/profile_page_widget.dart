@@ -1,15 +1,16 @@
-//import 'package:flutter_web_plugins/flutter_web_plugins.dart';
-
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pop_ups/navbar/navbar_widget.dart';
+import '/flutter_flow/firebase_messaging_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'dart:async';
 
 import 'profile_page_model.dart';
 export 'profile_page_model.dart';
@@ -34,7 +35,10 @@ class _UserProfileWidgetState extends State<UserProfileWidget>
   bool? _isFollowingOverride;
 
   // Counter to force FutureBuilder rebuild
-  int _rebuildCounter = 0;
+  final int _rebuildCounter = 0;
+
+  // Notification stream subscription
+  StreamSubscription<RemoteMessage>? _notificationSubscription;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -52,6 +56,10 @@ class _UserProfileWidgetState extends State<UserProfileWidget>
       token: FFAppState().token,
       userId: widget.userId,
     );
+
+    // Listen to notification stream
+    _setupNotificationListener();
+
     animationsMap.addAll({
       'containerOnPageLoadAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
@@ -68,9 +76,47 @@ class _UserProfileWidgetState extends State<UserProfileWidget>
     });
   }
 
+  void _setupNotificationListener() {
+    // Listen to real-time notifications from Firebase
+    _notificationSubscription =
+        FirebaseMessagingService.notificationStream.listen((message) {
+      print(
+          '🔔 Profile Page: Received notification: ${message.notification?.title}');
+
+      // Check if notification is related to this profile
+      final data = message.data;
+
+      if (data['type'] == 'follow' && data['userId'] == widget.userId) {
+        // Someone followed this user - refresh profile
+        print('✅ Follow notification for this profile - refreshing data');
+        setState(() {
+          profileResponse = ProfileCall.call(
+            token: FFAppState().token,
+            userId: widget.userId,
+          );
+        });
+
+        // Show a snackbar
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                '${data['followerName'] ?? 'Someone'} followed this user!',
+                style: const TextStyle(color: Colors.white),
+              ),
+              backgroundColor: const Color(0xFF00CFFF),
+              duration: const Duration(seconds: 2),
+            ),
+          );
+        }
+      }
+    });
+  }
+
   @override
   void dispose() {
     _model.dispose();
+    _notificationSubscription?.cancel();
     super.dispose();
   }
 

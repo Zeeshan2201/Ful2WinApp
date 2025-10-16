@@ -191,7 +191,6 @@ class NotificationCall {
 class DeviceToken {
   static Future<ApiCallResponse> call({
     String? token = '',
-    String? userId = '',
     String? deviceToken = '',
   }) async {
     final baseUrl = FulWinGroup.getBaseUrl(
@@ -199,8 +198,7 @@ class DeviceToken {
     );
     final apiRequestBody = '''
 {
-  "deviceToken": "$deviceToken",
-  "userId": "$userId"
+  "deviceToken": "$deviceToken";
 }''';
 
     return ApiManager.instance.makeApiCall(
@@ -394,13 +392,47 @@ class GetChallengesCall {
   }
 }
 
+class ChallangeScore {
+  static Future<ApiCallResponse> call({
+    String? challengeId = '',
+    int? score,
+    String? token = '',
+  }) async {
+    final baseUrl = FulWinGroup.getBaseUrl(
+      token: token,
+    );
+    final apiRequestBody = '''
+{
+  "score": $score
+}''';
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'challengeScore',
+      apiUrl: '${baseUrl}challenges/$challengeId/score',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer $token',
+      },
+      params: {},
+      body: apiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ChallengesCall {
   static Future<ApiCallResponse> call({
     String? gameId = '',
     String? token =
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NWMzMzBhYjdlMGY0ZDdkZWY3MTcxYiIsInBob25lTnVtYmVyIjoiMTExMTEyMjIyMyIsImlhdCI6MTc1NjM2MjAwMiwiZXhwIjoxNzU4OTU0MDAyfQ.MZkgthzElldrYawIWkF4vj1vCg-VBrhr1DQOboJg31g',
     String? challengedUserId = '',
-    String? message = '',
+    int? entryFee = 0,
   }) async {
     final baseUrl = FulWinGroup.getBaseUrl(
       token: token,
@@ -409,7 +441,7 @@ class ChallengesCall {
 {
   "gameId": "$gameId",
   "challengedUserId": "$challengedUserId",
-  "message": "$message"
+  "entryFee": $entryFee
 }''';
     print("apiRequestBody $apiRequestBody ");
     return ApiManager.instance.makeApiCall(

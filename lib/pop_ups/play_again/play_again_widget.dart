@@ -2,6 +2,7 @@ import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -60,30 +61,6 @@ class _PlayAgainWidgetState extends State<PlayAgainWidget>
             duration: 600.0.ms,
             begin: 0.0,
             end: 1.0,
-          ),
-        ],
-      ),
-      'containerOnPageLoadAnimation2': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          ShimmerEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 600.0.ms,
-            color: const Color(0x80FFFFFF),
-            angle: 0.524,
-          ),
-        ],
-      ),
-      'containerOnPageLoadAnimation3': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          ShimmerEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 600.0.ms,
-            color: const Color(0x80FFFFFF),
-            angle: 0.524,
           ),
         ],
       ),
@@ -306,12 +283,8 @@ class _PlayAgainWidgetState extends State<PlayAgainWidget>
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
+                        FFButtonWidget(
+                          onPressed: () async {
                             _model.soundPlayer1 ??= AudioPlayer();
                             if (_model.soundPlayer1!.playing) {
                               await _model.soundPlayer1!.stop();
@@ -340,69 +313,40 @@ class _PlayAgainWidgetState extends State<PlayAgainWidget>
                               }.withoutNulls,
                             );
                           },
-                          child: Container(
+                          text: 'Play Again',
+                          options: FFButtonOptions(
                             width: MediaQuery.sizeOf(context).width < 350.0
                                 ? 110.0
                                 : 130.0,
-                            height: 40,
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [
-                                  FlutterFlowTheme.of(context).primary,
-                                  const Color(0x77B20BFF)
-                                ],
-                                stops: const [0, 1],
-                                begin: const AlignmentDirectional(0.34, -1),
-                                end: const AlignmentDirectional(-0.34, 1),
-                              ),
-                              borderRadius: const BorderRadius.only(
-                                bottomLeft: Radius.circular(15),
-                                bottomRight: Radius.circular(15),
-                                topLeft: Radius.circular(15),
-                                topRight: Radius.circular(15),
-                              ),
+                            height: 45,
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0, 0, 0, 0),
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                0, 0, 0, 0),
+                            color: FlutterFlowTheme.of(context).primary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  font: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                  color: Colors.white,
+                                  fontSize:
+                                      MediaQuery.sizeOf(context).width < 350.0
+                                          ? 14.0
+                                          : 16.0,
+                                  letterSpacing: 0.0,
+                                ),
+                            elevation: 3,
+                            borderSide: const BorderSide(
+                              color: Colors.transparent,
+                              width: 1,
                             ),
-                            child: Align(
-                              alignment: const AlignmentDirectional(0, 0),
-                              child: Text(
-                                'Play Again',
-                                style: FlutterFlowTheme.of(context)
-                                    .displaySmall
-                                    .override(
-                                      font: GoogleFonts.poppins(
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .displaySmall
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .displaySmall
-                                            .fontStyle,
-                                      ),
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      fontSize:
-                                          MediaQuery.sizeOf(context).width <
-                                                  350.0
-                                              ? 14.0
-                                              : 16.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .displaySmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .displaySmall
-                                          .fontStyle,
-                                    ),
-                              ),
-                            ),
+                            borderRadius: BorderRadius.circular(15),
                           ),
-                        ).animateOnPageLoad(
-                            animationsMap['containerOnPageLoadAnimation2']!),
-                        InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
+                        ),
+                        FFButtonWidget(
+                          onPressed: () async {
                             _model.soundPlayer2 ??= AudioPlayer();
                             if (_model.soundPlayer2!.playing) {
                               await _model.soundPlayer2!.stop();
@@ -423,63 +367,38 @@ class _PlayAgainWidgetState extends State<PlayAgainWidget>
                             }
                             // After popping, we land on the previous page (typically Tournament Lobby)
                           },
-                          child: Container(
+                          text: 'Tournaments',
+                          options: FFButtonOptions(
                             width: MediaQuery.sizeOf(context).width < 350.0
                                 ? 110.0
                                 : 130.0,
-                            height: 40,
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [
-                                  FlutterFlowTheme.of(context).secondaryText,
-                                  const Color(0xCD57636C)
-                                ],
-                                stops: const [0, 1],
-                                begin: const AlignmentDirectional(0.34, -1),
-                                end: const AlignmentDirectional(-0.34, 1),
-                              ),
-                              borderRadius: const BorderRadius.only(
-                                bottomLeft: Radius.circular(15),
-                                bottomRight: Radius.circular(15),
-                                topLeft: Radius.circular(15),
-                                topRight: Radius.circular(15),
-                              ),
+                            height: 45,
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0, 0, 0, 0),
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                0, 0, 0, 0),
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  font: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                  color: Colors.white,
+                                  fontSize:
+                                      MediaQuery.sizeOf(context).width < 350.0
+                                          ? 14.0
+                                          : 16.0,
+                                  letterSpacing: 0.0,
+                                ),
+                            elevation: 3,
+                            borderSide: const BorderSide(
+                              color: Colors.transparent,
+                              width: 1,
                             ),
-                            child: Align(
-                              alignment: const AlignmentDirectional(0, 0),
-                              child: Text(
-                                'Tournaments',
-                                style: FlutterFlowTheme.of(context)
-                                    .displaySmall
-                                    .override(
-                                      font: GoogleFonts.poppins(
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .displaySmall
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .displaySmall
-                                            .fontStyle,
-                                      ),
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      fontSize:
-                                          MediaQuery.sizeOf(context).width <
-                                                  350.0
-                                              ? 14.0
-                                              : 16.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .displaySmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .displaySmall
-                                          .fontStyle,
-                                    ),
-                              ),
-                            ),
+                            borderRadius: BorderRadius.circular(15),
                           ),
-                        ).animateOnPageLoad(
-                            animationsMap['containerOnPageLoadAnimation3']!),
+                        ),
                       ],
                     ),
                   ),

@@ -46,6 +46,7 @@ export '/components/pages/withdraw_page/withdraw_page_widget.dart'
 export '/components/pages/home_page_copy/home_page_copy_widget.dart'
     show HomePageCopyWidget;
 export '/components/pages/game_on/game_on_widget.dart' show GameOnWidget;
+export '/components/pages/game_on2/game_on2_widget.dart' show GameOn2Widget;
 export '/components/pages/home_page_copy_copy/home_page_copy_copy_widget.dart'
     show HomePageCopyCopyWidget;
 export '/components/communitymembers/communitymembers_widget.dart'

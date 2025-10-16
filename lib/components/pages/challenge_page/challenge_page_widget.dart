@@ -643,7 +643,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                   onChanged: (val) {
                                                     // Local filter; no extra rebuilds outside options list
                                                     final l = val.toLowerCase();
-                                                    print(_userNames);
+
                                                     setState(() {
                                                       _filteredUserNames =
                                                           _userNames
@@ -1137,7 +1137,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                   .fontStyle,
                                                         ),
                                                 hintText:
-                                                    'Optional message (max 200 characters)',
+                                                    'Entry Fee (₹0 or more)',
                                                 hintStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -1242,7 +1242,9 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                 .bodyMedium
                                                                 .fontStyle,
                                                       ),
-                                              maxLines: 5,
+                                              keyboardType:
+                                                  TextInputType.number,
+                                              maxLines: 1,
                                               cursorColor:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,
@@ -1257,6 +1259,27 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                 .fromSTEB(0, 0, 0, 10),
                                             child: FFButtonWidget(
                                               onPressed: () async {
+                                                // Parse entry fee from text field (default to 0 if empty or invalid)
+                                                final entryFee = int.tryParse(
+                                                        _model.textController3
+                                                            .text
+                                                            .trim()) ??
+                                                    0;
+
+                                                // Validate entry fee is non-negative
+                                                if (entryFee < 0) {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    const SnackBar(
+                                                      content: Text(
+                                                          'Entry fee cannot be negative'),
+                                                      backgroundColor:
+                                                          Colors.red,
+                                                    ),
+                                                  );
+                                                  return;
+                                                }
+
                                                 _model.challenges =
                                                     await ChallengesCall.call(
                                                   challengedUserId:
@@ -1278,20 +1301,38 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                       )!,
                                                       _model.textController2
                                                           .text),
-                                                  message: _model
-                                                      .textController3.text,
+                                                  entryFee: entryFee,
                                                   token: FFAppState().token,
                                                 );
-                                                print(_model
-                                                    .challenges?.jsonBody);
+
                                                 if ((_model.challenges
                                                         ?.succeeded ??
                                                     true)) {
+                                                  // Extract challenge ID from response
+                                                  final challengeId =
+                                                      getJsonField(
+                                                            _model.challenges
+                                                                ?.jsonBody,
+                                                            r'''$.challenge._id''',
+                                                          )?.toString() ??
+                                                          '';
+
+                                                  final gameUrl =
+                                                      functions.gameURL(
+                                                          getJsonField(
+                                                            columnGamesResponse
+                                                                .jsonBody,
+                                                            r'''$.data''',
+                                                            true,
+                                                          )!,
+                                                          _model.textController2
+                                                              .text);
+
                                                   ScaffoldMessenger.of(context)
                                                       .showSnackBar(
                                                     SnackBar(
                                                       content: Text(
-                                                        'Challenge send',
+                                                        'Challenge sent! Starting game...',
                                                         style: TextStyle(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
@@ -1299,13 +1340,39 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                         ),
                                                       ),
                                                       duration: const Duration(
-                                                          milliseconds: 4000),
+                                                          milliseconds: 2000),
                                                       backgroundColor:
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .secondary,
                                                     ),
                                                   );
+
+                                                  // Navigate to GameOn2 with challenge ID
+                                                  if (challengeId.isNotEmpty &&
+                                                      gameUrl.isNotEmpty) {
+                                                    context.pushNamed(
+                                                      'gameOn2',
+                                                      queryParameters: {
+                                                        'gameUrl':
+                                                            serializeParam(
+                                                          gameUrl,
+                                                          ParamType.String,
+                                                        ),
+                                                        'gamename':
+                                                            serializeParam(
+                                                          _model.textController2
+                                                              .text,
+                                                          ParamType.String,
+                                                        ),
+                                                        'challangeId':
+                                                            serializeParam(
+                                                          challengeId,
+                                                          ParamType.String,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
+                                                  }
                                                 } else {
                                                   ScaffoldMessenger.of(context)
                                                       .showSnackBar(
@@ -1435,7 +1502,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                     });
                                                   },
                                                   child: Text(
-                                                    'Incoming Invites',
+                                                    '<- Sended Invites',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -1525,60 +1592,11 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                               'null') {
                                                         challengedId = getJsonField(
                                                                     c,
-                                                                    r'''$.challengee._id''')
-                                                                ?.toString() ??
-                                                            '';
-                                                      }
-                                                      if (challengedId
-                                                              .isEmpty ||
-                                                          challengedId ==
-                                                              'null') {
-                                                        challengedId = getJsonField(
-                                                                    c,
-                                                                    r'''$.recipient._id''')
-                                                                ?.toString() ??
-                                                            '';
-                                                      }
-                                                      if (challengedId
-                                                              .isEmpty ||
-                                                          challengedId ==
-                                                              'null') {
-                                                        challengedId = getJsonField(
-                                                                    c,
                                                                     r'''$.challenged._id''')
                                                                 ?.toString() ??
                                                             '';
                                                       }
-                                                      if (challengedId
-                                                              .isEmpty ||
-                                                          challengedId ==
-                                                              'null') {
-                                                        challengedId = getJsonField(
-                                                                    c,
-                                                                    r'''$.challengedUser.id''')
-                                                                ?.toString() ??
-                                                            '';
-                                                      }
-                                                      if (challengedId
-                                                              .isEmpty ||
-                                                          challengedId ==
-                                                              'null') {
-                                                        challengedId = getJsonField(
-                                                                    c,
-                                                                    r'''$.challengee.id''')
-                                                                ?.toString() ??
-                                                            '';
-                                                      }
-                                                      if (challengedId
-                                                              .isEmpty ||
-                                                          challengedId ==
-                                                              'null') {
-                                                        challengedId = getJsonField(
-                                                                    c,
-                                                                    r'''$.recipient.id''')
-                                                                ?.toString() ??
-                                                            '';
-                                                      }
+
                                                       if (challengedId
                                                               .isEmpty ||
                                                           challengedId ==
@@ -1637,6 +1655,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                         )
                                                                 .toString()
                                                                 .toLowerCase();
+
                                                         final challengerName =
                                                             getJsonField(
                                                           challenge[
@@ -1796,6 +1815,8 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                               challengeIndex],
                                                                           r'''$._id''',
                                                                         ).toString();
+
+                                                                        // Prevent duplicate processing
                                                                         if (_processingChallengeIds
                                                                             .contains(id)) {
                                                                           return;
@@ -1805,6 +1826,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                           _processingChallengeIds
                                                                               .add(id);
                                                                         });
+
                                                                         try {
                                                                           final apiResult =
                                                                               await AcceptChallengeCall.call(
@@ -1813,20 +1835,132 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                             challengeId:
                                                                                 id,
                                                                           );
-                                                                          if (apiResult.succeeded ==
+
+                                                                          // Check JSON success field (primary check)
+                                                                          final success =
+                                                                              getJsonField(
+                                                                            apiResult.jsonBody,
+                                                                            r'''$.success''',
+                                                                          );
+
+                                                                          // Check if API response has success: true in JSON
+                                                                          if (success ==
                                                                               true) {
+                                                                            // Check if widget is still mounted before UI operations
+                                                                            if (!mounted)
+                                                                              return;
+
                                                                             ScaffoldMessenger.of(context).showSnackBar(
                                                                               SnackBar(
-                                                                                content: Text('Challenge accepted!', style: FlutterFlowTheme.of(context).bodyMedium),
-                                                                                duration: const Duration(milliseconds: 1500),
-                                                                                backgroundColor: const Color(0x00000000),
+                                                                                content: Text('Challenge accepted! Starting game...', style: FlutterFlowTheme.of(context).bodyMedium),
+                                                                                duration: const Duration(milliseconds: 2000),
+                                                                                backgroundColor: FlutterFlowTheme.of(context).secondary,
                                                                                 behavior: SnackBarBehavior.floating,
                                                                               ),
                                                                             );
-                                                                            setState(() {
-                                                                              challengesResponse = GetChallengesCall.call(token: FFAppState().token);
-                                                                            });
+
+                                                                            // Get game name from challenge
+                                                                            final acceptedChallenge =
+                                                                                getJsonField(
+                                                                              apiResult.jsonBody,
+                                                                              r'''$.challenge''',
+                                                                            );
+
+                                                                            final gameName = getJsonField(
+                                                                                  acceptedChallenge,
+                                                                                  r'''$.game.displayName''',
+                                                                                )?.toString() ??
+                                                                                '';
+
+                                                                            print('Game Name: $gameName');
+
+                                                                            // Fetch games list to get proper game URL
+                                                                            final gamesApiResult =
+                                                                                await GamesCall.call();
+
+                                                                            // Use the same gameURL function as send challenge
+                                                                            final gameUrl =
+                                                                                functions.gameURL(
+                                                                              getJsonField(
+                                                                                gamesApiResult.jsonBody,
+                                                                                r'''$.data''',
+                                                                                true,
+                                                                              )!,
+                                                                              gameName,
+                                                                            );
+
+                                                                            // Check mounted again before navigation
+                                                                            if (!mounted)
+                                                                              return;
+
+                                                                            // Navigate to GameOn2 with challenge ID
+                                                                            if (gameUrl.isNotEmpty) {
+                                                                              context.pushNamed(
+                                                                                'gameOn2',
+                                                                                queryParameters: {
+                                                                                  'gameUrl': serializeParam(
+                                                                                    gameUrl,
+                                                                                    ParamType.String,
+                                                                                  ),
+                                                                                  'gamename': serializeParam(
+                                                                                    gameName,
+                                                                                    ParamType.String,
+                                                                                  ),
+                                                                                  'challangeId': serializeParam(
+                                                                                    id,
+                                                                                    ParamType.String,
+                                                                                  ),
+                                                                                }.withoutNulls,
+                                                                              );
+                                                                            } else {
+                                                                              print('⚠️ Game URL is empty, cannot navigate');
+                                                                              if (mounted) {
+                                                                                ScaffoldMessenger.of(context).showSnackBar(
+                                                                                  SnackBar(
+                                                                                    content: Text('Could not load game. Please try again.', style: FlutterFlowTheme.of(context).bodyMedium),
+                                                                                    duration: const Duration(milliseconds: 2000),
+                                                                                    backgroundColor: Colors.red,
+                                                                                    behavior: SnackBarBehavior.floating,
+                                                                                  ),
+                                                                                );
+                                                                              }
+                                                                            }
+
+                                                                            if (mounted) {
+                                                                              setState(() {
+                                                                                challengesResponse = GetChallengesCall.call(token: FFAppState().token);
+                                                                              });
+                                                                            }
+                                                                          } else {
+                                                                            print('❌ Challenge accept failed!');
+                                                                            print('API Status Code: ${apiResult.statusCode}');
+                                                                            print('API Succeeded: ${apiResult.succeeded}');
+                                                                            print('JSON Success: $success');
+                                                                            print('Response Body: ${apiResult.jsonBody}');
+
+                                                                            if (!mounted)
+                                                                              return;
+
+                                                                            final message = getJsonField(
+                                                                                  apiResult.jsonBody,
+                                                                                  r'''$.message''',
+                                                                                )?.toString() ??
+                                                                                'Failed to accept challenge. Please try again.';
+
+                                                                            ScaffoldMessenger.of(context).showSnackBar(
+                                                                              SnackBar(
+                                                                                content: Text(message, style: FlutterFlowTheme.of(context).bodyMedium),
+                                                                                duration: const Duration(milliseconds: 2000),
+                                                                                backgroundColor: Colors.red,
+                                                                                behavior: SnackBarBehavior.floating,
+                                                                              ),
+                                                                            );
                                                                           }
+                                                                        } catch (e) {
+                                                                          print(
+                                                                              '❌ Exception during accept: $e');
+                                                                          // Don't try to show UI on deactivated widget
+                                                                          // The error is already logged
                                                                         } finally {
                                                                           if (mounted) {
                                                                             setState(() {
@@ -1847,10 +1981,15 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                             0,
                                                                             10,
                                                                             0),
-                                                                        color: Colors
-                                                                            .transparent,
-                                                                        textStyle:
-                                                                            FlutterFlowTheme.of(context).titleSmall,
+                                                                        color: const Color(
+                                                                            0xFF2ECC71),
+                                                                        textStyle: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .override(
+                                                                              font: GoogleFonts.poppins(),
+                                                                              color: Colors.white,
+                                                                              fontWeight: FontWeight.bold,
+                                                                            ),
                                                                         elevation:
                                                                             0,
                                                                         borderRadius:
@@ -1920,10 +2059,15 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                             0,
                                                                             10,
                                                                             0),
-                                                                        color: Colors
-                                                                            .transparent,
-                                                                        textStyle:
-                                                                            FlutterFlowTheme.of(context).titleSmall,
+                                                                        color: const Color(
+                                                                            0xFFE74C3C),
+                                                                        textStyle: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .override(
+                                                                              font: GoogleFonts.poppins(),
+                                                                              color: Colors.white,
+                                                                              fontWeight: FontWeight.bold,
+                                                                            ),
                                                                         elevation:
                                                                             0,
                                                                         borderRadius:
@@ -1933,38 +2077,89 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                   ],
                                                                 )
                                                               else
-                                                                Padding(
-                                                                  padding:
-                                                                      const EdgeInsetsDirectional
+                                                                Builder(
+                                                                  builder:
+                                                                      (context) {
+                                                                    // Get winner information for completed challenges
+                                                                    final myUserId =
+                                                                        FFAppState()
+                                                                            .userId;
+                                                                    final winnerId =
+                                                                        getJsonField(
+                                                                              challenge[challengeIndex],
+                                                                              r'''$.result.winner''',
+                                                                            )?.toString() ??
+                                                                            '';
+                                                                    print(
+                                                                        'Winner ID: $winnerId, My User ID: $myUserId, Status: $status');
+                                                                    String
+                                                                        statusLabel;
+                                                                    Color
+                                                                        statusColor;
+
+                                                                    if (status ==
+                                                                        'completed') {
+                                                                      // Completed status - show win/loss/tie
+                                                                      if (winnerId
+                                                                          .isNotEmpty) {
+                                                                        if (winnerId ==
+                                                                            myUserId) {
+                                                                          statusColor =
+                                                                              const Color(0xFF2ECC71);
+                                                                          statusLabel =
+                                                                              '🏆 Won';
+                                                                        } else {
+                                                                          statusColor =
+                                                                              const Color(0xFFE74C3C);
+                                                                          statusLabel =
+                                                                              '❌ Lost';
+                                                                        }
+                                                                      } else {
+                                                                        // Tie
+                                                                        statusColor =
+                                                                            const Color(0xFFFFA500);
+                                                                        statusLabel =
+                                                                            '🤝 Tie';
+                                                                      }
+                                                                    } else if (status ==
+                                                                        'accepted') {
+                                                                      // Accepted status - just show accepted
+                                                                      statusColor =
+                                                                          const Color(
+                                                                              0xFF2ECC71);
+                                                                      statusLabel =
+                                                                          'Accepted';
+                                                                    } else {
+                                                                      // Rejected status
+                                                                      statusColor =
+                                                                          const Color(
+                                                                              0xFFE74C3C);
+                                                                      statusLabel =
+                                                                          'Rejected';
+                                                                    }
+
+                                                                    return Padding(
+                                                                      padding: const EdgeInsetsDirectional
                                                                           .fromSTEB(
                                                                           8,
                                                                           0,
                                                                           0,
                                                                           0),
-                                                                  child: Text(
-                                                                    status ==
-                                                                            'accepted'
-                                                                        ? 'Accepted'
-                                                                        : 'Rejected',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          font: GoogleFonts.poppins(
+                                                                      child:
+                                                                          Text(
+                                                                        statusLabel,
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              font: GoogleFonts.poppins(fontWeight: FontWeight.bold, fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle),
+                                                                              color: statusColor,
+                                                                              letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.bold,
-                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle),
-                                                                          color: status == 'accepted'
-                                                                              ? const Color(0xFF2ECC71)
-                                                                              : const Color(0xFFE74C3C),
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .fontStyle,
-                                                                        ),
-                                                                  ),
+                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                            ),
+                                                                      ),
+                                                                    );
+                                                                  },
                                                                 ),
                                                             ],
                                                           ),
@@ -2014,7 +2209,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                     });
                                                   },
                                                   child: Text(
-                                                    'Sent Challenges',
+                                                    'Incoming Invites ->',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -2210,9 +2405,46 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                 r'''$.game.displayName''')
                                                             ?.toString() ??
                                                         '';
+
+                                                    // Get winner information for completed challenges
+                                                    final myUserId =
+                                                        FFAppState().userId;
+                                                    final winnerId = getJsonField(
+                                                                c,
+                                                                r'''$.result.winner''')
+                                                            ?.toString() ??
+                                                        '';
+                                                    print(
+                                                        'Winner ID: $winnerId, My User ID: $myUserId, Status: $status');
+
                                                     Color statusColor;
                                                     String statusLabel;
-                                                    if (status == 'accepted') {
+                                                    if (status == 'completed') {
+                                                      // Completed status - show win/loss/tie
+                                                      if (winnerId.isNotEmpty) {
+                                                        if (winnerId ==
+                                                            myUserId) {
+                                                          statusColor =
+                                                              const Color(
+                                                                  0xFF2ECC71);
+                                                          statusLabel =
+                                                              '🏆 Won';
+                                                        } else {
+                                                          statusColor =
+                                                              const Color(
+                                                                  0xFFE74C3C);
+                                                          statusLabel =
+                                                              '❌ Lost';
+                                                        }
+                                                      } else {
+                                                        // Tie
+                                                        statusColor =
+                                                            const Color(
+                                                                0xFFFFA500);
+                                                        statusLabel = '🤝 Tie';
+                                                      }
+                                                    } else if (status ==
+                                                        'accepted') {
                                                       statusColor = const Color(
                                                           0xFF2ECC71);
                                                       statusLabel = 'Accepted';
@@ -2222,9 +2454,10 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                           0xFFE74C3C);
                                                       statusLabel = 'Rejected';
                                                     } else {
+                                                      // Pending - button will show instead
                                                       statusColor = const Color(
-                                                          0xFFE74C3C);
-                                                      statusLabel = 'Cancel';
+                                                          0xFFFFA500);
+                                                      statusLabel = 'Pending';
                                                     }
 
                                                     return Padding(
@@ -2365,33 +2598,134 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                   ),
                                                                 ],
                                                               ),
-                                                              Text(
-                                                                statusLabel,
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .poppins(
+                                                              // Show Cancel button for pending, status text for others
+                                                              if (status ==
+                                                                  'pending')
+                                                                FFButtonWidget(
+                                                                  onPressed:
+                                                                      () async {
+                                                                    final id =
+                                                                        getJsonField(
+                                                                      c,
+                                                                      r'''$._id''',
+                                                                    ).toString();
+                                                                    if (_processingChallengeIds
+                                                                        .contains(
+                                                                            id)) {
+                                                                      return;
+                                                                    }
+                                                                    setState(
+                                                                        () {
+                                                                      _processingChallengeIds
+                                                                          .add(
+                                                                              id);
+                                                                    });
+                                                                    try {
+                                                                      final response =
+                                                                          await RejectChallengeCall
+                                                                              .call(
+                                                                        challengeId:
+                                                                            id,
+                                                                        token: FFAppState()
+                                                                            .token,
+                                                                      );
+                                                                      if (mounted) {
+                                                                        if (response.succeeded ==
+                                                                            true) {
+                                                                          ScaffoldMessenger.of(context)
+                                                                              .showSnackBar(
+                                                                            SnackBar(
+                                                                              content: Text('Challenge cancelled!', style: FlutterFlowTheme.of(context).bodyMedium),
+                                                                              duration: const Duration(milliseconds: 1500),
+                                                                              backgroundColor: FlutterFlowTheme.of(context).secondary,
+                                                                              behavior: SnackBarBehavior.floating,
+                                                                            ),
+                                                                          );
+                                                                          setState(
+                                                                              () {
+                                                                            challengesResponse =
+                                                                                GetChallengesCall.call(token: FFAppState().token);
+                                                                          });
+                                                                        } else {
+                                                                          ScaffoldMessenger.of(context)
+                                                                              .showSnackBar(
+                                                                            SnackBar(
+                                                                              content: Text('Failed to cancel challenge', style: FlutterFlowTheme.of(context).bodyMedium),
+                                                                              duration: const Duration(milliseconds: 1500),
+                                                                              backgroundColor: const Color(0xFFE74C3C),
+                                                                              behavior: SnackBarBehavior.floating,
+                                                                            ),
+                                                                          );
+                                                                        }
+                                                                      }
+                                                                    } finally {
+                                                                      if (mounted) {
+                                                                        setState(
+                                                                            () {
+                                                                          _processingChallengeIds
+                                                                              .remove(id);
+                                                                        });
+                                                                      }
+                                                                    }
+                                                                  },
+                                                                  text:
+                                                                      'Cancel',
+                                                                  options:
+                                                                      FFButtonOptions(
+                                                                    height: 30,
+                                                                    padding:
+                                                                        const EdgeInsetsDirectional
+                                                                            .fromSTEB(
+                                                                            10,
+                                                                            0,
+                                                                            10,
+                                                                            0),
+                                                                    color: const Color(
+                                                                        0xFFE74C3C),
+                                                                    textStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmall
+                                                                        .override(
+                                                                          font:
+                                                                              GoogleFonts.poppins(),
+                                                                          color:
+                                                                              Colors.white,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                        ),
+                                                                    elevation:
+                                                                        0,
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            10),
+                                                                  ),
+                                                                )
+                                                              else
+                                                                Text(
+                                                                  statusLabel,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        font: GoogleFonts
+                                                                            .poppins(
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .fontStyle,
+                                                                        ),
+                                                                        color:
+                                                                            statusColor,
+                                                                        letterSpacing:
+                                                                            0.0,
                                                                         fontWeight:
                                                                             FontWeight.bold,
                                                                         fontStyle: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .fontStyle,
                                                                       ),
-                                                                      color:
-                                                                          statusColor,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .fontStyle,
-                                                                    ),
-                                                              ),
+                                                                ),
                                                             ],
                                                           ),
                                                         ),

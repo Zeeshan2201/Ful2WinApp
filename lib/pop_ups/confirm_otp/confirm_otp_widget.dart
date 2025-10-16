@@ -69,10 +69,11 @@ class _ConfirmOtpWidgetState extends State<ConfirmOtpWidget> {
     required FocusNode focusNode,
     required FocusNode? nextFocusNode,
     required bool isLast,
+    required double boxSize,
   }) {
     return Container(
-      width: 50,
-      height: 55,
+      width: boxSize,
+      height: boxSize,
       decoration: BoxDecoration(
         color: const Color(0xFF1E293B),
         borderRadius: BorderRadius.circular(12),
@@ -103,11 +104,12 @@ class _ConfirmOtpWidgetState extends State<ConfirmOtpWidget> {
           focusedBorder: InputBorder.none,
           errorBorder: InputBorder.none,
           focusedErrorBorder: InputBorder.none,
-          contentPadding: const EdgeInsetsDirectional.fromSTEB(0, 15, 0, 0),
+          contentPadding:
+              EdgeInsetsDirectional.fromSTEB(0, boxSize * 0.25, 0, 0),
         ),
         style: FlutterFlowTheme.of(context).bodyMedium.override(
               font: GoogleFonts.inter(
-                fontSize: 20,
+                fontSize: boxSize * 0.42, // Responsive font size
                 fontWeight: FontWeight.w600,
               ),
               color: Colors.white,
@@ -162,6 +164,15 @@ class _ConfirmOtpWidgetState extends State<ConfirmOtpWidget> {
 
   @override
   Widget build(BuildContext context) {
+    // Calculate responsive box size based on screen width
+    final screenWidth = MediaQuery.of(context).size.width;
+    final dialogWidth = screenWidth * 0.9; // Dialog takes 90% of screen width
+    final availableWidth = dialogWidth - 70; // Subtract padding (20+20+15+15)
+    final boxSize =
+        (availableWidth / 6).clamp(40.0, 50.0); // 6 boxes, min 40, max 50
+    final spacing =
+        (availableWidth - (boxSize * 6)) / 5; // Calculate spacing between boxes
+
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -235,46 +246,55 @@ class _ConfirmOtpWidgetState extends State<ConfirmOtpWidget> {
             const SizedBox(height: 30),
 
             // OTP Input Fields
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _buildOtpInputField(
-                  controller: _model.otpDigit1TextController!,
-                  focusNode: _model.otpDigit1FocusNode!,
-                  nextFocusNode: _model.otpDigit2FocusNode,
-                  isLast: false,
-                ),
-                _buildOtpInputField(
-                  controller: _model.otpDigit2TextController!,
-                  focusNode: _model.otpDigit2FocusNode!,
-                  nextFocusNode: _model.otpDigit3FocusNode,
-                  isLast: false,
-                ),
-                _buildOtpInputField(
-                  controller: _model.otpDigit3TextController!,
-                  focusNode: _model.otpDigit3FocusNode!,
-                  nextFocusNode: _model.otpDigit4FocusNode,
-                  isLast: false,
-                ),
-                _buildOtpInputField(
-                  controller: _model.otpDigit4TextController!,
-                  focusNode: _model.otpDigit4FocusNode!,
-                  nextFocusNode: _model.otpDigit5FocusNode,
-                  isLast: false,
-                ),
-                _buildOtpInputField(
-                  controller: _model.otpDigit5TextController!,
-                  focusNode: _model.otpDigit5FocusNode!,
-                  nextFocusNode: _model.otpDigit6FocusNode,
-                  isLast: false,
-                ),
-                _buildOtpInputField(
-                  controller: _model.otpDigit6TextController!,
-                  focusNode: _model.otpDigit6FocusNode!,
-                  nextFocusNode: null,
-                  isLast: true,
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(15, 0, 15, 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _buildOtpInputField(
+                    controller: _model.otpDigit1TextController!,
+                    focusNode: _model.otpDigit1FocusNode!,
+                    nextFocusNode: _model.otpDigit2FocusNode,
+                    isLast: false,
+                    boxSize: boxSize,
+                  ),
+                  _buildOtpInputField(
+                    controller: _model.otpDigit2TextController!,
+                    focusNode: _model.otpDigit2FocusNode!,
+                    nextFocusNode: _model.otpDigit3FocusNode,
+                    isLast: false,
+                    boxSize: boxSize,
+                  ),
+                  _buildOtpInputField(
+                    controller: _model.otpDigit3TextController!,
+                    focusNode: _model.otpDigit3FocusNode!,
+                    nextFocusNode: _model.otpDigit4FocusNode,
+                    isLast: false,
+                    boxSize: boxSize,
+                  ),
+                  _buildOtpInputField(
+                    controller: _model.otpDigit4TextController!,
+                    focusNode: _model.otpDigit4FocusNode!,
+                    nextFocusNode: _model.otpDigit5FocusNode,
+                    isLast: false,
+                    boxSize: boxSize,
+                  ),
+                  _buildOtpInputField(
+                    controller: _model.otpDigit5TextController!,
+                    focusNode: _model.otpDigit5FocusNode!,
+                    nextFocusNode: _model.otpDigit6FocusNode,
+                    isLast: false,
+                    boxSize: boxSize,
+                  ),
+                  _buildOtpInputField(
+                    controller: _model.otpDigit6TextController!,
+                    focusNode: _model.otpDigit6FocusNode!,
+                    nextFocusNode: null,
+                    isLast: true,
+                    boxSize: boxSize,
+                  ),
+                ],
+              ),
             ),
             const SizedBox(height: 30),
 

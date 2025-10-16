@@ -72,15 +72,14 @@ class _LoginpageWidgetState extends State<LoginpageWidget>
       String? deviceToken = await FirebaseMessaging.instance.getToken();
       print("FCM Device Token: $deviceToken");
 
-      if (deviceToken != null &&
-          FFAppState().token.isNotEmpty &&
-          FFAppState().userId.isNotEmpty) {
+      if (deviceToken != null && FFAppState().token.isNotEmpty) {
         // Send device token to backend
         final deviceTokenResponse = await DeviceToken.call(
           token: FFAppState().token,
-          userId: FFAppState().userId,
           deviceToken: deviceToken,
         );
+
+        print(deviceTokenResponse.jsonBody);
 
         if (deviceTokenResponse.succeeded) {
           print("Device token sent successfully to backend");

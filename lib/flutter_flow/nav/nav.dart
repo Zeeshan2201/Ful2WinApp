@@ -219,6 +219,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
+          name: GameOn2Widget.routeName,
+          path: GameOn2Widget.routePath,
+          builder: (context, params) => GameOn2Widget(
+            gameUrl: params.getParam(
+              'gameUrl',
+              ParamType.String,
+            ),
+            gamename: params.getParam(
+                  'gamename',
+                  ParamType.String,
+                ) ??
+                'DefaultGame',
+            challangeId: params.getParam(
+                  'challangeId',
+                  ParamType.String,
+                ) ??
+                'DefaultGame', // fallback if param not passed
+          ),
+        ),
+        FFRoute(
           name: HomePageCopyCopyWidget.routeName,
           path: HomePageCopyCopyWidget.routePath,
           builder: (context, params) => const HomePageCopyCopyWidget(),

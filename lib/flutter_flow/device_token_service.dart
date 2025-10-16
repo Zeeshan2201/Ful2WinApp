@@ -35,7 +35,6 @@ class DeviceTokenService {
         // Send device token to backend
         final deviceTokenResponse = await DeviceToken.call(
           token: userToken,
-          userId: userId,
           deviceToken: deviceToken,
         );
 

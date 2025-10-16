@@ -255,3 +255,64 @@ String? getRemainingTime(DateTime targetDate) {
 
   return '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
 }
+
+String gameURL(
+  List<dynamic> games,
+  String gameName,
+) {
+  /// MODIFY CODE ONLY BELOW THIS LINE
+  final target = (gameName).trim().toLowerCase();
+  print("🔍 gameURL - Looking for: '$target' (original: '$gameName')");
+
+  if (games.isEmpty || target.isEmpty) {
+    print("❌ gameURL - Empty games list or empty target");
+    return '';
+  }
+
+  try {
+    for (int i = 0; i < games.length; i++) {
+      final raw = games[i];
+      if (raw is Map) {
+        final dn = raw['displayName']?.toString().trim().toLowerCase();
+        final n = raw['name']?.toString().trim().toLowerCase();
+
+        print("   Game $i: displayName='$dn', name='$n'");
+
+        if (dn == target || n == target) {
+          print("✅ MATCH FOUND at index $i!");
+
+          // First try the new nested structure: assets.gameUrl.baseUrl
+          final assets = raw['assets'];
+          if (assets is Map) {
+            final gameUrl = assets['gameUrl'];
+            if (gameUrl is Map && gameUrl['baseUrl'] != null) {
+              final url = gameUrl['baseUrl'].toString();
+              print("✅ Returning URL from assets.gameUrl.baseUrl: $url");
+              return url;
+            } else {
+              print("⚠️ assets.gameUrl exists but no baseUrl");
+            }
+          } else {
+            print("⚠️ No assets found or assets is not a Map");
+          }
+
+          // Fallback to direct url field (legacy support)
+          final url = raw['url']?.toString();
+          if (url != null && url.isNotEmpty) {
+            print("✅ Returning URL from direct url field: $url");
+            return url;
+          }
+
+          print("❌ No URL found in this game object");
+        }
+      }
+    }
+  } catch (e) {
+    print("❌ Error in gameURL: $e");
+  }
+
+  print("❌ No matching game found for '$target'");
+  return '';
+
+  /// MODIFY CODE ONLY ABOVE THIS LINE
+}

@@ -2,6 +2,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'firebase_options.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'flutter_flow/flutter_flow_util.dart';
@@ -10,8 +11,13 @@ import 'flutter_flow/device_token_service.dart';
 
 // Background message handler
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  await Firebase.initializeApp();
-  print('Handling a background message: ${message.messageId}');
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  print('🔔 Handling a background message: ${message.messageId}');
+
+  // Add notification to stream for listeners
+  FirebaseMessagingService.addNotification(message);
 }
 
 void main() async {
@@ -19,7 +25,9 @@ void main() async {
 
   // Initialize Firebase with error handling
   try {
-    await Firebase.initializeApp();
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
     print("✅ Firebase initialized successfully");
 
     // Set up background message handler
@@ -99,8 +107,11 @@ class _MyAppState extends State<MyApp> {
 
     // Handle foreground messages
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      print('Got a message whilst in the foreground!');
+      print('📩 Got a message whilst in the foreground!');
       print('Message data: ${message.data}');
+
+      // Add to notification stream
+      FirebaseMessagingService.addNotification(message);
 
       if (message.notification != null) {
         print('Message also contained a notification: ${message.notification}');
@@ -119,30 +130,40 @@ class _MyAppState extends State<MyApp> {
 
     // Handle notification taps when app is in background
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      print('A new onMessageOpenedApp event was published!');
+      print('📱 A new onMessageOpenedApp event was published!');
       print('Message data: ${message.data}');
+
+      // Add to notification stream
+      FirebaseMessagingService.addNotification(message);
+
       _handleNotificationTap(message);
     });
 
     // Handle notification tap when app is terminated
     messaging.getInitialMessage().then((RemoteMessage? message) {
       if (message != null) {
-        print('App launched from notification!');
+        print('🚀 App launched from notification!');
         print('Message data: ${message.data}');
+
+        // Add to notification stream
+        FirebaseMessagingService.addNotification(message);
+
         _handleNotificationTap(message);
       }
     });
 
     // Listen to token refresh
     FirebaseMessagingService.listenToTokenRefresh((newToken) {
-      print('FCM Token refreshed: $newToken');
+      print('🔄 FCM Token refreshed: $newToken');
       // Update token in app state and backend
       // FFAppState().fcmToken = newToken;
-      // Call API to update token on server
+      // TODO: Call API to update token on server
     });
   }
 
   void _handleNotificationTap(RemoteMessage message) {
+    print('🔔 Handling notification tap...');
+
     // Use the service to handle notification data
     FirebaseMessagingService.handleNotificationData(message.data);
 
@@ -151,10 +172,23 @@ class _MyAppState extends State<MyApp> {
 
     if (data['route'] != null) {
       // Navigate to specific route
+      print('Navigating to route: ${data['route']}');
       _router.go(data['route']);
+    } else if (data['type'] == 'follow' && data['userId'] != null) {
+      // Navigate to user profile
+      _router.go('/user-profile?userId=${data['userId']}');
+    } else if (data['type'] == 'like' || data['type'] == 'comment') {
+      // Navigate to community page
+      _router.go('/communityPage');
     } else if (data['gameId'] != null) {
       // Navigate to game page
       _router.go('/gamePage?gameId=${data['gameId']}');
+    } else if (data['tournamentId'] != null) {
+      // Navigate to tournament page
+      _router.go('/tournamentPage?tournamentId=${data['tournamentId']}');
+    } else {
+      // Default: navigate to notification page
+      _router.go('/notification');
     }
     // Add more navigation logic based on your app's requirements
   }
