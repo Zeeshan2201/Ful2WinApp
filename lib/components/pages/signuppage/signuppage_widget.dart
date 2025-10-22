@@ -1559,11 +1559,18 @@ class _SignuppageWidgetState extends State<SignuppageWidget>
                                         );
 
                                         if (sendOtpResponse.succeeded) {
+                                          // Capture ScaffoldMessenger before showing dialog
+                                          final scaffoldMessenger =
+                                              ScaffoldMessenger.of(context);
+                                          final navigator =
+                                              Navigator.of(context);
+
                                           // Show OTP popup
                                           showDialog(
                                             context: context,
                                             barrierDismissible: false,
-                                            builder: (BuildContext context) {
+                                            builder:
+                                                (BuildContext dialogContext) {
                                               return Dialog(
                                                 backgroundColor:
                                                     Colors.transparent,
@@ -1572,7 +1579,7 @@ class _SignuppageWidgetState extends State<SignuppageWidget>
                                                       '+91 ${_model.textController2.text}',
                                                   onOtpVerified: (otp) async {
                                                     Navigator.pop(
-                                                        context); // Close OTP dialog
+                                                        dialogContext); // Close OTP dialog
                                                     print('Your OTP is: $otp');
                                                     // Verify OTP
                                                     final verifyOtpResponse =
@@ -1633,22 +1640,31 @@ class _SignuppageWidgetState extends State<SignuppageWidget>
 
                                                         safeSetState(() {});
 
-                                                        // Navigate to home page
-                                                        context.pushNamed(
-                                                            HomePageWidget
-                                                                .routeName);
+                                                        // Check if widget is still mounted before using context
+                                                        if (!mounted) return;
 
-                                                        ScaffoldMessenger.of(
-                                                                context)
+                                                        // Show success message using captured messenger
+                                                        scaffoldMessenger
                                                             .showSnackBar(
                                                           const SnackBar(
                                                             content: Text(
                                                                 'Registration successful!'),
                                                             backgroundColor:
                                                                 Colors.green,
+                                                            duration: Duration(
+                                                                milliseconds:
+                                                                    2000),
                                                           ),
                                                         );
+
+                                                        // Navigate to home page and replace the current route
+                                                        context.goNamed(
+                                                            HomePageWidget
+                                                                .routeName);
                                                       } else {
+                                                        // Check if widget is still mounted before using context
+                                                        if (!mounted) return;
+
                                                         // Extract error message from API response
                                                         final errorMessage =
                                                             getJsonField(
@@ -1659,8 +1675,7 @@ class _SignuppageWidgetState extends State<SignuppageWidget>
                                                                 )?.toString() ??
                                                                 'Registration failed. Please try again.';
 
-                                                        ScaffoldMessenger.of(
-                                                                context)
+                                                        scaffoldMessenger
                                                             .showSnackBar(
                                                           SnackBar(
                                                             content: Text(
@@ -1675,6 +1690,9 @@ class _SignuppageWidgetState extends State<SignuppageWidget>
                                                         );
                                                       }
                                                     } else {
+                                                      // Check if widget is still mounted before using context
+                                                      if (!mounted) return;
+
                                                       // Extract OTP verification error message
                                                       final otpError = getJsonField(
                                                             verifyOtpResponse
@@ -1683,8 +1701,7 @@ class _SignuppageWidgetState extends State<SignuppageWidget>
                                                           )?.toString() ??
                                                           'Invalid OTP. Please try again.';
 
-                                                      ScaffoldMessenger.of(
-                                                              context)
+                                                      scaffoldMessenger
                                                           .showSnackBar(
                                                         SnackBar(
                                                           content:
@@ -1707,10 +1724,12 @@ class _SignuppageWidgetState extends State<SignuppageWidget>
                                                           .textController2.text,
                                                     );
 
+                                                    // Check if widget is still mounted before using context
+                                                    if (!mounted) return;
+
                                                     if (resendResponse
                                                         .succeeded) {
-                                                      ScaffoldMessenger.of(
-                                                              context)
+                                                      scaffoldMessenger
                                                           .showSnackBar(
                                                         const SnackBar(
                                                           content: Text(
@@ -1720,8 +1739,7 @@ class _SignuppageWidgetState extends State<SignuppageWidget>
                                                         ),
                                                       );
                                                     } else {
-                                                      ScaffoldMessenger.of(
-                                                              context)
+                                                      scaffoldMessenger
                                                           .showSnackBar(
                                                         const SnackBar(
                                                           content: Text(

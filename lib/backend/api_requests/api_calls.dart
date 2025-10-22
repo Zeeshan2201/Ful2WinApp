@@ -259,7 +259,7 @@ class VerifyOTP {
 
     final apiRequestBody = '''
 {
-  "phoneNumber": "$phoneNumber",
+  "phone": "+91$phoneNumber",
   "otp": "$otp"
 }''';
 
