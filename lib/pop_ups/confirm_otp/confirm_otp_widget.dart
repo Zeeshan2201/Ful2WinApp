@@ -166,15 +166,18 @@ class _ConfirmOtpWidgetState extends State<ConfirmOtpWidget> {
   Widget build(BuildContext context) {
     // Calculate responsive box size based on screen width
     final screenWidth = MediaQuery.of(context).size.width;
-    final dialogWidth = screenWidth * 0.9; // Dialog takes 90% of screen width
+    final dialogWidth =
+        (screenWidth * 0.9).clamp(280.0, 400.0); // Dialog width with limits
     final availableWidth = dialogWidth - 70; // Subtract padding (20+20+15+15)
-    final boxSize =
-        (availableWidth / 6).clamp(40.0, 50.0); // 6 boxes, min 40, max 50
-    final spacing =
-        (availableWidth - (boxSize * 6)) / 5; // Calculate spacing between boxes
+    final boxSize = (availableWidth / 7)
+        .clamp(35.0, 48.0); // 6 boxes + spacing, min 35, max 48
 
     return Container(
-      width: double.infinity,
+      width: dialogWidth,
+      constraints: BoxConstraints(
+        maxWidth: 400,
+        maxHeight: MediaQuery.of(context).size.height * 0.85,
+      ),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
           colors: [Color(0xFF0A2A66), Color(0xFF0033CC)],
@@ -184,190 +187,192 @@ class _ConfirmOtpWidgetState extends State<ConfirmOtpWidget> {
         ),
         borderRadius: BorderRadius.circular(20),
       ),
-      child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // Header with close button
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Verify OTP',
-                  style: FlutterFlowTheme.of(context).headlineSmall.override(
-                        font: GoogleFonts.inter(
-                          fontWeight: FontWeight.bold,
-                        ),
-                        color: Colors.white,
-                        fontSize: 24,
-                        letterSpacing: 0.0,
-                      ),
-                ),
-                FlutterFlowIconButton(
-                  borderRadius: 20,
-                  buttonSize: 40,
-                  fillColor: const Color(0x33FFFFFF),
-                  icon: const Icon(
-                    Icons.close,
-                    color: Colors.white,
-                    size: 20,
-                  ),
-                  onPressed: () => Navigator.pop(context),
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
-
-            // Description
-            Text(
-              'We\'ve sent a 6-digit verification code to',
-              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    font: GoogleFonts.inter(),
-                    color: const Color(0xFFE2E8F0),
-                    letterSpacing: 0.0,
-                  ),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 8),
-
-            // Phone number
-            Text(
-              widget.phoneNumber ?? '+91 ***** *****',
-              style: FlutterFlowTheme.of(context).bodyLarge.override(
-                    font: GoogleFonts.inter(
-                      fontWeight: FontWeight.w600,
-                    ),
-                    color: const Color(0xFFF7B500),
-                    letterSpacing: 0.0,
-                  ),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 30),
-
-            // OTP Input Fields
-            Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(15, 0, 15, 0),
-              child: Row(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Header with close button
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _buildOtpInputField(
-                    controller: _model.otpDigit1TextController!,
-                    focusNode: _model.otpDigit1FocusNode!,
-                    nextFocusNode: _model.otpDigit2FocusNode,
-                    isLast: false,
-                    boxSize: boxSize,
+                  Text(
+                    'Verify OTP',
+                    style: FlutterFlowTheme.of(context).headlineSmall.override(
+                          font: GoogleFonts.inter(
+                            fontWeight: FontWeight.bold,
+                          ),
+                          color: Colors.white,
+                          fontSize: 24,
+                          letterSpacing: 0.0,
+                        ),
                   ),
-                  _buildOtpInputField(
-                    controller: _model.otpDigit2TextController!,
-                    focusNode: _model.otpDigit2FocusNode!,
-                    nextFocusNode: _model.otpDigit3FocusNode,
-                    isLast: false,
-                    boxSize: boxSize,
-                  ),
-                  _buildOtpInputField(
-                    controller: _model.otpDigit3TextController!,
-                    focusNode: _model.otpDigit3FocusNode!,
-                    nextFocusNode: _model.otpDigit4FocusNode,
-                    isLast: false,
-                    boxSize: boxSize,
-                  ),
-                  _buildOtpInputField(
-                    controller: _model.otpDigit4TextController!,
-                    focusNode: _model.otpDigit4FocusNode!,
-                    nextFocusNode: _model.otpDigit5FocusNode,
-                    isLast: false,
-                    boxSize: boxSize,
-                  ),
-                  _buildOtpInputField(
-                    controller: _model.otpDigit5TextController!,
-                    focusNode: _model.otpDigit5FocusNode!,
-                    nextFocusNode: _model.otpDigit6FocusNode,
-                    isLast: false,
-                    boxSize: boxSize,
-                  ),
-                  _buildOtpInputField(
-                    controller: _model.otpDigit6TextController!,
-                    focusNode: _model.otpDigit6FocusNode!,
-                    nextFocusNode: null,
-                    isLast: true,
-                    boxSize: boxSize,
+                  FlutterFlowIconButton(
+                    borderRadius: 20,
+                    buttonSize: 40,
+                    fillColor: const Color(0x33FFFFFF),
+                    icon: const Icon(
+                      Icons.close,
+                      color: Colors.white,
+                      size: 20,
+                    ),
+                    onPressed: () => Navigator.pop(context),
                   ),
                 ],
               ),
-            ),
-            const SizedBox(height: 30),
+              const SizedBox(height: 20),
 
-            // Verify Button
-            FFButtonWidget(
-              onPressed: _verifyOtp,
-              text: 'Verify OTP',
-              options: FFButtonOptions(
-                width: double.infinity,
-                height: 50,
-                padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                iconPadding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                color: const Color(0xFFF7B500),
-                textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+              // Description
+              Text(
+                'We\'ve sent a 6-digit verification code to',
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      font: GoogleFonts.inter(),
+                      color: const Color(0xFFE2E8F0),
+                      letterSpacing: 0.0,
+                    ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 8),
+
+              // Phone number
+              Text(
+                widget.phoneNumber ?? '+91 ***** *****',
+                style: FlutterFlowTheme.of(context).bodyLarge.override(
                       font: GoogleFonts.inter(
                         fontWeight: FontWeight.w600,
                       ),
-                      color: const Color(0xFF1E293B),
+                      color: const Color(0xFFF7B500),
                       letterSpacing: 0.0,
                     ),
-                elevation: 3,
-                borderSide: const BorderSide(
-                  color: Colors.transparent,
-                  width: 1,
-                ),
-                borderRadius: BorderRadius.circular(12),
-                disabledColor: const Color(0xFF6B7280),
+                textAlign: TextAlign.center,
               ),
-            ),
-            const SizedBox(height: 20),
+              const SizedBox(height: 30),
 
-            // Resend OTP
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Didn\'t receive code? ',
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        font: GoogleFonts.inter(),
-                        color: const Color(0xFFE2E8F0),
+              // OTP Input Fields
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(15, 0, 15, 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _buildOtpInputField(
+                      controller: _model.otpDigit1TextController!,
+                      focusNode: _model.otpDigit1FocusNode!,
+                      nextFocusNode: _model.otpDigit2FocusNode,
+                      isLast: false,
+                      boxSize: boxSize,
+                    ),
+                    _buildOtpInputField(
+                      controller: _model.otpDigit2TextController!,
+                      focusNode: _model.otpDigit2FocusNode!,
+                      nextFocusNode: _model.otpDigit3FocusNode,
+                      isLast: false,
+                      boxSize: boxSize,
+                    ),
+                    _buildOtpInputField(
+                      controller: _model.otpDigit3TextController!,
+                      focusNode: _model.otpDigit3FocusNode!,
+                      nextFocusNode: _model.otpDigit4FocusNode,
+                      isLast: false,
+                      boxSize: boxSize,
+                    ),
+                    _buildOtpInputField(
+                      controller: _model.otpDigit4TextController!,
+                      focusNode: _model.otpDigit4FocusNode!,
+                      nextFocusNode: _model.otpDigit5FocusNode,
+                      isLast: false,
+                      boxSize: boxSize,
+                    ),
+                    _buildOtpInputField(
+                      controller: _model.otpDigit5TextController!,
+                      focusNode: _model.otpDigit5FocusNode!,
+                      nextFocusNode: _model.otpDigit6FocusNode,
+                      isLast: false,
+                      boxSize: boxSize,
+                    ),
+                    _buildOtpInputField(
+                      controller: _model.otpDigit6TextController!,
+                      focusNode: _model.otpDigit6FocusNode!,
+                      nextFocusNode: null,
+                      isLast: true,
+                      boxSize: boxSize,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 30),
+
+              // Verify Button
+              FFButtonWidget(
+                onPressed: _verifyOtp,
+                text: 'Verify OTP',
+                options: FFButtonOptions(
+                  width: double.infinity,
+                  height: 50,
+                  padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                  iconPadding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                  color: const Color(0xFFF7B500),
+                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                        font: GoogleFonts.inter(
+                          fontWeight: FontWeight.w600,
+                        ),
+                        color: const Color(0xFF1E293B),
                         letterSpacing: 0.0,
                       ),
+                  elevation: 3,
+                  borderSide: const BorderSide(
+                    color: Colors.transparent,
+                    width: 1,
+                  ),
+                  borderRadius: BorderRadius.circular(12),
+                  disabledColor: const Color(0xFF6B7280),
                 ),
-                InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () {
-                    _model.clearOtp();
-                    widget.onResendOtp?.call();
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('OTP sent successfully'),
-                        backgroundColor: Colors.green,
-                      ),
-                    );
-                  },
-                  child: Text(
-                    'Resend OTP',
+              ),
+              const SizedBox(height: 20),
+
+              // Resend OTP
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Didn\'t receive code? ',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          font: GoogleFonts.inter(
-                            fontWeight: FontWeight.w600,
-                          ),
-                          color: const Color(0xFFF7B500),
+                          font: GoogleFonts.inter(),
+                          color: const Color(0xFFE2E8F0),
                           letterSpacing: 0.0,
-                          decoration: TextDecoration.underline,
                         ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () {
+                      _model.clearOtp();
+                      widget.onResendOtp?.call();
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('OTP sent successfully'),
+                          backgroundColor: Colors.green,
+                        ),
+                      );
+                    },
+                    child: Text(
+                      'Resend OTP',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            font: GoogleFonts.inter(
+                              fontWeight: FontWeight.w600,
+                            ),
+                            color: const Color(0xFFF7B500),
+                            letterSpacing: 0.0,
+                            decoration: TextDecoration.underline,
+                          ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

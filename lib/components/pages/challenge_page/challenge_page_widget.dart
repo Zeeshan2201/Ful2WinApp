@@ -1795,6 +1795,79 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                         ),
                                                                       ],
                                                                     ),
+                                                                    const SizedBox(
+                                                                        height:
+                                                                            2),
+                                                                    // Score display
+                                                                    Builder(
+                                                                      builder:
+                                                                          (context) {
+                                                                        final challengerScore =
+                                                                            getJsonField(
+                                                                          challenge[
+                                                                              challengeIndex],
+                                                                          r'''$.result.score.challenger''',
+                                                                        );
+                                                                        final challengedScore =
+                                                                            getJsonField(
+                                                                          challenge[
+                                                                              challengeIndex],
+                                                                          r'''$.result.score.challenged''',
+                                                                        );
+
+                                                                        String
+                                                                            scoreText;
+                                                                        if (status ==
+                                                                            'pending') {
+                                                                          // Pending: Show "You: Waiting" and opponent score if exists
+                                                                          final opponentScoreStr = challengerScore != null
+                                                                              ? challengerScore.toString()
+                                                                              : 'Pending';
+                                                                          scoreText =
+                                                                              'You: Waiting | Opponent: $opponentScoreStr';
+                                                                        } else if (status ==
+                                                                                'completed' ||
+                                                                            status ==
+                                                                                'accepted') {
+                                                                          // Completed/Accepted: Show both scores
+                                                                          final yourScore =
+                                                                              challengedScore?.toString() ?? '-';
+                                                                          final oppScore =
+                                                                              challengerScore?.toString() ?? '-';
+                                                                          scoreText =
+                                                                              'You: $yourScore | Opponent: $oppScore';
+                                                                        } else {
+                                                                          scoreText =
+                                                                              '';
+                                                                        }
+
+                                                                        if (scoreText
+                                                                            .isEmpty)
+                                                                          return const SizedBox
+                                                                              .shrink();
+
+                                                                        return Text(
+                                                                          scoreText,
+                                                                          maxLines:
+                                                                              1,
+                                                                          overflow:
+                                                                              TextOverflow.ellipsis,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                font: GoogleFonts.poppins(
+                                                                                  fontWeight: FontWeight.w500,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                ),
+                                                                                color: const Color(0xFFB0B0B0),
+                                                                                fontSize: 11,
+                                                                                letterSpacing: 0.0,
+                                                                                fontWeight: FontWeight.w500,
+                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                              ),
+                                                                        );
+                                                                      },
+                                                                    ),
                                                                   ],
                                                                 ),
                                                               ),
@@ -2499,104 +2572,151 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                 MainAxisAlignment
                                                                     .spaceBetween,
                                                             children: [
-                                                              Row(
-                                                                children: [
-                                                                  Padding(
-                                                                    padding:
-                                                                        const EdgeInsetsDirectional
-                                                                            .fromSTEB(
-                                                                            5,
-                                                                            0,
-                                                                            5,
-                                                                            0),
-                                                                    child:
-                                                                        Container(
-                                                                      width: 35,
-                                                                      height:
-                                                                          35,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: const Color(
-                                                                            0xFF57636C),
-                                                                        image:
-                                                                            DecorationImage(
-                                                                          fit: BoxFit
-                                                                              .cover,
+                                                              Expanded(
+                                                                child: Row(
+                                                                  children: [
+                                                                    Padding(
+                                                                      padding: const EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                          5,
+                                                                          0,
+                                                                          5,
+                                                                          0),
+                                                                      child:
+                                                                          Container(
+                                                                        width:
+                                                                            35,
+                                                                        height:
+                                                                            35,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color:
+                                                                              const Color(0xFF57636C),
                                                                           image:
-                                                                              _safeNetworkOrAsset(avatarUrl),
+                                                                              DecorationImage(
+                                                                            fit:
+                                                                                BoxFit.cover,
+                                                                            image:
+                                                                                _safeNetworkOrAsset(avatarUrl),
+                                                                          ),
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(50),
                                                                         ),
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(50),
                                                                       ),
                                                                     ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding:
-                                                                        const EdgeInsetsDirectional
+                                                                    Expanded(
+                                                                      child:
+                                                                          Padding(
+                                                                        padding: const EdgeInsetsDirectional
                                                                             .fromSTEB(
                                                                             5,
                                                                             0,
                                                                             0,
                                                                             0),
-                                                                    child:
-                                                                        Column(
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .center,
-                                                                      crossAxisAlignment:
-                                                                          CrossAxisAlignment
-                                                                              .start,
-                                                                      children: [
-                                                                        Text(
-                                                                          targetName,
-                                                                          maxLines:
-                                                                              1,
-                                                                          overflow:
-                                                                              TextOverflow.ellipsis,
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .override(
-                                                                                font: GoogleFonts.poppins(
-                                                                                  fontWeight: FontWeight.bold,
-                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                ),
-                                                                                color: FlutterFlowTheme.of(context).primaryText,
-                                                                                fontSize: MediaQuery.sizeOf(context).width < 350.0 ? 14.0 : 20.0,
-                                                                                letterSpacing: 0.0,
-                                                                                fontWeight: FontWeight.bold,
-                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                              ),
-                                                                        ),
-                                                                        Row(
+                                                                        child:
+                                                                            Column(
+                                                                          mainAxisAlignment:
+                                                                              MainAxisAlignment.center,
+                                                                          crossAxisAlignment:
+                                                                              CrossAxisAlignment.start,
                                                                           children: [
-                                                                            const FaIcon(
-                                                                              FontAwesomeIcons.solidCircle,
-                                                                              size: 12,
-                                                                            ),
-                                                                            Padding(
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
-                                                                              child: Text(
-                                                                                gameName,
-                                                                                maxLines: 1,
-                                                                                overflow: TextOverflow.ellipsis,
-                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      font: GoogleFonts.poppins(
-                                                                                        fontWeight: FontWeight.w600,
-                                                                                        fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                      ),
-                                                                                      fontSize: MediaQuery.sizeOf(context).width < 350.0 ? 10.0 : 14.0,
-                                                                                      letterSpacing: 0.0,
-                                                                                      fontWeight: FontWeight.w600,
+                                                                            Text(
+                                                                              targetName,
+                                                                              maxLines: 1,
+                                                                              overflow: TextOverflow.ellipsis,
+                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                    font: GoogleFonts.poppins(
+                                                                                      fontWeight: FontWeight.bold,
                                                                                       fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                     ),
-                                                                              ),
+                                                                                    color: FlutterFlowTheme.of(context).primaryText,
+                                                                                    fontSize: MediaQuery.sizeOf(context).width < 350.0 ? 14.0 : 20.0,
+                                                                                    letterSpacing: 0.0,
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                  ),
+                                                                            ),
+                                                                            Row(
+                                                                              children: [
+                                                                                const FaIcon(
+                                                                                  FontAwesomeIcons.solidCircle,
+                                                                                  size: 12,
+                                                                                ),
+                                                                                Padding(
+                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
+                                                                                  child: Text(
+                                                                                    gameName,
+                                                                                    maxLines: 1,
+                                                                                    overflow: TextOverflow.ellipsis,
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                          font: GoogleFonts.poppins(
+                                                                                            fontWeight: FontWeight.w600,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                          ),
+                                                                                          fontSize: MediaQuery.sizeOf(context).width < 350.0 ? 10.0 : 14.0,
+                                                                                          letterSpacing: 0.0,
+                                                                                          fontWeight: FontWeight.w600,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                        ),
+                                                                                  ),
+                                                                                ),
+                                                                              ],
+                                                                            ),
+                                                                            // Score display for sent challenges
+                                                                            Builder(
+                                                                              builder: (context) {
+                                                                                final challengerScore = getJsonField(
+                                                                                  c,
+                                                                                  r'''$.result.score.challenger''',
+                                                                                );
+                                                                                final challengedScore = getJsonField(
+                                                                                  c,
+                                                                                  r'''$.result.score.challenged''',
+                                                                                );
+
+                                                                                String scoreText;
+                                                                                if (status == 'pending') {
+                                                                                  // Pending: Show your score and "Opponent: Pending"
+                                                                                  final yourScoreStr = challengerScore != null ? challengerScore.toString() : 'Waiting';
+                                                                                  scoreText = 'You: $yourScoreStr | Opponent: Pending';
+                                                                                } else if (status == 'completed' || status == 'accepted') {
+                                                                                  // Completed/Accepted: Show both scores
+                                                                                  final yourScore = challengerScore?.toString() ?? '-';
+                                                                                  final oppScore = challengedScore?.toString() ?? '-';
+                                                                                  scoreText = 'You: $yourScore | Opponent: $oppScore';
+                                                                                } else {
+                                                                                  scoreText = '';
+                                                                                }
+
+                                                                                if (scoreText.isEmpty) return const SizedBox.shrink();
+
+                                                                                return Padding(
+                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0),
+                                                                                  child: Text(
+                                                                                    scoreText,
+                                                                                    maxLines: 1,
+                                                                                    overflow: TextOverflow.ellipsis,
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                          font: GoogleFonts.poppins(
+                                                                                            fontWeight: FontWeight.w500,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                          ),
+                                                                                          color: const Color(0xFFB0B0B0),
+                                                                                          fontSize: MediaQuery.sizeOf(context).width < 350.0 ? 9.0 : 11.0,
+                                                                                          letterSpacing: 0.0,
+                                                                                          fontWeight: FontWeight.w500,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                        ),
+                                                                                  ),
+                                                                                );
+                                                                              },
                                                                             ),
                                                                           ],
                                                                         ),
-                                                                      ],
+                                                                      ),
                                                                     ),
-                                                                  ),
-                                                                ],
+                                                                  ],
+                                                                ),
                                                               ),
                                                               // Show Cancel button for pending, status text for others
                                                               if (status ==

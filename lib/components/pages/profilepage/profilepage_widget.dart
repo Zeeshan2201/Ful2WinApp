@@ -136,7 +136,7 @@ class _ProfilepageWidgetState extends State<ProfilepageWidget>
           );
         }
         final profilepageProfileResponse = snapshot.data!;
-        print(profilepageProfileResponse.jsonBody);
+
         return GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();

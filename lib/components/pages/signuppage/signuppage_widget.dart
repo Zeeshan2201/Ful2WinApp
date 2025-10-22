@@ -1573,7 +1573,7 @@ class _SignuppageWidgetState extends State<SignuppageWidget>
                                                   onOtpVerified: (otp) async {
                                                     Navigator.pop(
                                                         context); // Close OTP dialog
-
+                                                    print('Your OTP is: $otp');
                                                     // Verify OTP
                                                     final verifyOtpResponse =
                                                         await VerifyOTP.call(
@@ -1581,7 +1581,9 @@ class _SignuppageWidgetState extends State<SignuppageWidget>
                                                           .textController2.text,
                                                       otp: otp,
                                                     );
-
+                                                    print(
+                                                      'OTP verification response: ${verifyOtpResponse.jsonBody}',
+                                                    );
                                                     if (verifyOtpResponse
                                                         .succeeded) {
                                                       // Register user after OTP verification
@@ -1647,26 +1649,52 @@ class _SignuppageWidgetState extends State<SignuppageWidget>
                                                           ),
                                                         );
                                                       } else {
+                                                        // Extract error message from API response
+                                                        final errorMessage =
+                                                            getJsonField(
+                                                                  (_model.signup
+                                                                          ?.jsonBody ??
+                                                                      ''),
+                                                                  r'''$.message''',
+                                                                )?.toString() ??
+                                                                'Registration failed. Please try again.';
+
                                                         ScaffoldMessenger.of(
                                                                 context)
                                                             .showSnackBar(
-                                                          const SnackBar(
+                                                          SnackBar(
                                                             content: Text(
-                                                                'Registration failed. Please try again.'),
+                                                                errorMessage),
                                                             backgroundColor:
                                                                 Colors.red,
+                                                            duration:
+                                                                const Duration(
+                                                                    milliseconds:
+                                                                        5000),
                                                           ),
                                                         );
                                                       }
                                                     } else {
+                                                      // Extract OTP verification error message
+                                                      final otpError = getJsonField(
+                                                            verifyOtpResponse
+                                                                .jsonBody,
+                                                            r'''$.message''',
+                                                          )?.toString() ??
+                                                          'Invalid OTP. Please try again.';
+
                                                       ScaffoldMessenger.of(
                                                               context)
                                                           .showSnackBar(
-                                                        const SnackBar(
-                                                          content: Text(
-                                                              'Invalid OTP. Please try again.'),
+                                                        SnackBar(
+                                                          content:
+                                                              Text(otpError),
                                                           backgroundColor:
                                                               Colors.red,
+                                                          duration:
+                                                              const Duration(
+                                                                  milliseconds:
+                                                                      4000),
                                                         ),
                                                       );
                                                     }
