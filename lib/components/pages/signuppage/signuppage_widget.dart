@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/device_token_service.dart';
 import '/index.dart';
 import '/pop_ups/confirm_otp/confirm_otp_widget.dart';
 import 'package:flutter/material.dart';
@@ -1562,8 +1563,6 @@ class _SignuppageWidgetState extends State<SignuppageWidget>
                                           // Capture ScaffoldMessenger before showing dialog
                                           final scaffoldMessenger =
                                               ScaffoldMessenger.of(context);
-                                          final navigator =
-                                              Navigator.of(context);
 
                                           // Show OTP popup
                                           showDialog(
@@ -1593,6 +1592,20 @@ class _SignuppageWidgetState extends State<SignuppageWidget>
                                                     );
                                                     if (verifyOtpResponse
                                                         .succeeded) {
+                                                      // Show OTP verification success message
+                                                      scaffoldMessenger
+                                                          .showSnackBar(
+                                                        const SnackBar(
+                                                          content: Text(
+                                                              'OTP verified successfully!'),
+                                                          backgroundColor:
+                                                              Colors.green,
+                                                          duration: Duration(
+                                                              milliseconds:
+                                                                  1500),
+                                                        ),
+                                                      );
+
                                                       // Register user after OTP verification
                                                       _model.signup =
                                                           await RegisterCall
@@ -1641,6 +1654,32 @@ class _SignuppageWidgetState extends State<SignuppageWidget>
                                                         safeSetState(() {});
 
                                                         // Check if widget is still mounted before using context
+                                                        if (!mounted) return;
+
+                                                        // Save device token to backend
+                                                        try {
+                                                          final deviceTokenSaved =
+                                                              await DeviceTokenService
+                                                                  .sendDeviceTokenToBackend(
+                                                            userToken:
+                                                                FFAppState()
+                                                                    .token,
+                                                            userId: FFAppState()
+                                                                .userId,
+                                                          );
+                                                          if (deviceTokenSaved) {
+                                                            print(
+                                                                '✅ Device token saved successfully');
+                                                          } else {
+                                                            print(
+                                                                '⚠️ Device token not saved');
+                                                          }
+                                                        } catch (e) {
+                                                          print(
+                                                              '❌ Error saving device token: $e');
+                                                        }
+
+                                                        // Check if widget is still mounted
                                                         if (!mounted) return;
 
                                                         // Show success message using captured messenger

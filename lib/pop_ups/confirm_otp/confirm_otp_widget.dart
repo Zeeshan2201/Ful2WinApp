@@ -91,7 +91,7 @@ class _ConfirmOtpWidgetState extends State<ConfirmOtpWidget> {
         textAlign: TextAlign.center,
         obscureText: false,
         decoration: InputDecoration(
-          isDense: false,
+          isDense: true,
           labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
                 font: GoogleFonts.inter(),
                 letterSpacing: 0.0,
@@ -104,8 +104,7 @@ class _ConfirmOtpWidgetState extends State<ConfirmOtpWidget> {
           focusedBorder: InputBorder.none,
           errorBorder: InputBorder.none,
           focusedErrorBorder: InputBorder.none,
-          contentPadding:
-              EdgeInsetsDirectional.fromSTEB(0, boxSize * 0.25, 0, 0),
+          // Remove contentPadding so text is perfectly centered
         ),
         style: FlutterFlowTheme.of(context).bodyMedium.override(
               font: GoogleFonts.inter(
