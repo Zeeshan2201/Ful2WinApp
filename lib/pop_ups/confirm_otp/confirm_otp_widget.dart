@@ -76,7 +76,7 @@ class _ConfirmOtpWidgetState extends State<ConfirmOtpWidget> {
       height: boxSize,
       decoration: BoxDecoration(
         color: const Color(0xFF1E293B),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(8),
         border: Border.all(
           color: controller.text.isNotEmpty
               ? const Color(0xFFF7B500)
@@ -84,31 +84,26 @@ class _ConfirmOtpWidgetState extends State<ConfirmOtpWidget> {
           width: 2,
         ),
       ),
+      alignment: Alignment.center,
       child: TextFormField(
         controller: controller,
         focusNode: focusNode,
         autofocus: false,
         textAlign: TextAlign.center,
+        textAlignVertical: TextAlignVertical.center,
         obscureText: false,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           isDense: true,
-          labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                font: GoogleFonts.inter(),
-                letterSpacing: 0.0,
-              ),
-          hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                font: GoogleFonts.inter(),
-                letterSpacing: 0.0,
-              ),
+          border: InputBorder.none,
           enabledBorder: InputBorder.none,
           focusedBorder: InputBorder.none,
           errorBorder: InputBorder.none,
           focusedErrorBorder: InputBorder.none,
-          // Remove contentPadding so text is perfectly centered
+          contentPadding: EdgeInsets.zero,
         ),
         style: FlutterFlowTheme.of(context).bodyMedium.override(
               font: GoogleFonts.inter(
-                fontSize: boxSize * 0.42, // Responsive font size
+                fontSize: boxSize * 0.5, // Larger font for better visibility
                 fontWeight: FontWeight.w600,
               ),
               color: Colors.white,
@@ -163,19 +158,44 @@ class _ConfirmOtpWidgetState extends State<ConfirmOtpWidget> {
 
   @override
   Widget build(BuildContext context) {
-    // Calculate responsive box size based on screen width
+    // Get screen dimensions
     final screenWidth = MediaQuery.of(context).size.width;
-    final dialogWidth =
-        (screenWidth * 0.9).clamp(280.0, 400.0); // Dialog width with limits
-    final availableWidth = dialogWidth - 70; // Subtract padding (20+20+15+15)
-    final boxSize = (availableWidth / 7)
-        .clamp(35.0, 48.0); // 6 boxes + spacing, min 35, max 48
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    // Responsive calculations
+    final isSmallScreen = screenWidth < 360;
+    final isMediumScreen = screenWidth >= 360 && screenWidth < 400;
+
+    // Dialog width - responsive to screen size
+    final dialogWidth = (screenWidth * 0.9).clamp(300.0, 450.0);
+
+    // Padding responsive to screen size
+    final horizontalPadding = screenWidth * 0.05; // 5% of screen width
+    final verticalPadding = screenHeight * 0.02; // 2% of screen height
+
+    // OTP box calculations - more conservative
+    final otpRowPadding = horizontalPadding.clamp(5.0, 15.0);
+    final availableWidth =
+        dialogWidth - (horizontalPadding * 2) - (otpRowPadding * 2);
+    final spacing = isSmallScreen ? 3.0 : (isMediumScreen ? 4.0 : 5.0);
+    // Calculate box size to fit 6 boxes + 5 spacings
+    final totalSpacing = spacing * 5 + 30;
+    final boxSize = ((availableWidth - totalSpacing) / 6).clamp(35.0, 52.0);
+
+    // Font sizes
+    final titleFontSize = isSmallScreen ? 20.0 : (isMediumScreen ? 22.0 : 24.0);
+    final bodyFontSize = isSmallScreen ? 13.0 : (isMediumScreen ? 14.0 : 15.0);
+    final phoneFontSize = isSmallScreen ? 15.0 : (isMediumScreen ? 16.0 : 17.0);
+
+    // Spacing
+    final headerSpacing = screenHeight * 0.02;
+    final sectionSpacing = screenHeight * 0.025;
 
     return Container(
       width: dialogWidth,
       constraints: BoxConstraints(
-        maxWidth: 400,
-        maxHeight: MediaQuery.of(context).size.height * 0.85,
+        maxWidth: 450,
+        maxHeight: screenHeight * 0.85,
       ),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
@@ -188,7 +208,10 @@ class _ConfirmOtpWidgetState extends State<ConfirmOtpWidget> {
       ),
       child: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
+          padding: EdgeInsets.symmetric(
+            horizontal: horizontalPadding.clamp(15.0, 25.0),
+            vertical: verticalPadding.clamp(15.0, 25.0),
+          ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -196,16 +219,19 @@ class _ConfirmOtpWidgetState extends State<ConfirmOtpWidget> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'Verify OTP',
-                    style: FlutterFlowTheme.of(context).headlineSmall.override(
-                          font: GoogleFonts.inter(
-                            fontWeight: FontWeight.bold,
-                          ),
-                          color: Colors.white,
-                          fontSize: 24,
-                          letterSpacing: 0.0,
-                        ),
+                  Flexible(
+                    child: Text(
+                      'Verify OTP',
+                      style:
+                          FlutterFlowTheme.of(context).headlineSmall.override(
+                                font: GoogleFonts.inter(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                color: Colors.white,
+                                fontSize: titleFontSize,
+                                letterSpacing: 0.0,
+                              ),
+                    ),
                   ),
                   FlutterFlowIconButton(
                     borderRadius: 20,
@@ -220,7 +246,7 @@ class _ConfirmOtpWidgetState extends State<ConfirmOtpWidget> {
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: headerSpacing.clamp(15.0, 20.0)),
 
               // Description
               Text(
@@ -228,11 +254,12 @@ class _ConfirmOtpWidgetState extends State<ConfirmOtpWidget> {
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       font: GoogleFonts.inter(),
                       color: const Color(0xFFE2E8F0),
+                      fontSize: bodyFontSize,
                       letterSpacing: 0.0,
                     ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 8),
+              SizedBox(height: headerSpacing * 0.4),
 
               // Phone number
               Text(
@@ -242,17 +269,18 @@ class _ConfirmOtpWidgetState extends State<ConfirmOtpWidget> {
                         fontWeight: FontWeight.w600,
                       ),
                       color: const Color(0xFFF7B500),
+                      fontSize: phoneFontSize,
                       letterSpacing: 0.0,
                     ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 30),
+              SizedBox(height: sectionSpacing.clamp(20.0, 30.0)),
 
               // OTP Input Fields
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(15, 0, 15, 0),
+                padding: EdgeInsets.symmetric(horizontal: otpRowPadding),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     _buildOtpInputField(
                       controller: _model.otpDigit1TextController!,
@@ -261,6 +289,7 @@ class _ConfirmOtpWidgetState extends State<ConfirmOtpWidget> {
                       isLast: false,
                       boxSize: boxSize,
                     ),
+                    SizedBox(width: spacing),
                     _buildOtpInputField(
                       controller: _model.otpDigit2TextController!,
                       focusNode: _model.otpDigit2FocusNode!,
@@ -268,6 +297,7 @@ class _ConfirmOtpWidgetState extends State<ConfirmOtpWidget> {
                       isLast: false,
                       boxSize: boxSize,
                     ),
+                    SizedBox(width: spacing),
                     _buildOtpInputField(
                       controller: _model.otpDigit3TextController!,
                       focusNode: _model.otpDigit3FocusNode!,
@@ -275,6 +305,7 @@ class _ConfirmOtpWidgetState extends State<ConfirmOtpWidget> {
                       isLast: false,
                       boxSize: boxSize,
                     ),
+                    SizedBox(width: spacing),
                     _buildOtpInputField(
                       controller: _model.otpDigit4TextController!,
                       focusNode: _model.otpDigit4FocusNode!,
@@ -282,6 +313,7 @@ class _ConfirmOtpWidgetState extends State<ConfirmOtpWidget> {
                       isLast: false,
                       boxSize: boxSize,
                     ),
+                    SizedBox(width: spacing),
                     _buildOtpInputField(
                       controller: _model.otpDigit5TextController!,
                       focusNode: _model.otpDigit5FocusNode!,
@@ -289,6 +321,7 @@ class _ConfirmOtpWidgetState extends State<ConfirmOtpWidget> {
                       isLast: false,
                       boxSize: boxSize,
                     ),
+                    SizedBox(width: spacing),
                     _buildOtpInputField(
                       controller: _model.otpDigit6TextController!,
                       focusNode: _model.otpDigit6FocusNode!,
@@ -299,7 +332,7 @@ class _ConfirmOtpWidgetState extends State<ConfirmOtpWidget> {
                   ],
                 ),
               ),
-              const SizedBox(height: 30),
+              SizedBox(height: sectionSpacing.clamp(20.0, 30.0)),
 
               // Verify Button
               FFButtonWidget(
@@ -307,7 +340,7 @@ class _ConfirmOtpWidgetState extends State<ConfirmOtpWidget> {
                 text: 'Verify OTP',
                 options: FFButtonOptions(
                   width: double.infinity,
-                  height: 50,
+                  height: isSmallScreen ? 45 : 50,
                   padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                   iconPadding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                   color: const Color(0xFFF7B500),
@@ -316,6 +349,7 @@ class _ConfirmOtpWidgetState extends State<ConfirmOtpWidget> {
                           fontWeight: FontWeight.w600,
                         ),
                         color: const Color(0xFF1E293B),
+                        fontSize: isSmallScreen ? 15.0 : 16.0,
                         letterSpacing: 0.0,
                       ),
                   elevation: 3,
@@ -327,17 +361,19 @@ class _ConfirmOtpWidgetState extends State<ConfirmOtpWidget> {
                   disabledColor: const Color(0xFF6B7280),
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: headerSpacing.clamp(15.0, 20.0)),
 
               // Resend OTP
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              Wrap(
+                alignment: WrapAlignment.center,
+                crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
                   Text(
                     'Didn\'t receive code? ',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           font: GoogleFonts.inter(),
                           color: const Color(0xFFE2E8F0),
+                          fontSize: bodyFontSize,
                           letterSpacing: 0.0,
                         ),
                   ),
@@ -363,6 +399,7 @@ class _ConfirmOtpWidgetState extends State<ConfirmOtpWidget> {
                               fontWeight: FontWeight.w600,
                             ),
                             color: const Color(0xFFF7B500),
+                            fontSize: bodyFontSize,
                             letterSpacing: 0.0,
                             decoration: TextDecoration.underline,
                           ),
