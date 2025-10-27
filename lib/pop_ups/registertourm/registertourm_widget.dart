@@ -157,8 +157,8 @@ class _RegistertourmWidgetState extends State<RegistertourmWidget>
                     ],
                   ),
                   Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        0.0, 20.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -195,7 +195,7 @@ class _RegistertourmWidgetState extends State<RegistertourmWidget>
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 0.0, 0.0),
                           child: Text(
-                            '₹40',
+                            '🪙40',
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
                                 .displayMedium
@@ -225,8 +225,8 @@ class _RegistertourmWidgetState extends State<RegistertourmWidget>
                     ),
                   ),
                   Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        0.0, 20.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -263,7 +263,7 @@ class _RegistertourmWidgetState extends State<RegistertourmWidget>
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 0.0, 0.0),
                           child: Text(
-                            '₹1000',
+                            '🪙1000',
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
                                 .displayMedium
@@ -293,8 +293,8 @@ class _RegistertourmWidgetState extends State<RegistertourmWidget>
                     ),
                   ),
                   Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                        0.0, 30.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,

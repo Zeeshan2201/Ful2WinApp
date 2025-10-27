@@ -145,7 +145,7 @@ class _RegistrationTournamentPopUpWidgetState
                           ),
                     ),
                     Text(
-                      '₹40',
+                      '🪙40',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             font: GoogleFonts.inter(
                               fontWeight: FontWeight.bold,
@@ -187,7 +187,7 @@ class _RegistrationTournamentPopUpWidgetState
                         ),
                   ),
                   Text(
-                    '₹1000',
+                    '🪙1000',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           font: GoogleFonts.inter(
                             fontWeight: FontWeight.bold,

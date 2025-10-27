@@ -450,7 +450,7 @@ class _SpinWheelWidgetState extends State<SpinWheelWidget>
                             ),
                             child: Center(
                               child: Text(
-                                "₹",
+                                "🪙",
                                 style: TextStyle(
                                     fontSize: centerSize * 0.4,
                                     fontWeight: FontWeight.bold,

@@ -76,7 +76,8 @@ class _TransactiondetailsWidgetState extends State<TransactiondetailsWidget> {
                 ],
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -101,7 +102,8 @@ class _TransactiondetailsWidgetState extends State<TransactiondetailsWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -118,8 +120,8 @@ class _TransactiondetailsWidgetState extends State<TransactiondetailsWidget> {
                       ),
                     ),
                     Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          10.0, 0.0, 0.0, 0.0),
                       child: Text(
                         'Spin',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -145,7 +147,8 @@ class _TransactiondetailsWidgetState extends State<TransactiondetailsWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 0.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   height: 216.93,
@@ -423,7 +426,7 @@ class _TransactiondetailsWidgetState extends State<TransactiondetailsWidget> {
                                   ),
                             ),
                             Text(
-                              '₹1696.05s',
+                              '🪙1696.05s',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(

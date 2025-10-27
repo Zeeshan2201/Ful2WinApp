@@ -193,17 +193,15 @@ class DeviceToken {
     String? token = '',
     String? deviceToken = '',
   }) async {
-    final baseUrl = FulWinGroup.getBaseUrl(
-      token: token,
-    );
+    const baseUrl = 'https://api.fulboost.fun/api/';
     final apiRequestBody = '''
 {
-  "deviceToken": "$deviceToken";
+  "deviceToken": "$deviceToken"
 }''';
 
     return ApiManager.instance.makeApiCall(
       callName: 'deviceToken',
-      apiUrl: '${baseUrl}users/device-token',
+      apiUrl: '${baseUrl}device/register-device',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer $token',

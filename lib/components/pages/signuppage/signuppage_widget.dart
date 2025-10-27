@@ -1558,7 +1558,8 @@ class _SignuppageWidgetState extends State<SignuppageWidget>
                                           phoneNumber:
                                               _model.textController2.text,
                                         );
-
+                                        print(
+                                            "otp resend: ${sendOtpResponse.jsonBody}");
                                         if (sendOtpResponse.succeeded) {
                                           // Capture ScaffoldMessenger before showing dialog
                                           final scaffoldMessenger =

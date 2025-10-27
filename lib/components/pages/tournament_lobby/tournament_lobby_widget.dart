@@ -1253,7 +1253,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                                           .max,
                                                                   children: [
                                                                     Text(
-                                                                      '₹ ',
+                                                                      '🪙 ',
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyMedium
@@ -1467,7 +1467,7 @@ class _TournamentLobbyWidgetState extends State<TournamentLobbyWidget>
                                                                     FFAppState()
                                                                         .userId)!
                                                             ? 'Play'
-                                                            : "₹ ${getJsonField(
+                                                            : "🪙 ${getJsonField(
                                                                 tournamentsItem,
                                                                 r'''$.entryFee''',
                                                               )}",

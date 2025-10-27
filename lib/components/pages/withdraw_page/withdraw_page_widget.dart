@@ -78,8 +78,8 @@ class _WithdrawPageWidgetState extends State<WithdrawPageWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(15.0, 30.0, 15.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          15.0, 30.0, 15.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -198,8 +198,8 @@ class _WithdrawPageWidgetState extends State<WithdrawPageWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 10.0, 0.0, 10.0),
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(0.0, 10.0, 0.0, 10.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
@@ -239,12 +239,11 @@ class _WithdrawPageWidgetState extends State<WithdrawPageWidget> {
                                         ),
                                       ),
                                       Align(
-                                        alignment:
-                                            const AlignmentDirectional(0.0, -1.0),
+                                        alignment: const AlignmentDirectional(
+                                            0.0, -1.0),
                                         child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 20.0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(0.0, 0.0, 0.0, 20.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
@@ -253,8 +252,9 @@ class _WithdrawPageWidgetState extends State<WithdrawPageWidget> {
                                                 CrossAxisAlignment.center,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(
                                                         0.0, 0.0, 5.0, 0.0),
                                                 child: Text(
                                                   'Balance:',
@@ -274,8 +274,8 @@ class _WithdrawPageWidgetState extends State<WithdrawPageWidget> {
                                                                   .bodyMedium
                                                                   .fontStyle,
                                                         ),
-                                                        color:
-                                                            const Color(0xFFFFD54A),
+                                                        color: const Color(
+                                                            0xFFFFD54A),
                                                         fontSize: 17.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -292,11 +292,12 @@ class _WithdrawPageWidgetState extends State<WithdrawPageWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(
                                                         0.0, 0.0, 5.0, 0.0),
                                                 child: Text(
-                                                  '₹1,596.05',
+                                                  '🪙1,596.05',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -310,8 +311,8 @@ class _WithdrawPageWidgetState extends State<WithdrawPageWidget> {
                                                                   .bodyMedium
                                                                   .fontStyle,
                                                         ),
-                                                        color:
-                                                            const Color(0xFFFFD54A),
+                                                        color: const Color(
+                                                            0xFFFFD54A),
                                                         fontSize: 14.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -347,8 +348,9 @@ class _WithdrawPageWidgetState extends State<WithdrawPageWidget> {
                                         children: [
                                           Expanded(
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
+                                              padding:
+                                                  const EdgeInsetsDirectional
+                                                      .fromSTEB(
                                                       20.0, 0.0, 20.0, 0.0),
                                               child: SizedBox(
                                                 width: double.infinity,
@@ -378,8 +380,8 @@ class _WithdrawPageWidgetState extends State<WithdrawPageWidget> {
                                                                     .labelMedium
                                                                     .fontStyle,
                                                           ),
-                                                          color:
-                                                              const Color(0x33FFFFFF),
+                                                          color: const Color(
+                                                              0x33FFFFFF),
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
@@ -427,7 +429,8 @@ class _WithdrawPageWidgetState extends State<WithdrawPageWidget> {
                                                         ),
                                                     enabledBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide:
+                                                          const BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -438,7 +441,8 @@ class _WithdrawPageWidgetState extends State<WithdrawPageWidget> {
                                                     ),
                                                     focusedBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide:
+                                                          const BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -521,8 +525,9 @@ class _WithdrawPageWidgetState extends State<WithdrawPageWidget> {
                                           ),
                                           Expanded(
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
+                                              padding:
+                                                  const EdgeInsetsDirectional
+                                                      .fromSTEB(
                                                       20.0, 0.0, 20.0, 0.0),
                                               child: SizedBox(
                                                 width: double.infinity,
@@ -552,8 +557,8 @@ class _WithdrawPageWidgetState extends State<WithdrawPageWidget> {
                                                                     .labelMedium
                                                                     .fontStyle,
                                                           ),
-                                                          color:
-                                                              const Color(0x33FFFFFF),
+                                                          color: const Color(
+                                                              0x33FFFFFF),
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
@@ -602,7 +607,8 @@ class _WithdrawPageWidgetState extends State<WithdrawPageWidget> {
                                                         ),
                                                     enabledBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide:
+                                                          const BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -613,7 +619,8 @@ class _WithdrawPageWidgetState extends State<WithdrawPageWidget> {
                                                     ),
                                                     focusedBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: const BorderSide(
+                                                      borderSide:
+                                                          const BorderSide(
                                                         color:
                                                             Color(0x00000000),
                                                         width: 1.0,
@@ -709,8 +716,9 @@ class _WithdrawPageWidgetState extends State<WithdrawPageWidget> {
                                     text: ' Withdraw Money',
                                     options: FFButtonOptions(
                                       width: double.infinity,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 18.0, 0.0, 20.0),
+                                      padding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 18.0, 0.0, 20.0),
                                       iconAlignment: IconAlignment.start,
                                       iconPadding:
                                           const EdgeInsetsDirectional.fromSTEB(

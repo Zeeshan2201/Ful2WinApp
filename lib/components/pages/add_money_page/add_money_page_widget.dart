@@ -339,7 +339,7 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                                     onPressed: () {
                                       print('Button pressed ...');
                                     },
-                                    text: '₹50',
+                                    text: '🪙50',
                                     options: FFButtonOptions(
                                       height: 40.0,
                                       padding:
@@ -381,7 +381,7 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                                     onPressed: () {
                                       print('Button pressed ...');
                                     },
-                                    text: '₹100',
+                                    text: '🪙100',
                                     options: FFButtonOptions(
                                       height: 40.0,
                                       padding:
@@ -423,7 +423,7 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                                     onPressed: () {
                                       print('Button pressed ...');
                                     },
-                                    text: '₹200',
+                                    text: '🪙200',
                                     options: FFButtonOptions(
                                       height: 40.0,
                                       padding:
@@ -465,7 +465,7 @@ class _AddMoneyPageWidgetState extends State<AddMoneyPageWidget> {
                                     onPressed: () {
                                       print('Button pressed ...');
                                     },
-                                    text: '₹500',
+                                    text: '🪙500',
                                     options: FFButtonOptions(
                                       height: 40.0,
                                       padding:

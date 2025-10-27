@@ -1137,7 +1137,7 @@ class _ChallengePageWidgetState extends State<ChallengePageWidget>
                                                                   .fontStyle,
                                                         ),
                                                 hintText:
-                                                    'Entry Fee (₹0 or more)',
+                                                    'Entry Fee (🪙0 or more)',
                                                 hintStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
