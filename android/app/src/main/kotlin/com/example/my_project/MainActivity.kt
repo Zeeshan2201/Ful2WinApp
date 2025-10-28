@@ -1,4 +1,4 @@
-package com.mycompany.ful2win
+package com.boostnow.ful2win
 
 import io.flutter.embedding.android.FlutterActivity
 

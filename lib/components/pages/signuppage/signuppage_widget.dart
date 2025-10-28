@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/device_token_service.dart';
 import '/index.dart';
 import '/pop_ups/confirm_otp/confirm_otp_widget.dart';
+import '/services/firebase_auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -1552,15 +1553,56 @@ class _SignuppageWidgetState extends State<SignuppageWidget>
                                           return;
                                         }
 
-                                        // Send OTP
-                                        final sendOtpResponse =
-                                            await SendOTP.call(
+                                        // Validate phone number (must be 10 digits)
+                                        if (_model
+                                                .textController2.text.length !=
+                                            10) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            const SnackBar(
+                                              content: Text(
+                                                'Please enter a valid 10-digit phone number',
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor: Colors.red,
+                                            ),
+                                          );
+                                          return;
+                                        }
+
+                                        // Show loading indicator
+                                        showDialog(
+                                          context: context,
+                                          barrierDismissible: false,
+                                          builder: (BuildContext context) {
+                                            return const Center(
+                                              child:
+                                                  CircularProgressIndicator(),
+                                            );
+                                          },
+                                        );
+
+                                        // Send OTP using Firebase
+                                        final otpSent =
+                                            await FirebaseAuthService.sendOTP(
                                           phoneNumber:
                                               _model.textController2.text,
+                                          context: context,
+                                          onCodeSent: (message) {
+                                            print('✅ Firebase OTP: $message');
+                                          },
+                                          onError: (error) {
+                                            print(
+                                                '❌ Firebase OTP Error: $error');
+                                          },
                                         );
-                                        print(
-                                            "otp resend: ${sendOtpResponse.jsonBody}");
-                                        if (sendOtpResponse.succeeded) {
+
+                                        // Close loading indicator
+                                        if (!mounted) return;
+                                        Navigator.pop(context);
+
+                                        if (otpSent) {
                                           // Capture ScaffoldMessenger before showing dialog
                                           final scaffoldMessenger =
                                               ScaffoldMessenger.of(context);
@@ -1581,24 +1623,51 @@ class _SignuppageWidgetState extends State<SignuppageWidget>
                                                     Navigator.pop(
                                                         dialogContext); // Close OTP dialog
                                                     print('Your OTP is: $otp');
-                                                    // Verify OTP
-                                                    final verifyOtpResponse =
-                                                        await VerifyOTP.call(
-                                                      phoneNumber: _model
-                                                          .textController2.text,
-                                                      otp: otp,
+
+                                                    // Show loading indicator
+                                                    showDialog(
+                                                      context: context,
+                                                      barrierDismissible: false,
+                                                      builder: (BuildContext
+                                                          context) {
+                                                        return const Center(
+                                                          child:
+                                                              CircularProgressIndicator(),
+                                                        );
+                                                      },
                                                     );
-                                                    print(
-                                                      'OTP verification response: ${verifyOtpResponse.jsonBody}',
+
+                                                    // Verify OTP using Firebase
+                                                    final userCredential =
+                                                        await FirebaseAuthService
+                                                            .verifyOTP(
+                                                      otpCode: otp,
+                                                      onError: (error) {
+                                                        print(
+                                                            '❌ Firebase OTP Verification Error: $error');
+                                                      },
                                                     );
-                                                    if (verifyOtpResponse
-                                                        .succeeded) {
+
+                                                    // Close loading indicator
+                                                    if (!mounted) return;
+                                                    Navigator.pop(context);
+
+                                                    if (userCredential !=
+                                                        null) {
+                                                      // Get Firebase ID Token
+                                                      final firebaseToken =
+                                                          await FirebaseAuthService
+                                                              .getIdToken();
+                                                      print(
+                                                          '✅ Firebase Token: ${firebaseToken?.substring(0, 50)}...');
+
                                                       // Show OTP verification success message
+                                                      if (!mounted) return;
                                                       scaffoldMessenger
                                                           .showSnackBar(
                                                         const SnackBar(
                                                           content: Text(
-                                                              'OTP verified successfully!'),
+                                                              'Phone verified successfully!'),
                                                           backgroundColor:
                                                               Colors.green,
                                                           duration: Duration(
@@ -1607,7 +1676,7 @@ class _SignuppageWidgetState extends State<SignuppageWidget>
                                                         ),
                                                       );
 
-                                                      // Register user after OTP verification
+                                                      // Register user with backend
                                                       _model.signup =
                                                           await RegisterCall
                                                               .call(
@@ -1730,45 +1799,45 @@ class _SignuppageWidgetState extends State<SignuppageWidget>
                                                         );
                                                       }
                                                     } else {
-                                                      // Check if widget is still mounted before using context
+                                                      // Firebase OTP verification failed
                                                       if (!mounted) return;
-
-                                                      // Extract OTP verification error message
-                                                      final otpError = getJsonField(
-                                                            verifyOtpResponse
-                                                                .jsonBody,
-                                                            r'''$.message''',
-                                                          )?.toString() ??
-                                                          'Invalid OTP. Please try again.';
 
                                                       scaffoldMessenger
                                                           .showSnackBar(
-                                                        SnackBar(
-                                                          content:
-                                                              Text(otpError),
+                                                        const SnackBar(
+                                                          content: Text(
+                                                              'Invalid OTP. Please try again.'),
                                                           backgroundColor:
                                                               Colors.red,
-                                                          duration:
-                                                              const Duration(
-                                                                  milliseconds:
-                                                                      4000),
+                                                          duration: Duration(
+                                                              milliseconds:
+                                                                  4000),
                                                         ),
                                                       );
                                                     }
                                                   },
                                                   onResendOtp: () async {
-                                                    // Resend OTP
-                                                    final resendResponse =
-                                                        await SendOTP.call(
+                                                    // Resend OTP using Firebase
+                                                    final resendSuccess =
+                                                        await FirebaseAuthService
+                                                            .resendOTP(
                                                       phoneNumber: _model
                                                           .textController2.text,
+                                                      context: context,
+                                                      onCodeSent: (message) {
+                                                        print(
+                                                            '✅ Firebase OTP Resent: $message');
+                                                      },
+                                                      onError: (error) {
+                                                        print(
+                                                            '❌ Firebase OTP Resend Error: $error');
+                                                      },
                                                     );
 
                                                     // Check if widget is still mounted before using context
                                                     if (!mounted) return;
 
-                                                    if (resendResponse
-                                                        .succeeded) {
+                                                    if (resendSuccess) {
                                                       scaffoldMessenger
                                                           .showSnackBar(
                                                         const SnackBar(

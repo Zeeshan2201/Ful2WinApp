@@ -219,6 +219,13 @@ class DeviceToken {
   }
 }
 
+// ============================================================
+// DEPRECATED: Backend OTP implementation (commented out)
+// Now using Firebase Authentication for OTP
+// See: lib/services/firebase_auth_service.dart
+// ============================================================
+
+/*
 class SendOTP {
   static Future<ApiCallResponse> call({
     String? phoneNumber = '',
@@ -278,6 +285,7 @@ class VerifyOTP {
     );
   }
 }
+*/
 
 class StatusCall {
   Future<ApiCallResponse> call({
