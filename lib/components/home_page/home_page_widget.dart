@@ -272,6 +272,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   mainAxisSpacing: 0.0,
                                                   childAspectRatio: 1.0,
                                                 ),
+                                                primary: false,
+                                                physics:
+                                                    const NeverScrollableScrollPhysics(),
                                                 shrinkWrap: true,
                                                 scrollDirection: Axis.vertical,
                                                 itemCount: game.length,
@@ -547,6 +550,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   mainAxisSpacing: 0.0,
                                                   childAspectRatio: 1.0,
                                                 ),
+                                                primary: false,
+                                                physics:
+                                                    const NeverScrollableScrollPhysics(),
                                                 shrinkWrap: true,
                                                 scrollDirection: Axis.vertical,
                                                 itemCount: gam.length,
@@ -777,6 +783,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           mainAxisSpacing: 0.0,
                                           childAspectRatio: 1.0,
                                         ),
+                                        primary: false,
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
                                         shrinkWrap: true,
                                         scrollDirection: Axis.vertical,
                                         children: [
@@ -961,6 +970,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           0,
                                           16.0,
                                         ),
+                                        primary: false,
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
                                         gridDelegate:
                                             const SliverGridDelegateWithFixedCrossAxisCount(
                                           crossAxisCount: 4,
